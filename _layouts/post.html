@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+          <header class="major">
+    <h2 class="post-title">{{ page.title }}</h2>
+    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+            </header>
+          <div class="row 100%">
+            <div class="8u 12u$(medium)">
+<!-- Content -->
+                <section id="content"  style="background: #fdfdfd !important; color: #1c1d26 !important; ">
+
+  <article class="post-content">
+    {{ content }}
+  </article>
+
+  </section>
+
+            </div>
+            <div class="4u$ 12u$(medium)">
+
+              <!-- Sidebar -->
+                <section id="sidebar">
+                  <section>
+                    <h3>Archives</h3>
+
+{% for post in site.posts %}
+  {% assign currentdate = post.date | date: "%B %Y" %}
+  {% if currentdate != date %}
+    {% unless forloop.first %}</ul>{% endunless %}
+    <h1 id="y{{post.date | date: "%B %Y"}}">{{ currentdate }}</h1>
+    <ul>
+    {% assign date = currentdate %}
+  {% endif %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% if forloop.last %}</ul>{% endif %}
+{% endfor %}
+
+                    <p>  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+                  </section>
+                  <hr />
+                  <section>
+                    <h3>Tags</h3>
+ 
+ {% assign tags = site.tags | sort %}
+{% for tag in tags %}
+ <span class="site-tag">
+    <a href="/tag/#{{ tag | first | slugify }}"
+        style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+            {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
+    </a>, 
+</span>
+{% endfor %}
+
+                  </section>
+                </section>
+
+        </div>
+      </div>
