@@ -9,7 +9,7 @@
 
 /* Reset */
 
-	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -3639,7 +3639,18 @@
 		background-size: cover;
 		text-align: center;
 	}
-
+	#main > #header.light {
+		padding: 2em 0 2em 0 !important;
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/lightbanner.jpg") !important;
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/lightbanner.jpg") !important;
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/lightbanner.jpg") !important;
+		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/lightbanner.jpg") !important;
+		background-attachment: fixed;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		text-align: center;
+	}
 		#main > header h2 {
 			font-size: 1.75em;
 			margin: 0 0 0.5em 0;
@@ -3659,7 +3670,7 @@
 		@media screen and (max-width: 1680px) {
 
 			#main > header {
-				padding: 10em 0 8em 0 ;
+				padding: 3em 0 3em 0 ;
 			}
 
 		}
@@ -3667,7 +3678,7 @@
 		@media screen and (max-width: 1280px) {
 
 			#main > header {
-				padding: 8em 3em 6em 3em ;
+				padding: 2em 3em 2em 3em ;
 			}
 
 		}
@@ -3675,7 +3686,7 @@
 		@media screen and (max-width: 980px) {
 
 			#main > header {
-				padding: 10em 3em 8em 3em ;
+				padding: 2em 3em 2em 3em ;
 			}
 
 		}
@@ -3683,7 +3694,7 @@
 		@media screen and (max-width: 736px) {
 
 			#main > header {
-				padding: 5em 3em 3em 3em ;
+				padding: 2em 3em 1em 3em ;
 			}
 
 				#main > header h2 {
