@@ -1,0 +1,32 @@
+# main links
+main:
+  - title: "About"
+    url: about
+  # - title: "About"
+  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  # - title: "Sample Posts"
+  #   url: /year-archive/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+  # - title: "Sitemap"
+  #   url: /sitemap/
+
+
+sidenav:
+  - title: "Getting Started"
+    children:
+      - title: "Home"
+        url: /
+      - title: "Community"
+        url: https://obfuscation.github.io
+
+  - title: "Transport Library"
+    children:
+      - title: "Overview"
+        url: /transports/
+
+  - title: "Resources"
+    children:
+      - title: "Home"
+        url: /
+
