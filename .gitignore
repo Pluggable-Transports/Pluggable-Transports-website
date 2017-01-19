@@ -14,3 +14,7 @@ example/_site
 Gemfile.lock
 node_modules
 npm-debug.log*
+_site/CNAME
+_site/assets/css/main.css
+_site/index.html
+
