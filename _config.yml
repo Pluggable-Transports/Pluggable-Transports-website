@@ -70,7 +70,7 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : custom # false (default), "google", "google-universal", "custom"
   google:
     tracking_id          :
 
@@ -172,8 +172,8 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
+paginate: false #5 amount of posts to show
+paginate_path: #/page:num/
 timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 

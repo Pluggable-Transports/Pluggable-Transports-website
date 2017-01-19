@@ -13,20 +13,31 @@ main:
 
 
 sidenav:
-  - title: "Getting Started"
+  - title: "About transports"
+    url: /
     children:
-      - title: "Home"
-        url: /
-      - title: "Community"
-        url: https://obfuscation.github.io
-
+      - title: "Why obfuscate?"
+        url: /why/
+      - title: "How transports protect traffic"
+        url: /how/
+  - title: "Implementing Transports"
+    url: /implement/
+    children:
+      - title: "OpenVPN"
+        url: /implement/openvpn/
+      - title: "Spec"
+        url: /spec#implement
+  - title: "Building transports"
+    children:
+      - title: "Spec"
+        url: /spec#build
+      - title: "Walkthrough"
+        url: /walkthrough/
   - title: "Transport Library"
     children:
       - title: "Overview"
         url: /transports/
-
   - title: "Resources"
-    children:
-      - title: "Home"
-        url: /
-
+    url: /resources/
+  - title: "Contact"
+    url: /contact/

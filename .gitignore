@@ -1,5 +1,16 @@
-
-#Don't commit any auto-saves
 \#*\#
 *~
-_site/*
+*.gem
+*.sublime-project
+*.sublime-workspace
+.bundle
+.DS_Store
+.jekyll-metadata
+.sass-cache
+_asset_bundler_cache
+_site
+codekit-config.json
+example/_site
+Gemfile.lock
+node_modules
+npm-debug.log*
