@@ -12,7 +12,24 @@ sidebar:
     nav: "sidenav"
 ---
 
-Pluggable Transports are a concept developed by The Tor Project that provide ways to protect your data from aggressive censorship techniques, and can be included in a variety of tools.
+Pluggable Transports are a concept developed by [The Tor Project](https://www.torproject.org/docs/pluggable-transports.html.en) that provide ways for tool developers to make their apps more resilient and keep users connected to online services despite attempts to shut them down.
 
-* Why?
-* How?
+With censorship of tools and websites increasingly common -- and powerful -- this is an urgent need to ensure access to information.
+
+* [Why?](/why/) - learn more about current censorship approaches and trends
+
+* [How?](/how/) - learn how Transports protect traffic against blockage.
+
+
+# Want to add Pluggable Transports to your tool?
+
+There are many ways to add Pluggable Transports to your app - whether you want to proxy your traffic through a separate process or implement obfuscation as a library internal to your app.
+
+
+
+[OpenVPN Walkthrough](/implement/openvpn/)
+
+# Want to build a new Transport?
+
+First, it's worth perusing the [Transports Library](transports) to see current transports and approaches to the problem.  Specifically, reading through the evaluations of popular transports will help understand and identify common challenges.
+

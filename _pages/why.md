@@ -14,7 +14,7 @@ sidebar:
     nav: "sidenav"
 ---
 
-Internet censorship and surveillance are on the rise -- just between 2014 an 2015, [14 countries passed new laws](https://freedomhouse.org/report/freedom-net/freedom-net-2015) to increase surveillance and upgraded their surveillance technologies. Censorship varies from blocking specific websites or search engines to censoring or throttling specific protocols and services.
+Internet censorship and surveillance are on the rise -- just between 2014 an 2015, [14 countries passed new laws](https://freedomhouse.org/report/freedom-net/freedom-net-2015) to increase surveillance and upgraded their surveillance technologies. Censorship varies from blocking specific websites or search engines to censoring or throttling specific protocols and services. Access Now documented [**56 internet** shutdowns in 2016](https://www.accessnow.org/keepiton/).
 
 While often thought of as something governments do, censorship can also happen due to "parental control" tools, or be enforced by institutions or service providers to manage their networks.  
 
@@ -37,6 +37,10 @@ https://www.technologyreview.com/s/427413/how-china-blocks-the-tor-anonymity-net
 https://blog.torproject.org/blog/ethiopia-introduces-deep-packet-inspection
 
 http://secdev-foundation.org/wp-content/uploads/2014/08/Flash-Note-Syria-8-Syrian-regime-tightens-access-to-secure-online-communications.pdf
+
+List of countries applies DPI based censorship and links to Internet freedom reports
+https://sii.transparencytoolkit.org/
+https://freedomhouse.org/report/freedom-net/freedom-net-2016  / https://freedomhouse.org/report/table-country-scores-fotn-2016 
 
 ## History of pluggable transports
 

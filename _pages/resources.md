@@ -18,8 +18,11 @@ sidebar:
 
 * [Obfuscation.github.io](https://obfuscation.github.io) provides a central point for existing PT implementers to collaborate with a bi-weekly chat and email group
 
+* [Traffic-Obfs Email list](https://groups.google.com/forum/#!forum/traffic-obf)
+
 * [StackExchange on Pluggable Transports](https://tor.stackexchange.com/questions/tagged/pluggable-transports) has additional Q&amp;A style resources.
 
+* [#KeepItOn](https://www.accessnow.org/keepiton/) A public advocacy campaign by Access Now to fight internet shutdowns and censorship
 
 # Mobile
 

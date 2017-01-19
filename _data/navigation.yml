@@ -23,7 +23,9 @@ sidenav:
   - title: "Implementing Transports"
     url: /implement/
     children:
-      - title: "OpenVPN"
+      - title: "Transport Library"
+        url: /transports/
+      - title: "OpenVPN Walkthrough"
         url: /implement/openvpn/
       - title: "Spec"
         url: /spec#implement
@@ -33,10 +35,6 @@ sidenav:
         url: /spec#build
       - title: "Walkthrough"
         url: /walkthrough/
-  - title: "Transport Library"
-    children:
-      - title: "Overview"
-        url: /transports/
   - title: "Resources"
     url: /resources/
   - title: "Contact"

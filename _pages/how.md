@@ -126,6 +126,8 @@ This help the firewall to classify connections based on the content, then
 ### How this escalates
 
 
+https://turkeyblocks.org/2016/12/18/tor-blocked-in-turkey-vpn-ban/ 
+
 </p>
 <p>
     <strong>What is Pluggable Transports then?</strong>
@@ -169,7 +171,6 @@ This help the firewall to classify connections based on the content, then
 
 
 
-
 You could also encrypt the traffic so it doesn’t look like it’s your app : Rot13 -> handshake -> easily blocked via handshake or IP once detected the first time
 
 Let’s fix the handshake -> obfs2 (?) - still easily detected traffic, IP blocking
@@ -177,6 +178,8 @@ Let’s fix the handshake -> obfs2 (?) - still easily detected traffic, IP block
 Let’s make the traffic look like noise -> obfs3 -> follow-up scanning, IP blocking
 
 Let’s make the traffic harder -> obfs4 -> whitelisting traffic, 
+
+KZ: https://trac.torproject.org/projects/tor/ticket/20348#comment:184
 
 Let’s make the traffic look like something else! -> FTE/Dust/Stego -> more resource-intense follow-up scanning, IP blocking
 
