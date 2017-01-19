@@ -31,5 +31,5 @@ There are many ways to add Pluggable Transports to your app - whether you want t
 
 # Want to build a new Transport?
 
-First, it's worth perusing the [Transports Library](transports) to see current transports and approaches to the problem.  Specifically, reading through the evaluations of popular transports will help understand and identify common challenges.
+First, it's worth perusing the [Transports Library](transports) to see current transports and approaches to the problem.  Specifically, reading through the evaluations of popular transports will help understand and identify common challenges. REading through the [Evaluation Criteria](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/PTEvaluationCriteria)  as well as the [expectations for inclusion into the Tor Browser Bundle](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/GuidelinesForDeployingPTs)
 

@@ -13,7 +13,7 @@ header:
 sidebar:
     nav: "sidenav"
 ---
-There are many different transports which address a wide variety of blocking strategies. At a very high-level standpoint, they can be grouped into three categories: **Fronting** , **Scrambling** , and **Shape-Shifting**.
+There are many different transports which address a wide variety of blocking strategies. At a very high-level standpoint, they can be grouped into three categories: **[Fronting](#fronting)** , **[Scrambling](#scrambling)** , and **[Shape-Shifting](#shape-shifting)**.
 
 ## Fronting
 
@@ -24,9 +24,11 @@ Fronting approaches leverage cloud platforms which are socially or economically 
 * **Downsides**: Using these services can quickly become very costly, and while powerful, still not a guarantee that the connections will not be throttled, interefered with, or blocked either temporarily or over longer terms.
 
 * **Implementations** 
-	* **[meek](https://trac.torproject.org/projects/tor/wiki/doc/meek)** -- Meek is the gold standard and supports "fronting" through Google App Engine, Amazon Web Services and Microsoft Azure. [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/MeekEvaluation)
-	* **SnowFlake** 
-	* **Decoy Routing** is a concept in progress which intercepts traffic going to "safe" addresses and redirects it to user-requested, blocked content.
+
+| Name | Description | Status |
+|**[meek](https://trac.torproject.org/projects/tor/wiki/doc/meek)** | Meek is the gold standard and supports "fronting" through Google App Engine, Amazon Web Services and Microsoft Azure. | In use. [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/MeekEvaluation)|
+|**[SnowFlake](https://keroserene.net/snowflake/)** | SnowFlake uses WebRTC to turn website visitors into ephemeral proxies. See also [torproject.org/projects/tor/wiki/doc/Snowflake](https://trac.torproject.org/projects/tor/wiki/doc/Snowflake) | alpha [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/SnowFlakeEvaluation) |
+|**[Decoy Routing](https://www.decoyrouting.com/)** | Decoy Routing (also known as TapDance and Telex) is a concept in progress which intercepts traffic going to "safe" addresses and redirects it to user-requested, blocked content. See also https://github.com/SergeyFrolov/gotapdance | In Development. | 
 
 Other options include using short-lived VPS servers and even dividing traffic among multiple, low-cost fronting options.
 
@@ -39,9 +41,13 @@ This approach seeks to disguise the traffic in ways that are not identifiable as
 * **Downsides**: 
 
 * **Implementations**
+
+| Name | Description | Status |
+
+
 	* **[obfs4](https://github.com/Yawning/obfs4)**   [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/Obfs4Evaluation)
-
-
+	* (Depricated) Obfs3
+	* (Depricated) Obfs2
 
 ## Shape-Shifting
 
@@ -52,7 +58,8 @@ This approach seeks to disguise the traffic in ways that are not identifiable as
 * **Downsides**: Shape-Shifting is almost impossible to do "perfectly" -- even if the traffic is indistinguishable from "real" traffic, the client and server will generally behave differently from a "real" server - meaning that advanced adversaries can choose to expend resources to do follow-up scans on every suspected connection to verify the server acts "correctly," and block it if not. 
 
 * **Implementations**
-	* [Dust](https://github.com/blanu/Dust) 
-	* [Stegotorus](https://github.com/TheTorProject/stegotorus)
+	* **[Dust](https://github.com/blanu/Dust)**  
+	* **[Stegotorus](https://github.com/TheTorProject/stegotorus)** 
 	* **[FTEProxy](https://fteproxy.org/)** Format-Transforming Encryption Proxy uses regular expressions to transform blocked traffic (e.g. tor, https, VOIP) into traffic that appears to be allowed traffic (e.g. plain http) [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/FteEvaluation)
-	* SkypeMorph
+	* **SkypeMorph**
+	* **BananaPhone**
