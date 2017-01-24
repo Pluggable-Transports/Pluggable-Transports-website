@@ -17,30 +17,43 @@ sidebar:
 
 {% include toc title="" icon="file-text" %}
 
-# So you got blocked...
-
 So your app’s server got blocked somewhere.  
 
-## DNS Blocking
-
-### What the host can do
 
 
-### What users can do
+
+# DNS Blocking
+
+DNS blocking is one of the easiest and fastest ways to block a website.  It is achieved by forcing ISPs to essentially misdirect users looking for the blocked website to a blank page or a page explaining why a site is blocked. This uses DNS, the Domain Name System, which is a decentralized "phone book" for the internet that translates domain names to internet addresses.
+
+A famous example of this is Turkey's [March 2014 blocking of social media](https://www.theguardian.com/world/2014/mar/21/turkey-blocks-twitter-prime-minister) - notably Twitter. 
 
 
-### How this escalates
+## What the host can do
 
-(Turkey example)
+The only real options for the host against this censorship is to provide alternative addresses -- and somehow communicate them to users.
 
+## What users can do
 
-## IP based blocking
+In the case of Turkey, users were able to override their ISP's misinformation by switching to using Google's public DNS servers at 8.8.8.8 and 8.8.4.4.
 
-### What the host can do
+![DNS Graffitti in Turkey](/assets/images/turkey-dns.jpg)
 
-You can swap in a new IP and push out an update, but the new IP will likely get blocked too.  Let's walk through how you and the people trying to access your app can try to overcome this blockage.
+## How this escalates
 
-### What users can do
+There are a limited number of public DNS servers, which can be blocked with [IP blocking](#ip-blocking) and DNS traffic outside of a network itself can be [blocked at the protocol level](#port-blocking), forcing users to accept the "wrong" information.
+
+# IP blocking
+
+IP blocking requires more effort from the censor, and can have unintended consequences. Instead of blocking the "name" of a location on the internet, IP blocking targets its specific address.  Alone this and the DNS blocking technique are easily circumvented, but become challenging in combination.
+
+## What the host can do
+
+The host of any blocked service can easily swap in a new IP and push out an update, but the new IP will likely get blocked too.
+
+Depending on the nature of the blockage, a host can also use a content delivery network or other cloud service provider, where one IP (and in many cases, one DNS name) may "answer" for thousands of different services.  Blocking that would cause "collateral damage" -- those thousands of other resources would also be blocked.  This is a core concept being used by [Greatfire's Collateral Freedom campaign](https://en.greatfire.org/blog/2015/mar/collateral-freedom-and-not-so-great-firewall), where they host censored content in the Amazon cloud and on github.  
+
+## What users can do
 
 One quick trick that users might try is to use a VPN to get around the blockage -- so let’s take an example of an OpenVPN connection that uses the default configuration.
 
@@ -50,55 +63,44 @@ OpenVPN’s default port is 1194 and it uses SSL/TLS as a carrier for the encryp
 
 *A wireshark capture for OpenVPN packets*
 
-### How PT actually works 
+## How this escalates
 
-How the basic firewall can block traffic for a specific protocol?
+The collateral freedom approach is not without its own risks.  In the Greatfire example, while github and the Amazon Cloud were not blocked outright due to the socio-economic impacts, they both paid a steep price for hosting censored content in the form of a [crippling denial of service attack](http://arstechnica.com/security/2015/04/ddos-attacks-that-crippled-github-linked-to-great-firewall-of-china/)
 
-to block the default setup of OpenVPN, a role of denying any connection through the port 1194 will be applied on the firewall, and this will prevent establishing a connection to the OpenVPN server.
+Less advanced adversaries can also take a further step on even the most basic firewalls, which is [Protocol and Port Blocking](#port-blocking).
 
+# Port Blocking
 
-### How this escalates
+Even basic firewalls can block traffic for a specific protocol. This is commonly seen on public/guest/conference wifi networks which only allow "web browsing" (e.g. port 80 ans 443 - http and https ports). Censors can easily target traffic and simply not allow it to pass on its default ports.  In the OpenVPN example, blocking port 1194 will prevent a client from establishing a connection to **any** OpenVPN server.
 
-In order to go around this kind of censorship, The VPN provider will change the port of the OpenVPN server to use the port
-    443/SSL, and the client’s VPN connection will establish the connection to
-    the port 443 which will make it hard to block the service by port number
-    and it’s hard to filter real https traffic and differentiate it from the
-    OpenVPN, both are encrypted.
+## What the host can do
 
-The port 443 is the default port of SSL (https) protocol which represent
-    the secure http connection and it’s hard to be blocked, 443 is essential to
-    the Internet.
+In order to go around this kind of censorship, The VPN provider will change the port of the OpenVPN server to use the port 443, and the client’s VPN connection will establish the connection to the port 443 which will make it hard to block the service by port number and it’s hard to filter real https traffic and differentiate it from the OpenVPN, as both are encrypted.
 
+As port 443 is the default port for secure web browsing (https), it is rarely blocked.
 
-## Deep Packet Inspection
+## What users can do
 
+As the sophistication of the censor increases, the options for users to circumvent the censorship from only their side narrows. Here, users must seek out services which allow them to proxy their traffic through unblocked ports, which generally will require setup in advance.
 
-How can the Deep Packet Inspection block the non-default port
-            connection of OpenVPN?
+## How this escalates
 
-DPI inspects each packet based on the header of its request and the data it
-    carries, it can identify the type of protocol or the connection is using
-    even if it was encrypted. DPI is not a mechanism to decrypt what’s inside
-    packets but to identify the ‘protocol’ or the application it represents.
+Taken individually, this and the above techniques are not impossible for a dedicated user to circumvent, with some support from a host service.  However, they are easily combined to become more challenging -- a host may not only block the OpenVPN port, but also block access to know VPN websites via DNS, and known VPN hosts via IP blocking. 
 
+Some adversaries may be willing to accept some of the downsides, including steep [economic costs](https://www.brookings.edu/research/internet-shutdowns-cost-countries-2-4-billion-last-year/), and accept blocking large portions of the internet or shutting external communications down completely for limited periods of time.
 
-This help the firewall to classify connections based on the content, then
-    identify the IP address of the OpenVPN server and block the access.
+More advanced adversaries can move on from these to using a more active approach to censorship (and surveillance) - [Deep Packet Inspections, or DPI](#dpi-blocking).
+
+# DPI Blocking
+
+Deep Packet Inspections, or DPI inspects each packet based on the header of its request and the data it carries, it can identify the type of protocol or the connection is using even if it was encrypted. DPI is not a mechanism to decrypt what’s inside packets but to identify the ‘protocol’ or the application it represents.
+
+Even if you are using OpenVPN on the https port, and not using a well-known VPN host (which could be blocked by IP and/or DNS), DPI can inspect the traffic and identify it as OpenVPN, and block it based on that inspection.
 
 <img src="/assets/images/OpenVPNconnection.png" alt="An OpenVPN connection" />
 
-### What the host can do
+## What the host can do
 
-
-### What users can do
-
-
-### How this escalates
-
-
-https://turkeyblocks.org/2016/12/18/tor-blocked-in-turkey-vpn-ban/ 
-
-# What is Pluggable Transports then?
 
 PT is a tool that helps circumvent Internet censorship targeted by DPI, which allows a specific targeted protocol to bypass filtering and initiate a connection.
 
@@ -113,6 +115,20 @@ The PT server is responsible of ‘ciphering’ the ongoing packets and push the
 DPI makes it harder for DPI to classify the connection and take an action against it. [A Child's Garden on Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
 
 <!-- **Figure (2) A wireshark capture for Obfs4/OpenVPN packets** -->
+
+
+## What users can do
+
+
+## How this escalates
+
+https://turkeyblocks.org/2016/12/18/tor-blocked-in-turkey-vpn-ban/ 
+
+
+
+# Advanced Blocking
+
+
 
 You could also encrypt the traffic so it doesn’t look like it’s your app : Rot13 -> handshake -> easily blocked via handshake or IP once detected the first time
 

@@ -22,7 +22,7 @@ sidenav:
     children:
       - title: "Transport Library"
         url: /transports/
-      - title: "OpenVPN Walkthrough"
+      - title: "Walkthrough: OpenVPN"
         url: /implement/openvpn/
       - title: "Spec"
         url: /spec#implement
