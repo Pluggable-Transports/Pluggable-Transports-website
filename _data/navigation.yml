@@ -8,6 +8,10 @@ main:
 #    url: /build/
 # - title: "Updates"
 #   url: /blog/
+  - title: "Resources"
+    url: /resources/
+  - title: "Contact"
+    url: /contact/
 
 sidenav:
   - title: "About transports"
