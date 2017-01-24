@@ -11,8 +11,11 @@ header:
 sidebar:
     nav: "sidenav"
 ---
+{% include toc icon="file-text" %}
 
 Pluggable Transports are a concept developed by [The Tor Project](https://www.torproject.org/docs/pluggable-transports.html.en) that provide ways for tool developers to make their apps more resilient and keep users connected to online services despite attempts to shut them down.
+
+# Learn about Pluggable Transports
 
 With censorship of tools and websites increasingly common -- and powerful -- this is an urgent need to ensure access to information.
 

@@ -14,6 +14,8 @@ sidebar:
     nav: "sidenav"
 ---
 
+{% include toc icon="file-text" %}
+
 # Community
 
 * [Obfuscation.github.io](https://obfuscation.github.io) provides a central point for existing PT implementers to collaborate with a bi-weekly chat and email group
@@ -30,7 +32,7 @@ sidebar:
 
 * The Guardian Project's [PLUTO Library](https://github.com/guardianproject/pluto) specifically implements pluggable transports.
 
-# Servers and Infrastructure
+# Infrastructure
 
 * [The Tor Project](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports) has a page with a list of current transports, sample libraries, and upcoming concepts.
 

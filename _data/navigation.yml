@@ -26,12 +26,10 @@ sidenav:
         url: /implement/openvpn/
       - title: "Spec"
         url: /spec#implement
-  - title: "Building transports"
-    children:
-      - title: "Spec"
+      - title: "Building transports"
         url: /spec#build
-      - title: "Walkthrough"
-        url: /walkthrough/
+      - title: "Test"
+        url: /implement/test/
   - title: "Resources"
     url: /resources/
   - title: "Contact"

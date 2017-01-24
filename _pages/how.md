@@ -14,6 +14,9 @@ sidebar:
     nav: "sidenav"
 ---
 
+
+{% include toc title="" icon="file-text" %}
+
 # So you got blocked...
 
 So your app’s server got blocked somewhere.  
@@ -43,40 +46,16 @@ One quick trick that users might try is to use a VPN to get around the blockage 
 
 OpenVPN’s default port is 1194 and it uses SSL/TLS as a carrier for the encryption. A basic firewall -- like the one which is already blocking your app -- can easily classify a connection based on those elements then block the IP address or the domain of the OpenVPN server, this will prevent users from using the an OpenVPN default setup. 
 
-</p>
-                    <img
-                        width="450"
-                        height="84"
-                        src="/assets/images/openVPN_packets.png"
-                    />
-                    <strong></strong>
-                </p>
-                <p>
-                    <em>Figure (1) A wireshark capture for OpenVPN packets</em>
-                </p>
+<img src="/assets/images/openVPN_packets.png" alt="A wireshark capture for OpenVPN packets" />
 
-    <strong id="how_pt_work" >How PT actually works</strong>
-</p>
-<p>
-    <strong><em>a. </em></strong>
-    <strong>
-        <em>
-            How the basic firewall can block traffic for a specific protocol?
-        </em>
-    </strong>
-</p>
-<p>
-    <strong>Technically</strong>
-    : to block the default setup of OpenVPN, a role of denying any connection
-    through the port 1194 will be applied on the firewall, and this will
-    prevent establishing a connection to the OpenVPN server.
-</p>
-<p>
-</p>
-<p>
-    <strong>- A defense mechanism:</strong>
-</p>
-<p>
+*A wireshark capture for OpenVPN packets*
+
+### How PT actually works 
+
+How the basic firewall can block traffic for a specific protocol?
+
+to block the default setup of OpenVPN, a role of denying any connection through the port 1194 will be applied on the firewall, and this will prevent establishing a connection to the OpenVPN server.
+
 
 ### How this escalates
 
@@ -106,16 +85,7 @@ DPI inspects each packet based on the header of its request and the data it
 This help the firewall to classify connections based on the content, then
     identify the IP address of the OpenVPN server and block the access.
 
-    <img
-        width="450"
-        height="165"
-        src="/assets/images/OpenVPNconnection.png"
-    />
-
-</p>
-<p>
-    <em>Figure (2) OpenVPN connection</em>
-
+<img src="/assets/images/OpenVPNconnection.png" alt="An OpenVPN connection" />
 
 ### What the host can do
 
@@ -128,50 +98,24 @@ This help the firewall to classify connections based on the content, then
 
 https://turkeyblocks.org/2016/12/18/tor-blocked-in-turkey-vpn-ban/ 
 
-</p>
-<p>
-    <strong>What is Pluggable Transports then?</strong>
-</p>
-<p>
-    <strong>Technically: </strong>
-    PT is a tool that helps circumvent Internet censorship targeted by DPI,
-    which allows a specific targeted protocol to bypass filtering and initiate
-    a connection.
-</p>
-<p>
-    On the other side, a recipient PT server will be waiting for the packets to
-    arrive and then ‘Decipher’ them and then forward the packets to the OpenVPN
-    server.
-</p>
-<p>
-    The PT server is responsible of ‘ciphering’ the ongoing packets and push
-    them to the client which will then ‘Decipher’ the packets and forward them
-    to the OpenVPN client.
-</p>
-<p>
-    <img
-        width="382"
-        height="197"
-        src="/assets/images/DPIOpenVPN.png"
-    />
-</p>
-<p>
-    <em>Figure (3) DPI enabled on OpenVPN</em>
-</p>
-<p>
-    DPI makes it harder for DPI to classify the connection and take an action
-    against it
-</p>
-<p>
-    <strong><em>To be added</em></strong>
-</p>
-<p>
-    <em>Figure (2) A wireshark capture for Obfs4/OpenVPN packets</em>
-</p>
+# What is Pluggable Transports then?
 
+PT is a tool that helps circumvent Internet censorship targeted by DPI, which allows a specific targeted protocol to bypass filtering and initiate a connection.
 
+On the other side, a recipient PT server will be waiting for the packets to arrive and then ‘Decipher’ them and then forward the packets to the OpenVPN server.
+
+The PT server is responsible of ‘ciphering’ the ongoing packets and push them to the client which will then ‘Decipher’ the packets and forward them to the OpenVPN client.
+
+<img src="/assets/images/DPIOpenVPN.png" alt="DPI blocking on OpenVPN" />
+
+*DPI blocking on OpenVPN*
+
+DPI makes it harder for DPI to classify the connection and take an action against it. [A Child's Garden on Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
+
+<!-- **Figure (2) A wireshark capture for Obfs4/OpenVPN packets** -->
 
 You could also encrypt the traffic so it doesn’t look like it’s your app : Rot13 -> handshake -> easily blocked via handshake or IP once detected the first time
+
 
 Let’s fix the handshake -> obfs2 (?) - still easily detected traffic, IP blocking
 

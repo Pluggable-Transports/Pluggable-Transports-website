@@ -13,7 +13,9 @@ header:
 sidebar:
     nav: "sidenav"
 ---
-There are many different transports which address a wide variety of blocking strategies. At a very high-level standpoint, they can be grouped into three categories: **[Fronting](#fronting)** , **[Scrambling](#scrambling)** , and **[Shape-Shifting](#shape-shifting)**.
+There are many different transports which address a wide variety of blocking strategies. At a very high-level standpoint, they can be grouped into three categories: 
+
+{% include toc icon="file-text" %}
 
 ## Fronting
 
