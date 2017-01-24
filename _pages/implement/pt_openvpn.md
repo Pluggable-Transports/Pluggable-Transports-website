@@ -21,7 +21,7 @@ sidebar:
 
 This guide steps you through setting up your own obfuscated OpenVPN system.
 
-**If you'd prefer to get started using a pre-configured script, you can use this [OpenVPN and dispatcher Bash script](https://github.com/dlshad/openvpn-shapeshifter)**
+**If you'd prefer to get started using a pre-configured script, you can use this [OpenVPN and dispatcher Bash script](https://github.com/OpenInternet/openvpn-shapeshifter)**
 
 # Introduction
 

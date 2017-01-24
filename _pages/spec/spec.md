@@ -26,8 +26,10 @@ Based on community feedback from these proposals, they were merged in to a new d
 
 This draft specification is based on the PT 1.0 specification and the Pluggable Transports Work in Progress. It also contains the Pluggable Transports Go API and Pluggable Transport UDP Support. Additionally, it includes feedback from the workshop on those proposals.
 
+<!--
 ## Implement
 
 
 
 ## Build
+-->

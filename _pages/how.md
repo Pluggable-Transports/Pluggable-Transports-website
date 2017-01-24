@@ -14,13 +14,9 @@ sidebar:
     nav: "sidenav"
 ---
 
-
 {% include toc title="" icon="file-text" %}
 
-So your app’s server got blocked somewhere.  
-
-
-
+Censorship of not only content, but increasingly services, is [on the rise worldwide](/why/). This page describes some of the more common ways that websites and apps are blocked, and how both service providers and users can get around them.
 
 # DNS Blocking
 
@@ -101,53 +97,68 @@ Even if you are using OpenVPN on the https port, and not using a well-known VPN 
 
 ## What the host can do
 
+At this stage, obfuscation of traffic becomes a requirement - both to evade DPI and to protect servers from being immediately [blocked via IP](#ip-blocking). 
 
-PT is a tool that helps circumvent Internet censorship targeted by DPI, which allows a specific targeted protocol to bypass filtering and initiate a connection.
+The Tor Project built Pluggable Transports as a framework to provide interoperable ways to obfuscate tor network traffic. These are open source tools which can be adapted to allow any traffic to be obfuscated and bypass censorship. 
 
+DPI makes it harder for DPI to classify the connection and take an action against it. [A Child's Garden on Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
+
+<!-- 
 On the other side, a recipient PT server will be waiting for the packets to arrive and then ‘Decipher’ them and then forward the packets to the OpenVPN server.
 
 The PT server is responsible of ‘ciphering’ the ongoing packets and push them to the client which will then ‘Decipher’ the packets and forward them to the OpenVPN client.
 
 <img src="/assets/images/DPIOpenVPN.png" alt="DPI blocking on OpenVPN" />
 
-*DPI blocking on OpenVPN*
-
-DPI makes it harder for DPI to classify the connection and take an action against it. [A Child's Garden on Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
+*DPI blocking on OpenVPN* 
+-->
 
 <!-- **Figure (2) A wireshark capture for Obfs4/OpenVPN packets** -->
 
 
-## What users can do
-
-
 ## How this escalates
 
-https://turkeyblocks.org/2016/12/18/tor-blocked-in-turkey-vpn-ban/ 
+In December 2016, Turkey escalated their censorship abilities from DNS blocking to DPI-based blocking, focusing on [censoring VPN and Tor traffic](https://turkeyblocks.org/2016/12/18/tor-blocked-in-turkey-vpn-ban/).
 
+Pluggable Transports continued to work despite this escalation. 
 
+# Advanced Censorship
 
-# Advanced Blocking
+Let us now walk through some of the options for transports, and how they vary in their approaches.  We'll start with a very simplistic approach:
 
+## Simple obfuscation
 
+One could easily "encrypt" traffic so it doesn’t look like the traffic that is being blocked.  Using a Caesar cipher like [ROT13](https://en.wikipedia.org/wiki/ROT13), or minimal tweaks to parts of the traffic which are being used to identify it are examples - and have even worked for a while in some cases.
 
-You could also encrypt the traffic so it doesn’t look like it’s your app : Rot13 -> handshake -> easily blocked via handshake or IP once detected the first time
+However, this is easily blocked by the adversary re-identifying the handshake and blocking based on that.
 
+## Making it look like noise
 
-Let’s fix the handshake -> obfs2 (?) - still easily detected traffic, IP blocking
+A significant step up from this is to work towards making the traffic look like nothing at all. The goal here is to eliminate any identifying characteristics of the traffic, forcing a censor towards more expensive attacks.  This is the approach in Tor's most famous "obfs" line of transports, and we refer to this as [Scrambling](/transports/#scrambling).
 
-Let’s make the traffic look like noise -> obfs3 -> follow-up scanning, IP blocking
+To defeat scrambling, censors must either select only recognized and "approved" traffic out (whitelisting), scan the destination of each unrecognized stream of traffic and determine if it is legitimate or a circumvention tool, or find ways to interfere with or still identify the traffic.
 
-Let’s make the traffic harder -> obfs4 -> whitelisting traffic, 
+China is famous for their "active probing" , and Iran for their willingness to terminate encrypted traffic after one minute. The newest attack appears to be from Kazakhstan, which is using a system which matches the [timing of the obfs4 handshake and prevents it from successfully completing](https://bugs.torproject.org/20348).
 
-KZ: https://trac.torproject.org/projects/tor/ticket/20348#comment:184
+## Making it look like something else
 
-Let’s make the traffic look like something else! -> FTE/Dust/Stego -> more resource-intense follow-up scanning, IP blocking
+For adversaries willing or able to effectively combat scrambling, another approach is transforming the traffic to look like known - and approved - traffic. This faces its own challenges, as it becomes an arms race to ensure that this "[shape-shifting](/transports/#shape-shifting)" is good enough to continuously fool the censor - not just as the traffic, but also at the end-points.  If, for example, you are shape-shifting your traffic into vanilla http, the server will need to respond like a real web server. [The Parrot is Dead](https://www.cs.utexas.edu/~shmat/shmat_oak13parrot.pdf) explains the challenges these protocols face.
 
-Let’s route through an allowed service -> fronting/meek -> throttling/temporary blocking
+However, using this approach can force even more resource-intense follow-up scanning (the censor must now determine if the server is "correct" or not).
 
-Let’s use ephemeral services -> flashproxy/snowflake -> challenges in having enough peers / reliable and getting info out to blocked users
+## Hiding in the crowd
 
-… there’s no perfect solution, but this is where we are today. Not every adversary seeking to limit access to information can or is willing to do all of the above, so creative application of these, building new versions, innovation around new approaches -- and sharing of working options -- allow app and service providers to ensure connectivity through everything but complete shutdowns. 
+Another approach leverages large cloud providers which are socially or economically difficult to block.  Using [Fronting](/transports/#fronting), you can route traffic through an allowed service.  This would force an adversary to block an entire cloud provider - and every other service hosted in it. Amazon advertises over a million active customers of its Web Services cloud, including AirBnB, Blackboard, Dow Jones, and Netflix. Blocking a circumvention tool that "hides" in Amazon's cloud would cause immense strain.  By a similar token, using Google's App Engine to circumvent would require blocking the entirety of Google.
+
+Some adversaries are willing to do this - but often only temporarily. The downside of this powerful technique is that is can be overwhelmingly financially expensive to route traffic through these services.
+
+Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  A new attempt at this is emerging, called Snowflake, which gets around many of the challenges flashproxy faced by using WebRTC.
+
+# Onwards
+
+There is no one perfect solution, but this is where we are today.
+
+Not every adversary seeking to limit access to information can or is willing to do all of the above, so creative application of these, building new versions, innovation around new approaches -- and sharing of working options -- allow app and service providers to ensure connectivity through everything but complete shutdowns. 
 
 
 <!-- 
