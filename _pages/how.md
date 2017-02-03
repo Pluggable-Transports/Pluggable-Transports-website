@@ -5,8 +5,8 @@ permalink: /how/
 
 excerpt: ""
 header:
-  overlay_image: /assets/images/unsplash_Francisco Casero_empty-track.jpg
-  caption: "Photo credit: [**CC0 Unsplash / Francisco Casero**](https://unsplash.com)"
+  overlay_image: /assets/images/SunsetTrainTracksCrop_Arne Hückelheim_notify_wikimedia.JPG
+  caption: "Photo credit: [**© Arne Hückelheim**](https://en.wikipedia.org/wiki/User:Knipptang)"
 #  cta_label: "More Info"
 #  cta_url: "https://unsplash.com"
 

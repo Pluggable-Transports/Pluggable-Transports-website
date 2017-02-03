@@ -5,8 +5,8 @@ permalink: /community/
 
 excerpt: ""
 header:
-  overlay_image: /assets/images/unsplash_q47env_uvfm-dmitrii-vaccinium.jpg
-  caption: "Photo credit: [**CC0 Unsplash / Dmitrii Vaccinium**](https://unsplash.com/@vaccinium)"
+  overlay_image: /assets/images/unsplash_Matthew Wiebe_passengers.jpg
+  caption: "Photo credit: [**CC0 Unsplash / Matthew Wiebe**](https://unsplash.com/)"
 #  cta_label: "More Info"
 #  cta_url: "https://unsplash.com"
 
