@@ -4,14 +4,12 @@ main:
     url: /
   - title: "Implement"
     url: /implement/
-#  - title: "Build"
-#    url: /build/
+  - title: "Create"
+    url: /build/
 # - title: "Updates"
 #   url: /blog/
-  - title: "Resources"
-    url: /resources/
-  - title: "Contact"
-    url: /contact/
+  - title: "Community"
+    url: /community/
 
 sidenav:
   - title: "About transports"
