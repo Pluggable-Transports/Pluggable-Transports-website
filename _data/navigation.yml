@@ -35,7 +35,7 @@ sidenav:
       - title: " → OpenVPN"
         url: /implement/openvpn/
 
-      - title: "Test"
+      - title: "Testing"
         url: /implement/test/
   - title: "Create Transports"
     url: /build/
