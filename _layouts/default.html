@@ -1,31 +1,28 @@
-<!DOCTYPE html>
-<!--
-	Spectral by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+---
+---
 
-  {% include head.html %}
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
 
-  <body>
+  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
 
-    {% include header.html %}
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
 
-          <article id="main">
-            <header>
-              <h2>Generic Page</h2>
-              <p>Aliquam ut ex ut interdum donec amet imperdiet eleifend</p>
-            </header>
-            <section class="wrapper style5">
-              <div class="inner">
-{{ content }}
-              </div>
-            </section>
-          </article>
+    {{ content }}
 
-    {% include footer.html %}
+    <div class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include footer.html %}
+      </footer>
+    </div>
+
+    {% include scripts.html %}
 
   </body>
-
 </html>

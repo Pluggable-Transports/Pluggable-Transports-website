@@ -1,0 +1,51 @@
+# main links
+main:
+  - title: "Learn"
+    url: /
+  - title: "Implement"
+    url: /implement/
+#  - title: "Build"
+#    url: /build/
+# - title: "Updates"
+#   url: /blog/
+  - title: "Resources"
+    url: /resources/
+  - title: "Contact"
+    url: /contact/
+
+sidenav:
+  - title: "About transports"
+    url: /
+    children:
+      - title: "How transports defeat censorship"
+        url: /how/
+      - title: "Meet the Transports"
+        url: /transports/
+  - title: "Implementing Transports"
+    url: /implement/
+    children:
+      - title: "Using Transports" 
+        url: /implement/
+      - title: "API"
+        url: /implement/api
+      - title: "Proxy Modes"
+        url: /implement/proxy
+      - title: "Implementation Walkthroughs"
+        url: /implement/walkthrough/
+      - title: " → OpenVPN"
+        url: /implement/openvpn/
+
+      - title: "Testing"
+        url: /implement/test/
+  - title: "Create Transports"
+    url: /build/
+    children:
+      - title: "Create new Transports"
+        url: /build/
+      - title: PT Spec
+        url: /spec#build
+      - title: "Walkthrough: A Basic Transport"
+        url: /build/walkthrough/
+  - title: "Community"
+    url: /community/
+
