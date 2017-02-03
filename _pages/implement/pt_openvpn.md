@@ -33,7 +33,7 @@ VPNs are user friendly and easy to manage service being used by users in countri
 
 However, VPNs are increasingly targeted for blocking themselves. Deep Packet Inspection DPI is able to block any targeted application or protocol by filtering the traffic and preventing it from passing firewalls to the outside world Internet. As DPI firewalls act based on the packet type, not the port number, simple "tricks" like changing the port will not help
 
-Pluggable transports make it possible to bypass such filtering without modifying the VPN itself but proxying the traffic into obfuscated tunnels which are significantly more difficult to identify and/or are costly to block to enable the traffic to pass through. Read more about [different types of obfuscation](/transports) or the [history of filtering](/why/).
+Pluggable transports make it possible to bypass such filtering without modifying the VPN itself but proxying the traffic into obfuscated tunnels which are significantly more difficult to identify and/or are costly to block to enable the traffic to pass through. Read more about [different types of obfuscation](/transports) or the [history of filtering](/how/#dpi-blocking/).
 
 <img src="/assets/images/DPIOpenVPN.png" alt="Obfusctated VPN circumventing a DPI firewall" />
 
@@ -330,7 +330,7 @@ screen ~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2
 ~~~
 You will get this screen. Don’t forget to change the IP address and ports within the command.
 
-<img  src="/assests/images/Obfsservera.png" alt="Server Setup results screenshot" />
+<img  src="/assets/images/Obfsservera.png" alt="Server Setup results screenshot" />
 
 Set NAT for shapeshifter-dispatcher on the server:   
 
