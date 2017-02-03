@@ -16,7 +16,9 @@ sidebar:
 
 {% include toc title="" icon="file-text" %}
 
-Censorship of not only content, but increasingly services, is [on the rise worldwide](/why/). This page describes some of the more common ways that websites and apps are blocked, and how both service providers and users can get around them.
+Censorship is on the rise worldwide. This page describes some of the more common ways that websites and apps are blocked, and how both service providers and users can get around them.
+
+----------
 
 # DNS Blocking
 
@@ -24,18 +26,17 @@ DNS blocking is one of the easiest and fastest ways to block a website.  It is a
 
 A famous example of this is Turkey's [March 2014 blocking of social media](https://www.theguardian.com/world/2014/mar/21/turkey-blocks-twitter-prime-minister) - notably Twitter. 
 
-
-## What the host can do
+**What the host can do**
 
 The only real options for the host against this censorship is to provide alternative addresses -- and somehow communicate them to users.
 
-## What users can do
+**What users can do**
 
 In the case of Turkey, users were able to override their ISP's misinformation by switching to using Google's public DNS servers at 8.8.8.8 and 8.8.4.4.
 
 ![DNS Graffitti in Turkey](/assets/images/turkey-dns.jpg)
 
-## How this escalates
+**How this escalates**
 
 There are a limited number of public DNS servers, which can be blocked with [IP blocking](#ip-blocking) and DNS traffic outside of a network itself can be [blocked at the protocol level](#port-blocking), forcing users to accept the "wrong" information.
 
@@ -43,13 +44,13 @@ There are a limited number of public DNS servers, which can be blocked with [IP 
 
 IP blocking requires more effort from the censor, and can have unintended consequences. Instead of blocking the "name" of a location on the internet, IP blocking targets its specific address.  Alone this and the DNS blocking technique are easily circumvented, but become challenging in combination.
 
-## What the host can do
+**What the host can do**
 
 The host of any blocked service can easily swap in a new IP and push out an update, but the new IP will likely get blocked too.
 
 Depending on the nature of the blockage, a host can also use a content delivery network or other cloud service provider, where one IP (and in many cases, one DNS name) may "answer" for thousands of different services.  Blocking that would cause "collateral damage" -- those thousands of other resources would also be blocked.  This is a core concept being used by [Greatfire's Collateral Freedom campaign](https://en.greatfire.org/blog/2015/mar/collateral-freedom-and-not-so-great-firewall), where they host censored content in the Amazon cloud and on github.  
 
-## What users can do
+**What users can do**
 
 One quick trick that users might try is to use a VPN to get around the blockage -- so let’s take an example of an OpenVPN connection that uses the default configuration.
 
@@ -69,13 +70,13 @@ Less advanced adversaries can also take a further step on even the most basic fi
 
 Even basic firewalls can block traffic for a specific protocol. This is commonly seen on public/guest/conference wifi networks which only allow "web browsing" (e.g. port 80 ans 443 - http and https ports). Censors can easily target traffic and simply not allow it to pass on its default ports.  In the OpenVPN example, blocking port 1194 will prevent a client from establishing a connection to **any** OpenVPN server.
 
-## What the host can do
+**What the host can do**
 
 In order to go around this kind of censorship, The VPN provider will change the port of the OpenVPN server to use the port 443, and the client’s VPN connection will establish the connection to the port 443 which will make it hard to block the service by port number and it’s hard to filter real https traffic and differentiate it from the OpenVPN, as both are encrypted.
 
 As port 443 is the default port for secure web browsing (https), it is rarely blocked.
 
-## What users can do
+**What users can do**
 
 As the sophistication of the censor increases, the options for users to circumvent the censorship from only their side narrows. Here, users must seek out services which allow them to proxy their traffic through unblocked ports, which generally will require setup in advance.
 
@@ -91,17 +92,20 @@ More advanced adversaries can move on from these to using a more active approach
 
 Deep Packet Inspections, or DPI inspects each packet based on the header of its request and the data it carries, it can identify the type of protocol or the connection is using even if it was encrypted. DPI is not a mechanism to decrypt what’s inside packets but to identify the ‘protocol’ or the application it represents.
 
+With DPI, a censor can targeting VPN, Tor and other services by filtering the packets at the Application Layer of the OSI reference model, analyze them, and then block the IP addresses that the clients are trying to connect to.
+
 Even if you are using OpenVPN on the https port, and not using a well-known VPN host (which could be blocked by IP and/or DNS), DPI can inspect the traffic and identify it as OpenVPN, and block it based on that inspection.
 
-<img src="/assets/images/OpenVPNconnection.png" alt="An OpenVPN connection" />
+|**A Short History of DPI Blocking**|
+|In 2012, both [Iran](https://smallmedia.org.uk/work/writers-block-the-story-of-censorship-in-iran) and [China](https://www.technologyreview.com/s/427413/how-china-blocks-the-tor-anonymity-network/) began filtering encrypted internet traffic, specifically targeting The Tor Project's anti-censorship, pro-privacy network; triggering The Tor Project to release their first public [obfuscation work](https://blog.torproject.org/blog/obfsproxy-next-step-censorship-arms-race).|
+|Other countries soon applied the same strategy -- [Ethiopia](https://blog.torproject.org/blog/ethiopia-introduces-deep-packet-inspection) later in 2012, [Syria](http://secdev-foundation.org/wp-content/uploads/2014/08/Flash-Note-Syria-8-Syrian-regime-tightens-access-to-secure-online-communications.pdf) in 2014, among many others -- Privacy International tracks surveillance systems in their [Transparency Toolkit](https://sii.transparencytoolkit.org/); and Freedom House's [Freedom on the Net](https://freedomhouse.org/report/table-country-scores-fotn-2016) tracks both censorship and other limitations on net freedom.|
 
-## What the host can do
 
-At this stage, obfuscation of traffic becomes a requirement - both to evade DPI and to protect servers from being immediately [blocked via IP](#ip-blocking). 
+**What the host can do**
 
-The Tor Project built Pluggable Transports as a framework to provide interoperable ways to obfuscate tor network traffic. These are open source tools which can be adapted to allow any traffic to be obfuscated and bypass censorship. 
+**At this stage, obfuscation of traffic becomes a requirement** - to evade DPI and thereby protect servers from being immediately [blocked via IP](#ip-blocking).  Pluggable Transports were first developed by [The Tor Project](https://www.torproject.org/docs/pluggable-transports.html.en) to provide ways for tool developers to make their apps more resilient against DPI filtering.
 
-DPI makes it harder for DPI to classify the connection and take an action against it. [A Child's Garden on Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
+Pluggable Transports make it harder for DPI to classify the connection and take an action against it. [A Child's Garden on Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
 
 <!-- 
 On the other side, a recipient PT server will be waiting for the packets to arrive and then ‘Decipher’ them and then forward the packets to the OpenVPN server.

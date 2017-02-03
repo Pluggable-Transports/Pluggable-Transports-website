@@ -36,3 +36,17 @@ If you want a end user that is trying to circumvent filtering on your network or
 The purpose of the dispatcher is to provide different proxy interfaces to using transports. Through the use of these proxies, application traffic can be sent over the network in a form that bypasses network filtering, allowing the application to work on networks where it would otherwise be blocked or heavily throttled.
 
 (Modified from Dispatcher's [README](https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md) )
+
+
+
+# Mobile
+
+* The Guardian Project's [Orbot](https://guardianproject.info/apps/orbot/) enables censorship circumvention for Android phones
+
+* The Guardian Project's [PLUTO Library](https://github.com/guardianproject/pluto) specifically implements pluggable transports.
+
+# Infrastructure
+
+* [The Tor Project](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports) has a page with a list of current transports, sample libraries, and upcoming concepts.
+
+* The Tor Project has a large&nbsp;<a href="https://www.torproject.org/docs/pluggable-transports.html.en">documentation repository</a>

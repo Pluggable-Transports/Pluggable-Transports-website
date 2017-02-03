@@ -1,7 +1,9 @@
 ---
 layout: single
 title: Pluggable Transport Specification Documents
-permalink: /spec/pt2draft1
+permalink: /spec/pt2draft1 
+redirect_from: /spec/current
+redirect_from: /spec/
 excerpt: ""
 header:
   overlay_image: /assets/images/unsplash_0wdpet-ufqs-todd-diemer.jpg
@@ -11,7 +13,16 @@ header:
 
 sidebar:
     nav: "sidenav"
+
 ---
+
+Below is the current PT 2.0 Draft 1 Spec. You can also view this in [PDF form](/assets/PTSpecV2Draft1.pdf). It may be useful to also reference the [history of the spec](/spec/history).
+
+---------------
+
+**Please note that we are still converting the below to markdown; there are some chunks which still need some formatting love**
+
+---------------
 
 **Abstract**
 
