@@ -24,8 +24,8 @@ sidenav:
     children:
       - title: "Using Transports" 
         url: /implement/
-      - title: "API"
-        url: /implement/api
+      - title: "Implementing in Go"
+        url: /implement/go
       - title: "Proxy Modes"
         url: /implement/proxy
       - title: "Implementation Walkthroughs"
@@ -44,10 +44,10 @@ sidenav:
     children:
       - title: "Create new Transports"
         url: /build/
+      - title: "How to Write a Transport"
+        url: /build/how
       - title: PT Spec
         url: /spec#build
-      - title: "Walkthrough: A Basic Transport"
-        url: /build/walkthrough/
   - title: "Community"
     url: /community/
 
