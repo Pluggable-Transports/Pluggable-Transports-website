@@ -4,10 +4,8 @@ main:
     url: /
   - title: "Implement"
     url: /implement/
-#  - title: "Build"
-#    url: /build/
-# - title: "Updates"
-#   url: /blog/
+  - title: "Updates"
+    url: /blog/
   - title: "Resources"
     url: /resources/
   - title: "Contact"
