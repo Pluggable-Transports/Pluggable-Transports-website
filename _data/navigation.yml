@@ -28,15 +28,8 @@ sidenav:
         url: /implement/go
       - title: "Proxy Modes"
         url: /implement/proxy
-      - title: "Implementation Walkthroughs"
-        url: /implement/walkthrough/
-      - title: " → OpenVPN"
+      - title: "OpenVPN Walkthrough"
         url: /implement/openvpn/
-      - title: "Use Pluggables Transports in Your Application"
-        url: /implement/2017-5-1-use-pluggable-transports-in-go
-      - title: "Write a Pluggable Transport"
-        url: /implement/2017-5-1-write-pluggable-transport-in-go
-
       - title: "Testing"
         url: /implement/test/
   - title: "Create Transports"

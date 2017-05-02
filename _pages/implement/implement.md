@@ -12,18 +12,25 @@ header:
 
 sidebar:
     nav: "sidenav"
+
 ---
 
-**As a tool developer, the fastest way to get up and running is by using [Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), a tool developed by [The Operator Foundation](https://operatorfoundation.org/).**
+<!-- 
+Table and intro here
+-->
 
-Dispatcher currently supports the following proxy modes:
+Pluggable Transports themselves can be written in any programming language. A Pluggable Transport interacts with with a host application using a type of inter-process communication (IPC) protocol which is described in the Pluggable Transports 2.0 specification. There are Pluggable Transport implementations written in Go, Python, C++, and C. 
 
-* SOCKS5 (with optional PT 1.0 authentication protocol for tor)
-* Transparent TCP
-* Transparent UDP
-* STUN UDP
+Some developers choose to implement their transports from scratch or using a library that implements some parts of the IPC protocol, such as shapeshifter-ipc or goptlib.
 
-Dispatcher supports multiple [obfuscation methods](/transports/), including meek, obfs4, and scramblesuit.  It also supports obfs2 and obfs3, which should only be used for testing/educational exploration. 
+A faster alternative than developing from scratch is to implement the transport in Go, using the [Go API](/implement/go) provided in the Pluggable Transports 2.0 specification. This method of implementing a transport is currently limited to transports implemented in the Go programming language. However, there are some advantages to this approach. Applications that are also written in Go can use transports implementing the PT 2.0 Go API directly, bypassing the IPC layer. This decreases the complexity of integration, as well as the performance overhead of running the transports in a separate process. Additionally, the Operator Foundation provides a tool called Shapeshifter Dispatcher, which wraps transports implementing the PT 2.0 Go API to provide the IPC layer. This allows applications written in programming languages other than Go to use these transports with no additional development cost.
+
+### Transport Connections vs Network Connections
+
+An important distinction to remember when implementing a transport is the difference between transport connections and network connections. A transport connection is a communication channel between a transport client and a transport server, which is capable of communication using the chosen transport protocol. A network connection is a communication channel between two computers, which communicates data streams that can be in any protocol. For convenience, the API for making transport connections mimics closely the interface for making network connections. A transport connection essentially looks to the application like a “virtual network connection”. However, the actual mapping between transport connections and network connections depends on the transport. Some transports have exactly one network connection for each transport connection. Other transports may split the transport connection’s data over multiple network connections, or multiplex multiple transport connections over one network connection. A transport could even have 0 network connections, instead conveying data using a connectionless alternative such as UDP.
+
+While the Pluggable Transport API is flexible enough to accommodate a variety of mappings between transport connections and network connections, it also provides support for the common case of one transport connection for each network connection. In particular, the underlying network connection for a transport connection, if there is one, can be retrieved and accessed directly. This is useful for doing lower-level configuration of the network, such as setting network options on the network connection.
+
 
 ## What is Dispatcher?
 
@@ -36,8 +43,6 @@ If you want a end user that is trying to circumvent filtering on your network or
 The purpose of the dispatcher is to provide different proxy interfaces to using transports. Through the use of these proxies, application traffic can be sent over the network in a form that bypasses network filtering, allowing the application to work on networks where it would otherwise be blocked or heavily throttled.
 
 (Modified from Dispatcher's [README](https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md) )
-
-
 
 # Mobile
 
