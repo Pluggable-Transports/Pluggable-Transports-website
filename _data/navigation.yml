@@ -2,10 +2,12 @@
 main:
   - title: "Learn"
     url: /
-  - title: "Implement"
-    url: /implement/
   - title: "Updates"
     url: /blog/
+  - title: "Implement"
+    url: /implement/
+  - title: "Create"
+    url: /build/
   - title: "Resources"
     url: /resources/
   - title: "Contact"
