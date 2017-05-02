@@ -19,9 +19,6 @@ sidebar:
 
 {% include toc icon="file-text" %}
 
-*CC-BY Brandon Wiley, The Operator Foundation*
-
-
 If you application is written in Go, using Pluggable Transports is even easier. Transports that implement the PT 2.0 Go API provide a “virtual network interface” that can be used instead of Go’s net.Conn API for sending and receiving traffic over the network. When using these transports, the application data is transformed so as to be resistant to blocking.
 
 Before we get started writing code, let’s look at the required interfaces. These interfaces can be found in the PT 2.0 Go API specification, as well as in the [*shapeshifter-transports*](https://github.com/OperatorFoundation/shapeshifter-transports) Go library (in the [*base*](https://github.com/OperatorFoundation/shapeshifter-transports/blob/master/transports/base/base.go) package).
@@ -201,3 +198,7 @@ fmt.Println("Received %d bytes", bytesRead)
 ~~~~
 
 This creates a new variable “buffer” and allocates an array of 1024 bytes which is assigned to this new variable. It then executes a loop. The first time through the loop, it creates new variables “bytesRead” and “err”. The “bytesRead” variable is used to track the number of bytes read each time Read() is called. In the example app, this is just used for debugging purposes. The “err” variable is used to record errors encountered while calling Read(). In particular, if the connection is closed then Read() will return an error, otherwise it will return nil. The loop continues as long as “err” is nil. While the loop is executing, it will continue to call Read(). Inside the loop, we print the number of bytes read, simply for debugging purposes.
+
+---
+
+*CC-BY Dr. Brandon Wiley, The Operator Foundation*
