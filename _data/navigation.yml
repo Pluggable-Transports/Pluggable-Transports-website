@@ -2,14 +2,14 @@
 main:
   - title: "Learn"
     url: /
-  - title: "Updates"
-    url: /blog/
   - title: "Implement"
     url: /implement/
   - title: "Create"
     url: /build/
   - title: "Resources"
     url: /resources/
+  - title: "Updates"
+    url: /blog/
   - title: "Contact"
     url: /contact/
 
@@ -21,6 +21,9 @@ sidenav:
         url: /how/
       - title: "Meet the Transports"
         url: /transports/
+      - title: "Updates"
+        url: /blog/
+
   - title: "Implementing Transports"
     url: /implement/
     children:
