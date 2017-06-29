@@ -631,9 +631,10 @@ is "2".
 ~~~~
 TOR\_PT\_MANAGED\_TRANSPORT\_VER=1,1a,2,this\_is\_a\_valid\_version\
 obfs4proxy -ptversion 1,1a,2,this\_is\_a\_valid\_version
+~~~~
 
 **TOR\_PT\_STATE\_LOCATION or -state**
-~~~~
+
 Specifies an absolute path to a directory where the PT is allowed to
 store state that will be persisted across invocations. The directory is
 not required to exist when the PT is launched, however PT
@@ -648,11 +649,12 @@ modify files elsewhere on the system.
 **Examples**
 ~~~~
 TOR\_PT\_STATE\_LOCATION=/var/lib/tor/pt\_state/
-
 obfs4proxy -state =/var/lib/tor/pt\_state/\
 \
-**TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE or -exit-on-stdin-close**
 ~~~~
+
+**TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE or -exit-on-stdin-close**
+
 Specifies that the parent process will close the PT proxy's standard
 input (stdin) stream to indicate that the PT proxy should gracefully
 exit.\
@@ -666,7 +668,6 @@ if this environment variable is set to "1".
 **Example**
 ~~~~
 TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE=1
-
 obfs4proxy -exit-on-stdin-close
 ~~~~
 #### 3.3.1.2. Pluggable PT Client Configuration Parameters
@@ -691,9 +692,9 @@ client-side PT proxy instance.
 TOR\_PT\_CLIENT\_TRANSPORTS=obfs2,obfs3,obfs4
 
 obfs4proxy -transports obfs2,obfs3,obfs4
-
-**TOR\_PT\_PROXY or -proxy**
 ~~~~
+**TOR\_PT\_PROXY or -proxy**
+
 
 Specifies an upstream proxy that the PT MUST use when making outgoing
 network connections. It is a URI \[RFC3986\] of the format:
@@ -907,8 +908,9 @@ and configuration.
 
 This message is written to STDOUT.\
 \
-~~~~
+
 **Examples\
+~~~~
 **VERSION 2\
 ~~~~
 \
@@ -956,10 +958,10 @@ The "PROXY DONE" message is used to signal the PT proxy's acceptance of
 the upstream proxy specified by "TOR\_PT\_PROXY".
 
 This message is written to STDOUT.
-~~~~
-**PROXY-ERROR &lt;ErrorMessage&gt;\
+
+**PROXY-ERROR <ErrorMessage>\
 **\
-~~~~
+
 The "PROXY-ERROR" message is used to signal that the upstream proxy is
 malformed/unsupported or otherwise unusable.
 
@@ -980,8 +982,7 @@ initialize the listeners.\
 For each transport initialized, the PT proxy reports the listener status
 back to the parent via messages to stdout and error messages to stderr.\
 \
-**CMETHOD &lt;transport&gt; &lt;'socks4','socks5'&gt;
-&lt;address:port&gt;\
+**CMETHOD <transport> <'socks4','socks5'> <address:port>\
 **\
 The "CMETHOD" message is used to signal that a requested PT transport
 has been launched, the protocol which the parent should use to make
@@ -995,9 +996,9 @@ This message is written to STDOUT.\
 CMETHOD trebuchet socks5 127.0.0.1:19999\
 ~~~~
 \
-~~~~
-**CMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;\
-~~~~
+
+**CMETHOD-ERROR <transport> <ErrorMessage>\
+
 **\
 The "CMETHOD-ERROR" message is used to signal that requested PT
 transport was unable to be launched.
@@ -1069,7 +1070,7 @@ information back to the parent process.\
 The currently recognized 'options' are:\
 \
 ~~~~
-**ARGS:\[&lt;Key&gt;=&lt;Value&gt;,\]+\[&lt;Key&gt;=&lt;Value&gt;\]\
+**ARGS:[<Key>=<Value>,]+[<Key>=<Value>]\
 ~~~~
 **\
 The "ARGS" option is used to pass additional key/value formatted
@@ -1087,7 +1088,7 @@ SMETHOD rot\_by\_N 198.51.100.1:2323 ARGS:N=13\
 ~~~~
 \
 ~~~~
-**SMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;\
+**SMETHOD-ERROR <transport> <ErrorMessage>\
 ~~~~
 **\
 The "SMETHOD-ERROR" message is used to signal that requested PT
