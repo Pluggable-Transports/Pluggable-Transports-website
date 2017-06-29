@@ -683,29 +683,29 @@ Parent processes MUST set this environment variable when launching a
 client-side PT proxy instance.
 
 **Example**
-
+~~~~
 TOR\_PT\_CLIENT\_TRANSPORTS=obfs2,obfs3,obfs4
 
 obfs4proxy -transports obfs2,obfs3,obfs4
-
+~~~~
 **TOR\_PT\_PROXY or -proxy**
 
 Specifies an upstream proxy that the PT MUST use when making outgoing
 network connections. It is a URI \[RFC3986\] of the format:
-
+~~~~
 &lt;proxy\_type&gt;://\[&lt;user\_name&gt;\[:&lt;password&gt;\]\[@\]&lt;ip&gt;:&lt;port&gt;.\
-\
+~~~~
 The "TOR\_PT\_PROXY" environment variable is OPTIONAL and MUST be
 omitted if there is no need to connect via an upstream proxy.
 
 **Examples**
-
+~~~~
 TOR\_PT\_PROXY=socks5://tor:test1234@198.51.100.1:8000\
 TOR\_PT\_PROXY=socks4a://198.51.100.2:8001\
 TOR\_PT\_PROXY=http://198.51.100.3:443
 
 obfs4proxy -proxy http://198.51.100.3:443
-
+~~~~
 #### 3.3.1.3. Pluggable PT Server Environment Variables
 
 When launching either a PT Server, the common configuration parameters
@@ -724,11 +724,11 @@ Parent processes MUST set this environment variable when launching a
 server-side PT reverse proxy instance.
 
 **Example**
-
+~~~~
 TOR\_PT\_SERVER\_TRANSPORTS=obfs3,scramblesuit
 
 obfs4proxy - transports obfs3,scramblesuit
-
+~~~~
 **TOR\_PT\_SERVER\_TRANSPORT\_OPTIONS or -options**
 
 Specifies per-PT protocol configuration directives, as a
@@ -743,11 +743,12 @@ If there are no arguments that need to be passed to any of PT transport
 protocols, "TOR\_PT\_SERVER\_TRANSPORT\_OPTIONS" MAY be omitted.
 
 **Example **
-
+~~~~
 TOR\_PT\_SERVER\_TRANSPORT\_OPTIONS=scramblesuit:key=banana;automata:rule=110;automata:depth=3\
 Obfs4proxy -options
-scramblesuit:key=banana;automata:rule=110;automata:depth=3\
-\
+scramblesuit:key=banana;automata:rule=110;automata:depth=3
+~~~~
+
 This will pass to 'scramblesuit' the parameter 'key=banana' and to
 'automata' the arguments 'rule=110' and 'depth=3'.
 
@@ -775,10 +776,10 @@ configured for any transports, "TOR\_PT\_SERVER\_BINDADDR" MAY be
 omitted.
 
 **Example**
-
+~~~~
 TOR\_PT\_SERVER\_BINDADDR=obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891\
 obfs4proxy -bindaddr obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891
-
+~~~~
 **TOR\_PT\_ORPORT or -orport**
 
 Specifies the destination that the PT reverse proxy should forward
@@ -791,11 +792,11 @@ source IP address of client connections (or other metadata), it should
 set "TOR\_PT\_EXTENDED\_SERVER\_PORT" instead.
 
 **Example**
-
+~~~~
 TOR\_PT\_ORPORT=127.0.0.1:9001
 
 obfs4rpxoy -orport 127.0.0.1:9001
-
+~~~~
 **TOR\_PT\_EXTENDED\_SERVER\_PORT or -extorport**
 
 Specifies the destination that the PT reverse proxy should forward
@@ -810,9 +811,10 @@ If the parent process does not support the ExtORPort protocol, it MUST
 set "TOR\_PT\_EXTENDED\_SERVER\_PORT" to an empty string.
 
 **Example**
-
+~~~~
 TOR\_PT\_EXTENDED\_SERVER\_PORT=127.0.0.1:4200\
 obfs4proxy -extorport 127.0.0.1:4200
+~~~~
 
 **TOR\_PT\_AUTH\_COOKIE\_FILE or -authcookie**
 
@@ -824,10 +826,11 @@ If the parent process is not using the ExtORPort protocol for incoming
 traffic, "TOR\_PT\_AUTH\_COOKIE\_FILE" MUST be omitted.
 
 **Example**
-
+~~~~
 TOR\_PT\_AUTH\_COOKIE\_FILE=/var/lib/tor/extended\_orport\_auth\_cookie
 
 obfs4proxy -authcookie /var/lib/tor/extended\_orport\_auth\_cookie
+~~~~
 
 #### 3.3.1.4 Command Line Flags
 
@@ -846,6 +849,7 @@ stdin/stdout channel between the processes. This is a text-based,
 line-based protocol using newline-terminated lines. Lines in the
 protocol conform to the following grammar:
 
+~~~~
 &lt;Line&gt; ::= &lt;Keyword&gt; &lt;OptArgs&gt; &lt;NL&gt;\
 &lt;Keyword&gt; ::= &lt;KeywordChar&gt; | &lt;Keyword&gt;
 &lt;KeywordChar&gt;\
@@ -857,7 +861,8 @@ underscore&gt;\
 &lt;ArgChar&gt; ::= &lt;any US-ASCII character but NUL or NL&gt;\
 &lt;SP&gt; ::= &lt;US-ASCII whitespace symbol (32)&gt;\
 &lt;NL&gt; ::= &lt;US-ASCII newline (line feed) character (10)&gt;\
-\
+~~~~
+
 The parent process MUST ignore lines received from PT proxies with
 unknown keywords.
 
@@ -891,8 +896,10 @@ PT proxies MUST terminate with the exit code EX\_CONFIG (78) after
 outputting a "VERSION-ERROR" message.\
 \
 **Examples**\
+~~~~
 VERSION-ERROR no-version\
-\
+~~~~
+
 **VERSION &lt;ProtocolVersion&gt;\
 **\
 The "VERSION" message is used to signal the Pluggable Transport
@@ -909,9 +916,12 @@ and configuration.
 
 This message is written to STDOUT.\
 \
-**Examples\
-**VERSION 2\
-\
+**Examples
+~~~~
+**VERSION 2
+~~~~
+
+
 After version negotiation has been completed the PT proxy must then
 validate that all of the required environment variables are provided,
 and that all of the configuration values supplied are well formed.\
@@ -934,8 +944,10 @@ PT proxies MUST terminate with error code EX\_USAGE (64) after
 outputting a "ENV-ERROR" message.\
 \
 **Examples\
+~~~~
 **ENV-ERROR No TOR\_PT\_AUTH\_COOKIE\_FILE when
 TOR\_PT\_EXTENDED\_SERVER\_PORT set
+~~~~
 
 #### 3.3.2.2. Pluggable PT Client Messages
 
@@ -987,8 +999,10 @@ transport's forward proxy is listening on.
 This message is written to STDOUT.\
 \
 **Examples**\
+~~~~
 CMETHOD trebuchet socks5 127.0.0.1:19999\
-\
+~~~~
+
 **CMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;\
 **\
 The "CMETHOD-ERROR" message is used to signal that requested PT
@@ -1066,10 +1080,12 @@ Equal signs and commas MUST be escaped with a backslash.
 Tor: The ARGS are included in the transport line of the Bridge's
 extra-info document.\
 \
-**Examples**\
+**Examples**
+~~~~
 SMETHOD trebuchet 198.51.100.1:19999\
 SMETHOD rot\_by\_N 198.51.100.1:2323 ARGS:N=13\
-\
+~~~~
+
 **SMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;\
 **\
 The "SMETHOD-ERROR" message is used to signal that requested PT
@@ -1082,7 +1098,9 @@ process, as even if one transport fails to be initialized, other
 transports may initialize correctly.
 
 **Example**\
-SMETHOD-ERROR trebuchet no cows available\
+~~~~
+SMETHOD-ERROR trebuchet no cows available
+~~~~
 \
 Once all PT transports have been initialized (or have failed), the PT
 proxy MUST send a final message indicating that it has finished
@@ -1164,10 +1182,12 @@ as follows:
 
 -   The encoded count is prepended to the byte sequence.
 
-**Example**\
+**Example**
+~~~~
 \\x39\\x00\\x00\\x00{"shared-secret": "rahasia", "secrets-file":
 "/tmp/blob"}\
-\
+~~~~
+
 3.3.5 UDP Support
 
 All transports that are currently implemented use TCP. Therefore, this
@@ -1259,7 +1279,7 @@ also possible that a connection will be closed by the PT Server or due
 to an error. In this case, the transport will be removed from the pool.
 The following table shows the state transitions that occur with this
 implementation.
-
+~~~~
   ------------------------------ ---------------------------------------------------- --------------------------------------------------- ------------------------------
   Event                          Current State                                        New State                                           Effect
   Packet received                No matching Connection in pool                       New Connection added to pool with state = Waiting   Packet dropped
@@ -1271,6 +1291,7 @@ implementation.
   Write failure sending packet   Connection in pool with state = Connected            Remove Connection from pool                         Packet dropped
   Timeout since last packet      Matching Connection in pool                          Remove Connection from pool                         
   ------------------------------ ---------------------------------------------------- --------------------------------------------------- ------------------------------
+~~~~
 
 #### Table 1. Client-side UDP state transitions
 
@@ -1328,6 +1349,7 @@ state. Therefore Connection states are removed from the state transition
 table for the PT Server. The following table shows the state transitions
 that occur with this implementation.
 
+~~~~
   ------------------------------ -------------------------------- ----------------------------- ------------------------------
   Event                          Current State                    New State                     Effect
   Packet received                No matching Connection in pool                                 Packet dropped
@@ -1336,6 +1358,7 @@ that occur with this implementation.
   Write failure sending packet   Connection in pool               Remove Connection from pool   Packet dropped
   Timeout since last packet      Matching Connection in pool      Remove Connection from pool   
   ------------------------------ -------------------------------- ----------------------------- ------------------------------
+~~~~
 
 #### Table 2. Server-side UDP state transitions
 
@@ -1448,7 +1471,7 @@ applicable.
 
 6. References
 =============
-
+~~~~
 \[RFC2119\] Bradner, S., "Key words for use in RFCs to Indicate
 Requirement Levels", BCP 14, RFC 2119, March 1997.
 
@@ -1466,6 +1489,7 @@ RFC 1929, March 1996.
 
 \[PT2-DISPATCHER\] Wiley, Brandon., Shapeshifter Dispatcher.
 [*https://github.com/OperatorFoundation/shapeshifter-dispatcher*](https://github.com/OperatorFoundation/shapeshifter-dispatcher)
+~~~~
 
 7. Acknowledgments
 ==================
@@ -1477,7 +1501,7 @@ Appendix A. Example Client Pluggable Transport Session
 
 Environment variables
 ---------------------
-
+~~~~
 TOR\_PT\_MANAGED\_TRANSPORT\_VER=2
 
 TOR\_PT\_STATE\_LOCATION=/var/lib/tor/pt\_state/
@@ -1487,6 +1511,7 @@ TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE=1
 TOR\_PT\_PROXY=socks5://127.0.0.1:8001
 
 TOR\_PT\_CLIENT\_TRANSPORTS=obfs3,obfs4
+
 
 Messages the PT Proxy writes to stdin
 -------------------------------------
@@ -1526,6 +1551,7 @@ SMETHOD obfs4 198.51.100.1:43734
 ARGS:cert=HszPy3vWfjsESCEOo9ZBkRv6zQ/1mGHzc8arF0y2SpwFr3WhsMu8rK0zyaoyERfbz3ddFw,iat-mode=0
 
 SMETHODS DONE
+~~~~
 
 Appendix C. Changelog
 =====================
