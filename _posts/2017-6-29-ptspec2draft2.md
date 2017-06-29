@@ -35,10 +35,7 @@ In the new draft, new terminologies were introduced and others were removed to o
 
 ● Added length to per-connection parameter encoding
 
-Currently the Network Traffic Obfuscation community is discussing the changes under this thread https://groups.google.com/forum/#!topic/traffic-obf/sfDgcZk8s3s  
-in order to collect feedback and reflect them on the final version of the Spec which is going to be released before the end of this year (2017).
+Currently the Network Traffic Obfuscation community is discussing the changes under this [thread](https://groups.google.com/forum/#!topic/traffic-obf/sfDgcZk8s3s) in order to collect feedback and reflect them on the final version of the Spec which is going to be released before the end of this year (2017).
 
-You can find the new PT Spec here: 
-
-https://www.pluggabletransports.info/spec/pt2draft2 
+You can find the [new PT Spec here] (https://www.pluggabletransports.info/spec/pt2draft2)
 
