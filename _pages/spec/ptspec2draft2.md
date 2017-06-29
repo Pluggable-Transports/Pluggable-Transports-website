@@ -38,10 +38,6 @@ communication (IPC) protocol. The Dispatcher IPC Interface (section 3.3)
 provides a way to integrate with applications written in any language
 and to wrap existing applications in PTs without modifying the source
 code.
-
-**Table of Contents**
-
-\
 =
 
 1. Introduction
@@ -952,14 +948,14 @@ Assuming that an upstream proxy is provided, PT client proxies MUST
 respond with a message indicating that the proxy is valid, supported,
 and will be used OR a failure message.\
 \
-**PROXY DONE\
+**PROXY DONE
 **\
 The "PROXY DONE" message is used to signal the PT proxy's acceptance of
 the upstream proxy specified by "TOR\_PT\_PROXY".
 
 This message is written to STDOUT.
 
-**PROXY-ERROR <ErrorMessage>\
+**PROXY-ERROR <ErrorMessage>
 **\
 
 The "PROXY-ERROR" message is used to signal that the upstream proxy is
@@ -970,9 +966,9 @@ As this is an error, this message is written to STDERR.
 PT proxies MUST terminate immediately with error code EX\_UNAVAILABLE
 (69) after outputting a "PROXY-ERROR" message.\
 \
-**Example**\
+**Example**
 ~~~~
-PROXY-ERROR SOCKS 4 upstream proxies unsupported.\
+PROXY-ERROR SOCKS 4 upstream proxies unsupported.
 ~~~~
 \
 After the upstream proxy (if any) is configured, PT clients then iterate
@@ -982,22 +978,22 @@ initialize the listeners.\
 For each transport initialized, the PT proxy reports the listener status
 back to the parent via messages to stdout and error messages to stderr.\
 \
-**CMETHOD <transport> <'socks4','socks5'> <address:port>\
+**CMETHOD <transport> <'socks4','socks5'> <address:port>
 **\
 The "CMETHOD" message is used to signal that a requested PT transport
 has been launched, the protocol which the parent should use to make
 outgoing connections, and the IP address and port that the PT
 transport's forward proxy is listening on.
 
-This message is written to STDOUT.\
+This message is written to STDOUT.
 \
-**Examples**\
+**Examples**
 ~~~~
-CMETHOD trebuchet socks5 127.0.0.1:19999\
+CMETHOD trebuchet socks5 127.0.0.1:19999
 ~~~~
 \
 
-**CMETHOD-ERROR <transport> <ErrorMessage>\
+**CMETHOD-ERROR <transport> <ErrorMessage>
 
 **\
 The "CMETHOD-ERROR" message is used to signal that requested PT
@@ -1009,17 +1005,17 @@ Outputting a "CMETHOD-ERROR" does not result in termination of the PT
 process, as even if one transport fails to be initialized, other
 transports may initialize correctly.
 
-**Examples**\
+**Examples**
 ~~~~
-CMETHOD-ERROR trebuchet no rocks available\
+CMETHOD-ERROR trebuchet no rocks available
 ~~~~
 \
 Once all PT transports have been initialized (or have failed), the PT
 proxy MUST send a final message indicating that it has finished
 initializing.\
 \
-**CMETHODS DONE\
-**\
+**CMETHODS DONE
+**
 The "CMETHODS DONE" message signals that the PT proxy has finished
 initializing all of the transports that it is capable of handling.
 
@@ -1050,7 +1046,7 @@ For each transport initialized, the PT proxy reports the listener status
 back to the parent via messages to stdout and error messages to stderr.\
 \
 ~~~~
-**SMETHOD &lt;transport&gt; &lt;address:port&gt; \[options\]\
+**SMETHOD &lt;transport&gt; &lt;address:port&gt; \[options\]
 ~~~~
 **\
 The "SMETHOD" message is used to signal that a requested PT transport
@@ -1081,14 +1077,14 @@ Equal signs and commas MUST be escaped with a backslash.
 Tor: The ARGS are included in the transport line of the Bridge's
 extra-info document.\
 \
-**Examples**\
+**Examples**
 ~~~~
-SMETHOD trebuchet 198.51.100.1:19999\
-SMETHOD rot\_by\_N 198.51.100.1:2323 ARGS:N=13\
+SMETHOD trebuchet 198.51.100.1:19999
+SMETHOD rot\_by\_N 198.51.100.1:2323 ARGS:N=13
 ~~~~
 \
 ~~~~
-**SMETHOD-ERROR <transport> <ErrorMessage>\
+**SMETHOD-ERROR <transport> <ErrorMessage>
 ~~~~
 **\
 The "SMETHOD-ERROR" message is used to signal that requested PT
@@ -1102,7 +1098,7 @@ transports may initialize correctly.
 
 **Example**\
 ~~~~
-SMETHOD-ERROR trebuchet no cows available\
+SMETHOD-ERROR trebuchet no cows available
 ~~~~
 \
 Once all PT transports have been initialized (or have failed), the PT
@@ -1114,7 +1110,7 @@ initializing.\
 The "SMETHODS DONE" message signals that the PT proxy has finished
 initializing all of the transports that it is capable of handling.
 
-This message is written to STDOUT.\
+This message is written to STDOUT.
 \
 Upon sending the "SMETHODS DONE" message, the PT proxy initialization is
 complete.
@@ -1187,7 +1183,7 @@ as follows:
 
 **Example**\
 ~~~~
-\\x39\\x00\\x00\\x00{"shared-secret": "rahasia", "secrets-file": "/tmp/blob"}\
+\\x39\\x00\\x00\\x00{"shared-secret": "rahasia", "secrets-file": "/tmp/blob"}
 ~~~~
 \
 3.3.5 UDP Support
@@ -1470,7 +1466,7 @@ applicable.
 
 6. References
 =============
-
+~~~~
 \[RFC2119\] Bradner, S., "Key words for use in RFCs to Indicate
 Requirement Levels", BCP 14, RFC 2119, March 1997.
 
@@ -1488,7 +1484,7 @@ RFC 1929, March 1996.
 
 \[PT2-DISPATCHER\] Wiley, Brandon., Shapeshifter Dispatcher.
 [*https://github.com/OperatorFoundation/shapeshifter-dispatcher*](https://github.com/OperatorFoundation/shapeshifter-dispatcher)
-
+~~~~
 7. Acknowledgments
 ==================
 
