@@ -15,6 +15,13 @@ sidebar:
     nav: "sidenav"
 ---
 
+Below is the current PT 2.0 Draft 2 Spec. You can also view this in [PDF form](/assets/PTSpecV2Draft2.pdf). It may be useful to also reference the [history of the spec](/spec/history).
+
+---------------
+
+**Please note that we are still converting the below to markdown; there are some chunks which still need some formatting love**
+
+---------------
 **Abstract**
 
 Pluggable Transports (PTs) are a generic mechanism for the rapid
