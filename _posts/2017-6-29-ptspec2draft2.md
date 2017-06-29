@@ -1,5 +1,5 @@
 ---
-title: "New Pluggable Transport Specification Version 2.0, Draft 2"
+title: "New Pluggable Transport Specification Version 2.0, Draft 2 is out"
 modified: 2017-06-29T13:30:02-05:00
 categories:
   - blog
