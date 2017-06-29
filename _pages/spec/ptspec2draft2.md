@@ -773,20 +773,22 @@ omitted.
 
 **Example**
 ~~~~
-TOR\_PT\_SERVER\_BINDADDR=obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891\
+TOR\_PT\_SERVER\_BINDADDR=obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891
 obfs4proxy -bindaddr obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891
 ~~~~
 
 **TOR\_PT\_ORPORT or -orport**
+\
+
 Specifies the destination that the PT reverse proxy should forward
 traffic to after transforming it as appropriate, as an
 <address>:<port>.
-
+\
 Connections to the destination specified via "TOR\_PT\_ORPORT" MUST only
 contain application payload. If the parent process requires the actual
 source IP address of client connections (or other metadata), it should
 set "TOR\_PT\_EXTENDED\_SERVER\_PORT" instead.
-
+\
 **Example**
 ~~~~
 TOR\_PT\_ORPORT=127.0.0.1:9001
@@ -807,7 +809,7 @@ set "TOR\_PT\_EXTENDED\_SERVER\_PORT" to an empty string.
 
 **Example**
 ~~~~
-TOR\_PT\_EXTENDED\_SERVER\_PORT=127.0.0.1:4200\
+TOR\_PT\_EXTENDED\_SERVER\_PORT=127.0.0.1:4200
 obfs4proxy -extorport 127.0.0.1:4200
 ~~~~
 **TOR\_PT\_AUTH\_COOKIE\_FILE or -authcookie**
