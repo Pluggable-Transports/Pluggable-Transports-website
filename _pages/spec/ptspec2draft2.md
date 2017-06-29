@@ -1471,7 +1471,7 @@ applicable.
 
 6. References
 =============
-~~~~
+
 \[RFC2119\] Bradner, S., "Key words for use in RFCs to Indicate
 Requirement Levels", BCP 14, RFC 2119, March 1997.
 
@@ -1489,7 +1489,7 @@ RFC 1929, March 1996.
 
 \[PT2-DISPATCHER\] Wiley, Brandon., Shapeshifter Dispatcher.
 [*https://github.com/OperatorFoundation/shapeshifter-dispatcher*](https://github.com/OperatorFoundation/shapeshifter-dispatcher)
-~~~~
+
 
 7. Acknowledgments
 ==================
