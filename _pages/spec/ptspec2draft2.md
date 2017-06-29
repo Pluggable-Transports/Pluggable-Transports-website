@@ -27,7 +27,6 @@ Below is the current PT 2.0 Draft 2 Spec. You can also view this in [PDF form](/
 Pluggable Transports (PTs) are a generic mechanism for the rapid
 development and deployment of censorship circumvention, based around the
 idea of modular transports that transform traffic to defeat censors.
-
 There are two ways to use transports. The Transports API (section 3.2)
 defines a set of language-specific APIs to use transports directly from
 within an application. A PT library implementing the Transports API is
@@ -38,8 +37,8 @@ communication (IPC) protocol. The Dispatcher IPC Interface (section 3.3)
 provides a way to integrate with applications written in any language
 and to wrap existing applications in PTs without modifying the source
 code.
-=
 
+=
 1. Introduction
 ===============
 
