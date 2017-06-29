@@ -691,7 +691,6 @@ obfs4proxy -transports obfs2,obfs3,obfs4
 ~~~~
 **TOR\_PT\_PROXY or -proxy**
 
-
 Specifies an upstream proxy that the PT MUST use when making outgoing
 network connections. It is a URI \[RFC3986\] of the format:
 ~~~~
@@ -777,12 +776,12 @@ omitted.
 TOR\_PT\_SERVER\_BINDADDR=obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891\
 obfs4proxy -bindaddr obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891
 ~~~~
-**TOR\_PT\_ORPORT or -orport**
 
+**TOR\_PT\_ORPORT or -orport**
 Specifies the destination that the PT reverse proxy should forward
 traffic to after transforming it as appropriate, as an
-<address>:<port>.\
-\
+<address>:<port>.
+
 Connections to the destination specified via "TOR\_PT\_ORPORT" MUST only
 contain application payload. If the parent process requires the actual
 source IP address of client connections (or other metadata), it should
@@ -797,12 +796,12 @@ obfs4rpxoy -orport 127.0.0.1:9001
 
 Specifies the destination that the PT reverse proxy should forward
 traffic to, via the Extended ORPort protocol \[EXTORPORT\] as an
-<address>:<port>.\
-\
+<address>:<port>.
+
 The Extended ORPort protocol allows the PT reverse proxy to communicate
 per-connection metadata such as the PT name and client IP address/port
-to the parent process.\
-\
+to the parent process.
+
 If the parent process does not support the ExtORPort protocol, it MUST
 set "TOR\_PT\_EXTENDED\_SERVER\_PORT" to an empty string.
 
