@@ -18,7 +18,7 @@ sidebar:
 
 Want to build your own transport or adapt a system you already have working to be a Pluggable Transport?  Great!
 
-* Adapting an existing system? Start by checking out the [PT2 Specification](/spec/current/) and learn about [Dispatcher](/implement/)
+* Adapting an existing system? Start by checking out the [PT2 Specification](/spec/) and learn about [Dispatcher](/implement/)
 * Want to build a new transport?  Keep reading!
 
 ## Current Transports
