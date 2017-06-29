@@ -137,7 +137,9 @@ server, the Dispatcher IPC Interface is used. On the client device, the
 PT Client software exposes a local proxy to the client application, and
 transforms traffic before forwarding it to the PT Server. The PT
 Dispatcher can be configured to provide different proxy types,
-supporting proxying of both TCP and UDP traffic.~~~~
+supporting proxying of both TCP and UDP traffic.
+
+~~~~
    +------------+                     +---------------------------+
    | Client App +---- Local Proxy ----+ PT Client (Dispatcher)    +--+
    +------------+                     +---+-------------------+---+  |
