@@ -24,8 +24,9 @@ In 2015 and 2016, a series of meetings of current transport developers and imple
 * [Pluggable Transports Work In Progress](/assets/PluggableTransportsWorkInProgress.pdf)
 
 Based on community feedback from these proposals, they were merged in to a new draft specification:
-[Pluggable Transports Specification, Version 2, Draft 1.](/spec/pt2draft1)
+[Pluggable Transports Specification, Version 2, Draft 2.](/spec/pt2draft2)
 
+You can also view the previous [Pluggable Transports Specification, Version 2, Draft 1.](/spec/pt2draft1)
 
 <!--
 ## Implement
