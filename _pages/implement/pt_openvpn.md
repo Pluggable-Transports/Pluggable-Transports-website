@@ -367,5 +367,6 @@ You need to open the file *CLIENT.ovpn* and change the following values to point
 remote 127.0.0.1 
 port 1234
 ~~~~
-
 Save the file and establish the connection, you’re now off the radar!
+
+Note: We used obfs2 in this example to explain how Pluggable transport can be used with OpenVPN only, Obfs2 is censored in many places and you might use other transports like [Obfs4 – Learn how to use it!]( https://www.pluggabletransports.info/blog/ShapeshifterDispatcherObfs4/)
