@@ -15,9 +15,9 @@ The Operator Foundation released a new documentation for Shapeshifter Dispatcher
 
 The newly published document includes previously undocumented information on how to obtain the obfs4 “cert” parameter, which is necessary for configuring an obfs4 transport client.
 
-More can be found [Here](https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md) under "Running with obfs4"
+The document can be found [Here](https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md) under "Running with obfs4"
  
- References:
+ **References:
  - Obfs4 https://github.com/Yawning/obfs4
  - Shapeshifter Dispatcher https://github.com/OperatorFoundation/shapeshifter-dispatcher
 
