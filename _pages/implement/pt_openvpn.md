@@ -321,7 +321,7 @@ go get -u github.com/OperatorFoundation/shapeshifter-dispatcher/shapeshifter-dis
 
 ### Shapeshifter-dispatcher server and client setup:
 
-Run shapeshifter-dispatcher on the server by running the following       command for Obfs2:
+Run shapeshifter-dispatcher on the server by running the following command for Obfs2:
 
 ~~~
 screen ~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2
@@ -338,9 +338,10 @@ You will get this screen. Don’t forget to change the IP address and ports with
 
 And the following command to use Obfs4:
 ~~~
-bin/shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:3333 -transports obfs4 -bindaddr obfs4-127.0.0.1:2222 -logLevel DEBUG -enableLogging -extorport 127.0.0.1:3334
+bin/shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:OPENVPNPORT -transports obfs4 -bindaddr obfs4 -bindaddr obfs4-YOURSERVERIPADDRESS:OBFSPORT -logLevel DEBUG -enableLogging -extorport 127.0.0.1:3334
 ~~~
-When the server is run for the first time, it will generate a new public key and it will write it to a file in the state directory called obfs4_bridgeline.txt. This information is needed by the dispatcher client. Look in the file and retrieve the public key from the bridge line. It will look similar to this:
+
+When the server is running for the first time, it will generate a new public key and it will write it to a file in the state directory called obfs4_bridgeline.txt. This information is needed by the dispatcher client. Look in the file and retrieve the public key from the bridge line. It will look similar to this:
 ~~~
 Bridge obfs4 <IP ADDRESS>:<PORT> <FINGERPRINT> cert=OfQAPDamjsRO90fDGlnZR5RNG659FZqUKUwxUHcaK7jIbERvNU8+EVF6rmdlvS69jVYrKw iat-mode=0
 ~~~
@@ -363,7 +364,9 @@ You will get this screen:
 
 Or the following command to use Obfs4, don't forget to change the value of 'cert' with the one you generated on the server:
 ~~~~
-bin/shapeshifter-dispatcher -transparent -client -state state -target 127.0.0.1:2222  -transports obfs4 -bindaddr obfs4-127.0.0.1:443 -options '{"cert": "OfQAPDamjsRO90fDGlnZR5RNG659FZqUKUwxUHcaK7jIbERvNU8+EVF6rmdlvS69jVYrKw", "iatMode": "0"}' -logLevel DEBUG -enableLogging
+
+~/go/bin/shapeshifter-dispatcher -transparent -client -state state -target YOURSERVERIPADDRESS:OBFSPORT -transports obfs4 -options "{\"cert\": \"OfQAPDamjsRO90fDGlnZR5RNG659FZqUKUwxUHcaK7jIbERvNU8+EVF6rmdlvS69jVYrKw\", \"iatMode\": \"0\"}" -logLevel DEBUG -enableLogging
+
 ~~~~
 
 For more information on how to use Obfs4, check the [offical guide of Shapeshifter-Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md) 
