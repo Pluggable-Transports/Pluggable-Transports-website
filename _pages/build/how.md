@@ -17,6 +17,9 @@ sidebar:
 How to Write a Pluggable Transport
 ==================================
 
+
+{% include toc title="" icon="file-text" %}
+
 This document provides a run-through of creating a Pluggable Transport, using a [ROT13 Examples transport](https://github.com/OperatorFoundation/shapeshifter-transports/blob/master/examples/rot13/rot13.go) from the [Shapeshifter Transports](https://github.com/OperatorFoundation/shapeshifter-transports) repository. It is worth noting that the Shapeshifter implementation of [ShadowSocks](https://github.com/OperatorFoundation/shapeshifter-transports/tree/master/transports/shadow) wraps the shadowsocks-go library directly, without any modification of the shadowsocks-go code, provides an example of leveraging an external Go library. This external library approach helps ensure that it will remain up-to-date whenever the upstream library is updated.
 
 <!-- {% include toc title="" icon="file-text" %} -->
@@ -114,6 +117,7 @@ The struct for our ROT13 example transport is defined as follows:
 type rot13Transport struct {
 	dialer \*net.Dialer
 }
+~~~~
 
 ### Create the Initializer
 
@@ -139,6 +143,7 @@ The NetworkDialer method is straightforward in this example, as we have already 
 func (transport \*rot13Transport) NetworkDialer() net.Dialer {
 	return \*transport.dialer
 }
+~~~~
 
 This implementation simply returns the net.Dialer instance stored in our struct. Of course, this function could do something more complex instead, such as creating a new net.Dialer if one does not already exist. In the case of transports that do not use network connections at all (such as transports that use UDP for communication), this function could simply return nil.
 
@@ -216,6 +221,7 @@ We define the internal struct type rot13TransportListener as follows:
 type rot13TransportListener struct {
 	listener \*net.TCPListener
 }
+
 ~~~~
 
 ### Create the Initializer
@@ -238,6 +244,7 @@ The NetworkListener method is straightforward in this example, as we have alread
 func (listener \*rot13TransportListener) NetworkListener() net.Listener {
 	return listener.listener
 }
+~~~~
 
 This implementation simply returns the net.TCPListener instance stored in our struct. In the case of transports that do not use network connections at all (such as transports that use UDP for communication), this function could simply return nil.
 
@@ -367,7 +374,9 @@ func (conn \*rot13Conn) Write(b \[\]byte) (int, error) {
 
 In the first part of the code, the data is passed to the shift() function, which implements the ROT13 cipher, mutating the given data. The transformed data is then written to the network connection.
 
-#### Read(b \[\]byte) (n int, err error)
+~~~~
+ Read(b \[\]byte) (n int, err error)
+~~~~
 
 The Read() method (along with the Write() method) is the core of most transports. This is where the transport’s protocol is transformed back into the application protocol data stream. The application which is using the Pluggable Transport uses the TransportConn as if it were net.Conn, substituting a “virtual network connection” for a real one. It will repeatedly call Read() to get its application data from the network. The Read() method therefore reads the already transformed data from the network connection, reverse the transformation to retrieve the application data, and returns it.
 
@@ -440,6 +449,6 @@ func unshift(b \[\]byte) {
 
 ~~~~
 
---- 
+---
 
 *CC-BY Dr. Brandon Wiley, The Operator Foundation*
