@@ -17,6 +17,7 @@ sidebar:
 
 Below is the current PT 2.0 Draft 3 Spec. You can also view this in [PDF form](/assets/PTSpecV2Draft3.pdf). It may be useful to also reference the [history of the spec](/spec/history).
 
+---------------
 **Abstract**
 
 Pluggable Transports (PTs) are a generic mechanism for the rapid development and deployment of censorship circumvention, based around the idea of modular transports that transform traffic to defeat censors.
