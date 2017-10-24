@@ -15,7 +15,7 @@ sidebar:
     nav: "sidenav"
 ---
 
-Below is the current PT 2.0 Draft 2 Spec. You can also view this in [PDF form](/assets/PTSpecV2Draft2.pdf). It may be useful to also reference the [history of the spec](/spec/history).
+Below is the PT 2.0 Draft 2 Spec. You can also view this in [PDF form](/assets/PTSpecV2Draft2.pdf). It may be useful to also reference the [history of the spec](/spec/history).
 
 ---------------
 
