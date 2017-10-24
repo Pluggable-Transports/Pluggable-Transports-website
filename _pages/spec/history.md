@@ -17,16 +17,16 @@ The current draft specification is based on the PT 1.0 specification and the Plu
 
 The Tor Project authored the [original Pluggable Transports specification](https://gitweb.torproject.org/torspec.git/tree/pt-spec.txt) for use in the tor network environment.
 
-In 2015 and 2016, a series of meetings of current transport developers and implementers circumvention tools met to determine broader, community requirements on what would be useful in a revised Pluggable Transports specification. These led to three proposals:
+In 2015 and 2016 and 2017, a series of meetings of current transport developers and implementers circumvention tools met to determine broader, community requirements on what would be useful in a revised Pluggable Transports specification. These led to three proposals:
 
 * [Pluggable Transports Go API](/assets/PluggableTransportsGoAPI.pdf)
 * [Pluggable Transport UDP Support Proposal](/assets/PluggableTransportUDPSupport.pdf)
 * [Pluggable Transports Work In Progress](/assets/PluggableTransportsWorkInProgress.pdf)
 
 Based on community feedback from these proposals, they were merged in to a new draft specification:
-[Pluggable Transports Specification, Version 2, Draft 2.](/spec/pt2draft2)
+[Pluggable Transports Specification, Version 2, Draft 3.](/spec/pt2draft2)
 
-You can also view the previous [Pluggable Transports Specification, Version 2, Draft 1.](/spec/pt2draft1)
+You can also view the previous [Pluggable Transports Specification, Version 2, Draft 1.](/spec/pt2draft1) and [Pluggable Transports Specification, Version 2, Draft 2.](/spec/pt2draft2)
 
 <!--
 ## Implement
