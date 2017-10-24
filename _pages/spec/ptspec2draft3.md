@@ -175,99 +175,73 @@ This API specification is divided into three parts. The “Modules” section pr
 The Pluggable Transports Go API provides one module: base. It is intended to be used as a replacement for the net module provided by the Go standard library. The API mirrors that of the net library.
 
 ##### 3.2.4.1.1. Module base
-
+~~~
 package base
 
-// It provides a way to make outgoing transport connections and to accept
-
+// It provides a way to make outgoing transport connections and to accept 
 // incoming transport connections.
-
-// The Transport interface implements the **Transport** abstract interface.
-
+// The Transport interface implements the Transport abstract interface.
 type Transport interface {
+      // Note that there is no place in this interface to provide the 
+      // transport configuration. This is provided in the initializer function
+      // for the instance of the Transport interface and so is not included in
+      // the interface definition.
+	
+	// Create outgoing transport connection
+      // The Dial method implements the Client Factory abstract interface.
+	Dial(address string) net.Conn
 
-// Note that there is no place in this interface to provide the
-
-// **transport configuration**. This is provided in the initializer function
-
-// for the instance of the Transport interface and so is not included in
-
-// the interface definition.
-
-// Create outgoing transport connection
-
-// The Dial method implements the **Client Factory** abstract interface.
-
-Dial(address string) net.Conn
-
-// Create listener for incoming transport connection
-
-// The Listen method implements the **Server Factory** abstract interface.
-
+	// Create listener for incoming transport connection
+      // The Listen method implements the Server Factory abstract interface.
 Listen(address string) net.Listener
-
 }
 
-// net.Listener implements the **Listener** abstract interface.
-
+// net.Listener implements the Listener abstract interface.
 // This interface is defined in the Go standard library.
-
 type Listener interface {
-// Accept waits for and returns the next connection to the listener.
-Accept() (net.[*Conn*](https://golang.org/pkg/net/#Conn), [*error*](https://golang.org/pkg/builtin/#error))
-// Close closes the listener.
+	// Accept waits for and returns the next connection to the listener.
+	Accept() (net.Conn, error)
 
-Close() [*error*](https://golang.org/pkg/builtin/#error)
-
-// Addr returns the listener's network address.
-
-Addr() [*Addr*](https://golang.org/pkg/net/#Addr)
-
-}
-
-// net.Conn implements the **Connection** abstract interface.
-
-// This interface is defined in the Go standard library.
-
-type Conn interface {
-// The transport-specific logic for obfuscating network traffic is
-
-// implemented inside the methods defined in the net.Conn interface.
-
-//
-
-// Read reads data from the transport connection. This will likely also
-
-// require reading data from the underlying network connection. The
-
-// transport-specific logic for de-obfuscating network traffic is
-
-// implemented here.
-Read(b \[\]byte) (n int, err error)
-// Write writes data to the connection. This may or may not result in
-
-// immediate writing of data to the underlying network connection. The
-
-// transport-specific logic for obfuscating network traffic is
-
-// implemented here.
-Write(b \[\]byte) (n int, err error)
-// Close closes the transport connection. This will usually also close
-
-// the underlying network connection used by the transport.
+	// Close closes the listener.
 Close() error
 
-// These methods are also part of the net.Conn interface. They are not
-
-// discussed in detail here. For more information on these methods, look
-
-// at the official net.Conn documentation.
-LocalAddr() Addr
-RemoteAddr() Addr
-SetDeadline(t time.Time) error
-SetReadDeadline(t time.Time) error
-SetWriteDeadline(t time.Time) error
+// Addr returns the listener's network address.
+Addr() Addr
 }
+
+// net.Conn implements the Connection abstract interface.
+// This interface is defined in the Go standard library.
+type Conn interface {
+      // The transport-specific logic for obfuscating network traffic is 
+      // implemented inside the methods defined in the net.Conn interface.
+	//
+	// Read reads data from the transport connection. This will likely also
+      // require reading data from the underlying network connection. The 
+      // transport-specific logic for de-obfuscating network traffic is 
+      // implemented here.
+	Read(b []byte) (n int, err error)
+
+	// Write writes data to the connection. This may or may not result in      
+      // immediate writing of data to the underlying network connection. The 
+      // transport-specific logic for obfuscating network traffic is 
+      // implemented here.
+	Write(b []byte) (n int, err error)
+
+	// Close closes the transport connection. This will usually also close 
+      // the underlying network connection used by the transport.
+      Close() error
+
+      // These methods are also part of the net.Conn interface. They are not
+      // discussed in detail here. For more information on these methods, look
+      // at the official net.Conn documentation.
+      LocalAddr() Addr
+      RemoteAddr() Addr
+      SetDeadline(t time.Time) error
+      SetReadDeadline(t time.Time) error
+      SetWriteDeadline(t time.Time) error
+}
+
+~~~
 
 #### 3.2.4.2. Implementing a Transport
 
@@ -472,16 +446,14 @@ All configuration parameters, including both environment variables and per-conne
 
 When using the IPC method to manage a PT in a separate process, in addition to environment variables and command line flags, a custom protocol is also used to communicate between the application parent process and PT sub-process. This protocol is communicated over the stdin/stdout channel between the processes. This is a text-based, line-based protocol using newline-terminated lines. Lines in the protocol conform to the following grammar:
 ~~~~
-&lt;Line&gt; ::= &lt;Keyword&gt; &lt;OptArgs&gt; &lt;NL&gt;
-&lt;Keyword&gt; ::= &lt;KeywordChar&gt; | &lt;Keyword&gt; &lt;KeywordChar&gt;
-
-&lt;KeywordChar&gt; ::= &lt;any US-ASCII alphanumeric, dash, and underscore&gt;
-&lt;OptArgs&gt; ::= &lt;Args&gt;\*
-&lt;Args&gt; ::= &lt;SP&gt; &lt;ArgChar&gt; | &lt;Args&gt; &lt;ArgChar&gt;
-&lt;ArgChar&gt; ::= &lt;any US-ASCII character but NUL or NL&gt;
-&lt;SP&gt; ::= &lt;US-ASCII whitespace symbol (32)&gt;
-&lt;NL&gt; ::= &lt;US-ASCII newline (line feed) character (10)&gt;
-The parent process MUST ignore lines received from PT proxies with unknown keywords.
+<Line> ::= <Keyword> <OptArgs> <NL>
+<Keyword> ::= <KeywordChar> | <Keyword> <KeywordChar>
+<KeywordChar> ::= <any US-ASCII alphanumeric, dash, and underscore>
+<OptArgs> ::= <Args>*
+<Args> ::= <SP> <ArgChar> | <Args> <ArgChar>
+<ArgChar> ::= <any US-ASCII character but NUL or NL>
+<SP> ::= <US-ASCII whitespace symbol (32)>
+<NL> ::= <US-ASCII newline (line feed) character (10)>
 ~~~~
 #### 3.3.2.1. Common Messages
 
@@ -536,7 +508,7 @@ The "PROXY DONE" message is used to signal the PT proxy's acceptance of the upst
 
 This message is written to STDOUT.
 
-**PROXY-ERROR &lt;ErrorMessage&gt;
+**PROXY-ERROR <ErrorMessage>
 **
 The "PROXY-ERROR" message is used to signal that the upstream proxy is malformed/unsupported or otherwise unusable.
 
