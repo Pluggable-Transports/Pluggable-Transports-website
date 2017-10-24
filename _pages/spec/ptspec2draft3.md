@@ -4,8 +4,6 @@ Pluggable Transports (PTs) are a generic mechanism for the rapid development and
 
 There are two ways to use transports. The Transports API (section 3.2) defines a set of language-specific APIs to use transports directly from within an application. A PT library implementing the Transports API is available for the Go language (section 3.2.4). Alternatively, transports can be used through the Dispatcher, a command line tool that runs in a separate process and is controlled through a custom inter-process communication (IPC) protocol. The Dispatcher IPC Interface (section 3.3) provides a way to integrate with applications written in any language and to wrap existing applications in PTs without modifying the source code.
 
-**Table of Contents**
-
 1. Introduction
 ===============
 
@@ -30,60 +28,58 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 The PT Server software exposes a public proxy that accepts connections from PT Clients. The PT Client transforms the traffic before it hits the public Internet and the PT Server reverses this transformation before passing the traffic on to its next destination. By default, the PT Server directly forwards this data to the Server App, but the Server App itself may itself be a proxy server and expect the forwarded traffic it receives to conform to a proxy communication protocol such as SOCKS or TURN. There is also an optional lightweight protocol to facilitate communicating connection metadata that would otherwise be lost such as the source IP address and port \[EXTORPORT\].
 
 When using the API on both client and server (“Transport API Interface”), the PT Client Library is integrated directly into the Client App and the PT Server Library is integrated directly into the Server App. The Client App and Server App communicate through socket-like APIs, with all communication between them going through the PT library, which only sends transformed traffic over the public Internet.
+~~~~
 
-+------------+ +---------------------------+
-| Client App +-- Socket-like API --+ PT Client (Library) +--+
-+------------+ +---------------------------+ |
-|
-Public Internet (Obfuscated/Transformed traffic) ==&gt; |
-|
-+------------+ +---------------------------+ |
-| Server App +-- Socket-like API --+ PT Server (Library) +--+
-+------------+ +---------------------------+
+    +------------+                     +---------------------------+
+    | Client App +-- Socket-like API --+ PT Client (Library)       +--+
+    +------------+                     +---------------------------+  |
+                                                                      |
+                Public Internet (Obfuscated/Transformed traffic) ==>  |
+                                                                      |
+    +------------+                     +---------------------------+  |
+    | Server App +-- Socket-like API --+ PT Server (Library)       +--+
+    +------------+                     +---------------------------+
 
+~~~~
 Figure 1. API Architecture Overview
 
 When using the transports as a separate process on both client and server, the Dispatcher IPC Interface is used. On the client device, the PT Client software exposes a local proxy to the client application, and transforms traffic before forwarding it to the PT Server. The PT Dispatcher can be configured to provide different proxy types, supporting proxying of both TCP and UDP traffic.
 
-+------------+ +---------------------------+
-| Client App +---- Local Proxy ----+ PT Client (Dispatcher) +--+
-+------------+ +---+-------------------+---+ |
-| PT Client Library | |
-+-------------------+ |
-|
-Public Internet (Transformed/Proxied traffic) =====&gt; |
-|
-+------------+ +---------------------------+ |
-| Server App +---- Local Proxy ----+ PT Server (Dispatcher ) +--+
-+------------+ +---+-------------------+---+
-|PT Server (Library)|
-+-------------------+
+
+~~~~
+   +------------+                     +---------------------------+
+   | Client App +---- Local Proxy ----+ PT Client (Dispatcher)    +--+
+   +------------+                     +---+-------------------+---+  |
+                                          | PT Client Library |      |           
+                                          +-------------------+      |                          
+                                                                     |
+               Public Internet (Transformed/Proxied traffic) =====>  |
+                                                                     |
+   +------------+                     +---------------------------+  |
+   | Server App +---- Local Proxy ----+ PT Server (Dispatcher )   +--+
+   +------------+                     +---+-------------------+---+
+                                          |PT Server (Library)|                
+                                          +-------------------+
+~~~~
 
 Figure 2. IPC Architecture Overview
 
 A PT may also be function via Dispatcher IPC on one end of the connection but via Transport API on the other, as below (or vice-versa):
+~~~~
 
-+------------+ +---------------------------+
+   +------------+                     +---------------------------+
+   | Client App +---- Local Proxy ----+ PT Dispatcher Client  	+--+
+   +------------+                     +---+-------------------+---+  |
+                          	            |PT Client (Library)|  	   |       	
+                                          +-------------------+  	   |                      	                                                               |
+                                                                     |
+    	          Public Internet (Obfuscated/Transformed traffic) ==> |
+                                                                     |
+   +------------+                 	   +--------------------------+  |
+   | Server App +-- Socket-like API  --+ PT Server (Library ) 	+--+
+   +------------+         	         +--------------------------+
 
-| Client App +---- Local Proxy ----+ PT Dispatcher Client +--+
-
-+------------+ +---+-------------------+---+ |
-
-|PT Client (Library)| |
-
-+-------------------+ | |
-
-|
-
-Public Internet (Obfuscated/Transformed traffic) ==&gt; |
-
-|
-
-+------------+ +--------------------------+ |
-
-| Server App +-- Socket-like API --+ PT Server (Library ) +--+
-
-+------------+ +--------------------------+
+~~~~
 
 Figure 3. Mixed IPC and Transport API example
 
@@ -326,10 +322,10 @@ Valid versions MUST consist entirely of non-whitespace, non-comma printable ASCI
 The version of the Pluggable Transport specification as of this document is "2".
 
 **Examples**
-
+~~~~
 TOR\_PT\_MANAGED\_TRANSPORT\_VER=1,1a,2,this\_is\_a\_valid\_version
 obfs4proxy -ptversion 1,1a,2,this\_is\_a\_valid\_version
-
+~~~~
 **TOR\_PT\_STATE\_LOCATION or -state**
 
 Specifies an absolute path to a directory where the PT is allowed to store state that will be persisted across invocations. The directory is not required to exist when the PT is launched, however PT implementations SHOULD be able to create it as required.
@@ -339,10 +335,10 @@ If "TOR\_PT\_STATE\_LOCATION" is not specified, PT proxies MUST use the current 
 PTs MUST only store files in the path provided, and MUST NOT create or modify files elsewhere on the system.
 
 **Examples**
-
+~~~~
 TOR\_PT\_STATE\_LOCATION=/var/lib/tor/pt\_state/
-
 obfs4proxy -state /var/lib/tor/pt\_state/
+~~~~
 **TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE or -exit-on-stdin-close**
 
 Specifies that the parent process will close the PT proxy's standard input (stdin) stream to indicate that the PT proxy should gracefully exit.
@@ -350,10 +346,10 @@ PTs MUST NOT treat a closed stdin as a signal to terminate unless this environme
 PTs SHOULD treat stdin being closed as a signal to gracefully terminate if this environment variable is set to "1".
 
 **Example**
-
+~~~~
 TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE=1
-
 obfs4proxy -exit-on-stdin-close
+~~~~
 
 #### 3.3.1.2. Pluggable PT Client Configuration Parameters
 
@@ -368,26 +364,24 @@ PTs SHOULD ignore PT names that it does not recognize.
 Parent processes MUST set this environment variable when launching a client-side PT proxy instance.
 
 **Example**
-
+~~~~
 TOR\_PT\_CLIENT\_TRANSPORTS=obfs2,obfs3,obfs4
-
 obfs4proxy -transports obfs2,obfs3,obfs4
-
+~~~~
 **TOR\_PT\_PROXY or -proxy**
 
 Specifies an upstream proxy that the PT MUST use when making outgoing network connections. It is a URI \[RFC3986\] of the format:
-
+~~~~
 &lt;proxy\_type&gt;://\[&lt;user\_name&gt;\[:&lt;password&gt;\]\[@\]&lt;ip&gt;:&lt;port&gt;.
 The "TOR\_PT\_PROXY" environment variable is OPTIONAL and MUST be omitted if there is no need to connect via an upstream proxy.
-
+~~~~
 **Examples**
-
+~~~~
 TOR\_PT\_PROXY=socks5://tor:test1234@198.51.100.1:8000
 TOR\_PT\_PROXY=socks4a://198.51.100.2:8001
 TOR\_PT\_PROXY=http://198.51.100.3:443
-
 obfs4proxy -proxy http://198.51.100.3:443
-
+~~~~
 #### 3.3.1.3. Pluggable PT Server Environment Variables
 
 When launching either a PT Server, the common configuration parameters specified in section 3.3.1.1 as well as the server-specific configuration parameters specified in section 3.3.1.3 MUST also be set, using either environment variables or command line flags.
@@ -399,10 +393,10 @@ PTs SHOULD ignore PT names that it does not recognize.
 Parent processes MUST set this environment variable when launching a server-side PT reverse proxy instance.
 
 **Example**
-
+~~~~
 TOR\_PT\_SERVER\_TRANSPORTS=obfs3,scramblesuit
-
 obfs4proxy -transports obfs3,scramblesuit
+~~~~
 
 **TOR\_PT\_SERVER\_TRANSPORT\_OPTIONS or -options**
 
@@ -411,9 +405,11 @@ Colons, semicolons, equal signs and backslashes MUST be escaped with a backslash
 If there are no arguments that need to be passed to any of PT transport protocols, "TOR\_PT\_SERVER\_TRANSPORT\_OPTIONS" MAY be omitted.
 
 **Example **
-
+~~~~
 TOR\_PT\_SERVER\_TRANSPORT\_OPTIONS=scramblesuit:key=banana;automata:rule=110;automata:depth=3
 obfs4proxy -options scramblesuit:key=banana;automata:rule=110;automata:depth=3
+~~~~
+
 This will pass to 'scramblesuit' the parameter 'key=banana' and to 'automata' the arguments 'rule=110' and 'depth=3'.
 
 **TOR\_PT\_SERVER\_BINDADDR or -bindaddr**
@@ -426,17 +422,17 @@ Applications MUST NOT set more than one &lt;address&gt;:&lt;port&gt; pair per PT
 If there is no specific &lt;address&gt;:&lt;port&gt; combination to be configured for any transports, "TOR\_PT\_SERVER\_BINDADDR" MAY be omitted.
 
 **Example**
-
+~~~~
 TOR\_PT\_SERVER\_BINDADDR=obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891
 obfs4proxy -bindaddr obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891
-
+~~~~
 **TOR\_PT\_ORPORT or -orport on the server or -target on the client**
 
 Specifies the destination that the PT reverse proxy should forward traffic to after transforming it as appropriate, as an &lt;address&gt;:&lt;port&gt;. Unless otherwise specified in the documentation of the specific transport being used, the address can be an IPv4 IP address, an IPv6 IP address, or a domain name.
 Connections to the destination specified via "TOR\_PT\_ORPORT" MUST only contain application payload. If the parent process requires the actual source IP address of client connections (or other metadata), it should set "TOR\_PT\_EXTENDED\_SERVER\_PORT" instead.
 
 **Example**
-
+~~~~
 TOR\_PT\_ORPORT=127.0.0.1:9001
 
 obfs4proxy -orport 127.0.0.1:9001
@@ -446,7 +442,7 @@ obfs4proxy -target 93.184.216.34:9001
 obfs4proxy -target \[2001:0db8:85a3:0000:0000:8a2e:0370:7334\]:1122
 
 obfs4proxy -target example.com:9922
-
+~~~~
 **TOR\_PT\_EXTENDED\_SERVER\_PORT or -extorport**
 
 Specifies the destination that the PT reverse proxy should forward traffic to, via the Extended ORPort protocol \[EXTORPORT\] as an &lt;address&gt;:&lt;port&gt;.
@@ -454,21 +450,20 @@ The Extended ORPort protocol allows the PT reverse proxy to communicate per-conn
 If the parent process does not support the ExtORPort protocol, it MUST set "TOR\_PT\_EXTENDED\_SERVER\_PORT" to an empty string.
 
 **Example**
-
+~~~~
 TOR\_PT\_EXTENDED\_SERVER\_PORT=127.0.0.1:4200
 obfs4proxy -extorport 127.0.0.1:4200
-
+~~~~
 **TOR\_PT\_AUTH\_COOKIE\_FILE or -authcookie**
 
 Specifies an absolute filesystem path to the Extended ORPort authentication cookie, required to communicate with the Extended ORPort specified via "TOR\_PT\_EXTENDED\_SERVER\_PORT".
 If the parent process is not using the ExtORPort protocol for incoming traffic, "TOR\_PT\_AUTH\_COOKIE\_FILE" MUST be omitted.
 
 **Example**
-
+~~~~
 TOR\_PT\_AUTH\_COOKIE\_FILE=/var/lib/tor/extended\_orport\_auth\_cookie
-
 obfs4proxy -authcookie /var/lib/tor/extended\_orport\_auth\_cookie
-
+~~~~
 #### 3.3.1.4 Command Line Flags
 
 All configuration parameters, including both environment variables and per-connection configuration parameters, can also be provided by using command line flags. When a command line flag is provided, it overrides corresponding environment variables.
@@ -476,7 +471,7 @@ All configuration parameters, including both environment variables and per-conne
 ### 3.3.2. Pluggable Transport To Parent Process Communication
 
 When using the IPC method to manage a PT in a separate process, in addition to environment variables and command line flags, a custom protocol is also used to communicate between the application parent process and PT sub-process. This protocol is communicated over the stdin/stdout channel between the processes. This is a text-based, line-based protocol using newline-terminated lines. Lines in the protocol conform to the following grammar:
-
+~~~~
 &lt;Line&gt; ::= &lt;Keyword&gt; &lt;OptArgs&gt; &lt;NL&gt;
 &lt;Keyword&gt; ::= &lt;KeywordChar&gt; | &lt;Keyword&gt; &lt;KeywordChar&gt;
 
@@ -487,7 +482,7 @@ When using the IPC method to manage a PT in a separate process, in addition to e
 &lt;SP&gt; ::= &lt;US-ASCII whitespace symbol (32)&gt;
 &lt;NL&gt; ::= &lt;US-ASCII newline (line feed) character (10)&gt;
 The parent process MUST ignore lines received from PT proxies with unknown keywords.
-
+~~~~
 #### 3.3.2.1. Common Messages
 
 IPC messages specified in section 3.3.2.1 are common to both clients and servers.
@@ -502,7 +497,9 @@ The &lt;ErrorMessage&gt; SHOULD be set to "no-version" for historical reasons bu
 As this is an error, this message is written to STDERR.
 PT proxies MUST terminate with the exit code EX\_CONFIG (78) after outputting a "VERSION-ERROR" message.
 **Examples**
+~~~~
 VERSION-ERROR no-version
+~~~~
 **VERSION &lt;ProtocolVersion&gt;
 **
 The "VERSION" message is used to signal the Pluggable Transport Specification version (as in "TOR\_PT\_MANAGED\_TRANSPORT\_VER") that the PT proxy will use to configure it's transports and communicate with the parent process.
@@ -524,8 +521,9 @@ As this is an error, this message is written to STDERR.
 
 PT proxies MUST terminate with error code EX\_USAGE (64) after outputting a "ENV-ERROR" message.
 **Examples
+~~~~
 **ENV-ERROR No TOR\_PT\_AUTH\_COOKIE\_FILE when TOR\_PT\_EXTENDED\_SERVER\_PORT set
-
+~~~~
 #### 3.3.2.2. Pluggable PT Client Messages
 
 IPC messages specified in section 3.3.2.2 are specific to PT clients.
@@ -555,10 +553,12 @@ The "CMETHOD" message is used to signal that a requested PT transport has been l
 
 This message is written to STDOUT.
 **Examples**
+~~~~
 CMETHOD obfs4 socks5 127.0.0.1:19999
 CMETHOD meeklite transparent-TCP \[::1\]:19999
 CMETHOD shadow transparent-UDP \[::1\]:1234
 CMETHOD obfs4 STUN 127.0.0.1:8888
+~~~~
 **CMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;
 **
 The "CMETHOD-ERROR" message is used to signal that requested PT transport was unable to be launched.
@@ -598,18 +598,22 @@ This message is written to STDOUT.
 If there is a specific &lt;address:port&gt; provided for a given PT transport via "TOR\_PT\_SERVER\_BINDADDR", the transport MUST be initialized using that as the server address.
 The OPTIONAL 'options' field is used to pass additional per-transport information back to the parent process.
 The currently recognized 'options' are:
+~~~~
 **ARGS:\[&lt;Key&gt;=&lt;Value&gt;,\]+\[&lt;Key&gt;=&lt;Value&gt;\]
 **
+~~~~
 The "ARGS" option is used to pass additional key/value formatted information that clients will require to use the reverse proxy.
 Equal signs and commas MUST be escaped with a backslash.
 
 Tor: The ARGS are included in the transport line of the Bridge's extra-info document.
 **Examples**
+~~~~
 SMETHOD obfs2 198.51.100.1:19999
 
 SMETHOD obfs4 198.51.100.1:4444 ARGS:cert=60RNHBMRrf+aOSPzSj8bD4ASGyyPl0mkaOUAQsAYljSkFB0G8B8m9fGvGJCpOxwoXS1baA;iatMode=0
 
 SMETHOD meeklite \[2001:0db8:85a3:0000:0000:8a2e:0370:7334\]:2323 ARGS:url=https://meek-reflect.appspot.com/;front=www.google.com
+~~~~
 **SMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;
 **
 The "SMETHOD-ERROR" message is used to signal that requested PT transport reverse proxy was unable to be launched.
@@ -680,7 +684,9 @@ The following error codes are defined for the response when connection settings 
 While the byte count is encoded as a 4-byte sequence, which is capable of expressing connection setting sizes up to 4GB, it is not required that the implementation support the maximum possible size. If a size larger than is supported by the implementation is specified, the X’10’ error code can be used. Additionally, an implementation-dependent timeout should included for receiving the connection settings. If this timeout is exceeded, the X’11’ error code can be used. Error code X’12’ is returned if the connection parameters are not properly encoded JSON. Error code X’13’ is used if the connection settings are not correct for the specific transport being used.
 
 **Example**
+~~~~
 \\x00\\x00\\x00\\x39{"shared-secret": "rahasia", "secrets-file": "/tmp/blob"}
+~~~~
 
 ### 3.3.5 UDP Support
 
@@ -703,6 +709,7 @@ In the case of UDP, these configuration mechanisms are missing. The host role is
 The role of the PT Client in UDP mode is to accept UDP packets and relay them over an existing TCP-based transport. The first step is for the PT Client to listen for UDP packets on a designated port. The second step is to relay these packet over a TCP-based transport, which requires two things: a transport connection must be established, and the packets must be converted into a data stream to be written to the transport connection.
 
 Establishing a transport connection requires bridging a mismatch between the semantics of packet-based UDP protocols and connection-based TCP transports. TCP transports are opened and later closed, ending the connection. However, UDP protocols are connectionless. There is no intrinsic way to tell when the first packet will start arrive or when the last packet has arrived. Therefore, the PT Client must establish transport connections using lazy instantiation. The PT Client will maintain a pool of transport connections. Each connection will be associated with a PT Server destination address. When the PT Client receives a UDP packet with a PT Server destination address not represented in the pool, a new transport connection will be created and added to the pool. Otherwise, the existing connection will be used. Additionally, connections will be closed and removed from the pool based on a timeout system. When a connection has not been used for some time, it will be closed. The specific timeout used can be configured. It is also possible that a connection will be closed by the PT Server or due to an error. In this case, the transport will be removed from the pool. The following table shows the state transitions that occur with this implementation.
+~~~~
 
 | Event                        | Current State                                      | New State                                         | Effect                       |
 |------------------------------|----------------------------------------------------|---------------------------------------------------|------------------------------|
@@ -714,7 +721,7 @@ Establishing a transport connection requires bridging a mismatch between the sem
 | Connection failed            | Connection in pool with state = Waiting            | Remove Connection from pool                       |                              |
 | Write failure sending packet | Connection in pool with state = Connected          | Remove Connection from pool                       | Packet dropped               |
 | Timeout since last packet    | Matching Connection in pool                        | Remove Connection from pool                       |                              |
-
+~~~~
 **Table 1. Client-side UDP state transitions**
 
 #### 3.3.5.4. Integration with TCP Transports
@@ -728,7 +735,7 @@ Two methods of framing can be used. The first is for transparent UDP proxies whe
 The PT Server receives a data stream over a TCP-based transport connection. It then retrieves the individual packets from the data stream and forwards them on as UDP packets. Two modes of operation are proposed for the PT Server: transparent UDP proxy mode and STUN-aware mode. In the transparent proxy mode, a simple two byte length in network byte order is prefixed to each packet to act as framing metadata. In this mode, packets retrieved from the data stream are forwarded to a destination address specified as a configuration parameter to the PT Server. The STUN-aware mode is similar, except that instead of using external framing metadata, the data stream is treated as a series of STUN packets. The STUN length data is retrieved from the STUN packet headers and used to retrieve the STUN packets. The packets are then forwarded onto a TURN server, the address of which is specified in the PT Server configuration parameters. The goal of the STUN-aware mode is to support the use of existing public TURN servers.
 
 In addition to retrieving packets from the data stream and relaying them onto a UDP Server App, the PT Server must also receive UDP packets from the Server App and relay them back over the transport connection to the PT Client. In this function it follows similar logic to the PT Client. The state transitions possible in the PT Server are similar to those in the PT Client, but there are also differences. If a UDP packet is received and no matching transport connection is available, the packet cannot be delivered and is dropped. Relatedly, connections in the connection pool are always in a Connected state and never in a Waiting state. Therefore Connection states are removed from the state transition table for the PT Server. The following table shows the state transitions that occur with this implementation.
-
+~~~~
 | Event                        | Current State                  | New State                   | Effect                       |
 |------------------------------|--------------------------------|-----------------------------|------------------------------|
 | Packet received              | No matching Connection in pool |                             | Packet dropped               |
@@ -736,7 +743,7 @@ In addition to retrieving packets from the data stream and relaying them onto a 
 | Connection closed            | Connection in pool             | Remove Connection from pool |                              |
 | Write failure sending packet | Connection in pool             | Remove Connection from pool | Packet dropped               |
 | Timeout since last packet    | Matching Connection in pool    | Remove Connection from pool |                              |
-
+~~~~
 **Table 2. Server-side UDP state transitions**
 
 #### 3.3.5.6. Configuring Proxy Modes
@@ -807,7 +814,7 @@ Appendix A. Example Client Pluggable Transport Session
 ======================================================
 
 **Environment variables**
-
+~~~~
 TOR\_PT\_MANAGED\_TRANSPORT\_VER=2
 
 TOR\_PT\_STATE\_LOCATION=/var/lib/tor/pt\_state/
@@ -817,9 +824,9 @@ TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE=1
 TOR\_PT\_PROXY=socks5://127.0.0.1:8001
 
 TOR\_PT\_CLIENT\_TRANSPORTS=obfs3,obfs4
-
+~~~~
 **Messages the PT Proxy writes to stdin**
-
+~~~~
 VERSION 2 PROXY DONE
 
 CMETHOD obfs3 socks5 127.0.0.1:32525
@@ -827,12 +834,12 @@ CMETHOD obfs3 socks5 127.0.0.1:32525
 CMETHOD obfs4 socks5 127.0.0.1:37347
 
 CMETHODS DONE
-
+~~~~
 Appendix B. Example Server Pluggable Transport Session
 ======================================================
 
 **Environment variables**
-
+~~~~
 TOR\_PT\_MANAGED\_TRANSPORT\_VER=2
 
 TOR\_PT\_STATE\_LOCATION=/var/lib/tor/pt\_state
@@ -840,9 +847,9 @@ TOR\_PT\_STATE\_LOCATION=/var/lib/tor/pt\_state
 TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE=1
 
 TOR\_PT\_SERVER\_TRANSPORTS=obfs3,obfs4 TOR\_PT\_SERVER\_BINDADDR=obfs3-198.51.100.1:1984
-
+~~~~
 **Messages the PT Proxy writes to stdin**
-
+~~~~
 VERSION 2
 
 SMETHOD obfs3 198.51.100.1:1984
@@ -852,7 +859,7 @@ SMETHOD obfs4 198.51.100.1:43734
 ARGS:cert=HszPy3vWfjsESCEOo9ZBkRv6zQ/1mGHzc8arF0y2SpwFr3WhsMu8rK0zyaoyERfbz3ddFw,iat-mode=0
 
 SMETHODS DONE
-
+~~~~
 Appendix C. Changelog
 =====================
 
