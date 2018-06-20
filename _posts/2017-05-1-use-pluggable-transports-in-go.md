@@ -9,7 +9,7 @@ tags:
   - Go
   - API
   - developer
-layout: archive
+layout: posts
 
 ---
 

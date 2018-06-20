@@ -42,19 +42,21 @@ There are a limited number of public DNS servers, which can be blocked with [IP 
 
 # IP blocking
 
-IP blocking requires more effort from the censor, and can have unintended consequences. Instead of blocking the "name" of a location on the internet, IP blocking targets its specific address.  Alone this and the DNS blocking technique are easily circumvented, but become challenging in combination.
+IP blocking requires more effort from the censor, and can have unintended consequences. Instead of blocking the "name" of a location on the internet, IP blocking targets its specific address.  When used alone, both this and the DNS blocking technique are easily circumvented, but become more challenging in combination.
 
 **What the host can do**
 
 The host of any blocked service can easily swap in a new IP and push out an update, but the new IP will likely get blocked too.
 
-Depending on the nature of the blockage, a host can also use a content delivery network or other cloud service provider, where one IP (and in many cases, one DNS name) may "answer" for thousands of different services.  Blocking that would cause "collateral damage" -- those thousands of other resources would also be blocked.  This is a core concept being used by [Greatfire's Collateral Freedom campaign](https://en.greatfire.org/blog/2015/mar/collateral-freedom-and-not-so-great-firewall), where they host censored content in the Amazon cloud and on github.  
+Depending on the nature of the blockage, a host can also use a content delivery network or other cloud service provider, where one IP (and in many cases, one DNS name) may "answer" for thousands of different services.  Blocking that would cause "collateral damage" -- those thousands of other resources would also be blocked. Alternatively, proxy servers and apps can be pushed out to users of the service, connecting directly to the service and hiding the final address from the censor.
 
 **What users can do**
 
 One quick trick that users might try is to use a VPN to get around the blockage -- so let’s take an example of an OpenVPN connection that uses the default configuration.
 
-OpenVPN’s default port is 1194 and it uses SSL/TLS as a carrier for the encryption. A basic firewall -- like the one which is already blocking your app -- can easily classify a connection based on those elements then block the IP address or the domain of the OpenVPN server, this will prevent users from using the an OpenVPN default setup. 
+OpenVPN’s default port is 1194 and it uses SSL/TLS as a carrier for the encryption. A basic firewall -- like the one which is already blocking your app -- can easily classify a connection based on those elements then block the IP address or the domain of the OpenVPN server, this will prevent users from using the an OpenVPN default setup.
+
+Other VPN-like services are also available, such as [Lantern](https://getlantern.org), [Psiphon](https://www.psiphon3.com) and [TunnelBear](https://www.tunnelbear.com). These use more sophisticated techniques to allow end users to tunnel through network interference to the desired service.
 
 <img src="/assets/images/openVPN_packets.png" alt="A wireshark capture for OpenVPN packets" />
 
@@ -62,7 +64,7 @@ OpenVPN’s default port is 1194 and it uses SSL/TLS as a carrier for the encryp
 
 ## How this escalates
 
-The collateral freedom approach is not without its own risks.  In the Greatfire example, while github and the Amazon Cloud were not blocked outright due to the socio-economic impacts, they both paid a steep price for hosting censored content in the form of a [crippling denial of service attack](http://arstechnica.com/security/2015/04/ddos-attacks-that-crippled-github-linked-to-great-firewall-of-china/)
+The collateral freedom approach is not without its own risks.  In one well-known case, github and the Amazon Cloud were unknowingly being used for collateral freedom, and while they were not blocked outright, likely due to the socio-economic impacts, they both paid a steep price for hosting censored content in the form of a [crippling denial of service attack](http://arstechnica.com/security/2015/04/ddos-attacks-that-crippled-github-linked-to-great-firewall-of-china/)
 
 Less advanced adversaries can also take a further step on even the most basic firewalls, which is [Protocol and Port Blocking](#port-blocking).
 
@@ -90,22 +92,22 @@ More advanced adversaries can move on from these to using a more active approach
 
 # DPI Blocking
 
-Deep Packet Inspections, or DPI inspects each packet based on the header of its request and the data it carries, it can identify the type of protocol or the connection is using even if it was encrypted. DPI is not a mechanism to decrypt what’s inside packets but to identify the ‘protocol’ or the application it represents.
+Deep Packet Inspection (DPI) inspects each packet based on the header of its request and the data it carries. It can identify the type of protocol the connection is using even if it was encrypted. DPI is not a mechanism to decrypt what is inside packets but to identify the ‘protocol’ or the application it represents.
 
-With DPI, a censor can targeting VPN, Tor and other services by filtering the packets at the Application Layer of the OSI reference model, analyze them, and then block the IP addresses that the clients are trying to connect to.
+With DPI, a censor can target VPN, Tor and other services by filtering the packets at the Application Layer of the OSI reference model, analyze them, and then block the IP addresses that the clients are trying to connect to.
 
 Even if you are using OpenVPN on the https port, and not using a well-known VPN host (which could be blocked by IP and/or DNS), DPI can inspect the traffic and identify it as OpenVPN, and block it based on that inspection.
 
 |**A Short History of DPI Blocking**|
 |In 2012, both [Iran](https://smallmedia.org.uk/work/writers-block-the-story-of-censorship-in-iran) and [China](https://www.technologyreview.com/s/427413/how-china-blocks-the-tor-anonymity-network/) began filtering encrypted internet traffic, specifically targeting The Tor Project's anti-censorship, pro-privacy network; triggering The Tor Project to release their first public [obfuscation work](https://blog.torproject.org/blog/obfsproxy-next-step-censorship-arms-race).|
-|Other countries soon applied the same strategy -- [Ethiopia](https://blog.torproject.org/blog/ethiopia-introduces-deep-packet-inspection) later in 2012, [Syria](http://secdev-foundation.org/wp-content/uploads/2014/08/Flash-Note-Syria-8-Syrian-regime-tightens-access-to-secure-online-communications.pdf) in 2014, among many others -- Privacy International tracks surveillance systems in their [Transparency Toolkit](https://sii.transparencytoolkit.org/); and Freedom House's [Freedom on the Net](https://freedomhouse.org/report/table-country-scores-fotn-2016) tracks both censorship and other limitations on net freedom.|
+|Other countries soon applied the same strategy -- [Ethiopia](https://blog.torproject.org/blog/ethiopia-introduces-deep-packet-inspection) later in 2012, [Syria](http://secdev-foundation.org/wp-content/uploads/2014/08/Flash-Note-Syria-8-Syrian-regime-tightens-access-to-secure-online-communications.pdf) in 2014, among many others. Earlier this year, the OONI project wrote about DPI being used in Iran [to block Instagram](https://ooni.torproject.org/post/2018-iran-protests-pt2/). Privacy International tracks surveillance systems in their [Transparency Toolkit](https://sii.transparencytoolkit.org/); and Freedom House's [Freedom on the Net](https://freedomhouse.org/report/freedom-net/freedom-net-2017) tracks both censorship and other limitations on net freedom.|
 
 
 **What the host can do**
 
-**At this stage, obfuscation of traffic becomes a requirement** - to evade DPI and thereby protect servers from being immediately [blocked via IP](#ip-blocking).  Pluggable Transports were first developed by [The Tor Project](https://www.torproject.org/docs/pluggable-transports.html.en) to provide ways for tool developers to make their apps more resilient against DPI filtering.
+**At this stage, obfuscation of traffic becomes a requirement** - to evade DPI and thereby protect servers from being immediately [blocked via IP](#ip-blocking). Pluggable Transports were first developed by [The Tor Project](https://www.torproject.org/docs/pluggable-transports.html.en) to provide ways for tool developers to make their apps more resilient against DPI filtering.
 
-Pluggable Transports make it harder for DPI to classify the connection and take an action against it. [A Child's Garden on Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
+Pluggable Transports make it harder for DPI to classify the connection and take an action against it. [A Child's Garden of Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
 
 <!-- 
 On the other side, a recipient PT server will be waiting for the packets to arrive and then ‘Decipher’ them and then forward the packets to the OpenVPN server.
@@ -142,7 +144,7 @@ A significant step up from this is to work towards making the traffic look like 
 
 To defeat scrambling, censors must either select only recognized and "approved" traffic out (whitelisting), scan the destination of each unrecognized stream of traffic and determine if it is legitimate or a circumvention tool, or find ways to interfere with or still identify the traffic.
 
-China is famous for their "active probing" , and Iran for their willingness to terminate encrypted traffic after one minute. The newest attack appears to be from Kazakhstan, which is using a system which matches the [timing of the obfs4 handshake and prevents it from successfully completing](https://bugs.torproject.org/20348).
+China is famous for their "active probing" , and Iran for their willingness to terminate encrypted traffic after one minute. Kazakhstan was found to be using a system which matches the [timing of the obfs4 handshake and prevents it from successfully completing](https://bugs.torproject.org/20348).
 
 ## Making it look like something else
 
@@ -152,17 +154,17 @@ However, using this approach can force even more resource-intense follow-up scan
 
 ## Hiding in the crowd
 
-Another approach leverages large cloud providers which are socially or economically difficult to block.  Using [Fronting](/transports/#fronting), you can route traffic through an allowed service.  This would force an adversary to block an entire cloud provider - and every other service hosted in it. Amazon advertises over a million active customers of its Web Services cloud, including AirBnB, Blackboard, Dow Jones, and Netflix. Blocking a circumvention tool that "hides" in Amazon's cloud would cause immense strain.  By a similar token, using Google's App Engine to circumvent would require blocking the entirety of Google.
+Another approach leverages large cloud providers which are socially or economically difficult to block.  Using [Fronting](/transports/#fronting), you can route traffic through an allowed service.  This would force an adversary to block an entire cloud provider - and every other service hosted in it. Circumvention tool providers have previously been able to use this kind of connection, but it is increasingly being locked down as the cloud providers seek to retain control over their services.
 
-Some adversaries are willing to do this - but often only temporarily. The downside of this powerful technique is that is can be overwhelmingly financially expensive to route traffic through these services.
+Some adversaries are willing to block entire cloud providers - but often only temporarily. The downside of this powerful technique for tool providers is that it can in some cases be overwhelmingly financially expensive to route traffic through these services.
 
-Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  A new attempt at this is emerging, called Snowflake, which gets around many of the challenges flashproxy faced by using WebRTC.
+Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC.
 
 # Onwards
 
 There is no one perfect solution, but this is where we are today.
 
-Not every adversary seeking to limit access to information can or is willing to do all of the above, so creative application of these, building new versions, innovation around new approaches -- and sharing of working options -- allow app and service providers to ensure connectivity through everything but complete shutdowns. 
+Not every adversary seeking to limit access to information can, or is willing to, do all of the above, so creative application of these, building new versions, innovation around new approaches -- and sharing of working options -- allow app and service providers to ensure connectivity through everything but complete shutdowns.
 
 
 <!-- 

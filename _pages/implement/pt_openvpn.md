@@ -25,13 +25,13 @@ This guide steps you through setting up your own obfuscated OpenVPN system.
 
 # Introduction
 
-VPNs are user friendly and easy to manage service being used by users in countries with censorship which made it a target to government firewalls.  
+A VPN is an easy to manage service that can help users access content in countries where there is blocking of DNS, ports, IP addresses and protocols.
 
 <img src="/assets/images/OpenVPNconnection.png" width="50%" alt="VPN circumventing a firewall" />
 
 *VPN circumventing a firewall*
 
-However, VPNs are increasingly targeted for blocking themselves. Deep Packet Inspection DPI is able to block any targeted application or protocol by filtering the traffic and preventing it from passing firewalls to the outside world Internet. As DPI firewalls act based on the packet type, not the port number, simple "tricks" like changing the port will not help
+However, VPNs are increasingly targeted for blocking themselves. Deep Packet Inspection (DPI) is able to block any targeted application or protocol by filtering the traffic and preventing it from passing firewalls to the outside world Internet. As DPI firewalls act based on the packet type, not the port number, simple "tricks" like changing the port will not help
 
  Pluggable transports make it possible to bypass such filtering without modifying the VPN itself but proxying the traffic into obfuscated tunnels which are significantly more difficult to identify and/or are costly to block to enable the traffic to pass through. Read more about [different types of obfuscation](/transports) or the [history of filtering](/how/#dpi-blocking/). 
 

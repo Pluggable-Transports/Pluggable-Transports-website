@@ -19,7 +19,7 @@ sidebar:
 
 * Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list
 
-* Email us at [contact@pluggabletransports.info](contact@pluggabletransports.info)
+* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info)
 
 <!--
 <form action="//formspree.io/info@pluggabletransports.info" method="POST">

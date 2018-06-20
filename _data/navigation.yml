@@ -1,12 +1,12 @@
 # main links
 main:
-  - title: "Learn"
-    url: /
   - title: "Implement"
     url: /implement/
   - title: "Create"
     url: /build/
-  - title: "Updates"
+  - title: "Spec"
+    url: /spec/
+  - title: "Blog"
     url: /blog/
   - title: "Contact"
     url: /contact/
@@ -19,14 +19,12 @@ sidenav:
         url: /how/
       - title: "Meet the Transports"
         url: /transports/
-      - title: "Updates"
+      - title: "Blog"
         url: /blog/
 
-  - title: "Implementing Transports"
+  - title: "Using Transports"
     url: /implement/
     children:
-      - title: "Using Transports"
-        url: /implement/
       - title: "Implementing in Go"
         url: /implement/go
       - title: "Proxy Modes"

@@ -8,7 +8,7 @@ tags:
   - IPC
   - Shapeshifter
   - Dispatcher
-layout: archive
+layout: posts
 
 ---
 The Operator Foundation released a new documentation for Shapeshifter Dispatcher which provides the most detailed and clear explanation of how to run Shapeshifter Dispatcher with Obfs4 transport. Obfs4 transport provides better obfuscation quality with a faster performance.
