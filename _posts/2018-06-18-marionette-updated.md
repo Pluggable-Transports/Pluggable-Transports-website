@@ -1,6 +1,6 @@
 ---
 title: "Latest updates to Marionette are live"
-date: 2018-06-19
+modified: 2018-06-19
 categories:
   - blog
 tags:
