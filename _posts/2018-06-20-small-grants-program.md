@@ -1,5 +1,6 @@
 ---
 title: "Ongoing small grants program"
+date: 2018-06-20
 modified: 2018-06-20
 categories:
   - blog
