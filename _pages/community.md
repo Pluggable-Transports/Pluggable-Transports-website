@@ -19,11 +19,19 @@ sidebar:
 
 ## Plug in!
 
-* Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list
+* Pluggable Transports is an [Internews](https://internews.org) community-building project.
 
-* Email us at [contact@pluggabletransports.info](contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/OpenInternet/PT-website/issues)
+* Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list.
 
-* Operator Foundation's [Shapeshifter repositories](https://github.com/OperatorFoundation/?q=anticensorship)
+* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/OpenInternet/PT-website/issues).
 
-* [#KeepItOn](https://www.accessnow.org/keepiton/) is a public advocacy campaign by Access Now to fight internet shutdowns and censorship
+* Read the [Tor project's guide](https://www.torproject.org/docs/pluggable-transports) to pluggable transports.
+
+* [The Guardian Project](https://guardianproject.info/) - people, apps and codes you can trust.
+
+* [Operator Foundation](https://operatorfoundation.org)- making useable tools to help people around the world with censorship, security, and privacy. Creators of [Shapeshifter](https://github.com/OperatorFoundation/?q=anticensorship) and [Adversary Lab](https://github.com/OperatorFoundation/AdversaryLab).
+
+* [Redjack](https://www.redjack.com) - tackling critical intelligence challenges, creators of [Marionette](https://github.com/redjack/marionette), the programmable network proxy.
+
+* [#KeepItOn](https://www.accessnow.org/keepiton/) is a public advocacy campaign by Access Now to fight internet shutdowns and censorship.
 

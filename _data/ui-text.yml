@@ -40,6 +40,8 @@ en: &DEFAULT_EN
   comment_success_msg        : "Thanks for your comment! It will show on the site once it has been approved."
   comment_error_msg          : "Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again."
   loading_label              : "Loading..."
+  updated_label               : "Updated:"
+  created_label              : "Created:"      
 en-US:
   <<: *DEFAULT_EN
 en-CA:
@@ -89,6 +91,8 @@ es: &DEFAULT_ES
   comment_success_msg        :
   comment_error_msg          :
   loading_label              :
+  updated_label               : "Actualizado:"
+  created_label              : "Actualizado:"      
 es-ES:
   <<: *DEFAULT_ES
 es-CO:
@@ -135,6 +139,8 @@ fr: &DEFAULT_FR
   comment_success_msg        : "Merci pour votre commentaire, il sera visible sur le site une fois approuvé."
   comment_error_msg          : "Désolé, une erreur est survenue lors de la soumission. Vérifiez que les champs obligatoires ont été remplis et réessayez."
   loading_label              : "Chargement..."
+  updated_label               : "Mis à jour :"
+  created_label              : "Mis à jour :"      
 fr-FR:
   <<: *DEFAULT_FR
 fr-BE:
@@ -182,6 +188,8 @@ tr: &DEFAULT_TR
   comment_success_msg        : "Yorumunuz için teşekkürler! Yorumunuz onaylandıktan sonra sitede gösterilecektir."
   comment_error_msg          : "Maalesef bir hata oluştu. Lütfen zorunlu olan tüm alanları doldurduğunuzdan emin olun ve sonrasında tekrar deneyin."
   loading_label              : "Yükleniyor..."
+  updated_label               : "Güncelleme tarihi:"
+  created_label              : "Güncelleme tarihi:"      
 tr-TR:
   <<: *DEFAULT_TR
 
@@ -225,6 +233,8 @@ pt: &DEFAULT_PT
   comment_success_msg        : "Obrigado pelo seu comentário! Será visível no site logo que aprovado."
   comment_error_msg          : "Lamento, ocorreu um erro na sua submissão. Por favor verifique se todos os campos obrigatórios estão corretamente preenchidos e tente novamente."
   loading_label              : "A carregar..."
+  updated_label               : "Güncelleme tarihi:"
+  created_label              : "Güncelleme tarihi:"      
 # Brazilian Portuguese
 pt-BR:
   page                       : "Página"
@@ -264,6 +274,8 @@ pt-BR:
   comment_success_msg        :
   comment_error_msg          :
   loading_label              :
+  updated_label               : "Atualizado em:"
+  created_label              : "Atualizado em:"      
 pt-PT:
   <<: *DEFAULT_PT
 
@@ -307,6 +319,8 @@ it: &DEFAULT_IT
   comment_success_msg        : "Grazie per il tuo commento! Verrà visualizzato nel sito una volta che sarà approvato."
   comment_error_msg          : "C'è stato un errore con il tuo invio. Assicurati che tutti i campi richiesti siano stati completati e riprova."
   loading_label              : "Caricamento..."
+  updated_label               : "Aggiornato:"
+  created_label              : "Aggiornato:"      
 it-IT:
   <<: *DEFAULT_IT
 
@@ -350,6 +364,8 @@ zh: &DEFAULT_ZH
   comment_success_msg        : "Thanks for your comment! It will show on the site once it has been approved."
   comment_error_msg          : "Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again."
   loading_label              : "Loading..."
+  updated_label               : "最新的:"
+  created_label              : "最新的:"      
 zh-CN:
   <<: *DEFAULT_ZH
 zh-HK:
@@ -399,6 +415,8 @@ de: &DEFAULT_DE
   comment_success_msg        : "Danke für ihren Kommentar! Er wird auf der Seite angezeigt, nachdem er geprüft wurde."
   comment_error_msg          : "Entschuldigung, es gab einen Fehler. Bitte füllen sie alle benötigten Felder aus und versuchen sie es erneut."
   loading_label              : "Lade..."
+  updated_label               : "Aktualisiert:"
+  created_label              : "Aktualisiert:"      
 de-DE:
   <<: *DEFAULT_DE
 de-AT:

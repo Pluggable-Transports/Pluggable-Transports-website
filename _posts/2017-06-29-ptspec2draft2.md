@@ -9,7 +9,7 @@ tags:
   - Go
   - API
   - developer
-layout: archive
+layout: posts
 
 ---
 The process of updating the Pluggable Transport Specification Document (PT Spec) is still ongoing. Recently Dr. Brandon Wiley of the Operator foundation released an updated version 2.0 Draft 2, of the Spec which answers different issues in the previous spec. 
