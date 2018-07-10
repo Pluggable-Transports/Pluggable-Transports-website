@@ -21,6 +21,8 @@ sidebar:
 
 * Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info)
 
+* Connect with us on [Twitter](https://twitter.com/plugtransports)
+
 <!--
 <form action="//formspree.io/info@pluggabletransports.info" method="POST">
 Name (optional): <input type="text" name="name">
