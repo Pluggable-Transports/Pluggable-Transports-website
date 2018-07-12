@@ -44,3 +44,11 @@ sidenav:
         url: /spec#build
   - title: "Community"
     url: /community/
+    children:
+      - title: "Join the Google Group"
+        url: https://groups.google.com/forum/#!forum/traffic-obf
+      - title: "Connect on Twitter"
+        url: https://twitter.com/plugtransports
+      - title: "Email us"
+        url: mailto:contact@pluggabletransports.info
+

@@ -1,7 +1,8 @@
 ---
 title: "Ongoing small grants program"
 date: 2018-06-20
-modified: 2018-06-20
+modified: 2018-07-12
+
 categories:
   - blog
 tags:
@@ -11,6 +12,7 @@ tags:
 layout: posts
 
 ---
+*Update: See also our [extended grants blog ](/blog/extending-grants/) for information about available funding for new research*
 
 Internews is pleased to announce a continuing small grants program for implementation projects involving pluggable transports. We are in particular interested in transports taking advantage of the UDP options of the 2.x spec to support voice, video, and VPN traffic, and in transports that do not rely on domain fronting.
 
