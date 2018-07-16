@@ -16,7 +16,7 @@ sidebar:
 
 {% include toc title="" icon="file-text" %}
 
-Censorship is on the rise worldwide. This page describes some of the more common ways that websites and apps are blocked, and how both service providers and users can get around them.
+Censorship is on the rise worldwide. This page describes some of the more common ways that websites and apps are blocked, and how both service providers and users can get around them. If you want to dive deeper into this subject, ou should also take a look at [this IETF draft paper](https://github.com/josephlhall/rfc-censorship-tech/blob/master/as-submitted/draft-hall-censorship-tech-02.txt), published in May 2018.
 
 ----------
 
