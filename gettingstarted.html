@@ -11,8 +11,10 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="Let&#39;s Plug!" startnode="1" creator="Twine" creator-version="2.2.1" ifid="D628E389-87D3-4DF7-9AD8-C8CF1DCE3ED7" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Who are you?" tags="" position="68,104" size="100,100">[[I&#39;m a developer]]
-[[I&#39;m an end user]]</tw-passagedata><tw-passagedata pid="2" name="I&#39;m an end user" tags="" position="310,101" size="100,100">You&#39;re probably here because you want to get past something that&#39;s blocking your access to something on the Internet. What do you want to do now?
+<tw-storydata name="Let&#39;s Plug!" startnode="1" creator="Twine" creator-version="2.2.1" ifid="D628E389-87D3-4DF7-9AD8-C8CF1DCE3ED7" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Who are you?" tags="" position="68,104" size="100,100">*Who are you?*
+
+[[I&#39;m a developer]]
+[[I&#39;m an end user]]</tw-passagedata><tw-passagedata pid="2" name="I&#39;m an end user" tags="" position="309,101" size="100,100">You&#39;re probably here because you want to get past something that&#39;s blocking your access to something on the Internet. What do you want to do now?
 
 [[Give me a quick solution!]]
 [[I want to build something myself]]
@@ -24,18 +26,25 @@ Some of the most common sites and services are blocked in different ways on diff
 
 Other times, it may be that your Internet Service Provider (ISP) is blocking access to content. An ISP is anyone whos provides your network connection and doesn&#39;t want you to access something - it could be your corporate firewall, your school network, or your telecom company.
 
-In many cases, it&#39;s frustrating when you can&#39;t get to the content you want. Pluggable Transports are designed to help you find the best way to get to the content, and there are several types of transport. The idea behind it is that they all talk to the system in a common way, and allow app developers and sysadmins to implement one solution that can access multiple different transports at any given time.</tw-passagedata><tw-passagedata pid="3" name="I&#39;m a developer" tags="" position="68,228" size="100,100">You already know you want to use Pluggable Transports with your software, and are looking for some resources to help you with that. What can we help you with today?
+In many cases, it&#39;s frustrating when you can&#39;t get to the content you want. Pluggable Transports are designed to help you find the best way to get to the content, and there are several types of transport. The idea behind it is that they all talk to the system in a common way, and allow app developers and sysadmins to implement one solution that can access multiple different transports at any given time.
+
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="3" name="I&#39;m a developer" tags="" position="68,228" size="100,100">You already know you want to use Pluggable Transports with your software, and are looking for some resources to help you with that. What can we help you with today?
 
 [[I want to install support for Pluggable Transports on my OpenVPN server|OpenVPN and Pluggable Transports]]
 [[Using Pluggable Transports in my Go app]]
 [[Testing Pluggable Transports]]
 [[I want to write a transport]]
-[[Look at the Pluggable Transports specification|Pluggable Transports specification]]</tw-passagedata><tw-passagedata pid="4" name="Give me a quick solution!" tags="" position="542,168" size="100,100">You need to get to your content quickly. There are several pieces of software out there already that have implemented Pluggable Transports. You can see a table of them [here], with links to download and install. Everything in this table is open source, and there&#39;s a solution for every desktop and mobile operating system you&#39;re likely to use.
+[[Look at the Pluggable Transports specification|Pluggable Transports specification]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="4" name="Give me a quick solution!" tags="" position="542,168" size="100,100">You need to get to your content quickly. There are several pieces of software out there already that have implemented Pluggable Transports. You can see a table of them [here], with links to download and install. Everything in this table is open source, and there&#39;s a solution for every desktop and mobile operating system you&#39;re likely to use.
 
 Does this give you the answer you&#39;re looking for?
 
 [[Yes, I&#39;m done!|I&#39;m done!]]
-No, [[I want to build something myself]] </tw-passagedata><tw-passagedata pid="5" name="I want to build something myself" tags="" position="814,165" size="100,100">Rather than using &lt;a href=&quot;https://www.pluggabletransports.info/implement/&quot; target=&quot;_blank&quot;&gt;existing tools&lt;/a&gt;, you&#39;re going to build your own Pluggable Transports-based system. One of the ways we can help is by showing you the options using OpenVPN.
+No, [[I want to build something myself]] 
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="5" name="I want to build something myself" tags="" position="814,165" size="100,100">Rather than using &lt;a href=&quot;https://www.pluggabletransports.info/implement/&quot; target=&quot;_blank&quot;&gt;existing tools&lt;/a&gt;, you&#39;re going to build your own Pluggable Transports-based system. One of the ways we can help is by showing you the options using OpenVPN.
 
 Operator Foundation (&lt;a href=&quot;https://www.operatorfoundation.org&quot;&gt;https://www.operatorfoundation.org&lt;/a&gt;) has created Moonbounce, which is a graphical user interface on Mac OSX for implementing OpenVPN with support for Pluggable Transports. They also have a script for provisioning an OpenVPN server on Digital Ocean.
 
@@ -43,7 +52,11 @@ If you don&#39;t want to use Moonbounce, or are using a different OS, you will p
 
 
 [[I want to use Moonbounce|Moonbounce]]
-[[I want to do a manual install|OpenVPN and Pluggable Transports]]</tw-passagedata><tw-passagedata pid="6" name="I&#39;m done!" tags="" position="50,734" size="100,100">Thanks for following our story! Let us know what you think of this - you can &lt;a href=&quot;mailto:contact@pluggabletransports.info&quot;&gt;email us&lt;/a&gt; or &lt;a href=&quot;https://www.twitter.com/plugtransports&quot;&gt;find us on Twitter&lt;/a&gt;. For other useful links, visit the {Pluggable Transports web site}, and see these {community links} for more info.</tw-passagedata><tw-passagedata pid="7" name="Moonbounce" tags="" position="482,291" size="100,100">From Operator Foundation&#39;s &lt;a href=&quot;https://github.com/OperatorFoundation/Moonbounce/blob/master/README.md&quot; target=&quot;_blank&quot;&gt;README&lt;/a&gt; file:
+[[I want to do a manual install|OpenVPN and Pluggable Transports]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="6" name="I&#39;m done!" tags="" position="50,734" size="100,100">Thanks for following our story! Let us know what you think of this - you can &lt;a href=&quot;mailto:contact@pluggabletransports.info&quot;&gt;email us&lt;/a&gt; or &lt;a href=&quot;https://www.twitter.com/plugtransports&quot;&gt;find us on Twitter&lt;/a&gt;. For other useful links, visit the {Pluggable Transports web site}, and see these {community links} for more info.
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="7" name="Moonbounce" tags="" position="482,291" size="100,100">From Operator Foundation&#39;s &lt;a href=&quot;https://github.com/OperatorFoundation/Moonbounce/blob/master/README.md&quot; target=&quot;_blank&quot;&gt;README&lt;/a&gt; file:
 
 ***Moonbounce is graphical user interface for using an OpenVPN client and server with Pluggable Transport support. The goal of Moonbounce is to provide a usability-focused, streamlined user experience to using PT-enabled OpenVPN.***
 
@@ -51,10 +64,14 @@ You can get the code for the client here, and if you want to provision a server 
 
 
 [[I&#39;m done!]] 
-[[Go back a step|I want to build something myself]]</tw-passagedata><tw-passagedata pid="8" name="OpenVPN and Pluggable Transports" tags="" position="501,430" size="100,100">If you&#39;re here, you&#39;ve probably got an OpenVPN server running, and you want to add support for Pluggable Transports. However, maybe you need some help installing OpenVPN?
+[[Go back a step|I want to build something myself]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="8" name="OpenVPN and Pluggable Transports" tags="" position="501,430" size="100,100">If you&#39;re here, you&#39;ve probably got an OpenVPN server running, and you want to add support for Pluggable Transports. However, maybe you need some help installing OpenVPN?
 
 [[Yes, please help me with OpenVPN|Installing and configuring OpenVPN]]
-[[I have OpenVPN running, let&#39;s talk Pluggable Transports|Installing Pluggable Transports on OpenVPN]]</tw-passagedata><tw-passagedata pid="9" name="Installing and configuring OpenVPN" tags="" position="666,568" size="100,100">Our &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#preparation&quot; target=&quot;_blank:&gt;guide to installing OpenVPN&lt;/a&gt; takes you through these three steps:
+[[I have OpenVPN running, let&#39;s talk Pluggable Transports|Installing Pluggable Transports on OpenVPN]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="9" name="Installing and configuring OpenVPN" tags="" position="666,567" size="100,100">Our &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#preparation&quot; target=&quot;_blank:&gt;guide to installing OpenVPN&lt;/a&gt; takes you through these three steps:
 
 * Preparation: Getting the dependencies (openssl, ca-certificates, git, golang, curl, screen).
 * OpenVPN installation: How to install, configure and test OpenVPN with root / sudo access on your server.
@@ -63,7 +80,9 @@ You can get the code for the client here, and if you want to provision a server 
 Once that&#39;s complete, and you&#39;re happy with the basic setup, it&#39;s time to move on to the Pluggable Transports configuration.
 
 [[Move on to Pluggable Transports|Installing Pluggable Transports on OpenVPN]]
-[[Go back|Installing Pluggable Transports on OpenVPN]]</tw-passagedata><tw-passagedata pid="10" name="Installing Pluggable Transports on OpenVPN" tags="" position="499,700" size="100,100">You have an OpenVPN server running, and have tested client connections. You now want to add Pluggable Transports support. To do this, you&#39;re going to install &lt;a href=&quot;https://github.com/OperatorFoundation/shapeshifter-dispatcher&quot; target=&quot;_blank&quot;&gt;shapeshifter-dispatcher&lt;/a&gt;, which will allow you to proxy both TCP and UDP traffic.
+[[Go back|Installing Pluggable Transports on OpenVPN]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="10" name="Installing Pluggable Transports on OpenVPN" tags="" position="499,700" size="100,100">You have an OpenVPN server running, and have tested client connections. You now want to add Pluggable Transports support. To do this, you&#39;re going to install &lt;a href=&quot;https://github.com/OperatorFoundation/shapeshifter-dispatcher&quot; target=&quot;_blank&quot;&gt;shapeshifter-dispatcher&lt;/a&gt;, which will allow you to proxy both TCP and UDP traffic.
 
 Our guide to installing Pluggable Transports with OpenVPN will help you &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#server-obfuscation-configuration&quot; target=&quot;_blank&quot;&gt;install and configure shapeshifter&lt;/a&gt;.
 
@@ -77,7 +96,9 @@ Once this is done, you will have your own server running OpenVPN with Pluggable 
 Are you done with this guide?
 
 [[I&#39;m done!]]
-[[No, I want to start again|Who are you?]]</tw-passagedata><tw-passagedata pid="11" name="Pluggable Transports specification" tags="" position="120,485" size="100,100">The current version of the spec is available &lt;a href=&quot;https://www.pluggabletransports.info/spec/pt2draft3&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;. 
+[[No, I want to start again|Who are you?]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="11" name="Pluggable Transports specification" tags="" position="120,485" size="100,100">The current version of the spec is available &lt;a href=&quot;https://www.pluggabletransports.info/spec/pt2draft3&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;. 
 
 The developments that led to the Pluggable Transports 2.0 specification included:
 
@@ -88,7 +109,9 @@ The developments that led to the Pluggable Transports 2.0 specification included
 As you would expect, the specification for Pluggable Transports continues to evolve. You may find that the current spec doesn&#39;t work for your needs, and you might want to contribute to the next version. If that&#39;s the case, you can do that via &lt;a href=&quot;https://github.com/Pluggable-Transports/Pluggable-Transports-spec&quot;&gt;this Github repo&lt;/a&gt;.
 
 [[Go back|I&#39;m a developer]]
-[[I&#39;m done!]]</tw-passagedata><tw-passagedata pid="12" name="Using Pluggable Transports in my Go app" tags="" position="10,359" size="100,100">Our full guide for using Pluggable Transports in Go is available &lt;a href=&quot;https://www.pluggabletransports.info/implement/go/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;. We take you through these steps in a sample deployment:
+[[I&#39;m done!]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="12" name="Using Pluggable Transports in my Go app" tags="" position="10,359" size="100,100">Our full guide for using Pluggable Transports in Go is available &lt;a href=&quot;https://www.pluggabletransports.info/implement/go/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;. We take you through these steps in a sample deployment:
 
 * What are the Transport and TransportListener interfaces?
 * Creating a Go program
@@ -99,7 +122,9 @@ Once you&#39;re done with that guide, you might want to look at how to test your
 
 [[Testing Pluggable Transports]]
 [[Go back|I&#39;m a developer]]
-[[I&#39;m done!]]</tw-passagedata><tw-passagedata pid="13" name="Testing Pluggable Transports" tags="" position="364,548" size="100,100">There are many different ways in which access to sites and services can be blocked, ranging from simple IP address or DNS blocking to rules created from deep packet inspection (DPI). You might want to test a network environment that simulates some of the many ways in which this can happen.
+[[I&#39;m done!]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="13" name="Testing Pluggable Transports" tags="" position="364,548" size="100,100">There are many different ways in which access to sites and services can be blocked, ranging from simple IP address or DNS blocking to rules created from deep packet inspection (DPI). You might want to test a network environment that simulates some of the many ways in which this can happen.
 
 We recommend investigating the following services:
 
@@ -107,7 +132,9 @@ We recommend investigating the following services:
 * &lt;a href=&quot;https://openinternet.github.io/copilot/&quot; target=&quot;_blank&quot;&gt;CoPilot&lt;/a&gt;: This is a wireless hotspot that provides an easy to use web interface for simulating custom censorship environments. It comes with various plugins and the ability to import censorship “rules” from standard Intrusion prevention and detection systems.
 
 [[Go back|I&#39;m a developer]]
-[[I&#39;m done!]]</tw-passagedata><tw-passagedata pid="14" name="I want to write a transport" tags="" position="236,550" size="100,100">Do you have an idea for a Pluggable Transport? Do you want to implement something that follows the current spec and can help improve the community&#39;s work?
+[[I&#39;m done!]]
+
+[[Start over|Who are you?]]</tw-passagedata><tw-passagedata pid="14" name="I want to write a transport" tags="" position="236,550" size="100,100">Do you have an idea for a Pluggable Transport? Do you want to implement something that follows the current spec and can help improve the community&#39;s work?
 
 The first place to start is to look at the [[Pluggable Transports specification]]. There is also a &lt;a href=&quot;https://www.pluggabletransports.info/transports/&quot;&gt;Transports Library&lt;/a&gt; that will tell you about the existing transports.
 
@@ -116,7 +143,9 @@ When you&#39;re ready to move on, our &lt;a href=&quot;https://www.pluggabletran
 Don&#39;t forget to also look at &lt;a href=&quot;https://www.surveymonkey.com/r/pluggabletransports&quot;&gt;the Internews small grants pool&lt;/a&gt; to investigate funding for new Pluggable Transports.
 
 [[Testing Pluggable Transports]]
-[[I&#39;m done!]]</tw-passagedata></tw-storydata>
+[[I&#39;m done!]]
+
+[[Start over|Who are you?]]</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
