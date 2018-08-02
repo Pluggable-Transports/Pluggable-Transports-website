@@ -330,11 +330,10 @@ screen ~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2
 ~~~
 You will get this screen. Don’t forget to change the IP address and ports within the command.
 
-<<<<<<< HEAD
+
 <img  src="https://www.pluggabletransports.info/assets/images/Obfsservera.png" alt="Server Setup results screenshot" />
 =======
 <img  src="http://pluggabletransports.info/assets/images/Obfsservera.png" alt="Server Setup results screenshot" />
->>>>>>> upstream/gh-pages
 
 And the following command to use Obfs4:
 ~~~

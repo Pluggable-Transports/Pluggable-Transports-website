@@ -19,7 +19,7 @@ sidebar:
 
 {% include toc icon="file-text" %}
 
-If you application is written in Go, using Pluggable Transports is even easier. Transports that implement the PT 2.0 Go API provide a “virtual network interface” that can be used instead of Go’s net.Conn API for sending and receiving traffic over the network. When using these transports, the application data is transformed so as to be resistant to blocking.
+If your application is written in Go, using Pluggable Transports is even easier. Transports that implement the PT 2.0 Go API provide a “virtual network interface” that can be used instead of Go’s net.Conn API for sending and receiving traffic over the network. When using these transports, the application data is transformed so as to be resistant to blocking.
 
 Before we get started writing code, let’s look at the required interfaces. These interfaces can be found in the PT 2.0 Go API specification, as well as in the [*shapeshifter-transports*](https://github.com/OperatorFoundation/shapeshifter-transports) Go library (in the [*base*](https://github.com/OperatorFoundation/shapeshifter-transports/blob/master/transports/base/base.go) package).
 
