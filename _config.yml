@@ -55,7 +55,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : "plugtransports"
 facebook:
   username               :
   app_id                 :
@@ -78,10 +78,10 @@ analytics:
 # Site Author
 author:
   name             : #""
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/ptavatar.png"
   bio              : #""
   location         : #""
-  email            :
+  email            : "contact@pluggabletransports.info"
   uri              :
   bitbucket        :
   codepen          :
@@ -100,7 +100,7 @@ author:
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
   steam            :
   tumblr           :
-  twitter          :
+  twitter          : "plugtransports"
   vine             :
   weibo            :
   xing             :
@@ -160,7 +160,7 @@ kramdown:
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
-  toc_levels: 1..6
+  toc_levels: 1..3
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
