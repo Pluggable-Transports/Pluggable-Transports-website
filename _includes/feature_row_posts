@@ -1,0 +1,5 @@
+   <div>
+      {% for post in site.posts limit:3 %}
+      {% include archive-headlines.html type="list" %}
+      {% endfor %}
+   </div>

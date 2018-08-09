@@ -208,6 +208,7 @@
     li {
       display: table-cell;
       vertical-align: middle;
+      font-size: $type-size-4;
 
       &:first-child {
         font-weight: bold;
@@ -409,7 +410,7 @@
 
 .nav__list .nav__items {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
 
   a {
     color: inherit;
@@ -470,7 +471,7 @@
   margin: 0.5rem 0;
   padding: 0.5rem 0;
   font-family: $sans-serif-narrow;
-  font-size: $type-size-6;
+  font-size: $type-size-5;
   font-weight: bold;
   text-transform: uppercase;
   border-bottom: 1px solid $border-color;
@@ -511,7 +512,7 @@
     display: block;
     padding: 0.5rem 1rem;
     color: $gray;
-    font-size: $type-size-7;
+    font-size: $type-size-5;
     font-weight: bold;
     line-height: 1.5;
     border-bottom: 1px solid $border-color;

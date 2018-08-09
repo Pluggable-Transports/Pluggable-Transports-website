@@ -19,6 +19,8 @@ sidenav:
         url: /how/
       - title: "Meet the Transports"
         url: /transports/
+      - title: "Measuring Censorship"
+        url: /measuring
       - title: "Blog"
         url: /blog/
 
