@@ -12,7 +12,7 @@ title_separator          : "-"
 name                     : ""
 description              : ""
 #url                      : https://kkdev.pluggabletransports.info # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-url                      : https://kk-int.github.io/Pluggable-Transports-website
+url                      : https://kk-int.github.io
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
