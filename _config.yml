@@ -14,7 +14,7 @@ description              : ""
 #url                      : https://kkdev.pluggabletransports.info # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 url                      : https://kk-int.github.io/Pluggable-Transports-website
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : kk-int/Pluggable-Transports-website # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
