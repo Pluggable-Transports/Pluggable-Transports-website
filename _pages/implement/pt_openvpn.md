@@ -61,7 +61,7 @@ apt-get update
 apt-get install openssl ca-certificates git golang curl screen -y
 ~~~~
 
-# OpenVPN
+# Installing OpenVPN
 
 In this step, we will install and configure OpenVPN Server on Ubuntu 16.04.1 LTS and test it in non-DPI environment to be sure that it’s working. Please note that the procedure will probably work on any Debian / Ubuntu distro. You must run the installation and configure the different applications as root or sudoers account.
 
@@ -71,7 +71,7 @@ In this step, we will install and configure OpenVPN Server on Ubuntu 16.04.1 LTS
 apt-get install openvpn 
 ~~~~
 
-## Install and configure Certificates
+#### Install and configure Certificates
 
 In this step, you will create the PKI, setup the CA, DH parameters, the server and client certificates.
 
@@ -189,7 +189,7 @@ status openvpn-status.log
 verb 3
 ~~~~
 
-### Configure the network
+#### Configure the network
 
 In this step, you will configure your network to allow OpenVPN traffic.  You will need to change the following values to the correct numbers:
 
@@ -224,7 +224,7 @@ iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j SNAT --to YOURSERVERIPADDRESS
     iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 ~~~~
 
-### Start the OpenVPN service
+#### Start the OpenVPN service
 
 ~~~~
 /etc/init.d/openvpn restart
@@ -255,7 +255,7 @@ cd ~/openvpn-ca/
 source ./vars
 ~~~~
 
-*Create a key file named CLIENT
+* Create a key file named CLIENT
 
 ~~~~
 ./pkitool CLIENT
@@ -275,7 +275,7 @@ nano CLIENT.ovpn
 ~~~~
 
 
-* Then add the following configurations to the file
+* Then add the following configurations to the file:
 
 ~~~~
 client
@@ -311,7 +311,7 @@ In this step, we will install and use Shapeshifter-dispatcher Server and client 
 
 **The installation process of Shapeshifter-dispatcher is the same on the server and client, so apply these steps on both.**
 
-### Install and configure shapeshifter-dispatcher
+#### Install and configure shapeshifter-dispatcher
 
 ~~~~
 mkdir ~/go
@@ -319,7 +319,7 @@ export GOPATH=~/go
 go get -u github.com/OperatorFoundation/shapeshifter-dispatcher/shapeshifter-dispatcher
 ~~~~
 
-### Shapeshifter-dispatcher server and client setup:
+#### Shapeshifter-dispatcher server and client setup:
 
 Run shapeshifter-dispatcher on the server by running the following command for Obfs2:
 
@@ -330,17 +330,17 @@ screen ~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2
 ~~~
 You will get this screen. Don’t forget to change the IP address and ports within the command.
 
-
 <img  src="https://www.pluggabletransports.info/assets/images/Obfsservera.png" alt="Server Setup results screenshot" />
-=======
 <img  src="http://pluggabletransports.info/assets/images/Obfsservera.png" alt="Server Setup results screenshot" />
 
 And the following command to use Obfs4:
+
 ~~~
 bin/shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:OPENVPNPORT -transports obfs4 -bindaddr obfs4 -bindaddr obfs4-YOURSERVERIPADDRESS:OBFSPORT -logLevel DEBUG -enableLogging -extorport 127.0.0.1:3334
 ~~~
 
 When the server is running for the first time, it will generate a new public key and it will write it to a file in the state directory called obfs4_bridgeline.txt. This information is needed by the dispatcher client. Look in the file and retrieve the public key from the bridge line. It will look similar to this:
+
 ~~~
 Bridge obfs4 <IP ADDRESS>:<PORT> <FINGERPRINT> cert=OfQAPDamjsRO90fDGlnZR5RNG659FZqUKUwxUHcaK7jIbERvNU8+EVF6rmdlvS69jVYrKw iat-mode=0
 ~~~
@@ -362,6 +362,7 @@ You will get this screen:
 <img src="/assets/images/obfsclient.png" alt="screenshot of launching ptclientproxy, success at listening stage" />
 
 Or the following command to use Obfs4, don't forget to change the value of 'cert' with the one you generated on the server:
+
 ~~~~
 
 ~/go/bin/shapeshifter-dispatcher -transparent -client -state state -target YOURSERVERIPADDRESS:OBFSPORT -transports obfs4 -options "{\"cert\": \"OfQAPDamjsRO90fDGlnZR5RNG659FZqUKUwxUHcaK7jIbERvNU8+EVF6rmdlvS69jVYrKw\", \"iatMode\": \"0\"}" -logLevel DEBUG -enableLogging
@@ -384,6 +385,7 @@ You need to open the file *CLIENT.ovpn* and change the following values to point
 remote 127.0.0.1 
 port 1234
 ~~~~
+
 Save the file and establish the connection, you’re now off the radar!
 
 Note: We used obfs2 in this example to explain how Pluggable Transports can be used with OpenVPN only, Obfs2 is censored in many places and you might use other transports like [Obfs4 – Learn how to use it!]( https://www.pluggabletransports.info/blog/ShapeshifterDispatcherObfs4/)

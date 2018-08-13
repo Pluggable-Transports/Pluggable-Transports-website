@@ -10,14 +10,24 @@ header:
 
 sidebar:
     nav: "sidenav"
+
 ---
+
 {% include toc icon="file-text" %}
 
-*Welcome to the Pluggable Transports website -- We'd love your feedback via [email](mailto:feedback@pluggabletransports.info) or our [issue queue](https://github.com/OpenInternet/PT-website/issues). If you want to read or contribute to the the spec, you can do that [here](https://github.com/Pluggable-Transports/Pluggable-Transports-spec).*
+*Welcome to the Pluggable Transports website. For the latest news visit our [Blog](/blog) -- We'd love your feedback via [email](mailto:feedback@pluggabletransports.info) or our [issue queue](https://github.com/OpenInternet/PT-website/issues). If you want to read or contribute to the the spec, you can do that [here](https://github.com/Pluggable-Transports/Pluggable-Transports-spec).*
 
 **Internet censorship continues to rise** -- As reported by Freedom House's Freedom on the Net, 2017 was the [seventh consecutive year](https://freedomhouse.org/report/freedom-net/freedom-net-2017) of overall decline in internet freedom. Access Now continue to document internet shutdowns through their #KeepItOn campaign, reporting 61 shutdowns in the first three quarters of 2017.or 2016, Access Now's [#KeepItOn](https://www.accessnow.org/keepiton) campaign documented [**56 internet** shutdowns](https://www.accessnow.org/keepiton/).
 
 Censorship and shutdowns vary from blocking specific websites to blocking or throttling entire types of traffic, like https or VOIP protocols. Pluggable Transports can keep sites and apps working as they are meant to when the network is being interfered with in this way.
+
+---
+
+# Latest News
+
+{% include feature_row_posts %}
+
+---
 
 # What are Pluggable Transports?
 
@@ -30,7 +40,6 @@ Let's break that apart.
 With censorship of tools and websites increasingly common -- and powerful -- this is an urgent need to ensure access to information.
 
 * **[Learn more](/how/)** - about censorship and how Transports protect traffic.
-
 
 # Want to add Pluggable Transports to your tool?
 
