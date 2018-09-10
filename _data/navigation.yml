@@ -27,6 +27,8 @@ sidenav:
   - title: "Using Transports"
     url: /implement/
     children:
+      - title: "Getting ready"
+        url: /implement/getready
       - title: "Implementing in Go"
         url: /implement/go
       - title: "Proxy Modes"
