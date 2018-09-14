@@ -25,6 +25,8 @@ Here are some of the ways to configure the environment you're using:
 ### Server
 This could be on your local machine, or installed in a data center somewhere. Our instructions for [OpenVPN](/implement/openvpn) assume that you will be using an Ubuntu server (version 16.04.1 LTS). If you're looking to install Ubuntu in the cloud, consider using [DigitalOcean](https://www.digitalocean.com), who offer a range of pre-configured server setups depending on your needs. They also have their own [basic configuration guide](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04) for setting up the server and [setting up a firewall](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands). 
 
+Digital Ocean also offer [CentOS](https://www.digitalocean.com/community/tutorial_series/new-centos-7-server-checklist), which is the server platform used for building the [Marionette](https://github.com/redjack/marionette/blob/master/doc/USER_GUIDE.md) binary.
+
 ### Client
 Our list of [Transports](/implement) will tell you which ones work on which platform. If you're going to compile the software yourself, you will most likely need a Linux-style environment. The [marionette](https://github.com/redjack/marionette) project fully tested their build process on both Mac OSX and CentOS. In some cases, such as a mobile deployment, the software will be built on a desktop computer before being transferred to a mobile device.
 

@@ -35,8 +35,13 @@ sidenav:
         url: /implement/proxy
       - title: "OpenVPN Walkthrough"
         url: /implement/openvpn/
+      - title: "Marionette Server"
+        url: /implement/marionette-server
+      - title: "Marionette Client"
+        url: /implement/marionette-client
       - title: "Testing"
         url: /implement/test/
+        
   - title: "Create Transports"
     url: /build/
     children:
