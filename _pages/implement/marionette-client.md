@@ -15,6 +15,8 @@ sidebar:
     nav: "sidenav"
 ---
 
+{% include toc title="" icon="file-text" %}
+
 You've built Marionette [on your server](/implement/marionette-server), and now need to connect to it with your client. You're going to need to build the Marionette binary again, on the client this time, and configure it to connect to your server. These instructions are for the Mac OS, which has been tested against the [User Guide](https://github.com/redjack/marionette/blob/master/doc/USER_GUIDE.md) provided by the development team. 
 
 ## Dependencies

@@ -15,6 +15,8 @@ sidebar:
     nav: "sidenav"
 ---
 
+{% include toc title="" icon="file-text" %}
+
 At the end of August 2018, the [Marionette repository](https://www.github.com) received a substantial update, including detailed documentation that can help developers get started with Marionette, and implement it within their own software. The guides are simple to follow, but assume knowledge of the development environment. In this guide, we'll take you through the steps needed to get Marionette working on a server, using a CentOS server on DigitalOcean's cloud infrastructure. For installing the application on a Mac and connecting with Firefox, see our other [guide](/implement/marionette-client).
 
 We've chosen CentOS here because it's what the Marionette developers have tested the compiling of Marionette with.
