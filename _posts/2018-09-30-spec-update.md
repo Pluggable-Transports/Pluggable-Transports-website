@@ -16,7 +16,7 @@ layout: posts
 ---
 The latest version of the Pluggable Transports specification has been released, and is available [here](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/tree/master/releases/PTSpecV2.1Draft1).
 
-A major change in this revision is that it has been moduralized, so that components can be upgraded independently. The new spec consists of the following documents:
+A major change in this revision is that it has been moduralized, so that components can be upgraded independently. The new spec consists of the following PDF documents:
 
 * Base specification v2.1
 * Dispatcher IPC Interface v2.1
