@@ -73,9 +73,10 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 ~~~~~
 
-Type Ctrl-X to exit the editor, and answer Y to save the file. To make the new paths effective immediately, run the command:
+Type Ctrl-X to exit the editor, and answer Y to save the file. To create the path for Go to store its files and make the new paths effective immediately, run the commands:
 
 ~~~~~
+mkdir ~/go
 source ~/.bash_profile
 ~~~~~
 

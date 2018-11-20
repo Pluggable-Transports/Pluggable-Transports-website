@@ -37,13 +37,15 @@ However, VPNs are increasingly targeted for blocking themselves. Deep Packet Ins
 
 <img src="/assets/images/DPIOpenVPN.png" alt="Obfusctated VPN circumventing a DPI firewall" />
 
-*Obfusctated VPN circumventing a DPI firewall*
+*Obfuscated VPN circumventing a DPI firewall*
 
 In this process, we will be using [shapeshifter-dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md) which is a command line proxy tool which will act as a PT to help OpenVPN proxy the traffic through the firewall:
 
 “The Shapeshifter project provides network protocol shapeshifting technology (also sometimes referred to as obfuscation). The purpose of this technology is to change the characteristics of network traffic so that it is not identified and subsequently blocked by network filtering devices.”
 
 This tutorial uses Dispatcher to enable OpenVPN traffic to pass DPI firewalls, but it is important to note that this concept and process can apply to other services, including but not limited to VOIP and SSH or any other UDP or TCP connection.
+
+**If you already have OpenVPN installed and running on a server, you can skip forward to [installing Dispatcher](#server-obfuscation-configuration)**
 
 # Preparation
 
@@ -52,20 +54,18 @@ First, we will be installing the following packages that you will use during the
 * Openssl, in case it was not installed, this will allow you to generate ssl certificate for the server and the clients
 * ca-certificates, the common CA certificates
 * git, distributed version control system, we will need it to setup shapeshifter-dispatcher
-* golang, Go programing language, which is needed to get shapeshifter-dispatcher to work
 * curl,  to get files from web or ftp server.
 * screen, this application will help you to run processes in the background
+* easy-rsa, required for creating certificates
 
 ~~~~
 apt-get update
-apt-get install openssl ca-certificates git golang curl screen -y
+apt-get install openssl ca-certificates git curl screen easy-rsa -y
 ~~~~
 
 # Installing OpenVPN
 
 In this step, we will install and configure OpenVPN Server on Ubuntu 16.04.1 LTS and test it in non-DPI environment to be sure that it’s working. Please note that the procedure will probably work on any Debian / Ubuntu distro. You must run the installation and configure the different applications as root or sudoers account.
-
-**If you already have OpenVPN installed and running, skip forward to [installing Dispatcher](#server-obfuscation-configuration)**
 
 ~~~~
 apt-get install openvpn 
@@ -145,6 +145,7 @@ openvpn --genkey --secret keys/ta.key
 * Move the files we need to OpenVPN main folder:
 
 ~~~~
+cd keys/
 cp ca.crt ca.key server.crt server.key ta.key dh2048.pem /etc/openvpn/
 ~~~~
 
@@ -219,9 +220,9 @@ Set NAT for the VPN subnet:
 
 ~~~~
 iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j SNAT --to YOURSERVERIPADDRESS
-    iptables -I INPUT -p tcp --dport OPENVPNPORT -j ACCEPT
-    iptables -I FORWARD -s 10.8.0.0/24 -j ACCEPT
-    iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -I INPUT -p tcp --dport OPENVPNPORT -j ACCEPT
+iptables -I FORWARD -s 10.8.0.0/24 -j ACCEPT
+iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 ~~~~
 
 #### Start the OpenVPN service
@@ -295,7 +296,7 @@ comp-lzo
 setenv opt block-outside-dns
 key-direction 1
 verb 3
-ls-auth ta.key 1
+tls-auth ta.key 1
 ca ca.crt
 cert CLIENT.crt
 key CLIENT.key
@@ -313,9 +314,38 @@ In this step, we will install and use Shapeshifter-dispatcher Server and client 
 
 #### Install and configure shapeshifter-dispatcher
 
+Prerequisite: You will need to install Go
+
 ~~~~
-mkdir ~/go
+curl -LO https://dl.google.com/go/go1.12.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.11.linux-amd64.tar.gz
+~~~~
+
+The next step is to set up the go environment, adding it to your profile with the command:
+
+~~~~
+nano ~/.profile
+~~~~
+
+You should these lines to the end of the file:
+
+~~~~
 export GOPATH=~/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+~~~~
+
+Use Ctrl-X to exit the editor, and answer Y to save the file. To make the new paths effective immediately, run the command:
+
+~~~~
+source ~/.profile
+~~~~
+
+We set the value of ```GOPATH``` to ```~/go```. This means that Go will put its source code into ```~/go/src``` and compiled programs into ```~/go/bin```.
+
+Now you can download and compile Shapeshifter, along with its dependencies:
+
+~~~~
 go get -u github.com/OperatorFoundation/shapeshifter-dispatcher/shapeshifter-dispatcher
 ~~~~
 
@@ -336,7 +366,7 @@ You will get this screen. Don’t forget to change the IP address and ports with
 And the following command to use Obfs4:
 
 ~~~
-bin/shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:OPENVPNPORT -transports obfs4 -bindaddr obfs4 -bindaddr obfs4-YOURSERVERIPADDRESS:OBFSPORT -logLevel DEBUG -enableLogging -extorport 127.0.0.1:3334
+screen ~/go/bin/shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:OPENVPNPORT -transports obfs4 -bindaddr obfs4 -bindaddr obfs4-YOURSERVERIPADDRESS:OBFSPORT -logLevel DEBUG -enableLogging -extorport 127.0.0.1:3334
 ~~~
 
 When the server is running for the first time, it will generate a new public key and it will write it to a file in the state directory called obfs4_bridgeline.txt. This information is needed by the dispatcher client. Look in the file and retrieve the public key from the bridge line. It will look similar to this:
@@ -365,7 +395,7 @@ Or the following command to use Obfs4, don't forget to change the value of 'cert
 
 ~~~~
 
-~/go/bin/shapeshifter-dispatcher -transparent -client -state state -target YOURSERVERIPADDRESS:OBFSPORT -transports obfs4 -options "{\"cert\": \"OfQAPDamjsRO90fDGlnZR5RNG659FZqUKUwxUHcaK7jIbERvNU8+EVF6rmdlvS69jVYrKw\", \"iatMode\": \"0\"}" -logLevel DEBUG -enableLogging
+screen ~/go/bin/shapeshifter-dispatcher -transparent -client -state state -target YOURSERVERIPADDRESS:OBFSPORT -transports obfs4 -options "{\"cert\": \"OfQAPDamjsRO90fDGlnZR5RNG659FZqUKUwxUHcaK7jIbERvNU8+EVF6rmdlvS69jVYrKw\", \"iatMode\": \"0\"}" -logLevel DEBUG -enableLogging
 
 ~~~~
 
