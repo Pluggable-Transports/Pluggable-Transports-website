@@ -1,22 +1,24 @@
 # main links
 main:
-  - title: "Implement"
+  - title: "Learn"
+    url: /learn/
+  - title: "Use"
     url: /implement/
-  - title: "Create"
+  - title: "Develop"
     url: /build/
-  - title: "Spec"
-    url: /spec/
-  - title: "Blog"
+  - title: "News"
     url: /blog/
   - title: "Contact"
     url: /contact/
 
 sidenav:
-  - title: "About transports"
+  - title: "Learn"
     url: /
     children:
-      - title: "How transports defeat censorship"
+      - title: "Censorship Techniques"
         url: /how/
+      - title: "What Pluggable Transports do"
+        url: /how2/
       - title: "Meet the Transports"
         url: /transports/
       - title: "Measuring Censorship"
@@ -61,3 +63,54 @@ sidenav:
       - title: "Email us"
         url: mailto:contact@pluggabletransports.info
 
+quicklinks:
+  - title: "Quick Links"
+    children:
+      - title: "- All About Transports"
+        url: /about/
+      - title: "- OpenVPN Walkthrough"
+        url: /implement/openvpn/
+      - title: "- The PT Specification"
+        url: /spec#build
+      - title: "- Building an app in Go"
+        url: /implement/go
+      - title: "- Meet the Transports"
+        url: /transports/
+      - title: "- Create new Transports"
+        url: /build  
+      - title: "- Join the Google Group"
+        url: https://groups.google.com/forum/#!forum/traffic-obf
+      - title: "- Get in touch"
+        url: /contact/
+
+aboutnav:
+  - title: "About Transports"
+    url: /about/
+    children:
+      - title: "- Censorship Techniques"
+        url: /how/
+      - title: "- What Pluggable Transports do"
+        url: /how2/
+      - title: "- Meet the Transports"
+        url: /transports/
+      - title: "- Measuring Censorship"
+        url: /measuring
+      - title: "- Blog"
+        url: /blog/
+
+  - title: "Quick Links"
+    children:
+      - title: "- OpenVPN Walkthrough"
+        url: /implement/openvpn/
+      - title: "- The PT Specification"
+        url: /spec#build
+      - title: "- Building an app in Go"
+        url: /implement/go
+      - title: "- Meet the Transports"
+        url: /transports/
+      - title: "- Create new Transports"
+        url: /build  
+      - title: "- Join the Google Group"
+        url: https://groups.google.com/forum/#!forum/traffic-obf
+      - title: "- Get in touch"
+        url: /contact/
