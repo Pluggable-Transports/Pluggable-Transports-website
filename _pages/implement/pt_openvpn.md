@@ -317,11 +317,11 @@ In this step, we will install and use Shapeshifter-dispatcher Server and client 
 Prerequisite: You will need to install Go
 
 ~~~~
-curl -LO https://dl.google.com/go/go1.12.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.11.linux-amd64.tar.gz
+curl -LO https://dl.google.com/go/go1.11.2.linux-386.tar.gz
+tar -C /usr/local -xzf go1.11.2.linux-386.tar.gz
 ~~~~
 
-The next step is to set up the go environment, adding it to your profile with the command:
+The next step is to set up the Go environment, adding it to your profile with the command:
 
 ~~~~
 nano ~/.profile
@@ -335,9 +335,10 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 ~~~~
 
-Use Ctrl-X to exit the editor, and answer Y to save the file. To make the new paths effective immediately, run the command:
+Use Ctrl-X to exit the editor, and answer Y to save the file. To create the path for Go to store its files and make the new paths effective immediately, run the commands:
 
 ~~~~
+mkdir ~/go
 source ~/.profile
 ~~~~
 
@@ -354,9 +355,7 @@ go get -u github.com/OperatorFoundation/shapeshifter-dispatcher/shapeshifter-dis
 Run shapeshifter-dispatcher on the server by running the following command for Obfs2:
 
 ~~~
-screen ~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2
-   -transports obfs2 -state state -bindaddr obfs2-YOURSERVERIPADDRESS:OBFSPORT
-   -orport 127.0.0.1:OPENVPNPORT
+screen ~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2 -transports obfs2 -state state -bindaddr obfs2-YOURSERVERIPADDRESS:OBFSPORT -orport 127.0.0.1:OPENVPNPORT
 ~~~
 You will get this screen. Don’t forget to change the IP address and ports within the command.
 
