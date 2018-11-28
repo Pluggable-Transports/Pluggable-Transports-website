@@ -14,7 +14,7 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "impnav"
 ---
 
 {% include toc icon="file-text" %}

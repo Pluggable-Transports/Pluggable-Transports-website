@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Using Pluggable Transports"
 author_profile: false
 permalink: /implement/
 
@@ -11,44 +12,35 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "impnav"
 
 ---
 
 This table represents the current options for current applications using pluggable transports and options for deploying transports in new applications across the most popular platforms.
 
-| | **Windows** | **OSX** | **Linux Server** | **Android** | **iOS** |
-|----|----|----|----|-------|---|
-| **Applications using PTs**    | [Tor Browser](http://torproject.org/), [Lantern](https://getlantern.org/), [Psiphon 3](https://www.psiphon3.com/)                   | [Tor Browser](http://torproject.org/), [Lantern](https://getlantern.org/),           | [Tor](https://www.torproject.org/docs/tor-doc-unix.html.en), [psiphon-tunnel-core](https://github.com/Psiphon-Labs/psiphon-tunnel-core) | [Orbot](https://guardianproject.info/apps/orbot/), [Lantern](https://play.google.com/store/apps/details?id=org.getlantern.lantern&hl=en), [Psiphon 3](https://s3.amazonaws.com/0ubz-2q11-gi9y/en.html), [FreeBrowser](https://freebrowser.org/) | [OnionBrowser](https://itunes.apple.com/us/app/onion-browser-secure-anonymous-web-with-tor/id519296448?mt=8), [Psiphon](https://itunes.apple.com/bm/app/psiphon/id1276263909), [Psiphon Browser](https://itunes.apple.com/ca/app/psiphon-browser/id1193362444?mt=8)                      |
-| **PT Services**               | [Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), [obfs4proxy](https://github.com/Yawning/obfs4),        | [Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), [obfs4proxy](https://github.com/Yawning/obfs4),        | [Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), [obfs4proxy](https://github.com/Yawning/obfs4),            | [Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), [obfs4proxy](https://github.com/Yawning/obfs4),                      | [OnionBrowser custom obfs4proxy](https://github.com/mtigas/iObfs)                    |
-| **Integration Library**       | [PT 2.0 Go API](http://localhost:4000/implement/go/)                         | [PT 2.0 Go API](http://localhost:4000/implement/go/)                         | [PT 2.0 Go API](http://localhost:4000/implement/go/)                             | [PLUTO 2](https://github.com/guardianproject/AndroidPluggableTransports), [NetCipher](https://github.com/guardianproject/NetCipher)                                      | [OnionBrowser custom API](https://github.com/mtigas/OnionBrowser)                    |
-| **Implementation Transports** | [shapeshifter-ipc (Go)](https://github.com/OperatorFoundation/shapeshifter-ipc), [goptlib (Go)](https://github.com/Yawning/goptlib), [marionette (Go)](https://github.com/redjack/marionette) | [shapeshifter-ipc (Go)](https://github.com/OperatorFoundation/shapeshifter-ipc), [goptlib (Go)](https://github.com/Yawning/goptlib), [marionette (Go)](https://github.com/redjack/marionette) | [shapeshifter-ipc (Go)](https://github.com/OperatorFoundation/shapeshifter-ipc), [goptlib (Go)](https://github.com/Yawning/goptlib), [marionette (Go)](https://github.com/redjack/marionette)     | [shapeshifter-ipc (Go)](https://github.com/OperatorFoundation/shapeshifter-ipc), [goptlib (Go)](https://github.com/Yawning/goptlib), [marionette (Go)](https://github.com/redjack/marionette) | [shapeshifter-ipc (Go)](https://github.com/OperatorFoundation/shapeshifter-ipc), [goptlib (Go)](https://github.com/Yawning/goptlib), [marionette (Go)](https://github.com/redjack/marionette) |
-
 {% include toc icon="file-text" %}
+
+If you're a software developer looking to deploy Pluggable Transports, this section will help you. We will look at some of the options for implementation, focusing mainly on Go - the language already used by many PT developers implementers.
 
 ## Implementation Options
 
-Developers can implement transports from scratch or using a library that implements some parts of the IPC protocol, such as shapeshifter-ipc or goptlib. Pluggable Transports themselves can be written in any programming language. A Pluggable Transport interacts with with a host application using a type of inter-process communication (IPC) protocol which is described in the Pluggable Transports 2.0 specification. There are Pluggable Transport implementations written in Go, Python, C++, and C. 
+Developers can implement transports from scratch or using a library that implements some parts of the IPC protocol, such as shapeshifter-ipc or goptlib. Pluggable Transports themselves can be written in any programming language. A Pluggable Transport interacts with with a host application using a type of inter-process communication (IPC) protocol which is described in the [Pluggable Transports 2.1 specification](/spec/). There are Pluggable Transport implementations written in Go, Python, C++, and C.
 
-A faster alternative than developing from scratch is to implement the transport in Go, using the [Go API](/implement/go) provided in the Pluggable Transports 2.0 specification. This method of implementing a transport is currently limited to transports implemented in the Go programming language. However, there are some advantages to this approach. Applications that are also written in Go can use transports implementing the PT 2.0 Go API directly, bypassing the IPC layer. This decreases the complexity of integration, as well as the performance overhead of running the transports in a separate process. Additionally, the Operator Foundation provides a tool called Shapeshifter Dispatcher, which wraps transports implementing the PT 2.0 Go API to provide the IPC layer. This allows applications written in programming languages other than Go to use these transports with no additional development cost.
+If you just want to add existing transports into your application, this table summarizes the libraries that have already been developed and are available for us:
 
-<!--
-***Future***
+| --------------||
+| **Desktop** | [PT 2.1 Go API](http://localhost:4000/implement/go/) |
+| **Mobile - Android** | [PLUTO 2](https://github.com/guardianproject/AndroidPluggableTransports), [NetCipher](https://github.com/guardianproject/NetCipher)
+| **Mobile - iOS** | [Swift API](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/blob/master/releases/PTSpecV2.1Draft1/Pluggable%20Transport%20Specification%20v2.1%20-%20Swift%20Transport%20API%20v1.0%2C%20Draft%201.pdf) |
 
-|                               | **Windows**   | **OSX**       | **Linux**     | **Android**                | **iOS**                          |
-|-------------------------------|---------------|---------------|---------------|----------------------------|----------------------------------|
-| **PT Services**               | Dispatcher    | Dispatcher    | Dispatcher    | Dispatcher                 | Dispatcher, PT Network Extension |
-| **Integration Library**       | PT 2.1 Go API | PT 2.1 Go API | PT 2.1 Go API | PT 2.1 Java API (wraps Go) | PT 2.1 Swift API (native)        |
-| **Implementation Transports** | goptlib2 (Go) | goptlib2 (Go) | goptlib2 (Go) | goptlib2 (Go)              | N/A                              |
--->
+Some examples of software already using Pluggable Transports:
 
-## What is Dispatcher?
+| --------------||
+| **Desktop** | [Tor Browser](https://torproject.org), [Lantern](https://getlantern.org), [Psiphon](https://psiphon.ca) |
+| **Mobile - Android** | [Briar Messaging](https://briarproject.org),[Lantern](https://getlantern.org), [Orbot](https://guardianproject.info/apps/orbot/),[Psiphon](https://psiphon.ca) |
+| **Mobile - iOS** | [OnionBrowser](https://itunes.apple.com/us/app/onion-browser-secure-anonymous-web-with-tor/id519296448?mt=8), [Psiphon](https://itunes.apple.com/bm/app/psiphon/id1276263909), [Psiphon Browser](https://itunes.apple.com/ca/app/psiphon-browser/id1193362444?mt=8) |
 
-There are two components: transports and the dispatcher. Each transport provide different approach to obfuscation. These transports are provided as a Go library which can be integrated directly into applications. The dispatcher is a command line tool which provides a proxy that wraps the transport library. It has several different proxy modes and can proxy both TCP and UDP traffic.
-
-If you are a tool developer working in the Go programming language, then you probably want to use the [transports library](https://github.com/OperatorFoundation/shapeshifter-transports)  directly in your application. 
-
-If you are an end user that is trying to circumvent filtering on your network or you are a developer that wants to add pluggable transports to an existing tool that is not written in the Go programming language, then you probably want the dispatcher. Please note that familiarity with executing programs on the command line is necessary to use this tool. 
+Implementation outside of these environments can be done with [Shapeshifter Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), a command-line tool which provides a proxy that wraps the transport library. It has several different proxy modes and can proxy both TCP and UDP traffic.
 
 The purpose of the dispatcher is to provide different proxy interfaces to using transports. Through the use of these proxies, application traffic can be sent over the network in a form that bypasses network filtering, allowing the application to work on networks where it would otherwise be blocked or heavily throttled.
 
@@ -60,21 +52,7 @@ While the Pluggable Transport API is flexible enough to accommodate a variety of
 
 ---
 
-*Modified from Dispatcher's [README](https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md) and documentation by Dr. Brandon Wiley*
+*This page contains content from Dispatcher's [README](https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md) and documentation by Dr. Brandon Wiley*
 
-<!-- 
 
-# Mobile
-
-* The Guardian Project's [Orbot](https://guardianproject.info/apps/orbot/) enables censorship circumvention for Android phones
-
-* The Guardian Project's [PLUTO Library](https://github.com/guardianproject/pluto) specifically implements pluggable transports.
-
-# Infrastructure
-
-* [The Tor Project](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports) has a page with a list of current transports, sample libraries, and upcoming concepts.
-
-* The Tor Project has a large&nbsp;<a href="https://www.torproject.org/docs/pluggable-transports.html.en">documentation repository</a>
-
--->
 

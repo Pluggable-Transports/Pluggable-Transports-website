@@ -13,7 +13,7 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "impnav"
 ---
 ## How to Use Pluggable Transports in Your Go Application
 

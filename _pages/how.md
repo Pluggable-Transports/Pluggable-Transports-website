@@ -150,7 +150,7 @@ Pluggable Transports continued to work despite this escalation.
 So where to now? We've taken you through some of the common censorship practices, so now it's time to find out [how Pluggable Transports help](/how2/).
 
 <p style="text-align:left;"><a href="/about/">&lt; Previous</a>
-<span style="float:right;"><a href="how2">Next &gt;</a></span>
+<span style="float:right;"><a href="/how2/">Next &gt;</a></span>
 </p>
 
 -----

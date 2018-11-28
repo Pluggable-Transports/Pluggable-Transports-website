@@ -55,3 +55,7 @@ Another variant of this approach is using many, short-lived ephemeral connection
 ----------
 
 Now that you know how Pluggable Transports work, it's time for you to [Meet the Transports](/transports/)!
+
+<p style="text-align:left;"><a href="/how/">&lt; Previous</a>
+<span style="float:right;"><a href="/transports/">Next &gt;</a></span>
+</p>

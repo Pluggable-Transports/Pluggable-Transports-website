@@ -11,7 +11,7 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "impnav"
 ---
 
 **As a tool developer, the fastest way to get up and running is by using [Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), a tool developed by [The Operator Foundation](https://operatorfoundation.org/).** [Read more about Dispatcher and mobile implementations](/implement/)
@@ -21,6 +21,8 @@ sidebar:
 ## Implementation Walkthroughs
 
 * [OpenVPN](/implement/openvpn)
+* [Marionette - server](/implement/marionette-server)
+* [Marionette - client](/implement/marionette-client)
 
 We will be adding additional walkthroughs with pseudocode soon!
 

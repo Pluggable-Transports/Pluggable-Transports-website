@@ -11,7 +11,7 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "impnav"
 ---
 
 Developing a tool to circumvent censorship? See below for resources to test your approach against 

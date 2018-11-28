@@ -2,9 +2,9 @@
 main:
   - title: "Learn"
     url: /learn/
-  - title: "Use"
+  - title: "Deploy"
     url: /implement/
-  - title: "Develop"
+  - title: "Create"
     url: /build/
   - title: "News"
     url: /blog/
@@ -82,11 +82,23 @@ quicklinks:
         url: https://groups.google.com/forum/#!forum/traffic-obf
       - title: "- Get in touch"
         url: /contact/
+  - title: "Learn"
+    url: /about/
+  - title: "Deploy"
+    url: /implement/
+  - title: "Create"
+    url: /build/
+  - title: "News"
+    url: /blog/
+  - title: "Contact"
+    url: /contact/  
 
 aboutnav:
   - title: "About Transports"
     url: /about/
     children:
+      - title: "- Introduction"
+        url: /about/
       - title: "- Censorship Techniques"
         url: /how/
       - title: "- What Pluggable Transports do"
@@ -114,3 +126,98 @@ aboutnav:
         url: https://groups.google.com/forum/#!forum/traffic-obf
       - title: "- Get in touch"
         url: /contact/
+
+  - title: "Learn"
+    url: /about/
+  - title: "Deploy"
+    url: /implement/
+  - title: "Create"
+    url: /build/
+  - title: "News"
+    url: /blog/
+  - title: "Contact"
+    url: /contact/  
+
+impnav:
+  - title: "Using Transports"
+    url: /implement/
+    children:
+      - title: "- Using Transports"
+        url: /implement/
+      - title: "- Implementing in Go"
+        url: /implement/go/
+      - title: "- OpenVPN Walkthrough"
+        url: /implement/openvpn/
+      - title: "- Marionette Server"
+        url: /implement/marionette-server
+      - title: "- Marionette Client"
+        url: /implement/marionette-client
+      - title: "- Testing your app"
+        url: /implement/test
+
+  - title: "Quick Links"
+    children:
+      - title: "- OpenVPN Walkthrough"
+        url: /implement/openvpn/
+      - title: "- The PT Specification"
+        url: /spec#build
+      - title: "- Building an app in Go"
+        url: /implement/go
+      - title: "- Meet the Transports"
+        url: /transports/
+      - title: "- Create new Transports"
+        url: /build  
+      - title: "- Join the Google Group"
+        url: https://groups.google.com/forum/#!forum/traffic-obf
+      - title: "- Get in touch"
+        url: /contact/
+
+  - title: "Learn"
+    url: /about/
+  - title: "Deploy"
+    url: /implement/
+  - title: "Create"
+    url: /build/
+  - title: "News"
+    url: /blog/
+  - title: "Contact"
+    url: /contact/
+
+createnav:
+  - title: "Creating Transports"
+    url: /build/
+    children:
+      - title: "- Creating Transports"
+        url: /build/
+      - title: "- Writing a transport"
+        url: /build/how
+      - title: "- The PT Specification"
+        url: /spec#build
+
+  - title: "Quick Links"
+    children:
+      - title: "- OpenVPN Walkthrough"
+        url: /implement/openvpn/
+      - title: "- The PT Specification"
+        url: /spec#build
+      - title: "- Building an app in Go"
+        url: /implement/go
+      - title: "- Meet the Transports"
+        url: /transports/
+      - title: "- Create new Transports"
+        url: /build  
+      - title: "- Join the Google Group"
+        url: https://groups.google.com/forum/#!forum/traffic-obf
+      - title: "- Get in touch"
+        url: /contact/
+
+  - title: "Learn"
+    url: /about/
+  - title: "Deploy"
+    url: /implement/
+  - title: "Create"
+    url: /build/
+  - title: "News"
+    url: /blog/
+  - title: "Contact"
+    url: /contact/  
