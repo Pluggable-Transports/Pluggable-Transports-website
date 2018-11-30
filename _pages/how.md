@@ -18,8 +18,6 @@ sidebar:
 
 Pluggable Transports have been created to help developers keep their users connected when censorship occurs. In this article, we go through some of the more common ways that websites and apps are blocked, and how both service providers and users can get around them.
 
-If you want to dive deeper into this subject, you should also take a look at [this IETF draft paper](https://github.com/josephlhall/rfc-censorship-tech/blob/master/as-submitted/draft-hall-censorship-tech-02.txt), updated in May 2018.
-
 ----------
 
 
@@ -147,10 +145,14 @@ Pluggable Transports continued to work despite this escalation.
 
 ----------
 
-So where to now? We've taken you through some of the common censorship practices, so now it's time to find out [how Pluggable Transports help](/how2/).
+If you want to dive deeper into this subject, you should also take a look at [this IETF draft paper](https://github.com/josephlhall/rfc-censorship-tech/blob/master/as-submitted/draft-hall-censorship-tech-02.txt), updated in May 2018.
+
+---
+
+We've taken you through some of the common censorship practices, so now it's time to find out [how Pluggable Transports help](/how-transports/).
 
 <p style="text-align:left;"><a href="/about/">&lt; Previous</a>
-<span style="float:right;"><a href="/how2/">Next &gt;</a></span>
+<span style="float:right;"><a href="/how-transports/">Next &gt;</a></span>
 </p>
 
 -----

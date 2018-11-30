@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "What Pluggable Transports do"
-permalink: /how2/
+permalink: /how-transports/
 
 excerpt: ""
 header:
@@ -42,7 +42,7 @@ China is famous for their "active probing" , and Iran for their willingness to t
 
 For adversaries willing or able to effectively combat scrambling, another approach is transforming the traffic to look like known - and approved - traffic. This faces its own challenges, as it becomes an arms race to ensure that this "[shape-shifting](/transports/#shape-shifting)" is good enough to continuously fool the censor - not just as the traffic, but also at the end-points.  If, for example, you are shape-shifting your traffic into vanilla http, the server will need to respond like a real web server. [The Parrot is Dead](https://www.cs.utexas.edu/~shmat/shmat_oak13parrot.pdf) explains the challenges these protocols face.
 
-However, using this approach can force even more resource-intense follow-up scanning (the censor must now determine if the server is "correct" or not).
+However, using this approach can force even more resource-intensive follow-up scanning (the censor must now determine if the server is "correct" or not).
 
 ### Hiding in the crowd
 
@@ -50,7 +50,7 @@ Another approach leverages large cloud providers which are socially or economica
 
 Some adversaries are willing to block entire cloud providers - but often only temporarily. The downside of this powerful technique for tool providers is that it can in some cases be overwhelmingly financially expensive to route traffic through these services.
 
-Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC.
+Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC, an HTML5 interface that provides real-time communication between browsers and devices.
 
 ----------
 

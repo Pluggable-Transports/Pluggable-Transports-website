@@ -39,7 +39,7 @@ function myFunction() {
 
 If you're interested in Pluggable Transports, it's probably because you are :
 
-- An  who is facing censorship and wants to [DEPLOY](/implement/) a transport
+- An app developer who is facing censorship and wants to [DEPLOY](/implement/) a transport
 - A Transport developer who knows the basics and wants to [CREATE](/build/) a transport
 - A user facing censorship, or you're curious and want to [LEARN](/about/) about Pluggable Transports
 

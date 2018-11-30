@@ -73,7 +73,7 @@ Visit [The Tor Project](https://trac.torproject.org/projects/tor/wiki/doc/Plugga
 
 Now that you know what transports are available, let's look at how to [make sure they're working](/measuring))
 
-<p style="text-align:left;"><a href="/how2/">&lt; Previous</a>
+<p style="text-align:left;"><a href="/how-transports/">&lt; Previous</a>
 <span style="float:right;"><a href="/measuring/">Next &gt;</a></span>
 </p>
 

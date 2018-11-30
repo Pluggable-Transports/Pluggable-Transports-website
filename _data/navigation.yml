@@ -18,7 +18,7 @@ sidenav:
       - title: "Censorship Techniques"
         url: /how/
       - title: "What Pluggable Transports do"
-        url: /how2/
+        url: /how-transports/
       - title: "Meet the Transports"
         url: /transports/
       - title: "Measuring Censorship"
@@ -102,7 +102,7 @@ aboutnav:
       - title: "- Censorship Techniques"
         url: /how/
       - title: "- What Pluggable Transports do"
-        url: /how2/
+        url: /how-transports/
       - title: "- Meet the Transports"
         url: /transports/
       - title: "- Measuring Censorship"
