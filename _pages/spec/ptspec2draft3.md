@@ -12,7 +12,7 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "createnav"
 ---
 
 Below is the current PT 2.0 Draft 3 Spec. You can also view this in [PDF form](/assets/PTSpecV2Draft3.pdf). It may be useful to also reference the [history of the spec](/spec/history), and if you want to contribute to the emerging spec update, you can do that on [Github](https://github.com/Pluggable-Transports/Pluggable-Transports-spec).

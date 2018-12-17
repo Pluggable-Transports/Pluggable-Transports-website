@@ -11,7 +11,7 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "aboutnav"
 ---
 
 Censorship of Internet content is increasing, as more regimes seek to restrict the flow of information to and between their citizens. Pluggable Transports can help keep people connected, by hiding (obfuscating) network traffic and routing it between devices in ways that make it more difficult to block.
@@ -33,3 +33,6 @@ Below is a collection of resources that may help you find out some of this infor
 * **[Freedom on the Net](https://freedomhouse.org/report/freedom-net/)** - If you're looking at how Internet Freedom has been impacted over the past six years, you can read through the archive of reports produced by Freedom House since 2012. Using networks of trusted reporters, Freedom House have amassed a wealth of information and detailed reports, showing a year-on-year decline of overall freedom on the net. For up-to-date reports since the last edition ((2017)[https://freedomhouse.org/report/freedom-net/freedom-net-2017]), you can also follow them on [Twitter](https://twitter.com/freedomonthenet).
 
 * **[Global Digital Download](https://us9.campaign-archive.com/home/?u=f366c1a2a73816aecfae817fe&id=211c1c2271)** - This is a newsletter operated by [Internews](https://www.internews.org) over the past six years. It is an aggregation of Internet freedom related news, sent out on a weekly basis. You can subscribe to the newsletter or visit the [extensive archives](https://us9.campaign-archive.com/home/?u=f366c1a2a73816aecfae817fe&id=211c1c2271).
+
+<p style="text-align:left;"><a href="/about/">&lt; Previous</a>
+</p>

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "How obfuscation helps"
+title: "Types of censorship"
 permalink: /how/
 
 excerpt: ""
@@ -11,12 +11,12 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "aboutnav"
 ---
 
 {% include toc title="" icon="file-text" %}
 
-Censorship is on the rise worldwide. This page describes some of the more common ways that websites and apps are blocked, and how both service providers and users can get around them. If you want to dive deeper into this subject, you should also take a look at [this IETF draft paper](https://github.com/josephlhall/rfc-censorship-tech/blob/master/as-submitted/draft-hall-censorship-tech-02.txt), published in May 2018.
+Pluggable Transports have been created to help developers keep their users connected when censorship occurs. In this article, we go through some of the more common ways that websites and apps are blocked, and how both service providers and users can get around them.
 
 ----------
 
@@ -33,7 +33,9 @@ This table shows a summary of the information contained below. Click on the meth
 
 ----------
 
-## DNS Blocking
+## Digging Deeper
+
+### DNS Blocking
 
 DNS blocking is one of the easiest and fastest ways to block a website.  It is achieved by forcing ISPs to essentially misdirect users looking for the blocked website to a blank page or a page explaining why a site is blocked. This uses DNS, the Domain Name System, which is a decentralized "phone book" for the internet that translates domain names to internet addresses.
 
@@ -53,7 +55,7 @@ In the case of Turkey, users were able to override their ISP's misinformation by
 
 There are a limited number of public DNS servers, which can be blocked with [IP blocking](#ip-blocking) and DNS traffic outside of a network itself can be [blocked at the protocol level](#port-blocking), forcing users to accept the "wrong" information.
 
-## IP blocking
+### IP blocking
 
 IP blocking requires more effort from the censor, and can have unintended consequences. Instead of blocking the "name" of a location on the internet, IP blocking targets its specific address.  When used alone, both this and the DNS blocking technique are easily circumvented, but become more challenging in combination.
 
@@ -81,7 +83,7 @@ The collateral freedom approach is not without its own risks.  In one well-known
 
 Less advanced adversaries can also take a further step on even the most basic firewalls, which is [Protocol and Port Blocking](#port-blocking).
 
-## Port Blocking
+### Port Blocking
 
 Even basic firewalls can block traffic for a specific protocol. This is commonly seen on public/guest/conference wifi networks which only allow "web browsing" (e.g. port 80 ans 443 - http and https ports). Censors can easily target traffic and simply not allow it to pass on its default ports.  In the OpenVPN example, blocking port 1194 will prevent a client from establishing a connection to **any** OpenVPN server.
 
@@ -103,7 +105,7 @@ Some adversaries may be willing to accept some of the downsides, including steep
 
 More advanced adversaries can move on from these to using a more active approach to censorship (and surveillance) - [Deep Packet Inspections, or DPI](#dpi-blocking).
 
-## DPI Blocking
+### DPI Blocking
 
 Deep Packet Inspection (DPI) inspects each packet based on the header of its request and the data it carries. It can identify the type of protocol the connection is using even if it was encrypted. DPI is not a mechanism to decrypt what is inside packets but to identify the ‘protocol’ or the application it represents.
 
@@ -141,73 +143,17 @@ In December 2016, Turkey escalated their censorship abilities from DNS blocking 
 
 Pluggable Transports continued to work despite this escalation. 
 
-## Advanced Censorship
+----------
 
-Let us now walk through some of the options for transports, and how they vary in their approaches.  We'll start with a very simplistic approach:
+If you want to dive deeper into this subject, you should also take a look at [this IETF draft paper](https://github.com/josephlhall/rfc-censorship-tech/blob/master/as-submitted/draft-hall-censorship-tech-02.txt), updated in May 2018.
 
-#### Simple obfuscation
+---
 
-One could easily "encrypt" traffic so it doesn’t look like the traffic that is being blocked.  Using a Caesar cipher like [ROT13](https://en.wikipedia.org/wiki/ROT13), or minimal tweaks to parts of the traffic which are being used to identify it are examples - and have even worked for a while in some cases.
+We've taken you through some of the common censorship practices, so now it's time to find out [how Pluggable Transports help](/how-transports/).
 
-However, this is easily blocked by the adversary re-identifying the handshake and blocking based on that.
-
-#### Making it look like noise
-
-A significant step up from this is to work towards making the traffic look like nothing at all. The goal here is to eliminate any identifying characteristics of the traffic, forcing a censor towards more expensive attacks.  This is the approach in Tor's most famous "obfs" line of transports, and we refer to this as [Scrambling](/transports/#scrambling).
-
-To defeat scrambling, censors must either select only recognized and "approved" traffic out (whitelisting), scan the destination of each unrecognized stream of traffic and determine if it is legitimate or a circumvention tool, or find ways to interfere with or still identify the traffic.
-
-China is famous for their "active probing" , and Iran for their willingness to terminate encrypted traffic after one minute. Kazakhstan was found to be using a system which matches the [timing of the obfs4 handshake and prevents it from successfully completing](https://bugs.torproject.org/20348).
-
-#### Making it look like something else
-
-For adversaries willing or able to effectively combat scrambling, another approach is transforming the traffic to look like known - and approved - traffic. This faces its own challenges, as it becomes an arms race to ensure that this "[shape-shifting](/transports/#shape-shifting)" is good enough to continuously fool the censor - not just as the traffic, but also at the end-points.  If, for example, you are shape-shifting your traffic into vanilla http, the server will need to respond like a real web server. [The Parrot is Dead](https://www.cs.utexas.edu/~shmat/shmat_oak13parrot.pdf) explains the challenges these protocols face.
-
-However, using this approach can force even more resource-intense follow-up scanning (the censor must now determine if the server is "correct" or not).
-
-#### Hiding in the crowd
-
-Another approach leverages large cloud providers which are socially or economically difficult to block.  Using [Fronting](/transports/#fronting), you can route traffic through an allowed service.  This would force an adversary to block an entire cloud provider - and every other service hosted in it. Circumvention tool providers have previously been able to use this kind of connection, but it is increasingly being locked down as the cloud providers seek to retain control over their services.
-
-Some adversaries are willing to block entire cloud providers - but often only temporarily. The downside of this powerful technique for tool providers is that it can in some cases be overwhelmingly financially expensive to route traffic through these services.
-
-Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC.
-
-## The Future
-
-There is no one perfect solution, but this is where we are today.
-
-Not every adversary seeking to limit access to information can, or is willing to, do all of the above, so creative application of these, building new versions, innovation around new approaches -- and sharing of working options -- allow app and service providers to ensure connectivity through everything but complete shutdowns.
-
-
-<!-- 
-<p>
-    <strong>Metaphor: </strong>
-    Let us assume that OpenVPN packets are represented physically as cubes with
-    equal dimensions, the firewall is the guard who stands on the gate number
-    1194 which represents the port and he has an order to block the movement of
-    any cubes through the gate number 1194. This will prevent the red cubes of
-    passing through the gate.
-    
-    <strong>Metaphor: </strong>
-    The car that carries the cubes received an order to pass through the gate
-    number 443 where the receiver on the other side of the gate is waiting,
-    cubes will be able to pass with no issue because the gate 443 is a busy
-    gate and it’s essential to the Internet and it will be problematic to block
-    it.
-    
-    <strong>Metaphor</strong>
-    : DPI is a more advanced guard that has the ability to identify ‘cubes’ and
-    categories them regardless of the gate they’re going through. The
-    Identification process is based on blocking certain type color, size and
-    locks of the of the ‘cubes’. In this case it’s easy to prevent red colored
-    ‘cubes’ from passing the gate.
-
-    <strong>Metaphor</strong>
-    : PT is a way to obfuscate the guards by changing the preferences of what
-    we called ‘cubes’ by changing the color, size, and the used locks, this can
-    happen by placing the ‘cubes’ inside another unknown type of ‘cubes’, send
-    them over the car that waiting outside the gate, unpack them by following
-    the same order they were packed at.
+<p style="text-align:left;"><a href="/about/">&lt; Previous</a>
+<span style="float:right;"><a href="/how-transports/">Next &gt;</a></span>
 </p>
--->
+
+-----
+
