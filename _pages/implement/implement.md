@@ -16,11 +16,16 @@ sidebar:
 
 ---
 
-This table represents the current options for current applications using pluggable transports and options for deploying transports in new applications across the most popular platforms.
+This table shows some examples of software already using Pluggable Transports across the most popular platforms: 
+
+| --------------||
+| **Desktop** | [Tor Browser](https://torproject.org), [Lantern](https://getlantern.org), [Psiphon](https://psiphon.ca) |
+| **Mobile - Android** | [Briar Messaging](https://briarproject.org), [Lantern](https://getlantern.org), [Orbot](https://guardianproject.info/apps/orbot/), [Psiphon](https://psiphon.ca) |
+| **Mobile - iOS** | [OnionBrowser](https://itunes.apple.com/us/app/onion-browser-secure-anonymous-web-with-tor/id519296448?mt=8), [Psiphon](https://itunes.apple.com/bm/app/psiphon/id1276263909), [Psiphon Browser](https://itunes.apple.com/ca/app/psiphon-browser/id1193362444?mt=8) |
 
 {% include toc icon="file-text" %}
 
-If you're a software developer looking to deploy Pluggable Transports, this section will help you. We will look at some of the options for implementation, focusing mainly on Go - the language already used by many PT developers implementers.
+If you're a software developer looking to deploy Pluggable Transports, the rest of the content on this plage will help you. We will look at some of the options for implementation, focusing mainly on Go - the language already used by many PT developers implementers.
 
 ## Implementation Options
 
@@ -33,12 +38,6 @@ If you just want to add existing transports into your application, this table su
 | **Mobile - Android** | [PLUTO 2](https://github.com/guardianproject/AndroidPluggableTransports), [NetCipher](https://github.com/guardianproject/NetCipher)
 | **Mobile - iOS** | [Swift API](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/blob/master/releases/PTSpecV2.1Draft1/Pluggable%20Transport%20Specification%20v2.1%20-%20Swift%20Transport%20API%20v1.0%2C%20Draft%201.pdf) |
 
-Some examples of software already using Pluggable Transports:
-
-| --------------||
-| **Desktop** | [Tor Browser](https://torproject.org), [Lantern](https://getlantern.org), [Psiphon](https://psiphon.ca) |
-| **Mobile - Android** | [Briar Messaging](https://briarproject.org),[Lantern](https://getlantern.org), [Orbot](https://guardianproject.info/apps/orbot/),[Psiphon](https://psiphon.ca) |
-| **Mobile - iOS** | [OnionBrowser](https://itunes.apple.com/us/app/onion-browser-secure-anonymous-web-with-tor/id519296448?mt=8), [Psiphon](https://itunes.apple.com/bm/app/psiphon/id1276263909), [Psiphon Browser](https://itunes.apple.com/ca/app/psiphon-browser/id1193362444?mt=8) |
 
 Implementation outside of these environments can be done with [Shapeshifter Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), a command-line tool which provides a proxy that wraps the transport library. It has several different proxy modes and can proxy both TCP and UDP traffic.
 

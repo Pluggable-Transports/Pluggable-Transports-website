@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "Learn"
-    url: /learn/
+    url: /about/
   - title: "Deploy"
     url: /implement/
   - title: "Create"
@@ -13,7 +13,7 @@ main:
 
 sidenav:
   - title: "Learn"
-    url: /
+    url: /about/
     children:
       - title: "Censorship Techniques"
         url: /how/
