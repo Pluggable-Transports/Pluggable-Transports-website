@@ -13,17 +13,25 @@
 
 <tw-storydata name="pt_tr" startnode="1" creator="Twine" creator-version="2.2.1" ifid="3CE0DC7A-DE06-4D83-84B8-43B612353F9B" zoom="1" format="Harlowe" format-version="1.2.4" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
 
+
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
 
-</script><tw-passagedata pid="1" name="Untitled Passage" tags="" position="412,200" size="100,100">- Belirli teknik özelliklere uygun bir çok değiştirilebilir taşıyıcı bulunur.
-- İnternet trafiğinizi, normal ya da sıradan izin verilen İnternet trafiğinden ayırt edilemeyecek bir biçime dönüştürerek gizlerler.
-- Değiştirilebilir taşıyıcıları kullanan bir uygulama, çevrimiçi erişimin sürekliliğini sağlamak için gerektiğinde taşıyıcıları değiştirebilir...
-- ... kullanıcının herhangi bir işlem yapmasına gerek kalmaz.
+
+
+
+</script><tw-passagedata pid="1" name="Untitled Passage" tags="" position="412,200" size="100,100">Updated Feb 01 @ 10.30ET
+
+- Belirli teknik özellikleri karşılayan çeşitli Değiştirilebilir Taşıyıcılar vardır.
+- Bunlar İnternet trafiğinizi izin verilen normal ya da sıradan İnternet trafiğinden ayırt edilemeyecek bir biçime dönüştürerek gizler ve izlenerek engellenmesini önler.
+- Değiştirilebilir Taşıyıcıları kullanan bir uygulama, çevrimiçi erişimin sürekliliğini sağlamak için gerektiğinde taşıyıcıları otomatik olarak değiştirebilir...
+- ... böylece kullanıcının herhangi bir işlem yapmasına gerek kalmaz.
 - &lt;a href=&quot;linktotheguide&quot;&gt;Buraya tıklayarak&lt;/a&gt; Değiştirilebilir Taşıyıcılar rehberimize göz atabilirsiniz.
 - Kimsiniz?
 - Bir uygulama geliştiricisiyim
 - Normal bir kullanıcıyım
-- Geri git
+- Geri dön
 - İşim bitti!
 - Baştan başla
 - Geliştiriciler için Değiştirilebilir Taşıyıcılar
@@ -31,74 +39,74 @@
 - OpenVPN sunucuma Değiştirilebilir Taşıyıcılar desteğini kurmak istiyorum
 - Go ile geliştirilmiş uygulamamda Değiştirilebilir Taşıyıcıları kullanmak istiyorum
 - Değiştirilebilir Taşıyıcıları Sınama
-- Bir taşıyıcı geliştirmek istiyorum
-- Değiştirilebilir Taşıyıcılar Teknik Özellikleri
+- Bir Değiştirilebilir Taşıyıcı geliştirmek istiyorum
+- Değiştirilebilir Taşıyıcıların Teknik Özellikleri
 - OpenVPN ve Değiştirilebilir Taşıyıcılar
-- Buraya ulaştıysanız, büyük olasılıkla çalışan bir OpenVPN sunucunuz vardır ve bu sunucuya Değiştirilebilir Taşıyıcılar desteği eklemek istiyorsunuzdur. Bununla birlikte OpenVPN kurulumuyla ilgili yardıma da gerek duyuyor musunuz?
+- Buraya ulaştıysanız, büyük olasılıkla çalışan bir OpenVPN sunucunuz vardır ve bu sunucuya Değiştirilebilir Taşıyıcılar desteği eklemek istiyorsunuzdur. Bunun yanında OpenVPN kurulumuyla ilgili yardıma da gerek duyuyor musunuz?
 - Evet, lütfen bana OpenVPN hakkında yardım edin.
 - Çalışan bir OpenVPN sunucum var. Değiştirilebilir Taşıyıcılar hakkında konuşabiliriz
 - OpenVPN Kurulumu ve Yapılandırılması
-- &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#preparation&quot; target=&quot;_blank&quot;&gt;OpenVPN kurulum rehberimiz&lt;/a&gt; şu üç adımdan oluşur:
+- &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#preparation&quot; target=&quot;_blank&quot;&gt;OpenVPN kurulumu rehberimiz&lt;/a&gt; şu üç adımdan oluşur:
 - Hazırlık: Gereksinimleri sağlama (openssl, ca-certificates, git, golang, curl, screen).
 - OpenVPN kurulumu: Kurulum, yapılandırma ve sunucunuza root / sudo erişimi ile OpenVPN sınaması.
-- Sertifikaları kurma ve yapılandırma: OpenVPN ağını kurma, ve sunucu ile istemciler için sertifika oluşturma.
-- Bu adımları tamamladığınızda size yeterli gelecek temel kurulumu yapmış olursunuz. Ardından Değiştirilebilir Taşıyıcı yapılandırmasına geçebilirsiniz.
+- Sertifikaları kurma ve yapılandırma: OpenVPN ağını kurma ve sunucu ile istemciler için sertifika oluşturma.
+- Bu adımları tamamladığınızda sizin için yeterli olacak temel kurulumu yapmış olursunuz. Ardından Değiştirilebilir Taşıyıcı yapılandırmasına geçebilirsiniz.
 - Değiştirilebilir Taşıyıcılara Geç
-- OpenVPN üzerine Değiştirilebilir Taşıyıcıları kurma
-- Çalışan bir OpenVPN sunucunuz var ve istemci bağlantılarını sınadınız. Şimdi de Değiştirilebilir Taşıyıcılar desteğini eklemek istiyorsunuz. Bunu yapmak için,  TCP ve UDP trafiğini vekil sunucu üzerine yönlendirecek olan &lt;a href=&quot;https://github.com/OperatorFoundation/shapeshifter-dispatcher&quot; target=&quot;_blank&quot;&gt;shapeshifter-dispatcher&lt;/a&gt; uygulamasını kuracaksınız.
-- OpenVPN üzerine Değiştirilebilir Taşıyıcıları kurma rehberi &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#server-obfuscation-configuration&quot; target=&quot;_blank&quot;&gt;shapeshifter kurulumu ve yapılandırmasında&lt;/a&gt; size yardımcı olacaktır.
+- OpenVPN Üzerine Değiştirilebilir Taşıyıcıları Kurma
+- Çalışan bir OpenVPN sunucunuz var ve istemci bağlantılarını sınadınız. Şimdi de Değiştirilebilir Taşıyıcılar desteğini eklemek istiyorsunuz. Bunu yapmak için,  TCP ve UDP trafiğini vekil sunucu üzerinden geçirecek olan &lt;a href=&quot;https://github.com/OperatorFoundation/shapeshifter-dispatcher&quot; target=&quot;_blank&quot;&gt;shapeshifter-dispatcher&lt;/a&gt; uygulamasını kuracaksınız.
+- OpenVPN üzerine Değiştirilebilir Taşıyıcıları kurma rehberi &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#server-obfuscation-configuration&quot; target=&quot;_blank&quot;&gt;shapeshifter-dispatcher kurulumu ve yapılandırması&lt;/a&gt; hakkında size yardımcı olacaktır.
 - Şu adımları izleyeceksiniz:
-* Shapeshifter dispatcher kurulumu ve yapılandırması
+* Shapeshifter-dispatcher kurulumu ve yapılandırması
 * Sunucu ve istemci kurulumu
-- Bu adım tamamlandığında, OpenVPN üzerinde Değiştirilebilir Taşıyıcıları destekleyen kendi sunucunuzu çalıştırmış olacaksınız.
-- Alternatif olarak &lt;a href=&quot;https://github.com/OpenInternet/openvpn-shapeshifter&quot; target=&quot;_blank&quot;&gt;bu betiği&lt;/a&gt; kullanarak Ubuntu ve Debian sunucuları üzerine OpenVPN kurma ve yapılandırma işlemlerini yapabilirsiniz.
+- Bu adım tamamlandığında, kendi OpenVPN sunucunuzu Değiştirilebilir Taşıyıcılar desteği ile çalıştırıyor olacaksınız.
+- Alternatif olarak Ubuntu ve Debian sunucuları üzerine OpenVPN kurmak ve yapılandırmak için &lt;a href=&quot;https://github.com/OpenInternet/openvpn-shapeshifter&quot; target=&quot;_blank&quot;&gt;bu betiği&lt;/a&gt; kullanabilirsiniz.
 - Bu rehber ile işiniz bitti mi?
 - Go Üzerinde Değiştirilebilir Taşıyıcıları Kullanmak
-- Go üzerinde Değiştirilebilir Taşıyıcıları kullanmak ile ilgili bilgileri içeren rehbere erişmek için &lt;a href=&quot;https://www.pluggabletransports.info/implement/go/&quot; target=&quot;_blank&quot;&gt;buraya tıklayın&lt;/a&gt;. Örnek kurulum için şu adımları izleyeceksiniz:
+- Değiştirilebilir Taşıyıcıların Go üzerinde nasıl kullanılacağı ile ilgili bilgileri içeren rehbere erişmek için &lt;a href=&quot;https://www.pluggabletransports.info/implement/go/&quot; target=&quot;_blank&quot;&gt;buraya tıklayın&lt;/a&gt;. Örnek kurulum için şu adımları izleyeceksiniz:
 * Taşıyıcı (Transport) ve TaşıyıcıDinleme (TransportListener) arayüzleri nelerdir?
 * Bir Go programı nasıl oluşturulur?
-* Bir Taşıyıcı bir Sunucu uygulamasında nasıl kullanılır?
-* Bir Taşıyıcı bir İstemci uygulamasında nasıl kullanılır?
+* Değiştirilebilir Taşıyıcılar sunucu uygulamalarında nasıl kullanılır?
+* Değiştirilebilir Taşıyıcılar istemci uygulamasında nasıl kullanılır?
 - Rehber ile işiniz bittiğinde, uygulamanızı farklı platformlarda sınamak için yapmanız gerekenlere göz atabilirsiniz.
 - Değiştirilebilir Taşıyıcıları Sınama
-- Site ve hizmetlere erişilmesini engellemek için basit IP adresi sınırlaması ya da derin paket incelemesi ile oluşturulan kurallara dayalı DNS engellemesi \(DPI\) gibi kullanılabilecek bir çok yöntem vardır. Olabilecek birçok yöntemden bazılarını taklit eden bir ağ ortamında denemeler yapmak isteyebilirsiniz.
+- Site ve hizmetlere erişilmesini engellemek için, basit IP adresi sınırlamasından derin paket incelemesi ile oluşturulan kurallara dayalı DNS engellemesine \(DPI\) kadar kullanılabilecek bir çok yöntem vardır. Karşılaşılabilecek birçok yöntemden bazılarını taklit eden bir ağ ortamında denemeler yapmak isteyebilirsiniz.
 - Aşağıdaki hizmetleri incelemenizi öneririz:
-- &lt;a href=&quot;https://github.com/OperatorFoundation/AdversaryLab&quot; target=&quot;_blank&quot;&gt;Adversary Lab&lt;/a&gt;: Değiştirilebilir Taşıyıcılar topluluğunun desteğiyle Operator Foundation tarafından oluşturulmuştur. Adversary Lab, derlenen ağ trafiğini inceleyip çeşitli istatiksel sonuçlar çıkaran bir hizmettir. Bu inceleme sonuçlarını kullanarak örneklenen trafiği engellemek için bazı  süzme kuralları sentezler.
-- &lt;a href=&quot;https://openinternet.github.io/copilot/&quot; target=&quot;_blank&quot;&gt;CoPilot&lt;/a&gt;: Özel engelleme ortamlarını taklit etmek için geliştirilmiş kolay kullanılan bir web arayüzüne sahip bir kablosuz erişim noktasıdır. Çeşitli eklentiler ve standart saldırı engelleme ve algılama sistemlerindeki engelleme &quot;kurallarını&quot; içe aktarabilme özelliği ile birlikte gelir .
-- Maceramızı bizimle paylaştığınız için teşekkür ederiz! Düşüncelerinizi bizimle paylaşın. Bize &lt;a href=&quot;mailto:contact@pluggabletransports.info&quot;&gt;e-posta gönderebilir&lt;/a&gt; ya da &lt;a href=&quot;https://www.twitter.com/plugtransports&quot;&gt;twitter üzerinden&lt;/a&gt; ulaşabilirsiniz.
-- Yararlı olabilecek diğer bağlantılar için&lt;a href=&quot;https://www.pluggabletransports.info&quot; target=&quot;_blank&quot;&gt;Değiştirilebilir Taşıyıcılar web sitesini&lt;/a&gt; ziyaret edebilir ve ayrıntılı bilgi almak için &lt;a href=&quot;https://www.pluggabletransports.info/community&quot; target=&quot;_blank&quot;&gt;topluluk bağlantılarına&lt;/a&gt; bakabilirsiniz.
+- &lt;a href=&quot;https://github.com/OperatorFoundation/AdversaryLab&quot; target=&quot;_blank&quot;&gt;Adversary Lab&lt;/a&gt;: Değiştirilebilir Taşıyıcılar topluluğunun desteğiyle Operator Foundation tarafından oluşturulmuştur. Adversary Lab, ağ trafiğini inceleyerek çeşitli istatiksel sonuçlar veren bir hizmettir. Bu inceleme sonuçlarını kullanarak örneklenen trafiği engellemek için bazı  süzme kuralları oluşturur.
+- &lt;a href=&quot;https://openinternet.github.io/copilot/&quot; target=&quot;_blank&quot;&gt;CoPilot&lt;/a&gt;: Özel engelleme ortamlarını taklit etmek için geliştirilmiş kolay kullanılan web arayüzüne sahip bir kablosuz erişim noktasıdır. Çeşitli eklentilerin yanında standart saldırı engelleme ve algılama sistemlerindeki engelleme &quot;kurallarını&quot; içe aktarabilme özelliğine sahiptir.
+- Yaptıklarımızla ilgilendiğiniz için teşekkür ederiz! Düşüncelerinizi bizimle paylaşın. Bize &lt;a href=&quot;mailto:contact@pluggabletransports.info&quot;&gt;e-posta gönderebilir&lt;/a&gt; ya da &lt;a href=&quot;https://www.twitter.com/plugtransports&quot;&gt;twitter üzerinden&lt;/a&gt; ulaşabilirsiniz.
+- Yararlı olabilecek diğer bağlantıları görmek için &lt;a href=&quot;https://www.pluggabletransports.info&quot; target=&quot;_blank&quot;&gt;Değiştirilebilir Taşıyıcılar web sitesini&lt;/a&gt; ziyaret edebilir, ayrıntılı bilgi almak için &lt;a href=&quot;https://www.pluggabletransports.info/community&quot; target=&quot;_blank&quot;&gt;topluluk bağlantılarına&lt;/a&gt; bakabilirsiniz.
 - Bir Değiştirilebilir Taşıyıcı Geliştirme
-- Yeni bir Değiştirilebilir Taşıyıcı fikriniz mi var? Geçerli teknik özelliklere bir şeyler ekleyerek topluluğun çalışmalarına destek olmak mı istiyorsunuz?
-- Başlamak için bakmanız gereken ilk yer [[Değiştirilebilir Taşıyıcıların Teknik Özellikleri]] bölümüdür. Ayrıca var olan Taşıyıcılar ile ilgili bilgi almak için &lt;a href=&quot;https://www.pluggabletransports.info/transports/&quot; target=&quot;_blank&quot;&gt;Değiştirilebilir Taşıyıcılar Kitaplığı&lt;/a&gt; bölümüne bakabilirsiniz.
-- İlerlemeye hazır olduğunuzda, Go programlama dilini kullanarak bir Değiştirilebilir Taşıyıcı oluşturmak için &lt;a href=&quot;https://www.pluggabletransports.info/build/how/&quot; target=&quot;_blank&quot;&gt;çevrimiçi rehberimizden&lt;/a&gt; yararlanabilir, bir uygulamanın veri akışındaki içerik üzerinde basit ROT13 şifreleyicisi kullanan örnek uygulamanın nasıl geliştirileceğini görebilirsiniz.
-- Ayrıca yeni Değiştirilebilir Taşıyıcılar geliştirmek için gerekli maddi desteği sağlamak amacıyla &lt;a href=&quot;https://www.surveymonkey.com/r/pluggabletransports&quot; target=&quot;_blank&quot;&gt;küçük bağışlar merkezine&lt;/a&gt; bakmayı unutmayın.
+- Yeni bir Değiştirilebilir Taşıyıcı fikriniz mi var? Geçerli teknik özelliklere bir şeyler ekleyerek topluluğun çalışmalarına katkıda bulunmak mı istiyorsunuz?
+- Başlamak için bakmanız gereken ilk yer [[Değiştirilebilir Taşıyıcıların Teknik Özellikleri]] bölümüdür. Ayrıca var olan Taşıyıcılar ile ilgili bilgi almak için &lt;a href=&quot;https://www.pluggabletransports.info/transports/&quot; target=&quot;_blank&quot;&gt;Değiştirilebilir Taşıyıcılar Kitaplığı&lt;/a&gt; bölümüne de bakabilirsiniz.
+- İlerlemeye hazır olduğunuzda, Go programlama dilini kullanarak bir Değiştirilebilir Taşıyıcı oluşturmak için &lt;a href=&quot;https://www.pluggabletransports.info/build/how/&quot; target=&quot;_blank&quot;&gt;çevrimiçi rehberimizden&lt;/a&gt; yararlanabilirsiniz. Böylece veri akışındaki içerik üzerinde basit ROT13 şifreleyicisi kullanan örnek bir uygulamanın nasıl geliştirileceğini öğrenebilirsiniz.
+- Ayrıca yeni Değiştirilebilir Taşıyıcılar geliştirmek için gerekli maddi desteği sağlamak amacıyla &lt;a href=&quot;https://www.surveymonkey.com/r/pluggabletransports&quot; target=&quot;_blank&quot;&gt;küçük bağışlar merkezine&lt;/a&gt; uğramayı unutmayın.
 - Geçerli sürümün teknik özelliklerine &lt;a href=&quot;https://www.pluggabletransports.info/spec/pt2draft3&quot; target=&quot;_blank&quot;&gt;buradan bakabilirsiniz&lt;/a&gt;.
 - Değiştirilebilir Taşıyıcılar 2.0 sürümü için yapılan geliştirmelerin teknik özellikleri şu şekildedir:
 - Go programlama dili için bir API
 - UDP iletişim kuralı desteği
 - Farklı ortamlar için daha geniş uygulama ve araç çeşitleri.
-- 2.1 sürümü, modüler teknik özelliklere göre yeniden oluşturuldu. Böylece teknik özellikler içindeki bileşenlerin bağımsız olarak güncellenebilmesi ve çalışmalarını tek bir platform için yapan geliştiricilerin de uyum içinde olabilmesi sağlandı.
-- Görebileceğiniz gibi Değiştirilebilir Taşıyıcıların teknik özellikleri gelişimini sürdürüyor. Geçerli teknik özellikler isteklerinizi karşılamıyor olabilir ve gelecek sürüme katkıda bulunmak isteyebilirsiniz. Durumunuz böyleyse &lt;a href=&quot;https://github.com/Pluggable-Transports/Pluggable-Transports-spec&quot; target=&quot;_blank&quot;&gt;GitHub Deposu&lt;/a&gt; üzerinden geliştirme çalışmalarına katılabilirsiniz.
+- 2.1 sürümü, modüler teknik özelliklere göre yeniden oluşturuldu. Böylece teknik özellikler içindeki bileşenlerin bağımsız olarak güncellenebilmesi ve çalışmalarını tek bir platform üzerine yapan geliştiricilerin de uyum içinde olabilmesi sağlandı.
+- Görebileceğiniz gibi Değiştirilebilir Taşıyıcıların teknik özellikleri gelişimini sürdürüyor. Geçerli teknik özellikler isteklerinizi karşılamıyor olabilir ve gelecek sürüme katkıda bulunmak isteyebilirsiniz. Bunun için &lt;a href=&quot;https://github.com/Pluggable-Transports/Pluggable-Transports-spec&quot; target=&quot;_blank&quot;&gt;GitHub Deposu&lt;/a&gt; üzerinden geliştirme çalışmalarına katılabilirsiniz.
 - Kullanıcılar için Değiştirilebilir Taşıyıcılar
 - Büyük olasılıkla İnternet içeriğine erişmenizi engelleyen bir şeyi aşmak istediğiniz için buradasınız. Hangisini yapmak istersiniz?
 - Hızlı bir çözüm bulmak!
 - Kendim bir şeyler yapmak
-- Yaygın kullanılan bazı web sitesi ve hizmetler farklı ağlar üzerinde farklı şekillerde engelleniyor. Bu engellemeler bazen ulusal düzeyde ve kalıcı olarak yapılırken, bazen de geçici olarak ya da önemli bir seçimden önce yapılıyor. Engellemelerin ne kadar yaygın olduğunu görmek için Freedom House tarafından hazırlanan yıllık &lt;a href=&quot;https://freedomhouse.org/report/freedom-net/freedom-net-2017&quot; target=&quot;_blank&quot;&gt;Freedom on the Net (İnternette Özgürlük)&lt;/a&gt; raporuna bakabilirsiniz.
-- Bunun dışında İnternet Hizmeti Sağlayıcınız da (ISP) içeriğe erişimi engelleyebilir. Bir İnternet Hizmeti Sağlayıcısı size ağ bağlantısını sağlayan ancak şeylere erişmenizi engelleyen bir kuruluştur. Bu hizmet sağlayıcıları, kurumunuzda bulunan güvenlik duvarı, okul ağınızın yönetimi ya da telekom şirketiniz gibi çeşitli kuruluşlar olabilir.
-Çoğu zaman istediğiniz içeriğe erişememek sinir bozucu bir durumdur. Değiştirilebilir Taşıyıcılar istediğiniz içeriğe erişmeniz için en iyi yolu bulmanıza yardımcı olacak şekilde tasarlanmıştır. Bunun için birden fazla taşıyıcı türü bulunur. Bunun arkasındaki fikir, tüm taşıyıcıların sistemle aynı şekilde iletişim kurmasını ve uygulama geliştiricileri ile sistem yöneticilerinin herhangi bir anda birden çok farklı taşıyıcıya erişebilmesini sağlamaktır.
+- Yaygın kullanılan bazı web sitesi ve hizmetler farklı ağlar üzerinde farklı şekillerde engellenir. Bu engellemeler bazen ulusal düzeyde ve kalıcı olarak yapılırken, bazen de geçici olarak ya da önemli bir seçimden önce yapılır. Engellemelerin ne kadar yaygın olduğunu görmek için Freedom House tarafından hazırlanan yıllık &lt;a href=&quot;https://freedomhouse.org/report/freedom-net/freedom-net-2017&quot; target=&quot;_blank&quot;&gt;Freedom on the Net (İnternette Özgürlük)&lt;/a&gt; raporuna bakabilirsiniz.
+- Bunun dışında İnternet Hizmeti Sağlayıcınız (ISP) da içeriğe erişmenizi engelleyebilir. İnternet Hizmeti Sağlayıcıları size ağ bağlantısı altyapısını sağladığı için içerik ve hizmetlere erişmenizi engelleyebilen bir kuruluştur. Bunlar, kurumunuzda bulunan güvenlik duvarı yönetimi, okul ağınızın sistem yönetimi ya da telekom şirketiniz gibi çeşitli kuruluşlar olabilir.
+Çoğu zaman istediğiniz içeriğe erişememek sinir bozucu bir durumdur. Değiştirilebilir Taşıyıcılar istediğiniz içeriğe erişmeniz için en iyi yolun bulunmasına yardımcı olacak şekilde tasarlanmıştır. Farklı engellemeleri aşmak için farklı taşıyıcı türleri geliştirilmiştir. Farklı yöntemler kullanan tüm bu taşıyıcıların aynı şekilde iletişim kurması sayesinde, uygulama geliştiricileri ve sistem yöneticileri gerektiği zaman farklı taşıyıcıların kullanılabileceği tek bir çözüm geliştirebilir.
 - Değiştirilebilir Taşıyıcıları Kullanma
-- İstediğiniz içeriğe hızlıca erişmek istersiniz. Neyse ki bugün Değiştirilebilir Taşıyıcılar özelliğini kullanan birden çok uygulama var. Bir masaüstü bilgisayar kullanıyorsanız &lt;a href=&quot;https://torproject.org&quot; target=&quot;_blank&quot;&gt;Tor Browser&lt;/a&gt; uygulamasını biliyor olmalısınız. Tor uygulamasındaki köprüler aslında Değiştirilebilir Taşıyıcılardır. Tor bağlantı yapılandırmasını köprüleri kullanacak şekilde yaptığınızda Tor uygulamasının engellendiği ağlardan istediğiniz içeriğe erişebilirsiniz.
+- İstediğiniz içeriğe engellenmeden ve hızlıca erişmek istersiniz. Neyse ki bugün Değiştirilebilir Taşıyıcılar özelliğini kullanan birden çok uygulama var. Bir masaüstü bilgisayar kullanıyorsanız &lt;a href=&quot;https://torproject.org&quot; target=&quot;_blank&quot;&gt;Tor Browser&lt;/a&gt; uygulamasını biliyor olmalısınız. Tor uygulamasındaki köprüler aslında Değiştirilebilir Taşıyıcılardır. Tor bağlantı yapılandırmasını köprüleri kullanacak şekilde yaptığınızda Tor uygulamasının engellendiği ağlardan istediğiniz içeriğe erişebilirsiniz.
 - Bir mobil aygıt kullanıyorsanız &lt;a href=&quot;https://getlantern.org&quot; target=&quot;_blank&quot;&gt;Lantern&lt;/a&gt; ya da &lt;a href=&quot;https://psiphon.ca&quot; target=&quot;_blank&quot;&gt;Psiphon&lt;/a&gt; uygulamalarını deneyebilirsiniz. Bu iki uygulama  Android ve iOS üzerinde kullanılmaya hazırdır. Ayrıca Tor ağına bağlanmanızı sağlayacak başka uygulamalar da vardır. &lt;a href=&quot;https://www.pluggabletransports.info/implement/&quot; target=&quot;_blank&quot;&gt;Buraya tıklayarak&lt;/a&gt; indirip kurabileceğiniz diğer uygulama örneklerinin bağlantılarına ulaşabilirsiniz.
 - Size sunduğumuz her şey açık kaynaklıdır ve kullanıyor olabileceğiniz her masaüstü ya da mobil işletim sistemi için bir çözüm bulunmaktadır.
-- Bu bilgilerde aradığınız yanıtı buldunuz mu?
+- Aradığınız yanıtı burada bulabildiniz mi?
 - Evet, işim bitti!
 - Hayır, kendim birşeyler yapmak istiyorum
 - Kendi Değiştirilebilir Taşıyıcılar Çözümünüzü Oluşturma
 - Var olan araçları kullanmak yerine Değiştirilebilir Taşıyıcıları kullanan kendi sisteminizi kurabilirsiniz. Bunun için iki seçeneğiniz var:
-- Marionette: Redjack tarafından geliştirilmiş Marionette (&lt;a href=&quot;https://www.github.com/redjack/marionette&quot; target=&quot;_blank&quot;&gt;https://www.github.com/redjack/marionette&lt;/a&gt;): Mac ya da CentOS işletim sistemlerine kolayca eklenebilen bir komut satırlı aracıdır. Hem &lt;a href=&quot;/implement/marionette-server&quot; target=&quot;_blank&quot;&gt;sunucu&lt;/a&gt; hem de &lt;a href=&quot;/implement/marionette-client&quot; target=&quot;_blank&quot;&gt;istemci&lt;/a&gt; tarafı için bakabileceğiniz bir başlangıç rehberi yayınladık. Ayrıntılı bilgi ve belgelere erişmek için &lt;a href=&quot;https://github.com/redjack/marionette/blob/master/doc/USER_GUIDE.md&quot; target=&quot;_blank&quot;&gt;proje sayfasına&lt;/a&gt; bakabilirsiniz.
-- Moonbounce: Operator Foundation (&lt;a href=&quot;https://www.operatorfoundation.org&quot; target=&quot;_blank&quot;&gt;https://www.operatorfoundation.org&lt;/a&gt;) Mac OS X üzerinde Değiştirilebilir Taşıyıcıları destekleyen ve görsel kullanıcı arayüzüne sahip bir OpenVPN uygulaması geliştirdi. Ayrıca Digital Ocean üzerinde OpenVPN sunucusu oluşturmak için bir betikleri var.
+- Marionette: Redjack tarafından geliştirilmiş Marionette (&lt;a href=&quot;https://www.github.com/redjack/marionette&quot; target=&quot;_blank&quot;&gt;https://www.github.com/redjack/marionette&lt;/a&gt;), Mac ya da CentOS işletim sistemlerine kolayca eklenebilen bir komut satırlı aracıdır. Hem &lt;a href=&quot;/implement/marionette-server&quot; target=&quot;_blank&quot;&gt;sunucu&lt;/a&gt; hem de &lt;a href=&quot;/implement/marionette-client&quot; target=&quot;_blank&quot;&gt;istemci&lt;/a&gt; tarafı için yararlanabileceğiniz bir başlangıç rehberi yayınladık. Ayrıntılı bilgi ve belgelere erişmek için &lt;a href=&quot;https://github.com/redjack/marionette/blob/master/doc/USER_GUIDE.md&quot; target=&quot;_blank&quot;&gt;proje sayfasına&lt;/a&gt; bakabilirsiniz.
+- Moonbounce: Operator Foundation (&lt;a href=&quot;https://www.operatorfoundation.org&quot; target=&quot;_blank&quot;&gt;https://www.operatorfoundation.org&lt;/a&gt;) tarafından geliştirilmiş olan Moonbounce, Mac OS X üzerinde Değiştirilebilir Taşıyıcıları destekleyen ve görsel kullanıcı arayüzüne sahip bir OpenVPN uygulamasıdır. Ayrıca Digital Ocean üzerinde OpenVPN sunucusu oluşturmak için hazır betikleri vardır.
 - Alternatif olarak OpenVPN yapılandırmasını kendiniz de yapabilirsiniz.
-- El ile kurmak istiyorum.
+- Kendim el ile kurmak istiyorum
 
 
 </tw-passagedata><tw-passagedata pid="2" name="Değiştirilebilir Taşıyıcıların Teknik Özellikleri" tags="" position="302,350" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
