@@ -18,13 +18,6 @@ sidebar:
 {% include feature_row_posts %}
 
 ---
-
-Censorship and shutdowns vary from blocking specific websites to blocking or throttling entire types of traffic, like https or VoIP protocols. Pluggable Transports can keep sites and apps working as they are meant to when the network is being interfered with in this way.
-
-<!--<img src="/assets/images/comic.png" alt="What are Pluggable Transports?" />-->
-
-<img id="ptComic" src="/assets/images/comic_en.png">
-
 <button onclick="langChange_en()">English</button>
 <button onclick="langChange_es()">Español</button>
 <button onclick="langChange_tr()">Türkçe</button>
@@ -32,8 +25,13 @@ Censorship and shutdowns vary from blocking specific websites to blocking or thr
 <button onclick="langChange_cn()">粵語</button>
 <button onclick="langChange_tw()">中文</button>
 
+<!--Censorship and shutdowns vary from blocking specific websites to blocking or throttling entire types of traffic, like https or VoIP protocols. Pluggable Transports can keep sites and apps working as they are meant to when the network is being interfered with in this way.-->
+
 <div id="langWelcome">Welcome to the Pluggable Transports site! Looking for a place to start? Use our Getting Started guide to help you find your way around.
 <button onclick="myGuide_en()">Try me!</button> </div>
+<br />
+
+<img id="ptComic" src="/assets/images/comic_en.png">
 
 <script>
 	function langChange_en() {
