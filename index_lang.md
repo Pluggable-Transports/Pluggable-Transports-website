@@ -18,31 +18,65 @@ sidebar:
 {% include feature_row_posts %}
 
 ---
+<button onclick="langChange_en()">English</button>
+<button onclick="langChange_es()">Español</button>
+<button onclick="langChange_tr()">Türkçe</button>
+<button onclick="langChange_ru()">Русский</button>
+<button onclick="langChange_cn()">粵語</button>
+<button onclick="langChange_tw()">中文</button>
 
-Censorship and shutdowns vary from blocking specific websites to blocking or throttling entire types of traffic, like https or VoIP protocols. Pluggable Transports can keep sites and apps working as they are meant to when the network is being interfered with in this way.
+<!--Censorship and shutdowns vary from blocking specific websites to blocking or throttling entire types of traffic, like https or VoIP protocols. Pluggable Transports can keep sites and apps working as they are meant to when the network is being interfered with in this way.-->
 
-<!--<img src="/assets/images/comic.png" alt="What are Pluggable Transports?" />-->
+<div id="langWelcome">Welcome to the Pluggable Transports site! Looking for a place to start? Use our Getting Started guide to help you find your way around.
+<button onclick="myGuide_en()">Try me!</button> </div>
+<br />
 
 <img id="ptComic" src="/assets/images/comic_en.png">
 
-<button onclick="document.getElementById('ptComic').src='/assets/images/comic_en.png'">English</button>
-<button onclick="document.getElementById('ptComic').src='/assets/images/comic_es.png'">Español</button>
-<button onclick="document.getElementById('ptComic').src='/assets/images/comic_tr.png'">Türkçe</button>
-<button onclick="document.getElementById('ptComic').src='/assets/images/comic_ru.png'">Русский</button>
-<button onclick="document.getElementById('ptComic').src='/assets/images/comic_zhcn.png'">粵語</button>
-<button onclick="document.getElementById('ptComic').src='/assets/images/comic_zhtw.png'">中文</button>
-<!--<button dir="rtl" onclick="document.getElementById('ptComic').src='/assets/images/comic_ar.png'">Arabic</button>
-<button dir="rtl" onclick="document.getElementById('ptComic').src='/assets/images/comic_fa.png'">Farsi</button>-->
-
-
-*Welcome to the Pluggable Transports site! Looking for a place to start? Use our Getting Started guide to help you find your way around.*
-
-<button onclick="myFunction()">Try me!</button>
-
 <script>
-function myFunction() {
-    window.open("gettingstarted.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
-}
+	function langChange_en() {
+       document.getElementById("langWelcome").innerHTML = "Welcome to the Pluggable Transports site! Looking for a place to start? Use our Getting Started guide to help you find your way around. <button onclick=\"myGuide_en()\">Try me!</button>";
+       document.getElementById('ptComic').src='/assets/images/comic_en.png';
+	}
+	function langChange_es() {
+       document.getElementById("langWelcome").innerHTML = "Juega a través de nuestra guía a Transportes Conectables <button onclick=\"myGuide_es()\">àqui</button>"; 
+       document.getElementById('ptComic').src='/assets/images/comic_es.png';
+    }
+    function langChange_tr() {
+       document.getElementById("langWelcome").innerHTML = "<button onclick=\"myGuide_tr()\">Buraya tıklayarak</button> Değiştirilebilir Taşıyıcılar rehberimize göz atabilirsiniz.";
+       document.getElementById('ptComic').src='/assets/images/comic_tr.png';
+    }
+    function langChange_ru() {
+       document.getElementById("langWelcome").innerHTML = "мотрите видео руководство по Подключаемым транспортам <button onclick=\"myGuide_ru()\">здесь</button>";
+       document.getElementById('ptComic').src='/assets/images/comic_ru.png';
+    }
+    function langChange_tw() {
+       document.getElementById("langWelcome").innerHTML = "透過可插拔傳輸指示<button onclick=\"myGuide_tw()\">播放</button>";
+       document.getElementById('ptComic').src='/assets/images/comic_zhtw.png';
+    }
+    function langChange_cn() {
+       document.getElementById("langWelcome").innerHTML = "我们在<button onclick=\"myGuide_cn()\">此处</button>提供了可插拔传输步骤式的指南";
+       document.getElementById('ptComic').src='/assets/images/comic_zhcn.png';
+    }
+
+    function myGuide_es() {
+    	window.open("/gettingstarted_es.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+    }
+	function myGuide_tr() {
+    	window.open("/gettingstarted_tr.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+    }
+	function myGuide_ru() {
+    	window.open("/gettingstarted_ru.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+	}
+	function myGuide_cn() {
+    	window.open("/gettingstarted_zhcn.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+	}
+	function myGuide_tw() {
+    	window.open("/gettingstarted_zhtw.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+	}
+	function myGuide_en() {
+    	window.open("/gettingstarted.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+	}
 </script>
 
 ---
