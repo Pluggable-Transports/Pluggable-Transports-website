@@ -24,6 +24,8 @@ sidebar:
 <button onclick="langChange_ru()">Русский</button>
 <button onclick="langChange_cn()">粵語</button>
 <button onclick="langChange_tw()">中文</button>
+<button onclick="langChange_ar()">العربية</button>
+<button onclick="langChange_fa()">فارسی</button>
 
 <!--Censorship and shutdowns vary from blocking specific websites to blocking or throttling entire types of traffic, like https or VoIP protocols. Pluggable Transports can keep sites and apps working as they are meant to when the network is being interfered with in this way.-->
 
@@ -58,7 +60,14 @@ sidebar:
        document.getElementById("langWelcome").innerHTML = "我们在<button onclick=\"myGuide_cn()\">此处</button>提供了可插拔传输步骤式的指南";
        document.getElementById('ptComic').src='/assets/images/comic_zhcn.png';
     }
-
+    function langChange_ar() {
+       document.getElementById("langWelcome").innerHTML = "<p dir=\"rtl\">تصفح مرشدنا للنواقل الموصولة <button onclick=\"myGuide_ar()\">هنا</button></p>";
+       document.getElementById('ptComic').src='/assets/images/comic_ar.png';
+    }
+    function langChange_fa() {
+       document.getElementById("langWelcome").innerHTML = "<p dir=\"rtl\">NOT YET ACTIVE</p>";
+       document.getElementById('ptComic').src='/assets/images/comic_fa.png';
+    }
     function myGuide_es() {
     	window.open("/gettingstarted_es.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
     }
@@ -77,6 +86,12 @@ sidebar:
 	function myGuide_en() {
     	window.open("/gettingstarted.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
 	}
+  function myGuide_ar() {
+      window.open("/gettingstarted_ar.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+  }
+  function myGuide_fa() {
+      window.open("/gettingstarted_fa.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+  }
 </script>
 
 ---
