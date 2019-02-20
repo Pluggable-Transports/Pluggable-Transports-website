@@ -65,7 +65,7 @@ sidebar:
        document.getElementById('ptComic').src='/assets/images/comic_ar.png';
     }
     function langChange_fa() {
-       document.getElementById("langWelcome").innerHTML = "<p dir=\"rtl\">NOT YET ACTIVE</p>";
+       document.getElementById("langWelcome").innerHTML = "<p dir=\"rtl\">با راهنمای ما برای حامل‌های جابه‌جاپذیر شروع کنید<button onclick=\"myGuide_fa()\">اینجا</button></p>";
        document.getElementById('ptComic').src='/assets/images/comic_fa.png';
     }
     function myGuide_es() {
