@@ -26,7 +26,9 @@
 
 
 
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
 
 
 
@@ -68,19 +70,21 @@
 </tw-passagedata><tw-passagedata pid="3" name="I&#39;m a developer" tags="" position="236,203" size="100,100">&lt;div style=&quot;text-align: center&quot;&gt;&#39;&#39;//Transportes Conectables para desarrolladores//&#39;&#39;&lt;/div&gt;
 Ya sabes que quieres usar Transportes Conectables con tu software, y estás buscando algunos recursos adicionales. ¿Con qué podemos ayudarte hoy?
 
-&lt;p&gt;&lt;img src=&quot;assets/game/developer1.png&quot; alt=&quot;Desarrollador&quot; style=&quot;padding: 0 15px; float: left; max-width: 300px&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;- [[Ya sabes que quieres usar Transportes Conectables con tu software, y estás buscando algunos recursos adicionales. ¿Con qué podemos ayudarte hoy?|OpenVPN and Pluggable Transports]]
+&lt;p&gt;&lt;img src=&quot;assets/game/developer1.png&quot; alt=&quot;Desarrollador&quot; style=&quot;padding: 0 15px; float: left; max-width: 300px&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+- [[Quiero instalar soporte para Transportes Conectables en mi servidor OpenVPN|OpenVPN and Pluggable Transports]]
 
 - [[Usando Transportes Conectables en mi aplicación Go|Using Pluggable Transports in my Go app]]
 
 - [[Probando Transportes Conectables|Testing Pluggable Transports]]
 
-- [[Quiero inscribir un transporte|I want to write a transport]]
+- [[Quiero escribir un transporte|I want to write a transport]]
 
 - [[Especificación de Transportes Conectables|Pluggable Transports specification]]
 
 [[Ir hacia atrás|Who are you?]]
 </tw-passagedata><tw-passagedata pid="4" name="Give me a quick solution!" tags="" position="473,169" size="100,100">&lt;div style=&quot;text-align: center&quot;&gt;&#39;&#39;//Usando Transportes Conectables//&#39;&#39;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;assets/game/jigsaw.png&quot; style=&quot;padding: 0 15px; float: left; margin-left: -100px; max-width: 500px&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;Necesitas llegar a tu contenido rápidamente. Afortunadamente, ya hay varias piezas de software en uso que han implementado Transportes Conectables. Si estás en una máquina de escritorio, puede que ya estés usando el &lt;a href=&quot;https://torproject.org&quot; target=&quot;_blank&quot;&gt;Navegador Tor&lt;/a&gt;, el cual puede ser configurado para usar puentes éstos son conectores de Transportes Conectables que te llevan a la red cuando Tor mismo está bloqueado.
+&lt;p&gt;&lt;img src=&quot;assets/game/jigsaw.png&quot; style=&quot;padding: 0 15px; float: left; margin-left: -100px; max-width: 500px&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;Necesitas llegar a tu contenido rápidamente. Afortunadamente, ya hay varias piezas de software en uso que han implementado Transportes Conectables. Si estás en una máquina de escritorio, puede que ya estés usando el &lt;a href=&quot;https://torproject.org&quot; target=&quot;_blank&quot;&gt;Navegador Tor&lt;/a&gt;, el cual puede ser configurado para usar puentes - éstos son conectores de Transportes Conectables que te llevan a la red cuando Tor mismo está bloqueado.
 
 Si estás en un dispositivo móvil, puedes intentar con &lt;a href=&quot;https://getlantern.org&quot; target=&quot;_blank&quot;&gt;Lantern&lt;/a&gt; o &lt;a href=&quot;https://psiphon.ca&quot; target=&quot;_blank&quot;&gt;Psiphon&lt;/a&gt;, ambos funcionan con Android e iOS. También hay aplicaciones que te conectan a la red de Tor - puedes ver más ejemplos &lt;a href=&quot;https://www.pluggabletransports.info/implement/&quot; target=&quot;_blank&quot;&gt;aquí&lt;/a&gt;, con enlaces de descarga e instalación.
 
@@ -124,7 +128,7 @@ Si estás aquí, probablemente tienes ejecutándose un servidor OpenVPN, y quier
 [[Ir hacia atrás|Who are you?]]
 [[Empezar de nuevo|Who are you?]]</tw-passagedata><tw-passagedata pid="8" name="Installing and configuring OpenVPN" tags="" position="666,567" size="100,100">&lt;div style=&quot;text-align: center&quot;&gt;&#39;&#39;//Instalando y Configurando OpenVPN//&#39;&#39;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/game/plug.png&quot; style=&quot;padding: 0 15px; float: right; max-width: 300px&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;Nuestra &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#preparation&quot; target=&quot;_blank:&quot;&gt;guía de instalación de OpenVPN&lt;/a&gt; te lleva a través de estos tres pasos:
+&lt;p&gt;&lt;img src=&quot;assets/game/plug.png&quot; style=&quot;padding: 0 15px; float: right; max-width: 300px&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;Nuestra &lt;a href=&quot;https://www.pluggabletransports.info/implement/openvpn/#preparation&quot; target=&quot;_blank&quot;&gt;guía de instalación de OpenVPN&lt;/a&gt; te lleva a través de estos tres pasos:
 
 * Preparación: Obteniendo las dependencias (openssl, ca-certificates, git, golang, curl, screen).
 * Instalación de OpenVPN: Cómo instalar, configurar y probar OpenVPN con acceso root/sudo en tu servidor.
@@ -144,6 +148,7 @@ Nuestra guía de instalación de Transportes Conectables con OpenVPN te ayudará
 Los pasos a través de los cuales serás guiado son:
 
 * Instalar y configurar shapeshifter-dispatcher
+
 * Configuración de servidor y cliente
 
 Una vez que esté hecho, ¡tendrás tu propio servidor ejecutando OpenVPN con Transportes Conectables!
@@ -189,6 +194,7 @@ Una vez que termines con esa guía, podrías querer ver cómo probar tu aplicaci
 </tw-passagedata><tw-passagedata pid="12" name="Testing Pluggable Transports" tags="" position="357,765" size="100,100">&lt;div style=&quot;text-align: center&quot;&gt;&#39;&#39;//Probando Transportes Conectables//&#39;&#39;&lt;/div&gt;
 
 &lt;img src=&quot;assets/game/tester.png&quot; style=&quot;padding: 0 15px; float: right; max-width: 300px&quot; width=&quot;100%&quot; /&gt;Hay muchas maneras diferentes en las cuales el acceso a sitios y servicios puede ser bloqueado, comprendiendo desde el simple bloqueo de DNS o direcciones IP, a reglas creadas para inspección profunda de paquetes (DPI). Tal vez quisieras probar un entorno de red que simule alguna de las muchas maneras en que ésto puede suceder.
+
 Recomendamos investigar los siguientes servicios:
 
 * &lt;a href=&quot;https://github.com/OperatorFoundation/AdversaryLab&quot; target=&quot;_blank&quot;&gt;Adversary Lab&lt;/a&gt;: Creado por Operator Foundation, con soporte de la comunidad de Transportes Conectables. Adversary Lab es un servicio que analiza tráfico de red capturado para extraer propiedades estadísticas. Usando éste análisis, pueden ser sintetizadas reglas de filtrado para bloquear tráfico muestreado.
