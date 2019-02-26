@@ -23,8 +23,8 @@ sidebar:
 <button onclick="langChange_es()">Español</button>
 <button onclick="langChange_tr()">Türkçe</button>
 <button onclick="langChange_ru()">Русский</button>
-<button onclick="langChange_cn()">简体中文</button>
-<button onclick="langChange_tw()">繁体中文</button>
+<button onclick="langChange_cn()">粵語</button>
+<button onclick="langChange_tw()">中文</button>
 <button onclick="langChange_ar()">العربية</button>
 <button onclick="langChange_fa()">فارسی</button>
 
@@ -91,3 +91,49 @@ sidebar:
       window.open("/gettingstarted_" + lang + ".html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
     }
 </script>
+
+
+
+
+
+<!--Censorship and shutdowns vary from blocking specific websites to blocking or throttling entire types of traffic, like https or VoIP protocols. Pluggable Transports can keep sites and apps working as they are meant to when the network is being interfered with in this way.
+
+<div id="langWelcome">Welcome to the Pluggable Transports site! Looking for a place to start? Use our Getting Started guide to help you find your way around.
+<button onclick="myGuide('es')">Try me!</button> </div>
+<br />
+
+<img id="ptComic" src="/assets/images/comic_en.png">
+
+<div id="langParas">If you’re interested in Pluggable Transports, it’s probably because you are:
+
+  <ul>
+    <li>An app developer who is facing censorship and wants to <a href="/implement/">DEPLOY</a> a transport</li>
+    <li>A Transport developer who knows the basics and wants to <a href="/build/">CREATE</a> a transport</li>
+    <li>A user facing censorship, or you’re curious and want to <a href="/about/">LEARN</a> about Pluggable Transports</li>
+  </ul>
+  <p>Follow the links at the top of the page to see the content most relevant for you, or follow our quick links menu to get deeper into the content.</p>
+</div>
+
+<script>
+    function myGuide(lang) { 
+      document.getElementById("langWelcome").innerHTML = "Now launching gettingstarted_" + lang +".html";
+      window.open("/gettingstarted_" + lang + ".html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+    }
+    function myGuide_en() {
+     document.getElementById("langWelcome").innerHTML = "Hello"; 
+    }
+</script>
+
+<!--    window.open("/gettingstarted_es.html", "_blank", "toolbar=no,scrollbars=yes,resizable=no");
+---
+
+# Using the site
+
+If you're interested in Pluggable Transports, it's probably because you are :
+
+- An app developer who is facing censorship and wants to [DEPLOY](/implement/) a transport
+- A Transport developer who knows the basics and wants to [CREATE](/build/) a transport
+- A user facing censorship, or you're curious and want to [LEARN](/about/) about Pluggable Transports
+
+Follow the links at the top of the page to see the content most relevant for you, or follow our quick links menu to get deeper into the content.
+-->
