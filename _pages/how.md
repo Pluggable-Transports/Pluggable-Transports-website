@@ -124,18 +124,6 @@ Even if you are using OpenVPN on the https port, and not using a well-known VPN 
 
 Pluggable Transports make it harder for DPI to classify the connection and take an action against it. [A Child's Garden of Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
 
-<!-- 
-On the other side, a recipient PT server will be waiting for the packets to arrive and then ‘Decipher’ them and then forward the packets to the OpenVPN server.
-
-The PT server is responsible of ‘ciphering’ the ongoing packets and push them to the client which will then ‘Decipher’ the packets and forward them to the OpenVPN client.
-
-<img src="/assets/images/DPIOpenVPN.png" alt="DPI blocking on OpenVPN" />
-
-*DPI blocking on OpenVPN* 
--->
-
-<!-- **Figure (2) A wireshark capture for Obfs4/OpenVPN packets** -->
-
 
 #### How this escalates
 

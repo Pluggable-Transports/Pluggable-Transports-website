@@ -31,7 +31,7 @@ sidebar:
 <!--Censorship and shutdowns vary from blocking specific websites to blocking or throttling entire types of traffic, like https or VoIP protocols. Pluggable Transports can keep sites and apps working as they are meant to when the network is being interfered with in this way.-->
 
 <div id="langWelcome">Welcome to the Pluggable Transports site! Looking for a place to start? Use our Getting Started guide to help you find your way around.
-<button onclick="myGuide_en()">Try me!</button> </div>
+<button onclick="myGuide('en')">Try me!</button> </div>
 <br />
 
 <img id="ptComic" src="/assets/images/comic_en.png">
