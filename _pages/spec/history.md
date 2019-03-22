@@ -13,7 +13,7 @@ sidebar:
     nav: "sidenav"
 ---
 
-The current draft specification is based on the PT 1.0 specification and the Pluggable Transports Work in Progress. It also contains the Pluggable Transports Go API and Pluggable Transport UDP Support. Additionally, it includes feedback from the workshop on those proposals.
+The current draft specification is based on the PT 1.0 specification and the Pluggable Transports Work in Progress. It also contains the Pluggable Transports Go API and Pluggable Transport UDP Support. Additionally, it includes feedback from the workshop on those proposals. If you want to contribute to the development of the spec, visit [this page on Github](https://github.com/Pluggable-Transports/Pluggable-Transports-spec)
 
 The Tor Project authored the [original Pluggable Transports specification](https://gitweb.torproject.org/torspec.git/tree/pt-spec.txt) for use in the tor network environment.
 

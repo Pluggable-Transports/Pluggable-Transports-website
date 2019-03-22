@@ -12,20 +12,22 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "createnav"
 ---
 
-Below is the current PT 2.0 Draft 3 Spec. You can also view this in [PDF form](/assets/PTSpecV2Draft3.pdf). It may be useful to also reference the [history of the spec](/spec/history).
+Below is the current PT 2.0 Draft 3 Spec. You can also view this in [PDF form](/assets/PTSpecV2Draft3.pdf). It may be useful to also reference the [history of the spec](/spec/history), and if you want to contribute to the emerging spec update, you can do that on [Github](https://github.com/Pluggable-Transports/Pluggable-Transports-spec).
 
 ---------------
-**Abstract**
+
+{% include toc icon="file-text" %}
+
+## Abstract
 
 Pluggable Transports (PTs) are a generic mechanism for the rapid development and deployment of censorship circumvention, based around the idea of modular transports that transform traffic to defeat censors.
 
 There are two ways to use transports. The Transports API (section 3.2) defines a set of language-specific APIs to use transports directly from within an application. A PT library implementing the Transports API is available for the Go language (section 3.2.4). Alternatively, transports can be used through the Dispatcher, a command line tool that runs in a separate process and is controlled through a custom inter-process communication (IPC) protocol. The Dispatcher IPC Interface (section 3.3) provides a way to integrate with applications written in any language and to wrap existing applications in PTs without modifying the source code.
 
-1. Introduction
-===============
+## 1. Introduction
 
 This specification describes interfaces for implementing and using Pluggable Transports (PTs). PTs provide a protocol-level mechanism for transforming network traffic between a client application and an intermediary server that applies a reserve transform to the traffic on its way to the destination. This document aims to promote common adoption and easy reuse of PTs for use in anti-censorship tools. Some PTs are focused primarily on obfuscation, whereas others are focused primarily on re-routing traffic via a less-blockable intermediary. Most PTs implement both a PT Client and a PT Server, but in some cases only one of the two is unnecessary.
 
@@ -37,17 +39,16 @@ This document describes two complementary interfaces:
 
 PTs began as a project of the Tor Project, so Tor is occasionally referenced for backwards-compatibility. However, PTs provide a generic interface for any application to use.
 
-1.1. Requirements Notation
---------------------------
+### 1.1. Requirements Notation
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in \[RFC2119\].
 
-2. Architecture Overview
-========================
+## 2. Architecture Overview
 
 The PT Server software exposes a public proxy that accepts connections from PT Clients. The PT Client transforms the traffic before it hits the public Internet and the PT Server reverses this transformation before passing the traffic on to its next destination. By default, the PT Server directly forwards this data to the Server App, but the Server App itself may itself be a proxy server and expect the forwarded traffic it receives to conform to a proxy communication protocol such as SOCKS or TURN. There is also an optional lightweight protocol to facilitate communicating connection metadata that would otherwise be lost such as the source IP address and port \[EXTORPORT\].
 
 When using the API on both client and server (“Transport API Interface”), the PT Client Library is integrated directly into the Client App and the PT Server Library is integrated directly into the Server App. The Client App and Server App communicate through socket-like APIs, with all communication between them going through the PT library, which only sends transformed traffic over the public Internet.
+
 ~~~~
 
     +------------+                     +---------------------------+
@@ -60,8 +61,9 @@ When using the API on both client and server (“Transport API Interface”), th
     | Server App +-- Socket-like API --+ PT Server (Library)       +--+
     +------------+                     +---------------------------+
 
-~~~~
+
 Figure 1. API Architecture Overview
+~~~~
 
 When using the transports as a separate process on both client and server, the Dispatcher IPC Interface is used. On the client device, the PT Client software exposes a local proxy to the client application, and transforms traffic before forwarding it to the PT Server. The PT Dispatcher can be configured to provide different proxy types, supporting proxying of both TCP and UDP traffic.
 
@@ -80,11 +82,12 @@ When using the transports as a separate process on both client and server, the D
    +------------+                     +---+-------------------+---+
                                           |PT Server (Library)|                
                                           +-------------------+
-~~~~
 
 Figure 2. IPC Architecture Overview
+~~~~
 
-A PT may also be function via Dispatcher IPC on one end of the connection but via Transport API on the other, as below (or vice-versa):
+A PT may also function via Dispatcher IPC on one end of the connection but via Transport API on the other, as below (or vice-versa):
+
 ~~~~
 
    +------------+                     +---------------------------+
@@ -99,19 +102,17 @@ A PT may also be function via Dispatcher IPC on one end of the connection but vi
    | Server App +-- Socket-like API  --+ PT Server (Library ) 	+--+
    +------------+         	         +--------------------------+
 
-~~~~
-
 Figure 3. Mixed IPC and Transport API example
+~~~~
 
 Each invocation of a PT MUST be either a client OR a server.
 
 PT dispatchers MAY support any of the following proxy modes: PT 1.0 with SOCKS4, PT 1.0 with SOCKS5, PT 2.0, transparent TCP, transparent UDP, or STUN-aware UDP. Clients SHOULD prefer PT 2.0 over PT 1.0.
 
-3. Specification
-================
+## 3. Specification
 
-3.1. Pluggable Transport Naming
--------------------------------
+
+### 3.1. Pluggable Transport Naming
 
 Pluggable Transport names serve as unique identifiers, and every PT MUST have a unique name.
 
@@ -119,10 +120,9 @@ PT names MUST be valid C identifiers. PT names MUST begin with a letter or under
 
 PT names MUST satisfy the regular expression "\[a-zA-Z\_\]\[a-zA-Z0-9\_\]\*".
 
-3.2. Transports API Interface
------------------------------
+### 3.2. Transports API Interface
 
-### 3.2.1. Goals for interface design
+#### 3.2.1. Goals for interface design
 
 The goal for the interface design is to achieve the following properties:
 
@@ -142,11 +142,11 @@ The goal for the interface design is to achieve the following properties:
 
 -   The interface in each language should be idiomatic and performant, including reproducing blocking behavior and interaction with nonblocking IO subsystems when possible.
 
-### 3.2.2. Abstract Interfaces
+#### 3.2.2. Abstract Interfaces
 
 This section presents high-level pseudocode descriptions of the interfaces exposed by different types of transport components. Implementations for different languages should provide equivalent functionality, but should use the idioms for each language, mimicking the existing networking libraries.
 
-#### 3.2.2.1. Transport
+##### 3.2.2.1. Transport
 
 -   **Transport** takes a **transport configuration** and provides a **Client Factory** and a **Server Factory**.
 
@@ -158,23 +158,23 @@ This section presents high-level pseudocode descriptions of the interfaces expos
 
     -   The **transport configuration** is specific to each **Transport**. Using a **Transport** requires knowing the correct parameters to initialize that **Transport**.
 
-#### 3.2.2.1. Client Factory
+##### 3.2.2.2. Client Factory
 
 -   **Client Factory** takes the **connection settings** and produces a **Connection** to that server.
 
     -   The **connection settings** are specific to each transport. Some transports will also require an argument indicating the **destination endpoint**. Producing a **Connection** may fail if the server is unreachable or if the **transport configuration** was incorrect.
 
-#### 3.2.2.2. Server Factory
+##### 3.2.2.3. Server Factory
 
 -   **Server Factory** takes the address on which the PT server should listen for incoming client connections and produces a **Listener** for that address
 
-#### 3.2.2.2. Listener
+##### 3.2.2.4. Listener
 
 -   **Listener** produces a stream of **Connections**
 
     -   New **Connections** are available whenever an incoming connection from the PT client has been established. The language-specific API can adopt either a blocking or non-blocking API for accepting new connections, depending on what is idiomatic for the language.
 
-#### 3.2.2.2. Connection
+##### 3.2.2.5. Connection
 
 -   **Connection** provides an API similar to the environment’s native socket type
 
@@ -184,17 +184,17 @@ This section presents high-level pseudocode descriptions of the interfaces expos
 
     -   The transport-specific logic for obfuscating network traffic is implemented inside the **Connection**.
 
-### 3.2.4. Go Interface
+#### 3.2.3. Go Interface
 
 The Pluggable Transport Go API provides a way to use Pluggable Transports directly from Go code. It is an alternative to using the IPC interface. The Go API may be an appropriate choice when the application and the required transport are both written in Go. When either the application or the transport are written in a different language, the IPC interface provides a language-neutral method for configuring and using transports running in a separate process.
 
 This API specification is divided into three parts. The “Modules” section provides documentation of the types and methods provided by the Pluggable Transports Go API. The “Implementing a Transport” and “Using a Transport” sections then provide context on how the API is used.
 
-#### 3.2.4.1. Modules
+##### 3.2.3.1. Modules
 
 The Pluggable Transports Go API provides one module: base. It is intended to be used as a replacement for the net module provided by the Go standard library. The API mirrors that of the net library.
 
-##### 3.2.4.1.1. Module base
+###### 3.2.3.1.1. Module base
 ~~~
 package base
 
@@ -263,7 +263,7 @@ type Conn interface {
 
 ~~~
 
-#### 3.2.4.2. Implementing a Transport
+###### 3.2.3.2. Implementing a Transport
 
 In order to implement a transport, a constructor function must be created that returns an instance of the Transport interface. The transport constructor function, being a normal Go function, can take arbitrary configuration parameters. It is up to the application using the API to implement a valid call to the constructor function for the specific transport being used. This configuration method was chosen over a more generic method such as have a generic constructor method that accepts an associative array or empty interface type as it is more idiomatic to Go. Transports are free to accept basic Go value types as parameters, as well as structs. The Go type system can be used to enforce some validity constraints at compile time.
 
@@ -275,7 +275,7 @@ The transport will also need to implement instances of the net.Conn interface. T
 
 Overall, all network operations are delegated to the transport. For instance, the transport is responsible for initiating outgoing network connections and listening for incoming network connections. This gives the transport flexibility in how it uses the network.
 
-##### 3.2.4.2.1. Dealing with Configuration Parameters
+###### 3.2.3.2.1. Dealing with Configuration Parameters
 
 The configuration of transports is specific to each transport, as each one has different required and optional parameters. The configuration API is therefore also specific to each transport. Each transport provides a constructor function and the type signature for that function specifies the required parameters. For instance, here is an example transport constructor for obfs4:
 
@@ -283,28 +283,28 @@ The configuration of transports is specific to each transport, as each one has d
 
 This constructor function provides an idiomatic way to handle configuration. It is the responsibility of the application to handle obtaining the necessary parameters to call the constructor function and to handle deserialization of parameters from any configuration file format used. Each transport may provide helper functions for parsing parameters, but they are not required.
 
-##### 3.2.4.2.2. Wrapping the Network Connection
+###### 3.2.3.2.2. Wrapping the Network Connection
 
 The transformations provided by each transport to turn data into traffic and back again are provided by the net.Conn implementations returned by the Dial and Accept functions. The transport net.Conn instances wrap other net.Conn instances representing the network connection. A call to the transport net.Conn.Write() will be translated into one or more calls to the network net.Conn.Write(). Similarly, a call to the transport net.Conn.Read() will be translated into one or more calls to the network net.Conn.Read().
 
-#### 3.2.4.3. Using a Transport
+###### 3.2.3.3. Using a Transport
 
 Applications using transport have two main responsibilities. The first is gathering transport-specific parameters to pass to the transport constructor function. It is the responsibility of the application to handle obtaining the necessary parameters to call the constructor function and to handle deserialization of parameters from any configuration file format used. Each transport may provide helper functions for parsing parameters, but they are not required. The application must therefore have some understanding of the required parameters for each transport it will use.
 
 The second second responsibility of the application is to set parameters on the network connections underlying the transports. This step is optional and the default network parameters can be used.
 
-3.3 Dispatcher IPC Interface
+### 3.3 Dispatcher IPC Interface
 ----------------------------
 
 When the transport runs in a separate process from the application, the two components interact through an IPC interface. The IPC interface serves to ensure compatibility between applications and transports written in different languages.
 
-### 3.3.1 Pluggable Transport Configuration Parameters
+#### 3.3.1 Pluggable Transport Configuration Parameters
 
 When using the IPC interface, Pluggable Transport proxy instances are configured by their parent process at launch time via a set of well defined environment variables and command line flags.
 
 The "TOR\_PT\_" prefix is used in all environment variable names. This prefix was originally introduced for namespacing reasons and is kept for preserving backwards compatibility with the PT 1.0 specification.
 
-#### 3.3.1.1. Common Configuration Parameters
+##### 3.3.1.1. Common Configuration Parameters
 
 When launching either a PT Client or PT Server Pluggable Transport, all of the common configuration parameters specified in section 3.3.1.1 MUST be set, using either environment variables or command line flags. Additional configuration parameters specific to PT Clients are specified in section 3.3.1.2 and configuration parameters specific to PT Servers are specified in section 3.3.1.3.
 
@@ -316,10 +316,12 @@ Valid versions MUST consist entirely of non-whitespace, non-comma printable ASCI
 The version of the Pluggable Transport specification as of this document is "2".
 
 **Examples**
+
 ~~~~
 TOR\_PT\_MANAGED\_TRANSPORT\_VER=1,1a,2,this\_is\_a\_valid\_version
 obfs4proxy -ptversion 1,1a,2,this\_is\_a\_valid\_version
 ~~~~
+
 **TOR\_PT\_STATE\_LOCATION or -state**
 
 Specifies an absolute path to a directory where the PT is allowed to store state that will be persisted across invocations. The directory is not required to exist when the PT is launched, however PT implementations SHOULD be able to create it as required.
@@ -328,24 +330,25 @@ If "TOR\_PT\_STATE\_LOCATION" is not specified, PT proxies MUST use the current 
 
 PTs MUST only store files in the path provided, and MUST NOT create or modify files elsewhere on the system.
 
-**Examples**
 ~~~~
 TOR\_PT\_STATE\_LOCATION=/var/lib/tor/pt\_state/
+
 obfs4proxy -state /var/lib/tor/pt\_state/
 ~~~~
+
 **TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE or -exit-on-stdin-close**
 
 Specifies that the parent process will close the PT proxy's standard input (stdin) stream to indicate that the PT proxy should gracefully exit.
 PTs MUST NOT treat a closed stdin as a signal to terminate unless this environment variable is set to "1".
 PTs SHOULD treat stdin being closed as a signal to gracefully terminate if this environment variable is set to "1".
 
-**Example**
 ~~~~
 TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE=1
+
 obfs4proxy -exit-on-stdin-close
 ~~~~
 
-#### 3.3.1.2. Pluggable PT Client Configuration Parameters
+##### 3.3.1.2. Pluggable PT Client Configuration Parameters
 
 When launching either a PT Client, the common configuration parameters specified in section 3.3.1.1 as well as the client-specific configuration parameters specified in section 3.3.1.2 MUST also be set, using either environment variables or command line flags.
 
@@ -357,26 +360,33 @@ PTs SHOULD ignore PT names that it does not recognize.
 
 Parent processes MUST set this environment variable when launching a client-side PT proxy instance.
 
-**Example**
 ~~~~
 TOR\_PT\_CLIENT\_TRANSPORTS=obfs2,obfs3,obfs4
+
 obfs4proxy -transports obfs2,obfs3,obfs4
 ~~~~
+
 **TOR\_PT\_PROXY or -proxy**
 
 Specifies an upstream proxy that the PT MUST use when making outgoing network connections. It is a URI \[RFC3986\] of the format:
+
 ~~~~
 &lt;proxy\_type&gt;://\[&lt;user\_name&gt;\[:&lt;password&gt;\]\[@\]&lt;ip&gt;:&lt;port&gt;.
+
 The "TOR\_PT\_PROXY" environment variable is OPTIONAL and MUST be omitted if there is no need to connect via an upstream proxy.
 ~~~~
-**Examples**
+
 ~~~~
 TOR\_PT\_PROXY=socks5://tor:test1234@198.51.100.1:8000
+
 TOR\_PT\_PROXY=socks4a://198.51.100.2:8001
+
 TOR\_PT\_PROXY=http://198.51.100.3:443
+
 obfs4proxy -proxy http://198.51.100.3:443
 ~~~~
-#### 3.3.1.3. Pluggable PT Server Environment Variables
+
+###### 3.3.1.3. Pluggable PT Server Environment Variables
 
 When launching either a PT Server, the common configuration parameters specified in section 3.3.1.1 as well as the server-specific configuration parameters specified in section 3.3.1.3 MUST also be set, using either environment variables or command line flags.
 
@@ -389,6 +399,7 @@ Parent processes MUST set this environment variable when launching a server-side
 **Example**
 ~~~~
 TOR\_PT\_SERVER\_TRANSPORTS=obfs3,scramblesuit
+
 obfs4proxy -transports obfs3,scramblesuit
 ~~~~
 
@@ -398,9 +409,11 @@ Specifies per-PT protocol configuration directives, as a semicolon-separated lis
 Colons, semicolons, equal signs and backslashes MUST be escaped with a backslash.
 If there are no arguments that need to be passed to any of PT transport protocols, "TOR\_PT\_SERVER\_TRANSPORT\_OPTIONS" MAY be omitted.
 
-**Example **
+**Example**
+
 ~~~~
 TOR\_PT\_SERVER\_TRANSPORT\_OPTIONS=scramblesuit:key=banana;automata:rule=110;automata:depth=3
+
 obfs4proxy -options scramblesuit:key=banana;automata:rule=110;automata:depth=3
 ~~~~
 
@@ -415,17 +428,17 @@ The &lt;address&gt;:&lt;port&gt; combination MUST be an IP address supported by 
 Applications MUST NOT set more than one &lt;address&gt;:&lt;port&gt; pair per PT name.
 If there is no specific &lt;address&gt;:&lt;port&gt; combination to be configured for any transports, "TOR\_PT\_SERVER\_BINDADDR" MAY be omitted.
 
-**Example**
 ~~~~
 TOR\_PT\_SERVER\_BINDADDR=obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891
+
 obfs4proxy -bindaddr obfs3-198.51.100.1:1984,scramblesuit-127.0.0.1:4891
 ~~~~
+
 **TOR\_PT\_ORPORT or -orport on the server or -target on the client**
 
 Specifies the destination that the PT reverse proxy should forward traffic to after transforming it as appropriate, as an &lt;address&gt;:&lt;port&gt;. Unless otherwise specified in the documentation of the specific transport being used, the address can be an IPv4 IP address, an IPv6 IP address, or a domain name.
 Connections to the destination specified via "TOR\_PT\_ORPORT" MUST only contain application payload. If the parent process requires the actual source IP address of client connections (or other metadata), it should set "TOR\_PT\_EXTENDED\_SERVER\_PORT" instead.
 
-**Example**
 ~~~~
 TOR\_PT\_ORPORT=127.0.0.1:9001
 
@@ -437,34 +450,38 @@ obfs4proxy -target \[2001:0db8:85a3:0000:0000:8a2e:0370:7334\]:1122
 
 obfs4proxy -target example.com:9922
 ~~~~
+
 **TOR\_PT\_EXTENDED\_SERVER\_PORT or -extorport**
 
 Specifies the destination that the PT reverse proxy should forward traffic to, via the Extended ORPort protocol \[EXTORPORT\] as an &lt;address&gt;:&lt;port&gt;.
 The Extended ORPort protocol allows the PT reverse proxy to communicate per-connection metadata such as the PT name and client IP address/port to the parent process.
 If the parent process does not support the ExtORPort protocol, it MUST set "TOR\_PT\_EXTENDED\_SERVER\_PORT" to an empty string.
 
-**Example**
 ~~~~
 TOR\_PT\_EXTENDED\_SERVER\_PORT=127.0.0.1:4200
+
 obfs4proxy -extorport 127.0.0.1:4200
 ~~~~
+
 **TOR\_PT\_AUTH\_COOKIE\_FILE or -authcookie**
 
 Specifies an absolute filesystem path to the Extended ORPort authentication cookie, required to communicate with the Extended ORPort specified via "TOR\_PT\_EXTENDED\_SERVER\_PORT".
 If the parent process is not using the ExtORPort protocol for incoming traffic, "TOR\_PT\_AUTH\_COOKIE\_FILE" MUST be omitted.
 
-**Example**
 ~~~~
 TOR\_PT\_AUTH\_COOKIE\_FILE=/var/lib/tor/extended\_orport\_auth\_cookie
+
 obfs4proxy -authcookie /var/lib/tor/extended\_orport\_auth\_cookie
 ~~~~
-#### 3.3.1.4 Command Line Flags
+
+##### 3.3.1.4 Command Line Flags
 
 All configuration parameters, including both environment variables and per-connection configuration parameters, can also be provided by using command line flags. When a command line flag is provided, it overrides corresponding environment variables.
 
-### 3.3.2. Pluggable Transport To Parent Process Communication
+#### 3.3.2. Pluggable Transport To Parent Process Communication
 
 When using the IPC method to manage a PT in a separate process, in addition to environment variables and command line flags, a custom protocol is also used to communicate between the application parent process and PT sub-process. This protocol is communicated over the stdin/stdout channel between the processes. This is a text-based, line-based protocol using newline-terminated lines. Lines in the protocol conform to the following grammar:
+
 ~~~~
 <Line> ::= <Keyword> <OptArgs> <NL>
 <Keyword> ::= <KeywordChar> | <Keyword> <KeywordChar>
@@ -475,7 +492,8 @@ When using the IPC method to manage a PT in a separate process, in addition to e
 <SP> ::= <US-ASCII whitespace symbol (32)>
 <NL> ::= <US-ASCII newline (line feed) character (10)>
 ~~~~
-#### 3.3.2.1. Common Messages
+
+##### 3.3.2.1. Common Messages
 
 IPC messages specified in section 3.3.2.1 are common to both clients and servers.
 
@@ -488,23 +506,25 @@ The &lt;ErrorMessage&gt; SHOULD be set to "no-version" for historical reasons bu
 
 As this is an error, this message is written to STDERR.
 PT proxies MUST terminate with the exit code EX\_CONFIG (78) after outputting a "VERSION-ERROR" message.
-**Examples**
+
 ~~~~
 VERSION-ERROR no-version
 ~~~~
-**VERSION &lt;ProtocolVersion&gt;
-**
+
+**VERSION &lt;ProtocolVersion&gt;**
+
 The "VERSION" message is used to signal the Pluggable Transport Specification version (as in "TOR\_PT\_MANAGED\_TRANSPORT\_VER") that the PT proxy will use to configure it's transports and communicate with the parent process.
 The version for the environment values and reply messages specified by this document is "2".
-PT proxies MUST either report an error and terminate, or output a "VERSION" message before moving on to client/server proxy initialization and configuration.
+PT proxies MUST either report an error and terminate, or output a "VERSION" message before moving on to client/server proxy initialization and configuration.**
 
 This message is written to STDOUT.
-**Examples
-**VERSION 2
+**Examples**
+**VERSION 2**
 After version negotiation has been completed the PT proxy must then validate that all of the required environment variables are provided, and that all of the configuration values supplied are well formed.
 At any point, if there is an error encountered related to configuration supplied via the environment variables, it MAY respond with an error message and terminate.
-**ENV-ERROR &lt;ErrorMessage&gt;
-**
+
+**ENV-ERROR &lt;ErrorMessage&gt;**
+
 The "ENV-ERROR" message is used to signal the PT proxy's failure to parse the configuration environment variables (3.2).
 
 The &lt;ErrorMessage&gt; SHOULD consist of a useful error message that can be used to diagnose and correct the root cause of the failure.
@@ -512,47 +532,55 @@ The &lt;ErrorMessage&gt; SHOULD consist of a useful error message that can be us
 As this is an error, this message is written to STDERR.
 
 PT proxies MUST terminate with error code EX\_USAGE (64) after outputting a "ENV-ERROR" message.
-**Examples
+
 ~~~~
 **ENV-ERROR No TOR\_PT\_AUTH\_COOKIE\_FILE when TOR\_PT\_EXTENDED\_SERVER\_PORT set
 ~~~~
+
 #### 3.3.2.2. Pluggable PT Client Messages
 
 IPC messages specified in section 3.3.2.2 are specific to PT clients.
 
 After negotiating the Pluggable Transport Specification version, PT client proxies MUST first validate "TOR\_PT\_PROXY" (3.2.2) if it is set, before initializing any transports.
 Assuming that an upstream proxy is provided, PT client proxies MUST respond with a message indicating that the proxy is valid, supported, and will be used OR a failure message.
-**PROXY DONE
-**
+
+**PROXY DONE**
+
 The "PROXY DONE" message is used to signal the PT proxy's acceptance of the upstream proxy specified by "TOR\_PT\_PROXY".
 
 This message is written to STDOUT.
 
-**PROXY-ERROR <ErrorMessage>
-**
+**PROXY-ERROR <ErrorMessage>**
+
 The "PROXY-ERROR" message is used to signal that the upstream proxy is malformed/unsupported or otherwise unusable.
 
 As this is an error, this message is written to STDERR.
 
 PT proxies MUST terminate immediately with error code EX\_UNAVAILABLE (69) after outputting a "PROXY-ERROR" message.
+
 **Example**
 PROXY-ERROR SOCKS 4 upstream proxies unsupported.
 After the upstream proxy (if any) is configured, PT clients then iterate over the requested transports in "TOR\_PT\_CLIENT\_TRANSPORTS" and initialize the listeners.
 For each transport initialized, the PT proxy reports the listener status back to the parent via messages to stdout and error messages to stderr.
-**CMETHOD &lt;transport&gt; &lt;'socks5',’transparent-TCP’,’transparent-UDP’,’STUN’&gt; &lt;address:port&gt;
-**
+
+**CMETHOD &lt;transport&gt; &lt;'socks5',’transparent-TCP’,’transparent-UDP’,’STUN’&gt; &lt;address:port&gt;**
+
 The "CMETHOD" message is used to signal that a requested PT transport has been launched, the protocol which the parent should use to make outgoing connections, and the IP address and port that the PT transport's forward proxy is listening on.
 
 This message is written to STDOUT.
-**Examples**
+
 ~~~~
 CMETHOD obfs4 socks5 127.0.0.1:19999
+
 CMETHOD meeklite transparent-TCP \[::1\]:19999
+
 CMETHOD shadow transparent-UDP \[::1\]:1234
+
 CMETHOD obfs4 STUN 127.0.0.1:8888
 ~~~~
-**CMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;
-**
+
+**CMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;**
+
 The "CMETHOD-ERROR" message is used to signal that requested PT transport was unable to be launched.
 
 As this is an error, this message is written to STDERR.
@@ -562,27 +590,27 @@ Outputting a "CMETHOD-ERROR" does not result in termination of the PT process, a
 **Examples**
 CMETHOD-ERROR trebuchet no rocks available
 Once all PT transports have been initialized (or have failed), the PT proxy MUST send a final message indicating that it has finished initializing.
-**CMETHODS DONE
-**
+**CMETHODS DONE**
+
 The "CMETHODS DONE" message signals that the PT proxy has finished initializing all of the transports that it is capable of handling.
 
 This message is written to STDOUT.
 
 Upon sending the "CMETHODS DONE" message, the PT proxy initialization is complete.
 
-##### 3.3.2.2.1. Notes
+###### 3.3.2.2.1. Notes
 
 Unknown transports in "TOR\_PT\_CLIENT\_TRANSPORTS" are ignored entirely, and MUST NOT result in a "CMETHOD-ERROR" message. Thus it is entirely possible for a given PT proxy to immediately output "CMETHODS DONE" without outputting any "CMETHOD" or "CMETHOD-ERROR" lines. This does not result in termination of the PT process.
 Parent processes MUST handle "CMETHOD"/"CMETHOD-ERROR" messages in any order, regardless of ordering in "TOR\_PT\_CLIENT\_TRANSPORTS".
 
-#### 3.3.2.3. Pluggable PT Server Messages
+##### 3.3.2.3. Pluggable PT Server Messages
 
 IPC messages specified in section 3.3.2.3 are specific to PT servers.
 
-PT server reverse proxies iterate over the requested transports in "TOR\_PT\_CLIENT\_TRANSPORTS" and initialize the listeners.
-For each transport initialized, the PT proxy reports the listener status back to the parent via messages to stdout and error messages to stderr.
-**SMETHOD &lt;transport&gt; &lt;address:port&gt; \[options\]
-**
+PT server reverse proxies iterate over the requested transports in "TOR\_PT\_CLIENT\_TRANSPORTS" and initialize the listeners. For each transport initialized, the PT proxy reports the listener status back to the parent via messages to stdout and error messages to stderr.
+
+**SMETHOD &lt;transport&gt; &lt;address:port&gt; \[options\]**
+
 The "SMETHOD" message is used to signal that a requested PT transport has been launched, the protocol which will be used to handle incoming connections, and the IP address and port that clients should use to reach the reverse-proxy.
 
 This message is written to STDOUT.
@@ -590,15 +618,17 @@ This message is written to STDOUT.
 If there is a specific &lt;address:port&gt; provided for a given PT transport via "TOR\_PT\_SERVER\_BINDADDR", the transport MUST be initialized using that as the server address.
 The OPTIONAL 'options' field is used to pass additional per-transport information back to the parent process.
 The currently recognized 'options' are:
+
 ~~~~
 **ARGS:\[&lt;Key&gt;=&lt;Value&gt;,\]+\[&lt;Key&gt;=&lt;Value&gt;\]
 **
 ~~~~
+
 The "ARGS" option is used to pass additional key/value formatted information that clients will require to use the reverse proxy.
 Equal signs and commas MUST be escaped with a backslash.
 
 Tor: The ARGS are included in the transport line of the Bridge's extra-info document.
-**Examples**
+
 ~~~~
 SMETHOD obfs2 198.51.100.1:19999
 
@@ -606,8 +636,9 @@ SMETHOD obfs4 198.51.100.1:4444 ARGS:cert=60RNHBMRrf+aOSPzSj8bD4ASGyyPl0mkaOUAQs
 
 SMETHOD meeklite \[2001:0db8:85a3:0000:0000:8a2e:0370:7334\]:2323 ARGS:url=https://meek-reflect.appspot.com/;front=www.google.com
 ~~~~
-**SMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;
-**
+
+**SMETHOD-ERROR &lt;transport&gt; &lt;ErrorMessage&gt;**
+
 The "SMETHOD-ERROR" message is used to signal that requested PT transport reverse proxy was unable to be launched.
 
 As this is an error, this message is written to STDERR.
@@ -615,16 +646,17 @@ As this is an error, this message is written to STDERR.
 Outputting a "SMETHOD-ERROR" does not result in termination of the PT process, as even if one transport fails to be initialized, other transports may initialize correctly.
 
 **Example**
+
 SMETHOD-ERROR trebuchet no cows available
 Once all PT transports have been initialized (or have failed), the PT proxy MUST send a final message indicating that it has finished initializing.
-**SMETHODS DONE
-**
+
+**SMETHODS DONE**
 The "SMETHODS DONE" message signals that the PT proxy has finished initializing all of the transports that it is capable of handling.
 
 This message is written to STDOUT.
 Upon sending the "SMETHODS DONE" message, the PT proxy initialization is complete.
 
-### 3.3.3. Pluggable Transport Shutdown
+#### 3.3.3. Pluggable Transport Shutdown
 
 The recommended way for Pluggable Transport using applications and Pluggable Transports to handle graceful shutdown is as follows:
 (Parent) Set "TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE" (3.2.1) when launching the PT proxy, to indicate that stdin will be used for graceful shutdown notification.
@@ -644,7 +676,7 @@ PT proxies SHOULD attempt to detect when the parent has terminated (eg: via dete
 
 PT proxies exiting after a graceful shutdown should use exit code EX\_OK (0).
 
-### 3.3.4. Pluggable PT Client Per-Connection Arguments
+#### 3.3.4. Pluggable PT Client Per-Connection Arguments
 
 Certain PT transport protocols require that the client provides per-connection arguments when making outgoing connections. On the server side, this is handled by the "ARGS" optional argument as part of the "SMETHOD" message.
 On the client side, arguments are passed via the Dispatcher IPC protocol. This protocol is based on SOCKS5 and uses the SOCKS5 protocol authentication mechanism. If no per-connection settings are present, authentication type 0x00 (no authentication required) is used.
@@ -675,32 +707,32 @@ The following error codes are defined for the response when connection settings 
 
 While the byte count is encoded as a 4-byte sequence, which is capable of expressing connection setting sizes up to 4GB, it is not required that the implementation support the maximum possible size. If a size larger than is supported by the implementation is specified, the X’10’ error code can be used. Additionally, an implementation-dependent timeout should included for receiving the connection settings. If this timeout is exceeded, the X’11’ error code can be used. Error code X’12’ is returned if the connection parameters are not properly encoded JSON. Error code X’13’ is used if the connection settings are not correct for the specific transport being used.
 
-**Example**
 ~~~~
 \\x00\\x00\\x00\\x39{"shared-secret": "rahasia", "secrets-file": "/tmp/blob"}
 ~~~~
 
-### 3.3.5 UDP Support
+#### 3.3.5 UDP Support
 
 All transports that are currently implemented use TCP. Therefore, this proposal will focus on adding UDP application support using the existing TCP transports. This means that the Client App will send UDP packets to the PT Client, TCP packets will be sent between the obfuscation and the PT Server, and then the PT Server will send UDP packets to the Server App.
 
-#### 3.3.5.1 Obfuscating Proxy Architecture
+##### 3.3.5.1 Obfuscating Proxy Architecture
 
 The PT client and PT server together form what appears to the Client App and Server App as a proxy. Unlike a normal single-hop proxy, the PT proxy must be split into two components. This is because, in the use case in which a PT is used, application traffic cannot transit the network between the Client App and the Server App due to filtering. Therefore, a traditional single hop relay will not generally work as either one side or the other will encounter filtering. With PTs, the proxy is broken into two pieces. The PT Client talks to the Client App locally. The PT Server talks to the Server App over the unfiltered Internet. The PT Client talks to the PT Server using an obfuscated protocol. The application protocol is therefore tunnelled inside the transport protocol.
 
 The architecture of the obfuscating proxy therefore has 4 parts: the Client App, the PT Client, the PT Server, and the Server App. These components are arranged in a bidirectional pipeline where data flows from the Client App, through the pipeline to the Server App, and back again.
 
-#### 3.3.5.2. Configuring the Transports
+##### 3.3.5.2. Configuring the Transports
 
 Each side of the transport (the client and the server) requires certain configuration information in order to function. Many transports require a destination address for the next link in the pipeline. The PT Client may require the address of the PT Server, and likewise the PT Server may require the address of the Server App. However, this is not always required. In the case of domain fronting, for instance, the PT Client chooses the PT Server as part of the domain fronting implementation and so external configuration is not required. Additionally, transport-specific parameters may be required. For instance, the PT Client may require the public key of the PT Server in order to authenticate its identity. Configuration information for PTs is broken up into two types. The first type is a static global configuration provided to the PT process when the PT binary is started. The information is provided by a host process, such as Tor. The host passes the configuration information in through a combination of environment variables and a textual protocol provided through standard input (section 3.3). The second type is per-connection configuration information provided as part of the SOCKS handshake.
 
 In the case of UDP, these configuration mechanisms are missing. The host role is normally provided by Tor, but Tor does not support UDP. Additionally, there is no SOCKS handshake to pass in per-connection configuration information. However, the transports still need all of this configuration information in order to function. In the UDP use case, per-connection configuration information is specified globally with command line flags. The advantage of this approach is that neither a host process nor a shell script wrapper is necessary. The PT process can be launched directly from the command line using command line arguments. The limitation of this approach is that configuration parameters cannot be specified on a per-connection basis.
 
-#### 3.3.5.3. Implementation of the PT Client
+##### 3.3.5.3. Implementation of the PT Client
 
 The role of the PT Client in UDP mode is to accept UDP packets and relay them over an existing TCP-based transport. The first step is for the PT Client to listen for UDP packets on a designated port. The second step is to relay these packet over a TCP-based transport, which requires two things: a transport connection must be established, and the packets must be converted into a data stream to be written to the transport connection.
 
 Establishing a transport connection requires bridging a mismatch between the semantics of packet-based UDP protocols and connection-based TCP transports. TCP transports are opened and later closed, ending the connection. However, UDP protocols are connectionless. There is no intrinsic way to tell when the first packet will start arrive or when the last packet has arrived. Therefore, the PT Client must establish transport connections using lazy instantiation. The PT Client will maintain a pool of transport connections. Each connection will be associated with a PT Server destination address. When the PT Client receives a UDP packet with a PT Server destination address not represented in the pool, a new transport connection will be created and added to the pool. Otherwise, the existing connection will be used. Additionally, connections will be closed and removed from the pool based on a timeout system. When a connection has not been used for some time, it will be closed. The specific timeout used can be configured. It is also possible that a connection will be closed by the PT Server or due to an error. In this case, the transport will be removed from the pool. The following table shows the state transitions that occur with this implementation.
+
 ~~~~
 
 | Event                        | Current State                                      | New State                                         | Effect                       |
@@ -713,20 +745,24 @@ Establishing a transport connection requires bridging a mismatch between the sem
 | Connection failed            | Connection in pool with state = Waiting            | Remove Connection from pool                       |                              |
 | Write failure sending packet | Connection in pool with state = Connected          | Remove Connection from pool                       | Packet dropped               |
 | Timeout since last packet    | Matching Connection in pool                        | Remove Connection from pool                       |                              |
-~~~~
-**Table 1. Client-side UDP state transitions**
 
-#### 3.3.5.4. Integration with TCP Transports
+Table 1. Client-side UDP state transitions
+
+~~~~
+
+
+##### 3.3.5.4. Integration with TCP Transports
 
 Configuration of the transports is described in section 3.3.5.2. The remaining integration necessary is to take the receiving UDP packets and convert them to a data stream that can be transmitted over a TCP-based transport connection. The basic mechanism for doing this is described in RFC 5389, “Session Traversal Utilities for NAT (STUN)”. Section 7.2.2, “Sending over TCP or TLS-over-TCP”, describes the necessity for adding additional framing to tell where individual UDP packets start and end within the datastream. The particular implementation of this framing is left unspecified in the RFC.
 
 Two methods of framing can be used. The first is for transparent UDP proxies where the format of the UDP packets is unknown. An example use case for this mode is an OpenVPN proxy. For this mode, a simple two byte length in network byte order can be used to prefix UDP packet payload data. The second mode is specifically for STUN packets. An example use case for this mode is when proxying to a TURN server. As STUN packets already contain a header including a length for the payload, STUN packets can simply be concatenated without additional external framing. Extraction of the individual packets from the data stream on the server side requires knowledge of which framing was used by the client.
 
-#### 3.3.5.5. Implementation of the PT Server
+##### 3.3.5.5. Implementation of the PT Server
 
 The PT Server receives a data stream over a TCP-based transport connection. It then retrieves the individual packets from the data stream and forwards them on as UDP packets. Two modes of operation are proposed for the PT Server: transparent UDP proxy mode and STUN-aware mode. In the transparent proxy mode, a simple two byte length in network byte order is prefixed to each packet to act as framing metadata. In this mode, packets retrieved from the data stream are forwarded to a destination address specified as a configuration parameter to the PT Server. The STUN-aware mode is similar, except that instead of using external framing metadata, the data stream is treated as a series of STUN packets. The STUN length data is retrieved from the STUN packet headers and used to retrieve the STUN packets. The packets are then forwarded onto a TURN server, the address of which is specified in the PT Server configuration parameters. The goal of the STUN-aware mode is to support the use of existing public TURN servers.
 
 In addition to retrieving packets from the data stream and relaying them onto a UDP Server App, the PT Server must also receive UDP packets from the Server App and relay them back over the transport connection to the PT Client. In this function it follows similar logic to the PT Client. The state transitions possible in the PT Server are similar to those in the PT Client, but there are also differences. If a UDP packet is received and no matching transport connection is available, the packet cannot be delivered and is dropped. Relatedly, connections in the connection pool are always in a Connected state and never in a Waiting state. Therefore Connection states are removed from the state transition table for the PT Server. The following table shows the state transitions that occur with this implementation.
+
 ~~~~
 | Event                        | Current State                  | New State                   | Effect                       |
 |------------------------------|--------------------------------|-----------------------------|------------------------------|
@@ -735,40 +771,36 @@ In addition to retrieving packets from the data stream and relaying them onto a 
 | Connection closed            | Connection in pool             | Remove Connection from pool |                              |
 | Write failure sending packet | Connection in pool             | Remove Connection from pool | Packet dropped               |
 | Timeout since last packet    | Matching Connection in pool    | Remove Connection from pool |                              |
-~~~~
-**Table 2. Server-side UDP state transitions**
 
-#### 3.3.5.6. Configuring Proxy Modes
+Table 2. Server-side UDP state transitions
+
+~~~~
+
+##### 3.3.5.6. Configuring Proxy Modes
 
 There is currently no mechanism for PT Servers to support multiple proxy modes simultaneously. When transport connections are received by the PT Server, the data stream must be interpreted as data from one of the TCP proxy modes (either transparent proxy or SOCKS proxy) or one of the UDP proxy modes (either transparent UDP proxy or STUN-aware proxy to a TURN server). Which mode the PT Server will operate in will be determined by PT Server configuration parameters. It is therefore important to ensure that the PT Client and PT Server are operating in the same mode.
 
-4. Adapters
-===========
+## 4. Adapters
 
 This section covers the various different ways that the Pluggable Transport interfaces (both API and IPC) can be adapted to different use cases.
 
-4.1. API to IPC Adapter
------------------------
+### 4.1. API to IPC Adapter
 
-When an application and the transports it uses are written in the same language, either the Transports API or Dispatcher IPC can be used. When they are in different languages, they must communicate through the Dispatcher IPC interface. For maximum flexibility and to minimize duplication of effort across languages, dispatcher can be implemented by wrapping transport implementations that implement the Transports API. For an example of this approach, see the Shapeshifter Dispatcher \[[*https://github.com/OperatorFoundation/shapeshifter-dispatcher*](https://github.com/OperatorFoundation/shapeshifter-dispatcher)\], which wraps transports implementing the Transports API in the Go language and provides a Dispatcher IPC interface to use them from other languages.
+When an application and the transports it uses are written in the same language, either the Transports API or Dispatcher IPC can be used. When they are in different languages, they must communicate through the Dispatcher IPC interface. For maximum flexibility and to minimize duplication of effort across languages, dispatcher can be implemented by wrapping transport implementations that implement the Transports API. For an example of this approach, see the [Shapeshifter Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher), which wraps transports implementing the Transports API in the Go language and provides a Dispatcher IPC interface to use them from other languages.
 
-4.2. PT 1.0 Compatibility
--------------------------
+### 4.2. PT 1.0 Compatibility
 
 The only interface defined in the PT 1.0 specification is an IPC interface. No standard API is defined. Therefore, PT 1.0 compatibility refers to compatibility between applications and transports where one side conforms to the PT 1.0 specification and the other conforms to the PT 2.0 specification. Fortunately, an adapter is not needed in this case as both the PT 1.0 and PT 2.0 specifications allow for version negotiation. The TOR\_PT\_MANAGED\_TRANSPORT\_VER environment variable or -ptversion command line flag is used by the application to specify a list of supported versions, for instance “1.0,2.0”. The PT provider responds with the VERSION command on stdout in order to specify which version is supported by the PT provider, for instance “VERSION 2.0”. Since the application can specify a list of supported versions, the PT provider can respond dynamically, supporting PT 1.0 when required and automatically upgrading to a PT 2.0 implementation when that is an available option. It is up to applications whether they want to support PT 2.0 exclusively or maintain backwards compatibility with PT 1.0 implementations.
 
-4.3. Cross-language Linking
----------------------------
+### 4.3. Cross-language Linking
 
 If two languages are compatible via cross-language linking, then a suitable adapter can be written that wraps the implementation of the Transports API in one language with an API for a compatible language. For example, on Android the Go implementation of the Transports API is wrapped in a Java API to create Java language bindings without the need for a native Java implementation or use of Dispatcher IPC.
 
-4.4. Using the Dispatcher IPC Interface In-process
---------------------------------------------------
+### 4.4. Using the Dispatcher IPC Interface In-process
 
-When using a transport that exposes the Dispatcher IPC interface, it may be more convenient to run the transport in a separate thread but in the same process as the application. Packets can still be routed through the transport’s SOCKS5 or TURN port on localhost. However, it may be inconvenient or impossible to use STDIN and STDOUT for communication between these two threads. Therefore, in some languages it may be appropriate to produce an “inter-thread interface” that reproduces the Dispatcher IPC interface’s semantics, but replaces STDIN and STDOUT with language-native function-call and event primitives. This is the approach used by OnionBrowser \[[*https://mike.tig.as/onionbrowser/*](https://mike.tig.as/onionbrowser/)\], the Tor implementation on iOS. This approach is used because Tor uses the Dispatcher IPC mechanism to talk to the transports instead of the Transports API. However, iOS does not allow for applications to have multiple processes. Therefore, an in-process Dispatcher IPC approach must be used instead of traditional separate process Dispatcher IPC. An alternative would be to use the Transports API directly instead of Dispatcher IPC.
+When using a transport that exposes the Dispatcher IPC interface, it may be more convenient to run the transport in a separate thread but in the same process as the application. Packets can still be routed through the transport’s SOCKS5 or TURN port on localhost. However, it may be inconvenient or impossible to use STDIN and STDOUT for communication between these two threads. Therefore, in some languages it may be appropriate to produce an “inter-thread interface” that reproduces the Dispatcher IPC interface’s semantics, but replaces STDIN and STDOUT with language-native function-call and event primitives. This is the approach used by [OnionBrowser](https://mike.tig.as/onionbrowser/*](https://mike.tig.as/onionbrowser/), the Tor implementation on iOS. This approach is used because Tor uses the Dispatcher IPC mechanism to talk to the transports instead of the Transports API. However, iOS does not allow for applications to have multiple processes. Therefore, an in-process Dispatcher IPC approach must be used instead of traditional separate process Dispatcher IPC. An alternative would be to use the Transports API directly instead of Dispatcher IPC.
 
-5. Anonymity Considerations
-===========================
+## 5. Anonymity Considerations
 
 When designing and implementing a Pluggable Transport, care should be taken to preserve the privacy of clients and to avoid leaking personally identifying information.
 
@@ -782,8 +814,7 @@ Examples of client related considerations are:
 
 Additionally, certain obfuscation mechanisms rely on information such as the server IP address and port being confidential, so clients also need to take care to preserve server side information confidential when applicable.
 
-6. References
-=============
+## 6. References
 
 \[RFC2119\] Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
 
@@ -795,17 +826,17 @@ Additionally, certain obfuscation mechanisms rely on information such as the ser
 
 \[RFC1929\] Leech, M., "Username/Password Authentication for SOCKS V5", RFC 1929, March 1996.
 
-\[PT2-DISPATCHER\] Wiley, Brandon., Shapeshifter Dispatcher. [*https://github.com/OperatorFoundation/shapeshifter-dispatcher*](https://github.com/OperatorFoundation/shapeshifter-dispatcher)
+\[PT2-DISPATCHER\] Wiley, Brandon., [Shapeshifter Dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher).
 
-7. Acknowledgments
+## 7. Acknowledgments
 ==================
 
 Many people contributed to the PT 2.0 specification. Major contributions were made by Dr. Brandon Wiley (Operator Foundation), Nick Mathewson (Tor), and Ben Schwartz (Jigsaw). Valuable feedback was provided by the attendees at the Pluggable Transport Implementers Meetings and the traffic-obf and tor-dev mailing lists. The PT 2.0 specification expands upon the “Pluggable Transport Specification (Version 1)” document authored by Yawning Angel (Tor). Inspiration for the PT 2.0 Go API was also inspired by the obfs4proxy implementation of the PT 1.0 specification in Go, also developed by Yawning Angel (Tor).
 
-Appendix A. Example Client Pluggable Transport Session
-======================================================
+## Appendix A. Example Client Pluggable Transport Session
 
 **Environment variables**
+
 ~~~~
 TOR\_PT\_MANAGED\_TRANSPORT\_VER=2
 
@@ -817,7 +848,9 @@ TOR\_PT\_PROXY=socks5://127.0.0.1:8001
 
 TOR\_PT\_CLIENT\_TRANSPORTS=obfs3,obfs4
 ~~~~
+
 **Messages the PT Proxy writes to stdin**
+
 ~~~~
 VERSION 2 PROXY DONE
 
@@ -827,10 +860,11 @@ CMETHOD obfs4 socks5 127.0.0.1:37347
 
 CMETHODS DONE
 ~~~~
-Appendix B. Example Server Pluggable Transport Session
-======================================================
+
+## Appendix B. Example Server Pluggable Transport Session
 
 **Environment variables**
+
 ~~~~
 TOR\_PT\_MANAGED\_TRANSPORT\_VER=2
 
@@ -840,7 +874,9 @@ TOR\_PT\_EXIT\_ON\_STDIN\_CLOSE=1
 
 TOR\_PT\_SERVER\_TRANSPORTS=obfs3,obfs4 TOR\_PT\_SERVER\_BINDADDR=obfs3-198.51.100.1:1984
 ~~~~
+
 **Messages the PT Proxy writes to stdin**
+
 ~~~~
 VERSION 2
 
@@ -852,8 +888,8 @@ ARGS:cert=HszPy3vWfjsESCEOo9ZBkRv6zQ/1mGHzc8arF0y2SpwFr3WhsMu8rK0zyaoyERfbz3ddFw
 
 SMETHODS DONE
 ~~~~
-Appendix C. Changelog
-=====================
+
+## Appendix C. Changelog
 
 **Draft 3**
 

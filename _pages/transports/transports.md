@@ -11,7 +11,7 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "aboutnav"
 ---
 There are many different transports which address a wide variety of blocking strategies. At a very high-level standpoint, they can be grouped into three categories: 
 
@@ -27,11 +27,12 @@ Fronting approaches leverage cloud platforms which are socially or economically 
 
 * **Implementations** 
 
-| Name | Description | Status |
+| **Name** | **Description** | **Status** |
+|----|-------|-----|
 |**[meek](https://trac.torproject.org/projects/tor/wiki/doc/meek)** | Meek is the gold standard and supports "fronting" through Google App Engine, Amazon Web Services and Microsoft Azure. | In use. [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/MeekEvaluation)|
 |**[SnowFlake](https://keroserene.net/snowflake/)** | SnowFlake uses WebRTC to turn website visitors into ephemeral proxies. See also [torproject.org/projects/tor/wiki/doc/Snowflake](https://trac.torproject.org/projects/tor/wiki/doc/Snowflake) | alpha [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/SnowFlakeEvaluation) |
 |**[FlashProxy](https://crypto.stanford.edu/flashproxy/)**|Flashproxy leverages javascript running in uncensored browsers to provide short-lived proxies to censored content. Firewall traversal causes challenges for this, which are being addressed in SnowFlake, above. | Deprecated [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/FlashproxyEvaluation)| 
-|**[Decoy Routing](https://www.decoyrouting.com/)** | Decoy Routing (also known as TapDance and Telex) is a concept in progress which intercepts traffic going to "safe" addresses and redirects it to user-requested, blocked content. See also https://github.com/SergeyFrolov/gotapdance | In Development. | 
+|**[Refraction Networking](https://refraction.network/)** | This approach involves intercepting traffic going to "safe" addresses and redirecting it to user-requested, blocked content. It increases the cost of censorship, by preventing censors from selectively blocking only those servers used to provide Internet freedom. For an example, see [Tapdance](https://github.com/SergeyFrolov/gotapdance]) | In Development. | 
 
 Other options include using short-lived VPS servers and even dividing traffic among multiple, low-cost fronting options.
 
@@ -45,7 +46,8 @@ This approach seeks to disguise the traffic in ways that are not identifiable as
 
 * **Implementations**
 
-| Name | Description | Status |
+| **Name** | **Description** | **Status** |
+|----|-------|-----|
 |**[obfs4](https://github.com/Yawning/obfs4)**| Obfs4 is the current state of the art deployed "look-like nothing" obfuscation protocol from The Tor Project.  It builds off of ScrambleSuit, below.  **NOTE:** Obfs4 is being [successfully blocked in Kazakhstan](https://trac.torproject.org/projects/tor/ticket/20348)|Actively used, [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/Obfs4Evaluation)|
 |**[ScrambleSuit](http://www.cs.kau.se/philwint/scramblesuit/)**| ScrambleSuit combines difficult to fingerprint unique traffic while also defending against "active probing" by adversaries | Superseded by Obfs4 [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/ScrambleSuitEvaluation)| 
 |**[Obfs3](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs3/obfs3-protocol-spec.txt)**| Obfs3 provides basic obfuscation but without the active probing defenses of Obfs4. | [Obfs3 Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/Obfs3Evaluation)|
@@ -64,6 +66,14 @@ This approach seeks to disguise the traffic in ways that are not identifiable as
 |**[Dust2](https://github.com/blanu/Dust)**|Dust transforms traffic to statistically match a pattern of "allowed" traffic |[Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/Dust2Evaluation)|
 | **[Stegotorus](https://github.com/TheTorProject/stegotorus)**|||
 |**[FTEProxy](https://fteproxy.org/)** | Format-Transforming Encryption Proxy uses regular expressions to transform blocked traffic (e.g. tor, https, VOIP) into traffic that appears to be allowed traffic (e.g. plain http) | [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/FteEvaluation)|
+|**[Lampshade](https://github.com/getlantern/lampshade)**| An obfuscated encrypted network protocol for Lantern||
 
 
 Visit [The Tor Project](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/list) for a list that includes additional theoretical transports and whitepapers.
+
+Now that you know what transports are available, let's look at how to [make sure they're working](/measuring))
+
+<p style="text-align:left;"><a href="/how-transports/">&lt; Previous</a>
+<span style="float:right;"><a href="/measuring/">Next &gt;</a></span>
+</p>
+
