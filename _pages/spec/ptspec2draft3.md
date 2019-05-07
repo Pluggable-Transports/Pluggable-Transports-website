@@ -3,7 +3,6 @@ layout: single
 title: Pluggable Transport Specification Documents
 permalink: /spec/pt2draft3
 redirect_from: /spec/current
-redirect_from: /spec/
 excerpt: ""
 header:
   overlay_image: /assets/images/unsplash_0wdpet-ufqs-todd-diemer.jpg
