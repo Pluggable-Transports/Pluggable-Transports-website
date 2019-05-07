@@ -10,7 +10,7 @@ header:
 #  cta_url: "https://unsplash.com"
 
 sidebar:
-    nav: "sidenav"
+    nav: "createnav"
 ---
 
 The current draft specification is based on the PT 1.0 specification and the Pluggable Transports Work in Progress. It also contains the Pluggable Transports Go API and Pluggable Transport UDP Support. Additionally, it includes feedback from the workshop on those proposals. If you want to contribute to the development of the spec, visit [this page on Github](https://github.com/Pluggable-Transports/Pluggable-Transports-spec)
