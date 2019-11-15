@@ -88,7 +88,7 @@ We set the value of ```GOPATH``` to ```~/go```. This means that Go will put its 
 Dep is a dependency manager for go. Just prior to installing Marionette, you will run Dep to make sure all of the dependencies are installed. To install Dep, you will first need to create a ```bin``` directory for Go, then fetch it from Github, and finally run the install script:
 
 ~~~~~
-$ mkdir $GOPATH\bin
+$ mkdir $GOPATH/bin
 $ go get github.com/golang/dep
 $ cd $GOPATH/src/github.com/golang/dep
 $ ./install.sh
