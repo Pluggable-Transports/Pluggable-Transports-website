@@ -61,7 +61,7 @@ We set the value of ```GOPATH``` to ```~/go```. This means that Go will put its 
 Dep is a dependency manager for go. Just prior to installing Marionette, you will run Dep to make sure all of the dependencies are installed. To install Dep, you will first need to create a ```bin``` directory for Go, then fetch it from Github, and finally run the install script:
 
 ~~~~~
-$ mkdir $GOPATH\bin
+$ mkdir $GOPATH/bin
 $ go get github.com/golang/dep
 ~~~~~
 
@@ -96,7 +96,7 @@ There will be **a lot** of information scrolling on the screen as the third part
 $ ls $GOPATH/src/github.com/redjack/marionette/third_party/libs
 ~~~~~
 
-This should return a list of three files: ```libfst.a```, ```libre2.a```, ```libfstscript.a```
+This should return a list of four files: ```libfst.a```, ```libre2.a```, ```libfstscript.a```, ```libgmp.a```
 
 At this stage, you should now be ready to check dependencies and compile Marionette itself. However, you will need to fully install one of the third-party libraries:
 
@@ -120,7 +120,7 @@ Now you will build Marionette with the following Go command:
 ~~~~~
 $ go install ./cmd/marionette
 ~~~~~
-You will likely get a message with ```ld: warning: PIE disabled.``` This can be safely ignore. At this point, 
+You will likely get a message with ```ld: warning: PIE disabled.``` This can be safely ignored. At this point, 
 the build is complete, and the  Marionette binary is in ```$GOPATH/bin``` and you're ready to go! Remember, all of these steps only have to be completed once. From now on, if you need to restart your client, you can go straight to the command to run Marionette.
 
 ## Running Marionette

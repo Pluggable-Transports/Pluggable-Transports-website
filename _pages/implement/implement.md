@@ -34,7 +34,7 @@ Developers can implement transports from scratch or using a library that impleme
 If you just want to add existing transports into your application, this table summarizes the libraries that have already been developed and are available for us:
 
 | --------------||
-| **Desktop** | [PT 2.1 Go API](http://localhost:4000/implement/go/) |
+| **Desktop** | [PT 2.1 Go API](/implement/go/) |
 | **Mobile - Android** | [PLUTO 2](https://github.com/guardianproject/AndroidPluggableTransports), [NetCipher](https://github.com/guardianproject/NetCipher)
 | **Mobile - iOS** | [Swift API](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/blob/master/releases/PTSpecV2.1Draft1/Pluggable%20Transport%20Specification%20v2.1%20-%20Swift%20Transport%20API%20v1.0%2C%20Draft%201.pdf) |
 
