@@ -15,8 +15,6 @@ sidebar:
 
 # Latest News
 
-\* \* \* Check out our new [YouTube channel](https://www.youtube.com/channel/UCzJGT8SUVi2_j-qUm6BtZUA) to see the comic strip come alive! \* \* \*
-
 {% include feature_row_posts %}
 
 ---
@@ -35,6 +33,8 @@ sidebar:
 <div id="langWelcome">Welcome to the Pluggable Transports site! Looking for a place to start? Use our Getting Started guide to help you find your way around.
 <button onclick="myGuide('en')">Try me!</button> </div>
 <br />
+
+\* \* \* Check out our [YouTube channel](https://www.youtube.com/channel/UCzJGT8SUVi2_j-qUm6BtZUA) to see the comic strip come alive! \* \* \*
 
 <img id="ptComic" src="/assets/images/comic_en.png">
 <a id="ytLang" href="https://youtu.be/Qzy8ubgp_JY"><img src="/assets/images/ytlogo.png" style="display: block;

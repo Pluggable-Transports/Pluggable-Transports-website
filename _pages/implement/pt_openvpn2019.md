@@ -33,7 +33,7 @@ A VPN is an easy to manage service that can help users access content in countri
 
 However, VPNs are increasingly targeted for blocking themselves. Deep Packet Inspection (DPI) is able to block any targeted application or protocol by filtering the traffic and preventing it from passing firewalls to the outside world Internet. As DPI firewalls act based on the packet type, not the port number, simple "tricks" like changing the port will not help
 
- Pluggable transports make it possible to bypass such filtering without modifying the VPN itself but proxying the traffic into obfuscated tunnels which are significantly more difficult to identify and/or are costly to block to enable the traffic to pass through. Read more about [different types of obfuscation](/transports) or the [history of filtering](/how/#dpi-blocking/).
+ Pluggable transports make it possible to bypass such filtering without modifying the VPN itself but proxying the traffic into obfuscated tunnels which are significantly more difficult to identify and/or are costly to block to enable the traffic to pass through. Read more about [different types of obfuscation](/transports) or the [history of filtering](/how/#dpi-blocking/). 
 
 <img src="/assets/images/DPIOpenVPN.png" alt="Obfusctated VPN circumventing a DPI firewall" />
 
@@ -68,7 +68,7 @@ apt-get install openssl ca-certificates git curl screen easy-rsa -y
 In this step, we will install and configure OpenVPN Server on Ubuntu 16.04.1 LTS and test it in non-DPI environment to be sure that it’s working. Please note that the procedure will probably work on any Debian / Ubuntu distro. You must run the installation and configure the different applications as root or sudoers account.
 
 ~~~~
-apt-get install openvpn
+apt-get install openvpn 
 ~~~~
 
 #### Install and configure Certificates
@@ -365,7 +365,7 @@ You will get this screen. Don’t forget to change the IP address and ports with
 And the following command to use Obfs4:
 
 ~~~
-screen ~/go/bin/shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:OPENVPNPORT -transports obfs4 -bindaddr obfs4-YOURSERVERIPADDRESS:OBFSPORT -logLevel DEBUG -enableLogging -extorport 127.0.0.1:3334
+screen ~/go/bin/shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:OPENVPNPORT -transports obfs4 -bindaddr obfs4 -bindaddr obfs4-YOURSERVERIPADDRESS:OBFSPORT -logLevel DEBUG -enableLogging -extorport 127.0.0.1:3334
 ~~~
 
 When the server is running for the first time, it will generate a new public key and it will write it to a file in the state directory called obfs4_bridgeline.txt. This information is needed by the dispatcher client. Look in the file and retrieve the public key from the bridge line. It will look similar to this:
