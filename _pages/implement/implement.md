@@ -20,7 +20,7 @@ This table shows some examples of software already using Pluggable Transports ac
 
 | --------------||
 | **Desktop** | [Tor Browser](https://torproject.org), [Lantern](https://getlantern.org), [Psiphon](https://psiphon.ca) |
-| **Mobile - Android** | [Briar Messaging](https://briarproject.org), [Lantern](https://getlantern.org), [Orbot](https://guardianproject.info/apps/orbot/), [Psiphon](https://psiphon.ca) |
+| **Mobile - Android** | [Briar Messaging](https://briarproject.org), [Lantern](https://getlantern.org), [Orbot](https://guardianproject.info/apps/orbot/), [Psiphon](https://psiphon.ca), [Calyx VPN](https://calyx.net) |
 | **Mobile - iOS** | [OnionBrowser](https://itunes.apple.com/us/app/onion-browser-secure-anonymous-web-with-tor/id519296448?mt=8), [Psiphon](https://itunes.apple.com/bm/app/psiphon/id1276263909), [Psiphon Browser](https://itunes.apple.com/ca/app/psiphon-browser/id1193362444?mt=8) |
 
 {% include toc icon="file-text" %}

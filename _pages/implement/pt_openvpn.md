@@ -327,7 +327,7 @@ The next step is to set up the Go environment, adding it to your profile with th
 nano ~/.profile
 ~~~~
 
-You should these lines to the end of the file:
+You should append these lines to the end of the file:
 
 ~~~~
 export GOPATH=~/go
