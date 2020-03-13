@@ -27,6 +27,8 @@ This could be on your local machine, or installed in a data center somewhere. Ou
 
 Digital Ocean also offer [CentOS](https://www.digitalocean.com/community/tutorial_series/new-centos-7-server-checklist), which is the server platform used for building the [Marionette](https://github.com/redjack/marionette/blob/master/doc/USER_GUIDE.md) binary.
 
+You can also follow our guide to setting up a server for Plugable Transports [here](/implement/basicserver)
+
 ### Client
 Our list of [Transports](/implement) will tell you which ones work on which platform. If you're going to compile the software yourself, you will most likely need a Linux-style environment. The [marionette](https://github.com/redjack/marionette) project fully tested their build process on both Mac OSX and CentOS. In some cases, such as a mobile deployment, the software will be built on a desktop computer before being transferred to a mobile device.
 

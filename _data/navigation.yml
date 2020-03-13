@@ -37,10 +37,16 @@ sidenav:
         url: /implement/proxy
       - title: "OpenVPN Walkthrough"
         url: /implement/openvpn/
+      - title: "Basic server setup"
+        url: /implement/basicserver
       - title: "Marionette Server"
         url: /implement/marionette-server
       - title: "Marionette Client"
         url: /implement/marionette-client
+      - title: "Stegotorus Server"
+        url: /implement/stegotorus
+      - title: "Mobile VPN client"
+        url: /implement/mobilevpn
       - title: "Testing"
         url: /implement/test/
         
@@ -148,10 +154,16 @@ impnav:
         url: /implement/go/
       - title: "- OpenVPN Walkthrough"
         url: /implement/openvpn/
+      - title: "- Basic server setup"
+        url: /implement/basicserver
       - title: "- Marionette Server"
         url: /implement/marionette-server
       - title: "- Marionette Client"
         url: /implement/marionette-client
+      - title: "- Stegotorus Server"
+        url: /implement/stegotorus
+      - title: "- Mobile VPN client"
+        url: /implement/mobilevpn
       - title: "- Testing your app"
         url: /implement/test
 
