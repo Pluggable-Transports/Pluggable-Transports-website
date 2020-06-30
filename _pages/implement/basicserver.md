@@ -17,7 +17,7 @@ sidebar:
 
 {% include toc icon="file-text" %}
 
-This guide takes you through the basic steps to set up a server, using Ubuntu 18.04, and installing Go, the programming language used by many transports and libraries. Once you have this server built, it can be used as a basis for installing PT libraries and tools, such as [Shapeshifter](https://github.com/OperatorFoundation/shapeshifter) and [Stegotorus](https://github.com/TheTorProject/stegotorus).
+This guide takes you through the basic steps to set up a server, using Ubuntu 18.04, and installing Go, the programming language used by many transports and libraries. Once you have this server built, it can be used as a basis for installing PT libraries and tools, such as [Shapeshifter](https://github.com/OperatorFoundation/shapeshifter-dispatcher) and [Stegotorus](https://github.com/TheTorProject/stegotorus).
 
 
 These steps are adapted from Digital Ocean's [Initial Server Setup guide](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04), and assume you have configured your server with root access via your SSH key.
@@ -77,7 +77,7 @@ The final command should give you this response:
 You should now log out of the root account and log in as your sudo user to make sure it is configured correctly. You may now want to disable root access, so that only your sudo user is able to issue admin commands, and also disable password authentication so that only SSH access is accepted. To do this, use the following command:
 
 ~~~~
-sudo nano /etc/sshd_config
+sudo nano /etc/ssh/sshd_config
 ~~~~
 
 The values below will disable the root user, and allow SSH authentication only:
@@ -91,11 +91,11 @@ PasswordAuthentication no
 
 # Installing Go #
 
-Go is available from the web site [https://golang.org](https://golang.org). At the time of writing, the most recent version is 1.14. You will need to download and install Go, and then configure its environment. For more information on Go, visit the page [Implementing in Go](/implement/go/)
+Go is available from the web site [https://golang.org](https://golang.org). At the time of writing, the most recent version is 1.14. You will need to download and install the correct version of Go for your operating system, and then configure its environment. For more information on Go, visit the page [Implementing in Go](/implement/go/).
 
 ~~~~
-curl -LO https://dl.google.com/go/go1.11.4.linux-386.tar.gz
-sudo tar -C /usr/local -xzf go1.11.4.linux-386.tar.gz
+curl -LO https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.11.4.linux-amd64.tar.gz
 ~~~~
 
 The next step is to set up the Go environment, adding it to your profile with the command:

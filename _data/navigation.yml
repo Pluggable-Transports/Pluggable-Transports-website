@@ -39,6 +39,8 @@ sidenav:
         url: /implement/openvpn/
       - title: "Basic server setup"
         url: /implement/basicserver
+      - title: "Using shapeshifter"
+        url: /implement/shapeshifter
       - title: "Marionette Server"
         url: /implement/marionette-server
       - title: "Marionette Client"
@@ -156,6 +158,8 @@ impnav:
         url: /implement/openvpn/
       - title: "- Basic server setup"
         url: /implement/basicserver
+      - title: "- Using shapeshifter"
+        url: /implement/shapeshifter
       - title: "- Marionette Server"
         url: /implement/marionette-server
       - title: "- Marionette Client"
