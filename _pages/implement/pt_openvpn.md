@@ -390,5 +390,4 @@ route 203.0.113.101 255.255.255.255 net_gateway #Bypass the server in the VPN co
 
 Note that you'll need to use the port that shapeshifter is connecting to, because it will be handling the connection to the OpenVPN server. You will also need to bypass the VPN server from the OpenVPN configuration, as shapeshifter itself is handling that connection.
 
-And now, you should have a working OpenVPN configuration, connecting over shapeshifter. We'll follow this up with instructions for obfs4 in July 2020, check back soon!
-
+And now, you should have a working OpenVPN configuration, connecting over shapeshifter. We'll follow this up with instructions for obfs4 in July 2020, check back soon for an update!
