@@ -33,7 +33,7 @@ A VPN is an easy to manage service that can help users access content in countri
 
 However, VPNs are increasingly targeted for blocking themselves. Deep Packet Inspection (DPI) is able to block any targeted application or protocol by filtering the traffic and preventing it from passing firewalls to the outside world Internet. As DPI firewalls act based on the packet type, not the port number, simple "tricks" like changing the port will not help
 
- Pluggable transports make it possible to bypass such filtering without modifying the VPN itself but proxying the traffic into obfuscated tunnels which are significantly more difficult to identify and/or are costly to block to enable the traffic to pass through. Read more about [different types of obfuscation](/transports) or the [history of filtering](/how/#dpi-blocking/).
+ Pluggable transports make it possible to bypass such filtering without modifying the VPN itself but proxying the traffic into obfuscated tunnels which are significantly more difficult to identify and/or are costly to block to enable the traffic to pass through. Read more about [different types of obfuscation](/transports) or the [history of filtering](/how/#dpi-blocking/). 
 
 <img src="/assets/images/DPIOpenVPN.png" alt="Obfusctated VPN circumventing a DPI firewall" />
 
@@ -60,7 +60,7 @@ First, we will be installing the following packages that you will use during the
 
 ~~~~
 apt-get update
-apt-get install openssl ca-certificates git curl screen easy-rsa -y
+apt-get install openssl ca-certificates git curl easy-rsa -y
 ~~~~
 
 # Installing OpenVPN
@@ -68,7 +68,7 @@ apt-get install openssl ca-certificates git curl screen easy-rsa -y
 In this step, we will install and configure OpenVPN Server on Ubuntu 16.04.1 LTS and test it in non-DPI environment to be sure that it’s working. Please note that the procedure will probably work on any Debian / Ubuntu distro. You must run the installation and configure the different applications as root or sudoers account.
 
 ~~~~
-apt-get install openvpn
+apt-get install openvpn 
 ~~~~
 
 #### Install and configure Certificates
@@ -310,45 +310,12 @@ We're going to use obfs-2 again for this, as it is the most simple to get up and
 Your server IP address - we're going to use 203.0.113.101 in this guide.
 Your VPN port - we're using 1194, but you may choose to run elsewhere.
 Your shapeshifter port - we're going to use 2233 in our example.
-=======
-Use Ctrl-X to exit the editor, and answer Y to save the file. To create the path for Go to store its files and make the new paths effective immediately, run the commands:
-
-~~~~
-mkdir ~/go
-source ~/.profile
-~~~~
-
-We set the value of ```GOPATH``` to ```~/go```. This means that Go will put its source code into ```~/go/src``` and compiled programs into ```~/go/bin```.
-
-Now you can download and compile Shapeshifter, along with its dependencies:
-
-~~~~
-go get -u github.com/OperatorFoundation/shapeshifter-dispatcher/shapeshifter-dispatcher
-~~~~
-
-#### Shapeshifter-dispatcher server and client setup:
-
-Run shapeshifter-dispatcher on the server by running the following command for Obfs2:
-
-~~~
-screen ~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2 -transports obfs2 -state state -bindaddr obfs2-YOURSERVERIPADDRESS:OBFSPORT -orport 127.0.0.1:OPENVPNPORT
-~~~
-You will get this screen. Don’t forget to change the IP address and ports within the command.
-
-<img  src="https://www.pluggabletransports.info/assets/images/Obfsservera.png" alt="Server Setup results screenshot" />
-<img  src="http://pluggabletransports.info/assets/images/Obfsservera.png" alt="Server Setup results screenshot" />
-
-And the following command to use Obfs4:
-
-~~~
-screen ~/go/bin/shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:OPENVPNPORT -transports obfs4 -bindaddr obfs4-YOURSERVERIPADDRESS:OBFSPORT -logLevel DEBUG -enableLogging -extorport 127.0.0.1:3334
-~~~
 
 Here's the command to start shapeshifter, installed as in [our guide](/implement/shapeshifter):
 
 ~~~
 cd ~/shapeshifter-dispatcher
-screen ~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2 -transports obfs2 -state state -bindaddr obfs2-203.0.113.101:2233 -orport 127.0.0.1:1194
+~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2 -transports obfs2 -state state -bindaddr obfs2-203.0.113.101:2233 -orport 127.0.0.1:1194
 ~~~
 
 # Client Obfuscation Configuration
@@ -390,4 +357,5 @@ route 203.0.113.101 255.255.255.255 net_gateway #Bypass the server in the VPN co
 
 Note that you'll need to use the port that shapeshifter is connecting to, because it will be handling the connection to the OpenVPN server. You will also need to bypass the VPN server from the OpenVPN configuration, as shapeshifter itself is handling that connection.
 
-And now, you should have a working OpenVPN configuration, connecting over shapeshifter. We'll follow this up with instructions for obfs4 in July 2020, check back soon for an update!
+And now, you should have a working OpenVPN configuration, connecting over shapeshifter. We'll follow this up with instructions for obfs4 in July 2020, check back soon!
+
