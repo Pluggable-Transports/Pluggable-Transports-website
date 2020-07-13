@@ -311,17 +311,17 @@ Your server IP address - we're going to use 203.0.113.101 in this guide.
 Your VPN port - we're using 1194, but you may choose to run elsewhere.
 Your shapeshifter port - we're going to use 2233 in our example.
 
-Here's the command to start shapeshifter, installed as in [our guide](/implement/shapeshifter):
+Here's the command to start shapeshifter with obfs2, installed as in [our guide](/implement/shapeshifter). The difference here is that we are setting -orport to our OpenVPN port (1194):
 
 ~~~
 cd ~/shapeshifter-dispatcher
-~/go/bin/shapeshifter-dispatcher -server -transparent -ptversion 2 -transports obfs2 -state state -bindaddr obfs2-203.0.113.101:2233 -orport 127.0.0.1:1194
+./shapeshifter-dispatcher -server -transparent -ptversion 2 -transports obfs2 -state state -bindaddr obfs2-203.0.113.101:2233 -orport 127.0.0.1:1194
 ~~~
 
 # Client Obfuscation Configuration
-On the client, we're going to need to do two things: run shapeshifter, and change our standard OpenVPN configuration to use it. You should have shapeshifter configured as in our [guide to installing shapeshifter](/implement/openvpn).
+On the client, we're going to need to do two things: run shapeshifter, and change our standard OpenVPN configuration to use it. You should have shapeshifter configured as in our [guide to installing shapeshifter](/implement/shapeshifter).
 
-First, let's run shapeshifter. Don't forget to change the target address to your server and its shapeshifter port.
+First, let's run shapeshifter with obfs2. Don't forget to change the target address to your server and its shapeshifter port.
 
 ~~~~~
 cd ~/shapeshifter-dispatcher
@@ -337,7 +337,7 @@ proto tcp
 sndbuf 0
 rcvbuf 0
 remote 127.0.0.1 #Change this one to your internal client IP address
-port 4455 #Change this one to the shapeshifter port you're sending traffic through
+port 4455 #Change this one to the shapeshifter port you're sending traffic through on the client
 resolv-retry infinite
 nobind
 persist-key
@@ -357,5 +357,4 @@ route 203.0.113.101 255.255.255.255 net_gateway #Bypass the server in the VPN co
 
 Note that you'll need to use the port that shapeshifter is connecting to, because it will be handling the connection to the OpenVPN server. You will also need to bypass the VPN server from the OpenVPN configuration, as shapeshifter itself is handling that connection.
 
-And now, you should have a working OpenVPN configuration, connecting over shapeshifter. We'll follow this up with instructions for obfs4 in July 2020, check back soon!
-
+And now, you should have a working OpenVPN configuration, connecting over shapeshifter. Our [guide to installing shapeshifter](/implement/shapeshifter) includes configuration options for obfs4, which can be used here, in the same way, in place of obfs2.
