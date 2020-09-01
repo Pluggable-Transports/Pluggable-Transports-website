@@ -44,7 +44,7 @@ Scrambling relies on having clients being able to know or discover unblocked IP 
 |**[Dust2](https://github.com/blanu/Dust)**|Dust transforms traffic to statistically match a pattern of "allowed" traffic | Shapeshifting |
 | **[Stegotorus](https://github.com/TheTorProject/stegotorus)**| [Stegotorus](https://github.com/TheTorProject/stegotorus) A development framework that provides an API specifically geared towards the needs of steganographic protocols. With this API, developers can help applications hide from DPI, and to resist throttling or connection dropping. | Shapeshifting |
 |**[Lampshade](https://github.com/getlantern/lampshade)**| An obfuscated encrypted network protocol for [Lantern](https://getlantern.org) | Shapeshifting |
-|**[Optimizer](link)**| Description | Strategy |
+|**[Optimizer](link)**| A pluggable transport that works with other transports to find the best option by making use of multiple configurable strategies to find the optimal choice among the available transports. | Various |
 |**[Replicant](https://github.com/OperatorFoundation/shapeshifter-transports/tree/main/transports/Replicant/v2)**| An "adversary-tunable" transport that can be adapted to provide the obfuscation needed by any specific adversary. | Shapeshifting |
 
 Now that you know what transports are available, let's look at how to [make sure they're working](/measuring))
