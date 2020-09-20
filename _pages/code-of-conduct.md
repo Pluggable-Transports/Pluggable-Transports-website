@@ -2,13 +2,6 @@
 layout: single
 title: "Code of Conduct"
 permalink: /code-of-conduct/
-
-excerpt: ""
-header:
-  overlay_image: /assets/images/max-vertsanov-683738-unsplash.jpg
-  caption: "Photo credit: [**CC0 Unsplash / Max Vertsanov**](https://unsplash.com/@make_it)"
-#  cta_label: "More Info"
-#  cta_url: "https://unsplash.com"
 ---
 
 **DISRUPT succeeds as a program by bringing varied lived experiences and voices to the forefront of a global discussion. As such, we expect all attendees to be respectful of others, appreciate differences of opinion, and to communicate clearly.**
