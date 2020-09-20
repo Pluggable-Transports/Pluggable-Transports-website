@@ -1,11 +1,7 @@
 ---
-title:  "USABLE events Code of Conduct"
-date:   2020-09-20 20:09:25
-layout: page
-draft: false
-aliases:
-    - /codeofconduct
-    - /codeofconduct.html
+layout: single
+title: "Measuring Censorship"
+permalink: /measuring/
 ---
 
 **DISRUPT succeeds as a program by bringing varied lived experiences and voices to the forefront of a global discussion. As such, we expect all attendees to be respectful of others, appreciate differences of opinion, and to communicate clearly.**
