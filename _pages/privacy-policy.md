@@ -4,8 +4,6 @@ title: "Privacy Policy"
 permalink: /privacy-policy
 ---
 
-## Privacy Policy
-
 General conference engagement notes:
 
 - For group sessions, we will be using [Big Blue Button,](https://bigbluebutton.org/privacy/) an open source web conferencing platform.
