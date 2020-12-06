@@ -29,7 +29,7 @@ This table shows a summary of the information contained below. Click on the meth
 | [DNS Blocking](#dns-blocking)| Forcing ISPs to misdirect users when certain URLs are accessed. | Provide and communicate alternative addresses. | Override the default DNS setting with a known safe one. |
 | [IP Blocking](#ip-blocking) | Specific IP addresses are blocked. | Swap in a new IP address whenever the existing one is blocked, distribute proxy software. | Use a VPN, proxy or circumvention apps. |
 | [Port Blocking](#port-blocking) | Stop traffic from accessing standard ports (eg OpenVPN on port 1194). | Use a different port, eg 443 which is usually used for https browsing. | Use more sophisticated VPN, proxy or circumvention apps. |
-| [DPI Blocking](#dpi-blocking) | Target services by filtering packets, analyzing them, and dropping unwanted traffic. | Obfuscation becomes a requirement, eg using Pluggable Transports. | Seek apps and software that are designed to evade censorship.
+| [DPI Blocking](#dpi-blocking) | Target services by filtering packets, analyzing them, and dropping unwanted traffic. | Obfuscation becomes a requirement, e.g. using Pluggable Transports. | Seek apps and software that are designed to evade censorship.
 
 ----------
 
@@ -79,13 +79,13 @@ Other VPN-like services are also available, such as [Lantern](https://getlantern
 
 #### How this escalates
 
-The collateral freedom approach is not without its own risks.  In one well-known case, github and the Amazon Cloud were unknowingly being used for collateral freedom, and while they were not blocked outright, likely due to the socio-economic impacts, they both paid a steep price for hosting censored content in the form of a [crippling denial of service attack](http://arstechnica.com/security/2015/04/ddos-attacks-that-crippled-github-linked-to-great-firewall-of-china/)
+The collateral freedom approach is not without its own risks.  In one well-known case, GitHub and the Amazon Cloud were unknowingly being used for collateral freedom, and while they were not blocked outright, likely due to the socio-economic impacts, they both paid a steep price for hosting censored content in the form of a [crippling denial of service attack](http://arstechnica.com/security/2015/04/ddos-attacks-that-crippled-github-linked-to-great-firewall-of-china/)
 
 Less advanced adversaries can also take a further step on even the most basic firewalls, which is [Protocol and Port Blocking](#port-blocking).
 
 ### Port Blocking
 
-Even basic firewalls can block traffic for a specific protocol. This is commonly seen on public/guest/conference wifi networks which only allow "web browsing" (e.g. port 80 ans 443 - http and https ports). Censors can easily target traffic and simply not allow it to pass on its default ports.  In the OpenVPN example, blocking port 1194 will prevent a client from establishing a connection to **any** OpenVPN server.
+Even basic firewalls can block traffic for a specific protocol. This is commonly seen on public/guest/conference WiFi networks which only allow "web browsing" (e.g. port 80 and 443 - the default ports for http and https). Censors can easily target traffic and simply not allow it to pass on its default ports.  In the OpenVPN example, blocking port 1194 will prevent a client from establishing a connection to **any** OpenVPN server.
 
 #### What the host can do
 
@@ -99,7 +99,7 @@ As the sophistication of the censor increases, the options for users to circumve
 
 #### How this escalates
 
-Taken individually, this and the above techniques are not impossible for a dedicated user to circumvent, with some support from a host service.  However, they are easily combined to become more challenging -- a host may not only block the OpenVPN port, but also block access to know VPN websites via DNS, and known VPN hosts via IP blocking. 
+Taken individually, this and the above techniques are not impossible for a dedicated user to circumvent, with some support from a host service.  However, they are easily combined to become more challenging -- a host may not only block the OpenVPN port, but also block access to known VPN websites via DNS, and known VPN hosts via IP blocking. 
 
 Some adversaries may be willing to accept some of the downsides, including steep [economic costs](https://www.brookings.edu/research/internet-shutdowns-cost-countries-2-4-billion-last-year/), and accept blocking large portions of the internet or shutting external communications down completely for limited periods of time.
 
