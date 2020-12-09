@@ -47,7 +47,7 @@ Scrambling relies on having clients being able to know or discover unblocked IP 
 |**[Optimizer](link)**| A pluggable transport that works with other transports to find the best option by making use of multiple configurable strategies to find the optimal choice among the available transports. | Various |
 |**[Replicant](https://github.com/OperatorFoundation/shapeshifter-transports/tree/main/transports/Replicant/v2)**| An "adversary-tunable" transport that can be adapted to provide the obfuscation needed by any specific adversary. | Shapeshifting |
 
-Now that you know what transports are available, let's look at how to [make sure they're working](/measuring))
+Now that you know what transports are available, let's look at how to [make sure they're working](/measuring).
 
 <p style="text-align:left;"><a href="/how-transports/">&lt; Previous</a>
 <span style="float:right;"><a href="/measuring/">Next &gt;</a></span>
