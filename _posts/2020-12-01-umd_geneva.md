@@ -31,7 +31,7 @@ We trained Geneva client-side inside China, India, Iran, and Kazakhstan, for eac
 
 Geneva is fast—typically taking only 1-2 hours to discover new evasion strategies, even against new forms of censorship it has never seen before. Perhaps most importantly, Geneva is free from the biases of human researchers; it has discovered circumvention strategies that prior work (and even we!) thought simply “should not” work.
 
-![Geneva model, figures 1 & 2, network connections - normal and observed, an example of a client-side evasion strategy](/assets/images/umd_image1.jpg)
+![Geneva model, figures 1 & 2, network connections - normal and observed, an example of a client-side evasion strategy](/assets/images/umd_figure1_2.JPG)
 
 One of Geneva's most surprising findings is that censorship can be evaded without requiring clients to install _any_ evasion software whatsoever (not even Geneva). Instead, the server evades censorship on the clients' behalf by manipulating its own traffic to the client. These so-called "server-side" evasion strategies allow content to be reachable by all users within a censoring regime, including users who lack the technical knowledge to use evasion tools, or users who did not realize they were being censored in the first place.
 
@@ -39,8 +39,8 @@ In a sense, server-side evasion “shouldn’t” work: before censorship takes 
 
 Fortunately, Geneva did not know that it “shouldn’t” work. We altered Geneva to be able to run from the server-side, and trained it against four countries (China, India, Iran, and Kazakhstan) across five protocols (DNS-over-TCP, FTP, HTTP, HTTPS, and SMTP). To date, it has found 16 server-side strategies, all of which work with completely unmodified clients.
 
-![Geneva model, figure 3, server-side strategies](/assets/images/umd_image2.jpg)
+![Geneva model, figure 3, server-side strategies](/assets/images/umd_figure3.JPG)
 
 Two server-side strategies Geneva uses to confuse the censor. In (a), the server sends a RST packet during the handshake to confuse the Great Firewall of China. In (b), the server interferes with Kazakhstan’s censor by sending two innocuous HTTP GET requests during the handshake: these payloads are ignored by the client, but they are processed by the censor.
 
-Because Geneva operates by manipulating packets, it composes well with a wide range applications. We are continually extending Geneva's capabilities and training it against new protocols and censorship infrastructure. For more information, articles, and source code, or if you are interested in incorporating Geneva into your censorship evasion tool, please visit https://censorship.ai.
+Because Geneva operates by manipulating packets, it composes well with a wide range applications. We are continually extending Geneva's capabilities and training it against new protocols and censorship infrastructure. For more information, articles, and source code, or if you are interested in incorporating Geneva into your censorship evasion tool, please visit [https://censorship.ai](https://censorship.ai).
