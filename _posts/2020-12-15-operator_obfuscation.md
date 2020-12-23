@@ -1,5 +1,5 @@
 ---
-title: "PTIM 2020 Guest Blog - Obfuscation"
+title: "PTIM 2020 Guest Blog - Obfuscation Is Not Security"
 modified: 2020-12-15T13:20:02-05:00
 categories:
   - blog
