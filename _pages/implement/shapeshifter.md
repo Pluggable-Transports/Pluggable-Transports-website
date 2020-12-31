@@ -183,4 +183,27 @@ nc 127.0.0.1 4455
 
 Anything you type into Netcat will be seen on your server, and vice versa.
 
+# Replicant #
+To use Replicant on a production server, you will need a key pair from Operator Foundation, which you can get by mailing [contact@operatorfoundation.org](mailto:contact@operatorfoundation.org). For this guide, we're going to use one of the test files included with the latest version of shapeshifter-dispatcher.
+
+Using the same ports as Obfs2 and Obfs4, the command to use on your server is:
+
+~~~~~
+cd ~/shapeshifter-dispatcher
+./shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:3344 -transports Replicant -bindaddr Replicant-203.0.113.101:2233 -logLevel DEBUG -enableLogging -optionsFile ReplicantServerConfigV2.json
+~~~~~
+
+On the client machine, you can use this command:
+
+~~~~~
+./shapeshifter-dispatcher -transparent -client -state state -target 213.0.113.101:2233 -transports Replicant -proxylistenaddr 127.0.0.1:4455 -optionsFile ReplicantClientConfig1.json -logLevel DEBUG -enableLogging
+~~~~~
+
+Once again, connect to Netcat on the local listening address to confirm that it is working:
+
+~~~~~
+nc 127.0.0.1 4455
+~~~~~
+
+
 Congratulations! You've go shapeshifter up and running. What's next? Perhaps you want to take it to the next level and try our [guide to OpenVPN](/implement/openvpn).
