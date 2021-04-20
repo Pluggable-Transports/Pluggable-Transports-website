@@ -20,7 +20,7 @@ This table shows some examples of software already using Pluggable Transports ac
 
 | --------------||
 | **Desktop** | [Tor Browser](https://torproject.org), [Lantern](https://getlantern.org), [Psiphon](https://psiphon.ca) |
-| **Mobile - Android** | [Briar Messaging](https://briarproject.org), [Lantern](https://getlantern.org), [Orbot](https://guardianproject.info/apps/orbot/), [Psiphon](https://psiphon.ca) |
+| **Mobile - Android** | [Briar Messaging](https://briarproject.org), [Lantern](https://getlantern.org), [Orbot](https://guardianproject.info/apps/orbot/), [Psiphon](https://psiphon.ca), [Calyx VPN](https://calyx.net) |
 | **Mobile - iOS** | [OnionBrowser](https://itunes.apple.com/us/app/onion-browser-secure-anonymous-web-with-tor/id519296448?mt=8), [Psiphon](https://itunes.apple.com/bm/app/psiphon/id1276263909), [Psiphon Browser](https://itunes.apple.com/ca/app/psiphon-browser/id1193362444?mt=8) |
 
 {% include toc icon="file-text" %}
@@ -34,7 +34,7 @@ Developers can implement transports from scratch or using a library that impleme
 If you just want to add existing transports into your application, this table summarizes the libraries that have already been developed and are available for us:
 
 | --------------||
-| **Desktop** | [PT 2.1 Go API](http://localhost:4000/implement/go/) |
+| **Desktop** | [PT 2.1 Go API](/implement/go/) |
 | **Mobile - Android** | [PLUTO 2](https://github.com/guardianproject/AndroidPluggableTransports), [NetCipher](https://github.com/guardianproject/NetCipher)
 | **Mobile - iOS** | [Swift API](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/blob/master/releases/PTSpecV2.1Draft1/Pluggable%20Transport%20Specification%20v2.1%20-%20Swift%20Transport%20API%20v1.0%2C%20Draft%201.pdf) |
 

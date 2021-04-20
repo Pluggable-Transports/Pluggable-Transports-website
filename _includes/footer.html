@@ -1,14 +1,16 @@
 <div class="page__footer-follow">
   <ul class="social-icons">
     <li>
-    	<a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | absolute_url }}{% endif %}"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</a>
+    	<a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | absolute_url }}{% endif %}"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i></a>
     </li>
     <li>
-    	<a href="https://twitter.com/plugtransports"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
-  </a>
-</li>
+    	<a href="https://twitter.com/plugtransports"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i></a>
+ 	</li>
+ 	<li>
+ 		<a href="https://www.youtube.com/channel/UCzJGT8SUVi2_j-qUm6BtZUA"><i class="fa fa-fw fa-youtube-square" aria-hidden="true"></i></a>
+	</li>
   </ul>
 </div>
 
-<div class="page__footer-copyright">Pluggabletransports.info is a community-building project of <a href="https://www.internews.org">Internews</a>. <br />
+<div class="page__footer-copyright">Pluggabletransports.info is a community-building project of <a href="https://www.internews.org">Internews</a>. See our <a href="/privacy">Privacy Policy</a> for more information.<br />
 CC-BY-SA {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="https://pages.github.com/" rel="nofollow">GitHub pages</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>

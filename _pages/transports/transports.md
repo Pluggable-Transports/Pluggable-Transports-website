@@ -13,63 +13,39 @@ header:
 sidebar:
     nav: "aboutnav"
 ---
-There are many different transports which address a wide variety of blocking strategies. At a very high-level standpoint, they can be grouped into three categories: 
+There are many different transports which address a wide variety of blocking strategies. At a very high-level standpoint, they can be grouped into three strategies: Diverting, Scrambling and Shapeshifting.
 
 {% include toc icon="file-text" %}
 
-## Fronting
+## Diverting
 
-Fronting approaches leverage cloud platforms which are socially or economically difficult to block - for example, allowing access to any Google services allows access to all Google services, including their app engine.  The same goes for Amazon Web Services and Azure.  To effectively block an app using fronting requires blocking the entire cloud provider -- and every other service hosted by it.
+In this case, traffic is moved around the network using different paths to standard web traffic. One way of diverting traffic is known as "domain fronting". This approach leverages cloud platforms which are socially or economically difficult to block - it pushes traffic through a "front", which is commonly an IP address shared by many sites on the cloud provider. To effectively block an app using domain fronting requires blocking the entire cloud provider -- and every other service hosted by it. This approach has been less successful in the past couple of years, due to large cloud providers removing the ability to front using their services.
 
-* **Where it works best**: Anywhere where blocking significant online platforms would be not tenable long-term due to desires to support innovation, economic linkages, or simply social expectations of access.
-
-* **Downsides**: Using these services can quickly become very costly, and while powerful, still not a guarantee that the connections will not be throttled, interefered with, or blocked either temporarily or over longer terms.
-
-* **Implementations** 
-
-| **Name** | **Description** | **Status** |
-|----|-------|-----|
-|**[meek](https://trac.torproject.org/projects/tor/wiki/doc/meek)** | Meek is the gold standard and supports "fronting" through Google App Engine, Amazon Web Services and Microsoft Azure. | In use. [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/MeekEvaluation)|
-|**[SnowFlake](https://keroserene.net/snowflake/)** | SnowFlake uses WebRTC to turn website visitors into ephemeral proxies. See also [torproject.org/projects/tor/wiki/doc/Snowflake](https://trac.torproject.org/projects/tor/wiki/doc/Snowflake) | alpha [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/SnowFlakeEvaluation) |
-|**[FlashProxy](https://crypto.stanford.edu/flashproxy/)**|Flashproxy leverages javascript running in uncensored browsers to provide short-lived proxies to censored content. Firewall traversal causes challenges for this, which are being addressed in SnowFlake, above. | Deprecated [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/FlashproxyEvaluation)| 
-|**[Refraction Networking](https://refraction.network/)** | This approach involves intercepting traffic going to "safe" addresses and redirecting it to user-requested, blocked content. It increases the cost of censorship, by preventing censors from selectively blocking only those servers used to provide Internet freedom. For an example, see [Tapdance](https://github.com/SergeyFrolov/gotapdance]) | In Development. | 
-
-Other options include using short-lived VPS servers and even dividing traffic among multiple, low-cost fronting options.
+Another way of diverting traffic is to use bridges that can be easily brought up and connected through for a short period of time. Once these devices are discovered, the app is able to find new bridges and connect through them. This kind of approach requires a lot of devices to act as bridges, and for apps to have the intelligence to discover new bridges.
 
 ## Scrambling
 
-This approach seeks to disguise the traffic in ways that are not identifiable as any specific type of traffic. This forces an adversary to only allowed whitelisted traffic (which can be easily defeated by fronting) or to expend significant resources to re-identify the scrambled traffic.
+This approach seeks to disguise the traffic in ways that are not identifiable as any specific type of traffic. This forces an adversary to only allowed whitelisted traffic (which can be easily defeated by fronting) or to expend significant resources to re-identify the scrambled traffic. Scrambling tends to work best where there is not only a willingness to outright block large platform providers, but also to take part in DPI analysis of internet traffic.
 
-* **Where it works best**: Scrambling tends to work best where there is not only a willingness to outright block large platform providers, but also DPI analysis of internet traffic
+Scrambling relies on having clients being able to know or discover unblocked IP addresses, and an active censor will work to discover and block these addresses. Once a server address is known it is no longer usable.
 
-* **Downsides**: While the infrastructure costs are not as large as fronting, using scrambling still relies on having clients being able to know or discover unblocked IP addresses, and an active censor will work to discover and block these addresses. Modern implementations (such as obfs4) implement defenses against this attack.
+## Shapeshifting
 
-* **Implementations**
+"Shapeshifting" hide the traffic in non-objectional formats, making it look like a VOIP call, web traffic, online games, or statistically sampled "normal" traffic. This approach defeats whitelisted traffic limitations, but is almost impossible to do "perfectly" -- even if the traffic is indistinguishable from "real" traffic, the client and server will generally behave differently from a "real" server - meaning that advanced adversaries can choose to expend resources to do follow-up scans on every suspected connection to verify the server acts "correctly," and block it if not.
 
-| **Name** | **Description** | **Status** |
-|----|-------|-----|
-|**[obfs4](https://github.com/Yawning/obfs4)**| Obfs4 is the current state of the art deployed "look-like nothing" obfuscation protocol from The Tor Project.  It builds off of ScrambleSuit, below.  **NOTE:** Obfs4 is being [successfully blocked in Kazakhstan](https://trac.torproject.org/projects/tor/ticket/20348)|Actively used, [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/Obfs4Evaluation)|
-|**[ScrambleSuit](http://www.cs.kau.se/philwint/scramblesuit/)**| ScrambleSuit combines difficult to fingerprint unique traffic while also defending against "active probing" by adversaries | Superseded by Obfs4 [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/ScrambleSuitEvaluation)| 
-|**[Obfs3](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs3/obfs3-protocol-spec.txt)**| Obfs3 provides basic obfuscation but without the active probing defenses of Obfs4. | [Obfs3 Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/Obfs3Evaluation)|
-|**[Obfs2](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs2/obfs2-protocol-spec.txt)**| Obfs2 was developed as an early protection against simple traffic identification, and does not defend against DPI analysis. To quote the evaluation, Obfs2 "is considered trivially breakable by most adversaries and is deprecated and has been evaluated as a historical reference only." |Deprecated [Obfs2 Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/Obfs2Evaluation)  |
+## Current Implementations
 
-## Shape-Shifting
-
-"Shapeshifting" hide the traffic in non-objectional formats, making it look like a VOIP call, web traffic, online games, or statistically sampled "normal" traffic.
-
-* **Where it works best**: This approach defeats whitelisted traffic limitations
-
-* **Downsides**: Shape-Shifting is almost impossible to do "perfectly" -- even if the traffic is indistinguishable from "real" traffic, the client and server will generally behave differently from a "real" server - meaning that advanced adversaries can choose to expend resources to do follow-up scans on every suspected connection to verify the server acts "correctly," and block it if not. 
-
-* **Implementations**
-
-|**[Dust2](https://github.com/blanu/Dust)**|Dust transforms traffic to statistically match a pattern of "allowed" traffic |[Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/Dust2Evaluation)|
-| **[Stegotorus](https://github.com/TheTorProject/stegotorus)**|||
-|**[FTEProxy](https://fteproxy.org/)** | Format-Transforming Encryption Proxy uses regular expressions to transform blocked traffic (e.g. tor, https, VOIP) into traffic that appears to be allowed traffic (e.g. plain http) | [Evaluation](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/FteEvaluation)|
-|**[Lampshade](https://github.com/getlantern/lampshade)**| An obfuscated encrypted network protocol for Lantern||
-
-
-Visit [The Tor Project](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/list) for a list that includes additional theoretical transports and whitepapers.
+| **Transport** | **Information** | **Strategy** |
+|----|-------|
+|**[meek](https://trac.torproject.org/projects/tor/wiki/doc/meek)** | For a long time, Meek was considered the gold standard as it supported domain fronting through Google App Engine, Amazon Web Services and Microsoft Azure. It is now used much less frequently, and only when allowed by the cloud provider. | Diverting (domain fronting) |
+|**[SnowFlake](https://keroserene.net/snowflake/)** | SnowFlake uses WebRTC to turn website visitors into ephemeral proxies. See also [torproject.org/projects/tor/wiki/doc/Snowflake](https://trac.torproject.org/projects/tor/wiki/doc/Snowflake). As Snowflake use increases, more Snowflake bridges will need to be built and disoverability of these bridges will be the key to its success. | Diverting |
+|**[Refraction Networking](https://refraction.network/)** | This approach involves intercepting traffic at the ISP or network operator level, and redirecting traffic from perceived "safe" addresses to user-requested, blocked content. It increases the cost of censorship, by preventing censors from selectively blocking only those servers used to provide Internet freedom. | Diverting |
+|**[obfs4](https://github.com/Yawning/obfs4)**| Obfs4 is the current state of the art deployed "look-like nothing" obfuscation protocol from The Tor Project. It evolved from [obfs2](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs2/obfs2-protocol-spec.txt) and [obfs3](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs3/obfs3-protocol-spec.txt) to include active probing defences, and is in wide use today. Tor have published and unpublished bridges, increasing the effort needed by the adversary to block them. | Scrambling |
+|**[Dust2](https://github.com/blanu/Dust)**|Dust transforms traffic to statistically match a pattern of "allowed" traffic | Shapeshifting |
+| **[Stegotorus](https://github.com/TheTorProject/stegotorus)**| [Stegotorus](https://github.com/TheTorProject/stegotorus) A development framework that provides an API specifically geared towards the needs of steganographic protocols. With this API, developers can help applications hide from DPI, and to resist throttling or connection dropping. | Shapeshifting |
+|**[Lampshade](https://github.com/getlantern/lampshade)**| An obfuscated encrypted network protocol for [Lantern](https://getlantern.org) | Shapeshifting |
+|**[Optimizer](link)**| A pluggable transport that works with other transports to find the best option by making use of multiple configurable strategies to find the optimal choice among the available transports. | Various |
+|**[Replicant](https://github.com/OperatorFoundation/shapeshifter-transports/tree/main/transports/Replicant/v2)**| An "adversary-tunable" transport that can be adapted to provide the obfuscation needed by any specific adversary. | Shapeshifting |
 
 Now that you know what transports are available, let's look at how to [make sure they're working](/measuring))
 
