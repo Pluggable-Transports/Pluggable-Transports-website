@@ -1,0 +1,12 @@
+I"[<p>The Operator Foundation released a new documentation for Shapeshifter Dispatcher which provides the most detailed and clear explanation of how to run Shapeshifter Dispatcher with Obfs4 transport. Obfs4 transport provides better obfuscation quality with a faster performance.</p>
+
+<p>The newly published document includes previously undocumented information on how to obtain the obfs4 “cert” parameter, which is necessary for configuring an obfs4 transport client.</p>
+
+<p>The document can be found at <a href="https://github.com/OperatorFoundation/shapeshifter-dispatcher/blob/master/README.md">“Running with obfs4”</a></p>
+
+<h3 id="references">References:</h3>
+<ul>
+  <li><a href="https://github.com/Yawning/obfs4">Obfs4</a></li>
+  <li><a href="https://github.com/OperatorFoundation/shapeshifter-dispatcher">Shapeshifter Dispatcher</a></li>
+</ul>
+:ET

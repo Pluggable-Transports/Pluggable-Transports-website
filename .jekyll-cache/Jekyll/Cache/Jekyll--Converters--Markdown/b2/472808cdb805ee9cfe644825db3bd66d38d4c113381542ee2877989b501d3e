@@ -1,0 +1,7 @@
+I"ù<p>Also by <a href="https://operatorfoundation.org">Operator Foundation</a>‚Äôs Brandon Wiley is a new guide for application developers interested in implementing pluggable transports using the Go API.</p>
+
+<p>Applications that are also written in Go can use transports implementing the PT 2.0 Go API directly, bypassing the IPC layer. This decreases the complexity of integration, as well as the performance overhead of running the transports in a separate process. Additionally, the Operator Foundation provides a tool called Shapeshifter Dispatcher, which wraps transports implementing the PT 2.0 Go API to provide the IPC layer. This allows applications written in programming languages other than Go to use these transports with no additional development cost.</p>
+
+<p>Read <a href="/implement/go">How to Use Pluggables Transports in Your Application</a> for a complete walkthrough for adding pluggable transports.</p>
+
+:ET

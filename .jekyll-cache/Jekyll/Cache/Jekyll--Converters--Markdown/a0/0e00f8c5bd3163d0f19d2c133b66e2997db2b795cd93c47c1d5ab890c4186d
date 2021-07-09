@@ -1,0 +1,53 @@
+I"�<p>Internews is pleased to announce the second round of the Small Grants program for projects involving pluggable transports.</p>
+
+<p>The following activities are eligible for funding:</p>
+
+<ol>
+  <li>Development of new transports which do not rely on domain fronting. Transports must conform to the <a href="https://github.com/Pluggable-Transports/Pluggable-Transports-spec">2.x spec</a> and provide a self-assessment based on the Evaluation Criteria here: (https://www.pluggabletransports.info/build/). (If there is a good reason the PT you are working on cannot adhere to the PT 2.x spec, please add an explanatory comment when submitting your application.) Preference will be given to projects able to be deployable by the end of the grant period..</li>
+  <li>Updating existing transports to the 2.x spec</li>
+  <li>Implementing pluggable transports in applications providing security, privacy, or access to information; in particular, taking advantage of the UDP options of the 2.x spec to support voice, video, and VPN traffic
+The deadline for the second round of submissions is <strong>August 1st, 2021</strong>.</li>
+</ol>
+
+<p>If any funds remain, applications will be evaluated on a rolling basis. Grants can be up to 6 months in duration, with the potential for extension. Projects should aim for a budget under $30,000 USD but exceptions can be made.</p>
+
+<p>If you would prefer to submit this information via PGP, please send an encrypted email to the following address vververis@internews.org (PGP key: https://keys.openpgp.org/vks/v1/by-fingerprint/3D2A4392288461159A3F0EEE2C8DFBADEB3C5119).</p>
+
+<p>Review Criteria
+Applications will be evaluated by Internews’ Global Technology team in consultation with the U.S. State Department Bureau of Democracy, Human Rights and Labor according to the criteria (and regulations) below:</p>
+
+<p>1) Quality of Program Idea and Associated Activities (25 Points)</p>
+<ul>
+  <li>Tools developed are open source (required)</li>
+  <li>Application fits within the fundable activities and has clear impact (15)</li>
+  <li>Tool is developed in a mobile-compatible format and/or mobile native (10)</li>
+</ul>
+
+<p>2) Program Planning/Ability to Achieve Objectives (40 Points)</p>
+<ul>
+  <li>Includes a detailed workplan for achieving stated goals on time (10)</li>
+  <li>There is a clear path for the work to continue to be useful and functional post-grant (15)</li>
+  <li>Demonstrates the willingness to work in collaboration with the pluggable transports community (15)</li>
+</ul>
+
+<p>3) Institution’s Record and Capacity; Program Monitoring and Evaluation (15 Points)</p>
+<ul>
+  <li>Ability to meet reporting requirements and deadlines under grant agreement (10)</li>
+  <li>Track record of providing support and documentation (as appropriate, e.g. user guides, technical documentation, implementation guides) (5)</li>
+</ul>
+
+<p>4) Cost Effectiveness (20 points)</p>
+<ul>
+  <li>Costs are reasonable for work and duration proposed (10)</li>
+  <li>Circumvention concept does not incur high or ongoing costs beyond the normal requirements (e.g. bridge servers) (10)</li>
+</ul>
+
+<p>Regulations
+This funding will be administered in accordance with Bureau of Democracy, Human Rights and Labor / Department of State standard terms and conditions (https://www.state.gov/documents/organization/271865.pdf).
+In addition, regulations and provisions, at minimum, of 2CFR200 and 2CFR600 (http://www.ecfr.gov/cgi-bin/text-idx?SID=de342bfd8f33c25cd6f657e006dc5481&amp;node=pt2.1.600&amp;rgn=div5) Uniform Administrative Requirements, Cost Principles, and Audit Requirements for Federal Awards, will apply to subawards issued as a result of this RFA.
+Proposal budgets will be reviewed in accordance with, and selected subrecipients’ costs will be subject to, the cost principles that apply to them to assure reasonableness, allocability, and allowability as per 2CFR200 Subpart E, Cost Principles 
+http://www.ecfr.gov/cgi-bin/text-idx?SID=3a5b24a09e5a2bee7c2d178e2e9ca53e&amp;mc=true&amp;node=pt2.1.200&amp;rgn=div5</p>
+
+<p>If you have any questions about the requirements, criteria, or regulations that apply to this award, please reach out to <a href="mailto:srizvi@internews.org">Sidra Rizvi</a>.</p>
+
+:ET

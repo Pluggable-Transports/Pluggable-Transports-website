@@ -1,0 +1,37 @@
+I"<p>Internews is pleased to announce the second round of the Small Grants program for projects involving pluggable transports.</p>
+
+<p>The following activities are eligible for funding:</p>
+
+<ol>
+  <li>
+    <p>Concept Development for new transports<br />
+ a. Seed funding for initial explorations for new obfuscation options</p>
+  </li>
+  <li>
+    <p>Proof of Concept deployments <br />
+ a. Development of new transports. Preference will be given to projects able to be deployable by the end of the grant period.</p>
+  </li>
+  <li>
+    <p>Deployment, App integration, and cross-platform functionality<br />
+ a. Implementing pluggable transports in applications providing security, privacy, or access to information, in particular taking advantage of the UDP options of the 2.1 spec to support voice, video, and VPN traffic.</p>
+  </li>
+  <li>
+    <p>Improving PT deployment and infrastructure stability</p>
+    <ol>
+      <li>Updating existing transports to the 2.1 and/or more updated specs.</li>
+      <li>Providing deployment and management tools</li>
+    </ol>
+  </li>
+</ol>
+
+<p>The deadline for the second round of submissions is <strong>August 1st, 2021</strong>.</p>
+
+<p>If any funds remain, applications will be evaluated on a rolling basis. Grants can be up to 6 months in duration, with the potential for extension. Projects should aim for a budget under $30,000 USD but exceptions can be made.</p>
+
+<p>Please submit your applications through this <a href="https://cryptpad.fr/form/#/2/form/view/2I9uswe7Ibt88PnDfdiq31O5K+MHIw6+LMFVuTou5lY/">form</a>. Please note this form allows for end-to-end encryption.</p>
+
+<p>If you would prefer to submit this information via PGP, please send an encrypted email to the following address vververis@internews.org (<a href="https://keys.openpgp.org/vks/v1/by-fingerprint/3D2A4392288461159A3F0EEE2C8DFBADEB3C5119">PGP key</a>)</p>
+
+<p>If you have any questions about the requirements, criteria, or regulations that apply to this award, please reach out to <a href="mailto:srizvi@internews.org">Sidra Rizvi</a>.</p>
+
+:ET

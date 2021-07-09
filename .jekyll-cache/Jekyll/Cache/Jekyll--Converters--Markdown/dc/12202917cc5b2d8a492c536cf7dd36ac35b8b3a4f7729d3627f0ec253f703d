@@ -1,0 +1,12 @@
+I"�<p>We are pleased to announce that <a href="https://operatorfoundation.org">Operator Foundation</a> is the first recipient of our latest Small Grants pool!</p>
+
+<p>The Operator team will be building on previous Protean implementations for Javascript and Go, porting the most relevant subset of the network transformations from Go to Swift. This work will essentially create a new transport that is compatible with the Pluggable Transport Swift API, allowing use on Apple’s iOS.</p>
+
+<p>Protean is a collection of UDP-to-UDP packet transformation tools. From Operator’s <a href="https://github.com/OperatorFoundation/protean/blob/master/README.md">README</a>: <em>The overall goal of Protean is to provide transformations from UDP traffic into other UDP traffic, where the target UDP traffic has properties that resist network filtering. This is in contrast to tools such as Shapeshifter Dispatcher, which provide resistance to network filtering by tunneling UDP traffic over TCP protocols.</em></p>
+
+<p>The target audience for the new project is iOS applications that use UDP protocols for communication, and will be of particular benefit for voice and video communication applications.</p>
+
+<p>You can see more of Operator Foundation’s projects on <a href="https://www.github.com/OperatorFoundation">Github</a>, and we’ll update this blog when the project is completed.</p>
+
+<p>If you want to submit an idea for a small grant, visit <a href="https://www.surveymonkey.com/r/pluggabletransports">this page</a>. Applications are being reviewed on a rolling basis, we’re looking for both implementation projects and research into new pluggable transports.</p>
+:ET

@@ -1,0 +1,27 @@
+I"´<p><em>Update: See also our <a href="/blog/extending-grants/">extended grants blog </a> for information about available funding for new research</em></p>
+
+<p>Internews is pleased to announce a continuing small grants program for implementation projects involving pluggable transports. We are in particular interested in transports taking advantage of the UDP options of the 2.x spec to support voice, video, and VPN traffic, and in transports that do not rely on domain fronting.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Activities eligible for funding</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implementation of new transports (<em>must</em> conform to the 2.x spec and provide a self-assessment based on the <a href="https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports/PTEvaluationCriteria">Evaluation Criteria</a></td>
+    </tr>
+    <tr>
+      <td>Updating of existing transports to the 2.x spec</td>
+    </tr>
+    <tr>
+      <td>Implementing pluggable transports in applications providing security, privacy, or access to information.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Grants can be up to 6 months in duration. Most projects should aim for a budget of $25,000 USD, but exceptions can be made. Final project timelines and funding are dependent upon available funds and grant timelines. Please note that the grants program is for <em>implementation</em>, not for research into potential new transports.</p>
+
+<p>For more information, or to apply, visit <a href="https://www.surveymonkey.com/r/pluggabletransports">https://www.surveymonkey.com/r/pluggabletransports</a>. We will review applications on a first-come, first-served basis, while funding remains.</p>
+:ET
