@@ -17,4 +17,4 @@ npm-debug.log*
 _site/CNAME
 _site/assets/css/main.css
 _site/index.html
-
+.jekyll-cache/

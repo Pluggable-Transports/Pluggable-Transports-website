@@ -1,8 +1,0 @@
-I"Ö<p>More good news from the Pluggable Transports team as we announce some new funding for <a href="https://guardianproject.info/">Guardian Project</a>, coming from our ongoing Small Grants pool.</p>
-
-<p>This project will enable traffic obfuscation on the Android platform using Snowflake, updating their <a href="https://github.com/guardianproject/AndroidPluggableTransports">PLUTO2</a> code for developers. Guardian Project will also integrate Snowflake directly into <a href="https://guardianproject.info/apps/orbot/">Orbot</a>, making it easy for Android Tor users to select a compatible bridge. To achieve these goals, the team will be implementing an alternate bootstrapping method for Snowflake, changing the way it currently relies on domain fronting.</p>
-
-<p><a href="https://github.com/keroserene/snowflake">Snowflake</a> is a WebRTC-based Pluggable Transport, combining the advantages of flashproxy and meek. It is designed to be able to support many more users at lower cost than a meek deployment. Once running, it uses volunteer proxies without the need for manual port forwarding. As part of this project, Guardian will also be investigating ways of increasing Snowflake volunteers.</p>
-
-<p>Remember, if you want to submit an idea for a small grant, visit <a href="https://www.surveymonkey.com/r/pluggabletransports">this page</a>. Applications are being reviewed on a rolling basis, weâ€™re looking for both implementation projects and research into new pluggable transports.</p>
-:ET

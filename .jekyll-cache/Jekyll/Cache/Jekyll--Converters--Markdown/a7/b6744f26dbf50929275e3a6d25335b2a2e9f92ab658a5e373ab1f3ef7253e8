@@ -1,8 +1,0 @@
-I"�<p><a href="https://operatorfoundation.org">Operator Foundation</a> recently completed and released two new prototypes for its Optimizer transport, for use with Go and Swift.</p>
-
-<p>The Go prototype can be accessed from Operator’s main Go transport repository at <a href="https://github.com/OperatorFoundation/shapeshifter-transports">https://github.com/OperatorFoundation/shapeshifter-transports</a>, while the Swift implementation can be accessed at <a href="https://github.com/OperatorFoundation/Shapeshifter-Swift-Transports">https://github.com/OperatorFoundation/Shapeshifter-Swift-Transports</a>. The two implementations have feature parity with regards to strategy modules, although the Swift version makes use of additional strategies designed for the Apple-specific environment.</p>
-
-<p>In addition to this work, Operator have added Optimizer support to <a href="https://github.com/OperatorFoundation/shapeshifter-dispatcher">shapeshifter-dispatcher</a>, which allows Optimizer to be used in other environments, through the PT 2.1 Inter-process communication (IPC) specification. This extra development has also involved a modification to shapeshifter-dispatcher to allow options to be read from a configuration file rather than specified on the command line.</p>
-
-<p>Full documentation for shapeshifter-dispatcher and the Optmizer transports are contained in the repositories’ README files.</p>
-:ET
