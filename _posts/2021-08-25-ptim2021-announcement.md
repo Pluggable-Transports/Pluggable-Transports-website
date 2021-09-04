@@ -24,6 +24,6 @@ Each day will be broken down into several sessions. Program categories will incl
 - **Group Hacking** sessions/Sprints are for the PTIM community to do hands-on coding work together
 - **Regional sessions** are focused on the unique topics and needs of geographic regions and may be presented in languages other than English
 
-Your input can help to make this PTIM even better. If you would like to share an idea, for a community session, lighting talk, or for one of the other programs categories provided, we welcome you to submit your idea [here](https://cryptpad.fr/form/#/2/form/view/f9yaxadQGCClhvrt26sxwT2Gxq+CHC1q+eQ2sUonBnE/).
+Your input can help to make this PTIM even better. If you would like to share an idea, for a community session, lighting talk, or for one of the other programs categories provided, we welcome you to submit your idea [here](https://cryptpad.fr/form/#/2/form/view/f9yaxadQGCClhvrt26sxwT2Gxq+CHC1q+eQ2sUonBnE/). The deadline for idea submissions is **September 12, 2021**.
 
 We’re looking forward to a fantastic event and hope to see you there! Please register for the event [here](https://cryptpad.fr/form/#/2/form/view/xcj8ordQ48MiCBHlqQjGIQg1tb6bmAFzB3FNiQiD6UQ/).
