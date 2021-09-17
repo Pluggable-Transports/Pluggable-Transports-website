@@ -8,11 +8,11 @@ permalink: /code-of-conduct/
 
 All attendees, speakers, sponsors and volunteers at DISRUPT hosted events (including the PTIM, its side events, and PTIM trainings and workshops) are required to agree with the following code of conduct. Organizers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe  environment for everybody.
 
-Any violations may be brought to the event organizers directly or via email to *kkathuria@internews.org* .  PGP encryption is supported, please encrypt to [Karl Kathuria](mailto:kkathuria@internews.org) and/or [Jon Camfield](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA998959FF926BF8B). Conference staff will be happy to help participants assist those experiencing harassment to feel safe for the duration of the conference in whatever way is appropriate for the circumstances
+Any violations may be brought to the event organizers directly or via email to *vrhinesmith@internews.org* .  PGP encryption is supported, please encrypt to [Gina Helfrich](https://keys.openpgp.org/vks/v1/by-fingerprint/EF9BD809DDD15C4AED4917475EE4B370F9C13411) and/or [Jon Camfield](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA998959FF926BF8B). Conference staff will be happy to help participants assist those experiencing harassment to feel safe for the duration of the conference in whatever way is appropriate for the circumstances
 
 ## Sharing and Privacy Policies
 
-The event will set ground rules collaboratively to manage private information throughout the event, which will include guidelines on social media, photos, and sharing information from the online event.  The PTIM will be creating public resources, and event participants will be consulted regarding their preferences for sharing information from the event. No information will be shared without event participant's explicit permission.
+The event will set ground rules collaboratively to manage private information throughout the event, which will include guidelines on social media, photos, and sharing information from the online event.  The PTIM will be creating public resources, and event participants will be consulted regarding their preferences for sharing information from the event. No information will be shared without event participants' explicit permission.
 
 ## Anti-Harassment policy
 
@@ -27,6 +27,7 @@ The conference is dedicated to providing a harassment-free conference experience
 * When we disagree, try to understand why. Disagreements, both social and technical, happen all the time and DISRUPT is no exception. It is important that we resolve disagreements and differing views constructively. Remember that we’re different. The strength of DISRUPT comes from its varied community, people from a wide range of backgrounds. Different people have different perspectives on issues. Being unable to understand why someone holds a viewpoint doesn’t mean that they’re wrong. Don’t forget that it is human to err and blaming each other doesn’t get us anywhere. Instead, focus on helping to resolve issues and learning from mistakes.
 * Moderators reserve the right to delete excessive self-promotional or commercial posts.
 * Content that has been identified as objectionable, inappropriate, or off-topic will be subject to deletion by channel moderators. Posters will receive a warning and risk being blocked from the channel if unacceptable behavior persists.
+* Critical discussion is welcome, but harassment is not. Using events and community spaces, whether virtual or in person, to spread disinformation or malinformation in a way that harms or silences community members. Further, misinformation or disinformation about technical subjects can inspire false confidence in insecure tools, or keep people from using tools that can keep them safer. Technical discussions must be evidence-based, and a harm-reduction framework is encouraged.
 
 ### Unacceptable Behavior
 
@@ -44,7 +45,7 @@ The following behaviors are considered harassment and are unacceptable within ou
 * Advocating for, or encouraging, any of the above behavior.
 * Sustained disruption of community events, including talks and presentations.
 
-*Violations of these may result in expulsion from the event.*
+*Violations of these may result in expulsion from the event.Internews will take into account documented violations of similar codes of conduct into account when making decisions around participation.*
 
 ### Scope
 
