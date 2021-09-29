@@ -6,13 +6,13 @@ permalink: /code-of-conduct/
 
 **DISRUPT succeeds as a program by bringing varied lived experiences and voices to the forefront of a global discussion. As such, we expect all attendees to be respectful of others, appreciate differences of opinion, and to communicate clearly.**
 
-All attendees, speakers, sponsors and volunteers at DISRUPT hosted events (including the PTIM, its side events, and PTIM trainings and workshops) are required to agree with the following code of conduct. Organizers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe  environment for everybody.
+All attendees, speakers, sponsors and volunteers at DISRUPT hosted events (including the PTIM, its side events, and PTIM trainings and workshops) are required to agree with the following code of conduct. Organizers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody.
 
-Any violations may be brought to the event organizers directly or via email to *vrhinesmith@internews.org* .  PGP encryption is supported, please encrypt to [Gina Helfrich](https://keys.openpgp.org/vks/v1/by-fingerprint/EF9BD809DDD15C4AED4917475EE4B370F9C13411) and/or [Jon Camfield](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA998959FF926BF8B). Conference staff will be happy to help participants assist those experiencing harassment to feel safe for the duration of the conference in whatever way is appropriate for the circumstances
+Any violations may be brought to the event organizers directly or via email to *vrhinesmith@internews.org*. PGP encryption is supported, please encrypt to [Gina Helfrich](https://keys.openpgp.org/vks/v1/by-fingerprint/EF9BD809DDD15C4AED4917475EE4B370F9C13411) and/or [Jon Camfield](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA998959FF926BF8B). Conference staff will be happy to help participants assist those experiencing harassment to feel safe for the duration of the conference in whatever way is appropriate for the circumstances
 
 ## Sharing and Privacy Policies
 
-The event will set ground rules collaboratively to manage private information throughout the event, which will include guidelines on social media, photos, and sharing information from the online event.  The PTIM will be creating public resources, and event participants will be consulted regarding their preferences for sharing information from the event. No information will be shared without event participants' explicit permission.
+The event will set ground rules collaboratively to manage private information throughout the event, which will include guidelines on social media, photos, and sharing information from the online event. The PTIM will be creating public resources, and event participants will be consulted regarding their preferences for sharing information from the event. No information will be shared without event participants' explicit permission.
 
 ## Anti-Harassment policy
 
@@ -45,7 +45,7 @@ The following behaviors are considered harassment and are unacceptable within ou
 * Advocating for, or encouraging, any of the above behavior.
 * Sustained disruption of community events, including talks and presentations.
 
-*Violations of these may result in expulsion from the event.Internews will take into account documented violations of similar codes of conduct into account when making decisions around participation.*
+*Violations of these may result in expulsion from the event. Internews will take into account documented violations of similar codes of conduct into account when making decisions around participation.*
 
 ### Scope
 

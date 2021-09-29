@@ -8,8 +8,8 @@ General conference engagement notes:
 
 - For group sessions, we will be using [Big Blue Button,](https://bigbluebutton.org/privacy/) an open source web conferencing platform.
 - We may occasionally send you emails with [Mailchimp,](https://mailchimp.com/legal/privacy/) a transactional email service.
-- For RSVPs, we use [Cryptpad.](https://cryptpad.fr/pad/#/2/pad/view/GcNjAWmK6YDB3EO2IipRZ0fUe89j43Ryqeb4fjkjehE/)
-- For notetaking, we use [Cryptpad](https://cryptpad.fr/privacy.html)
+- For RSVPs, we use [Cryptpad](https://cryptpad.fr/pad/#/2/pad/view/GcNjAWmK6YDB3EO2IipRZ0fUe89j43Ryqeb4fjkjehE/).
+- For notetaking, we use [Cryptpad](https://cryptpad.fr/privacy.html).
 
 ## Session policies:
 
@@ -19,4 +19,4 @@ General conference engagement notes:
 - Presenters will be given the option to record their sessions. If a session is recorded, this will be clearly stated to participants. Chat and participant logs will not be shared.
 - While we do not ask that you use your real name, we do ask that you identify yourself to organizers.
 
-For other privacy concerns, please see our Code of Conduct, the Internews Privacy Policy, and the [Internews data retention policy] (https://internews.org/data-retention-policy/). If you have any other questions, please reach out to srizvi@internews.org.
+For other privacy concerns, please see our Code of Conduct, the Internews Privacy Policy, and the [Internews data retention policy](https://internews.org/data-retention-policy/). If you have any other questions, please reach out to [srizvi@internews.org](mailto:srizvi@internews.org).
