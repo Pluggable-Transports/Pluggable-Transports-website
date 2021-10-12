@@ -19,15 +19,13 @@ sidebar:
 
 Pluggable Transports is an [Internews](https://internews.org) community-building project. There are lots of ways for you to engage with the community - here are some links that will help you get plugged in.
 
-* Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list
+* Join us on [IRC](https://webchat.oftc.net/?channels=pluggable-transports), [Matrix](https://matrix.to/#/#pluggable-transports:matrix.org) or [IFF's Mattermost](https://community.internetfreedomfestival.org/community/channels/pluggable-transport) chat.
 
-* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info)
-
-* Connect with us on [Twitter](https://twitter.com/plugtransports)
+* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/OpenInternet/PT-website/issues).
 
 * Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list.
 
-* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/OpenInternet/PT-website/issues).
+* Connect with us on [Twitter](https://twitter.com/plugtransports)
 
 * Read the [Tor project's guide](https://www.torproject.org/docs/pluggable-transports) to pluggable transports. Also find out how Tor makes [changes to their protocol](https://blog.torproject.org/tor-design-proposals-how-we-make-changes-our-protocol).
 
