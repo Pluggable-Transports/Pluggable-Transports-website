@@ -8,6 +8,8 @@ main:
     url: /build/
   - title: "News"
     url: /blog/
+  - title: "PTIM"
+    url: /ptim2021/
   - title: "Contact"
     url: /contact/
 
@@ -236,4 +238,4 @@ createnav:
   - title: "News"
     url: /blog/
   - title: "Contact"
-    url: /contact/  
+    url: /contact/
