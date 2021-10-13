@@ -21,11 +21,11 @@ Pluggable Transports is an [Internews](https://internews.org) community-building
 
 * Join us on [IRC](https://webchat.oftc.net/?channels=pluggable-transports), [Matrix](https://matrix.to/#/#pluggable-transports:matrix.org) or [IFF's Mattermost](https://community.internetfreedomfestival.org/community/channels/pluggable-transport) chat.
 
-* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/OpenInternet/PT-website/issues).
+* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/Pluggable-Transports/Pluggable-Transports-website/issues).
 
 * Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list.
 
-* Connect with us on [Twitter](https://twitter.com/plugtransports)
+* Connect with us on [Twitter](https://twitter.com/plugtransports).
 
 * Read the [Tor project's guide](https://www.torproject.org/docs/pluggable-transports) to pluggable transports. Also find out how Tor makes [changes to their protocol](https://blog.torproject.org/tor-design-proposals-how-we-make-changes-our-protocol).
 
