@@ -1,5 +1,6 @@
 ---
 title: "PTIM 2021 Day 1 Recap"
+
 modified: 2021-11-19
 categories:
   - blog
@@ -12,6 +13,7 @@ layout: posts
 ---
 
 ## This year’s Pluggable Transport Implementers Meeting was a huge success! Thank you to all the speakers and everyone who attended. For those of you who missed it or would like a refresher, here is a recap of day one:
+
 
 The day started with a session titled “Sharing Best Practices for Uncovering Surveillance Middleboxes” presented by Valentin Weber and Vasilis Ververis. They shared their work on trying to find a methodology to detect middleboxes and discover any malicious activities. Using open data sources, they worked to find technical ways to find middleboxes. They found middleboxes being used in SafeCities and for blocking. It is probable that middleboxes are being used for censorship and if are not yet, they will in the future.
 
