@@ -19,7 +19,7 @@ sidebar:
 
 Pluggable Transports is an [Internews](https://internews.org) community-building project. There are lots of ways for you to engage with the community - here are some links that will help you get plugged in.
 
-* Join us on [IRC](https://webchat.oftc.net/?channels=pluggable-transports), [Matrix](https://matrix.to/#/#pluggable-transports:matrix.org) or [IFF's Mattermost](https://community.internetfreedomfestival.org/community/channels/pluggable-transport) chat.
+* Join us on [IRC](https://webchat.oftc.net/?channels=pluggable-transports), [Matrix](https://matrix.to/#/#pluggable-transports:matrix.org), [Slack](https://openobservatory.slack.com/messages/pluggable-transports/) or [Mattermost](https://community.internetfreedomfestival.org/community/channels/pluggable-transport) chat.
 
 * Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/Pluggable-Transports/Pluggable-Transports-website/issues).
 
