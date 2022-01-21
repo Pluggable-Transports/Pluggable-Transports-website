@@ -1,0 +1,4 @@
+# https://answers.netlify.com/t/jekyll-site-uses-absolute-urls-deploy-previews-navigate-to-main-site/8441/12 
+
+[context.deploy-preview]
+  command = "printf \"url: %s\" \"$DEPLOY_PRIME_URL\" > _config_netlify.yml; jekyll build --config _config.yml,_config_netlify.yml"
