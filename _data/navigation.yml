@@ -10,6 +10,8 @@ main:
     url: /blog/
   - title: "PTIM"
     url: /ptim2021/
+  - title: "Software"
+    url: https://software.pluggabletransports.info
   - title: "Contact"
     url: /contact/
 
