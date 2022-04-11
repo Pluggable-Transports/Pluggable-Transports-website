@@ -18,7 +18,7 @@ We are excited to announce Internews will be hosting Pop Up PTIM Sessions! This 
 
 Our first session will be presented by the LEAP Encryption Access Project. They will share the work they have been doing for the past few years on the usage of PTs in the context of a VPN application. 
 
-This session will take place on **April 12th at 14:00 UTC/9:00 ET/16:00 CET**. Please use [this link](https://cryptpad.fr/form/#/2/form/view/d5B9a9ZJxBTBXYtbqjbmIeiIyYZ-fC4zDTutdxbIBq8/) to register for the event. This takes no more than 2 minutes!
+This session will take place on **April 12th at 14:00 UTC/10:00 ET/16:00 CET**. Please use [this link](https://cryptpad.fr/form/#/2/form/view/d5B9a9ZJxBTBXYtbqjbmIeiIyYZ-fC4zDTutdxbIBq8/) to register for the event. This takes no more than 2 minutes!
 
 We are excited to see you all there!
 
