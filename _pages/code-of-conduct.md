@@ -8,7 +8,7 @@ permalink: /code-of-conduct/
 
 All attendees, speakers, sponsors and volunteers at DISRUPT hosted events (including the PTIM, its side events, and PTIM trainings and workshops) are required to agree with the following code of conduct. Organizers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody.
 
-Any violations may be brought to the event organizers directly or via email to *vrhinesmith@internews.org*. PGP encryption is supported, please encrypt to [Gina Helfrich](https://keys.openpgp.org/vks/v1/by-fingerprint/EF9BD809DDD15C4AED4917475EE4B370F9C13411) and/or [Jon Camfield](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA998959FF926BF8B). Conference staff will be happy to help participants assist those experiencing harassment to feel safe for the duration of the conference in whatever way is appropriate for the circumstances
+Any violations may be brought to the event organizers directly or via email to *srizvi@internews.org*. PGP encryption is supported, please encrypt to [Gina Helfrich](https://keys.openpgp.org/vks/v1/by-fingerprint/EF9BD809DDD15C4AED4917475EE4B370F9C13411) and/or [Jon Camfield](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA998959FF926BF8B). Conference staff will be happy to help participants assist those experiencing harassment to feel safe for the duration of the conference in whatever way is appropriate for the circumstances
 
 ## Sharing and Privacy Policies
 
