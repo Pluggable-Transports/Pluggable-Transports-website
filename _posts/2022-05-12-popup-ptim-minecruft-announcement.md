@@ -3,15 +3,12 @@ title: "Pop Up PTIM Session: Gamer Games Unblocked"
 modified: 2022-05-12
 categories:
   - blog
-
 tags:
   - implement
   - developer
   - meeting
   - virtual
-
-layout:
-  - posts
+layout: posts
 ---
 
 # Gamer Games Unblocked
