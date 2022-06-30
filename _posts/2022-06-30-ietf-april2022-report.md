@@ -23,7 +23,7 @@ By David Oliver of Guardian Project -
 ## MASQUE
 
 The MASQUE Working Group reached consensus on both [HTTP/3
-Datagrams(https://datatracker.ietf.org/doc/draft-ietf-masque-h3-datagram/) and
+Datagrams](https://datatracker.ietf.org/doc/draft-ietf-masque-h3-datagram/) and
 [Connect-UDP](https://datatracker.ietf.org/doc/draft-ietf-masque-connect-udp/)
 during April, allowing higher-level review of these drafts before publication
 as Recommendations. This is a major milestone since these two protocols
@@ -41,14 +41,14 @@ the author is now on the IETF’s Architecture Board and chairs two other workin
 groups.
 
 A new MASQUE-related draft was created related to finding services in a MASQUE
-environment - [HTTP Access Service Description
-Objects](https://sandbox.ietf.org/doc/draft-schwartz-
-masque-access-descriptions/). This draft describes how to find a MASQUE server
-if (1) software is starting with an HTTP CONNECT proxy or (2) use of multiple
-services in combination (e.g. CONNECT-UDP + CONNECT-IP + DoH + ...) is
-required. According to the author, the design could also serve as a building
-block for a solution to the key consistency problem in Oblivious HTTP,
-described in Key Consistency for Oblivious [HTTP by
+environment - 
+[HTTP Access Service Description Objects](https://sandbox.ietf.org/doc/draft-schwartz- masque-access-descriptions/).
+This draft describes how to find a MASQUE server if (1) software is starting
+with an HTTP CONNECT proxy or (2) use of multiple services in combination (e.g.
+CONNECT-UDP + CONNECT-IP + DoH + ...) is required. According to the author, the
+design could also serve as a building block for a solution to the key
+consistency problem in Oblivious HTTP, described in Key Consistency for
+Oblivious [HTTP by
 Double-Checking](https://datatracker.ietf.org/doc/draft-schwartz-ohai-consistency-doublecheck/).
 
 ## Messaging Layer Security (MLS)
@@ -105,7 +105,7 @@ The core OHAI draft has not advanced further this month.
 After what was thought to be a thorough (but many felt confusing)
 [presentation](https://datatracker.ietf.org/meeting/113/materials/slides-113-ppm-ppm-overview/)
 on PPM at IETF113, and an [update to the original
-draft](https://datatracker.ietf.org/doc/draft-gpew-priv-ppm/01/)submitted
+draft](https://datatracker.ietf.org/doc/draft-gpew-priv-ppm/01/) submitted
 mid-month, a yet-newer draft has been submitted by the principals: [Distributed
 Aggregation Protocol for Privacy Preserving
 Measurement](https://www.ietf.org/archive/id/draft-ietf-ppm-dap-00.html) to
