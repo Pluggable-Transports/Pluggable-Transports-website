@@ -74,9 +74,9 @@ extract a derivative encryption key from the TLS session, and uses the key to
 symmetrically encrypt an authentication token presented with the CONNECT verb
 in the form of a new HTTP header:
 
-    CONNECT server.example.com:443 HTTP/1.1
-    Host: server.example.com:443
-    Transport-Authorization: Signature a=AVAL; u=UVAL; p=PVAL(encrypted)
+`CONNECT server.example.com:443 HTTP/1.1`\
+`Host: server.example.com:443`\
+`Transport-Authorization: Signature a=AVAL; u=UVAL; p=PVAL(encrypted)`
 
 The web server receives this request, uses the same technique to extract the
 same derivative key from the TLS session and uses the key to decrypt the P
