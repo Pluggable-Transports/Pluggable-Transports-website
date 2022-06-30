@@ -42,7 +42,7 @@ groups.
 
 A new MASQUE-related draft was created related to finding services in a MASQUE
 environment - 
-[HTTP Access Service Description Objects](https://sandbox.ietf.org/doc/draft-schwartz- masque-access-descriptions/).
+[HTTP Access Service Description Objects](https://sandbox.ietf.org/doc/draft-schwartz-masque-access-descriptions/).
 This draft describes how to find a MASQUE server if (1) software is starting
 with an HTTP CONNECT proxy or (2) use of multiple services in combination (e.g.
 CONNECT-UDP + CONNECT-IP + DoH + ...) is required. According to the author, the
