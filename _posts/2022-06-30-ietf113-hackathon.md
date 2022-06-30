@@ -21,7 +21,7 @@ By David Oliver of Guardian Project -
 [david@guardianproject.info](mailto:david@guardianproject.info), Hans-Christoph
 Steiner of Guardian Project
 
-**tl;dr**
+**TL;DR**
 
 - [Specification](https://www.ietf.org/archive/id/draft-schinazi-httpbis-transport-auth-05.html)
 
@@ -135,14 +135,14 @@ other opportunities in the Internet Freedom space. Should funding become
 available, a logical next step is to implement the new function in Python, in
 an existing open source proxy server. Two are easily available:
 
-1. [Proxy2 (Python)](https://github.com/inaz2/proxy2)
-   a. Small codebase, simple function
-      - First step would be to get this working with PyOpenSSL (to get the
-        keying material function)
-      - Second step would be to add the HTTP TA function
-2. Python Static and Reverse Proxy: https://github.com/swinkelhofer/python_proxy
-   a. Slightly richer codebase (reverse proxy functions, too)
-      - Same steps as above
+1. [Proxy2 (Python)](https://github.com/inaz2/proxy2), small codebase, simple
+   function:
+   - First step would be to get this working with PyOpenSSL (to get the
+     keying material function)
+   - Second step would be to add the HTTP TA function
+2. [Python Static and Reverse Proxy](https://github.com/swinkelhofer/python_proxy),
+   slightly richer codebase (reverse proxy functions, too):
+   - Same steps as above
 
 ### Possible Consumers of this Capability
 
