@@ -10,8 +10,6 @@ tags:
 layout: posts
 ---
 
-# Pop Up PTIM Session: VPN censorship, Probes and Resilience - Building Feedback Loops with Open Data
-
 ## Presented by OONI
 
 We are excited to announce the next Pop Up PTIM Session! These are stand alone
