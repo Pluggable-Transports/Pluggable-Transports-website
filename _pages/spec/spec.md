@@ -16,7 +16,7 @@ sidebar:
 ---
 
 
-The current version of the PT specification is 2.1. It is available, along with requests for modifications, at [this page on Github](https://github.com/Pluggable-Transports/Pluggable-Transports-spec).
+The current version of the PT specification is v3.0. It is available, along with requests for modifications, at [this page on Github](https://github.com/Pluggable-Transports/Pluggable-Transports-spec).
 
 Pluggable Transports are a concept developed by The Tor Project that provide ways to protect your data from aggressive censorship techniques, and can be included in a variety of tools. The Tor Project authored the [original Pluggable Transports specification](https://gitweb.torproject.org/torspec.git/tree/pt-spec.txt) for use in the tor network environment.
 
