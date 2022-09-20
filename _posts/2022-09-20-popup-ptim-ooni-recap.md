@@ -29,4 +29,4 @@ Ghazal continued to explain the intricacies of this idea as well possible
 setbacks such as adversaries having access to this kind of public information.
 
 If you would like to learn more, you can view the presentation slides
-[here](/assets/slides/ain-vpn-censorship-probes-resilience.pdf)
+[here](/assets/slides/ain-vpn-censorship-probes-resilience.pdf).
