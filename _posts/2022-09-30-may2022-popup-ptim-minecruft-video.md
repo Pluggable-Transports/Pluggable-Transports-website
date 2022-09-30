@@ -1,5 +1,5 @@
 ---
-title: "Pop Up PTIM Session Video: Gamers Games Unblocked, Minecruft PT
+title: "Pop Up PTIM Session Video: Gamers Games Unblocked, Minecruft PT"
 modified: 2022-09-30
 categories:
   - blog
