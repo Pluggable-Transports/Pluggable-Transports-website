@@ -1,5 +1,5 @@
 ---
-title: "Pop Up PTIM Session:VPN censorship, Probes and Resilience: Building Feedback Loops with Open Data"
+title: "Pop Up PTIM Session Recap: VPN censorship, Probes and Resilience: Building Feedback Loops with Open Data"
 modified: 2022-09-20
 categories:
   - blog
