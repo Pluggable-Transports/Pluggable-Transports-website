@@ -19,5 +19,5 @@ The presentation of the Pop Up PTIM Session **Gamer Games Unblocked** video
 recording is available on [Internet
 Archive](https://archive.org/details/popup-ptim-gamer-games).
 
-Further information about the session can be found [on the announcement blog
+Further information about the session can be found on the [announcement blog
 post](/blog/popup-ptim-minecruft-announcement/).
