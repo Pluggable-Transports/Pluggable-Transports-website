@@ -73,7 +73,7 @@ Task Force ([IETF](https://www.ietf.org/)) and the World Wide Web Consortium
 ([W3C](https://www.w3.org/Consortium/)) - the former with focus on the
 protocols that move content around the Internet, the latter with focus on the
 content itself. The IETF, therefore, is the body most likely to produce
-standards that impact our areas of interest.  Fortunately, given the long-held
+standards that impact our areas of interest. Fortunately, given the long-held
 spirit of cooperation among participants, the IETF has shown itself to be very
 effective at delivering standards that (a) are defined in a manner agreeable to
 the parties that must implement them and (b) have proven-interoperable
@@ -102,7 +102,7 @@ Hello](https://www.ietf.org/archive/id/draft-ietf-tls-esni-14.html), already
 accounts for 60% of Internet traffic, mostly via the [Chrome
 browser](https://www.google.com/chrome/downloads/) (the Internet's most
 popular). Development of the initial version of TLS and the current version
-each took over four years to complete.  Here's [an excellent
+each took over four years to complete. Here's [an excellent
 article](https://dl.acm.org/doi/fullHtml/10.1145/3442381.3450057) describing
 the process of bringing TLS 1.3 into broad adoption. An effort similar to TLS
 (called [Messaging Layer Security](https://datatracker.ietf.org/wg/mls/about/),
@@ -137,7 +137,7 @@ Internet
 Freedom](https://mailarchive.ietf.org/arch/msg/quic/up8EhFHPIHMQbFK3yHVFV6JrZM0/)
 (for example, the [QUIC Spin
 Bit](https://tools.ietf.org/id/draft-trammell-quic-spin-00.html)), our efforts
-were focused on major privacy-first *from-whole-cloth* activities.  Here's a
+were focused on major privacy-first *from-whole-cloth* activities. Here's a
 condensed description of these works and where they stand today.
 
 ### MASQUE
@@ -238,11 +238,11 @@ humans are humans.
 In June, Apple announced Private Access Tokens - its branded version of Privacy
 Pass - in the iOS 16 and macOS Ventura beta releases. Apple says they are
 supporting [Privacy Pass
-authentication](http://draft-ietf-privacypass-auth-scheme/)(with type 2 - blind
-RSA - tokens)as defined in the [protocol
+authentication](http://draft-ietf-privacypass-auth-scheme/) (with type 2 - blind
+RSA - tokens) as defined in the [protocol
 draft](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/). The
 Apple scheme requires Apple hardware and leverages Apple's unique relationship
-with its customers.  Apple device owners with the newest operating system
+with its customers. Apple device owners with the newest operating system
 releases can experiment with Private Access Tokens today - CDN providers
 Cloudflare and Fastly have demonstration Privacy Pass token issuers to try. See
 [here](https://developer.apple.com/news/?id=huqjyh7k) and (especially)
@@ -282,10 +282,10 @@ interoperability testing.
 
 Measurement seems a benign word - hard to imagine anyone getting worked up over
 it. It's possible to characterize almost all measurements taken on Internet
-traffic as being good.  But, too often, the stated requirements for measurement
-hide the real and intended uses.  Many people characterize the Internet of
+traffic as being good. But, too often, the stated requirements for measurement
+hide the real and intended uses. Many people characterize the Internet of
 today as a *surveillance economy*. Consumers have tried to fight back - with
-particular support in the European Union - but with modest success.  More
+particular support in the European Union - but with modest success. More
 recently, however, state actors have begun using the surveillance economy as a
 way to justify suppression of certain Internet services, particularly the most
 popular media and social media outlets who are also the biggest contributors to
