@@ -136,9 +136,9 @@ minor protocol nuances can have [huge future implications on privacy and
 Internet
 Freedom](https://mailarchive.ietf.org/arch/msg/quic/up8EhFHPIHMQbFK3yHVFV6JrZM0/)
 (for example, the [QUIC Spin
-Bit](https://tools.ietf.org/id/draft-trammell-quic-spin-00.html)), our efforts
-were focused on major privacy-first *from-whole-cloth* activities. Here's a
-condensed description of these works and where they stand today.
+Bit](https://datatracker.ietf.org/doc/html/draft-trammell-quic-spin-00)), our
+efforts were focused on major privacy-first *from-whole-cloth* activities.
+Here's a condensed description of these works and where they stand today.
 
 ### MASQUE
 
@@ -151,7 +151,7 @@ unauthenticated observer. The MASQUE definition grew much larger, however, when
 it was realized that the definition of the QUIC and HTTP/3 protocols could be
 enhanced with all forms of proxy flow, not just one narrow definition. The
 original idea was hived off into a [separate
-draft](https://tools.ietf.org/id/draft-schinazi-httpbis-transport-auth-00.html),
+draft](https://datatracker.ietf.org/doc/html/draft-schinazi-httpbis-transport-auth-00),
 to await later discussion (more on this later), a Working Group was formed and
 a suite of key standards was developed.
 
@@ -230,7 +230,7 @@ and
 [protocol](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/)
 specifications working their way toward standardization. Privacy Pass also
 specifies the
-[scheme](https://datatracker.ietf.org/doc/draft-ietf-privacypass-auth-scheme/)
+[scheme](https://datatracker.ietf.org/doc/DRAFT-ietf-privacypass-auth-scheme/)
 by which issued tokens are presented to participating services. Not
 standardized: the mechanism by which issuers of Privacy Pass tokens assure
 humans are humans.
@@ -238,7 +238,7 @@ humans are humans.
 In June, Apple announced Private Access Tokens - its branded version of Privacy
 Pass - in the iOS 16 and macOS Ventura beta releases. Apple says they are
 supporting [Privacy Pass
-authentication](http://draft-ietf-privacypass-auth-scheme/) (with type 2 - blind
+authentication](https://datatracker.ietf.org/doc/draft-ietf-privacypass-auth-scheme/) (with type 2 - blind
 RSA - tokens) as defined in the [protocol
 draft](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/). The
 Apple scheme requires Apple hardware and leverages Apple's unique relationship
@@ -368,9 +368,9 @@ Security. TLS Encrypted Client Hello (ECH), above, is also dependent on HPKE.
 ### HTTP Transport Authentication
 
 We mentioned that *HTTP Transport Authentication* was,
-[originally](https://tools.ietf.org/id/draft-schinazi-masque-00.html) (February
-2019), called MASQUE. The specification is designed to authenticate protocol
-flows in a manner that does not reveal any information to an attacker.
+[originally](https://datatracker.ietf.org/doc/html/draft-schinazi-masque-00)
+(February 2019), called MASQUE. The specification is designed to authenticate
+protocol flows in a manner that does not reveal any information to an attacker.
 Therefore, applications using *HTTP Transport Authentication* are resistant to
 active probing by network adversaries. However, the ideas originally expressed
 got IETF's creative juices flowing and, as above, a Working Group was formed to
