@@ -115,7 +115,7 @@ Even if you are using OpenVPN on the https port, and not using a well-known VPN 
 
 |**A Short History of DPI Blocking**|
 |In 2012, both [Iran](https://www.refworld.org/reference/annualreport/cpj/2013/en/90859) and [China](https://www.technologyreview.com/s/427413/how-china-blocks-the-tor-anonymity-network/) began filtering encrypted internet traffic, specifically targeting The Tor Project's anti-censorship, pro-privacy network; triggering The Tor Project to release their first public [obfuscation work](https://blog.torproject.org/blog/obfsproxy-next-step-censorship-arms-race).|
-|Other countries soon applied the same strategy -- [Ethiopia](https://blog.torproject.org/blog/ethiopia-introduces-deep-packet-inspection) later in 2012, [Syria](http://secdev-foundation.org/wp-content/uploads/2014/08/Flash-Note-Syria-8-Syrian-regime-tightens-access-to-secure-online-communications.pdf) in 2014, among many others. In 2018, the OONI project wrote about DPI being used in Iran [to block Instagram](https://ooni.torproject.org/post/2018-iran-protests-pt2/). Privacy International tracks surveillance systems in their [Transparency Toolkit](https://sii.transparencytoolkit.org/); and Freedom House's [Freedom on the Net](https://freedomhouse.org/explore-the-map?type=fiw&year=2023) tracks both censorship and other limitations on net freedom.|
+|Other countries soon applied the same strategy -- [Ethiopia](https://blog.torproject.org/blog/ethiopia-introduces-deep-packet-inspection) later in 2012, [Syria](http://secdev-foundation.org/wp-content/uploads/2014/08/Flash-Note-Syria-8-Syrian-regime-tightens-access-to-secure-online-communications.pdf) in 2014, among many others. In 2018, the OONI project wrote about DPI being used in Iran [to block Instagram](https://ooni.torproject.org/post/2018-iran-protests-pt2/). Privacy International tracks surveillance systems in their [Transparency Toolkit]( https://privacyinternational.org/blog/54/privacy-international-launches-surveillance-industry-index-new-accompanying-report); and Freedom House's [Freedom on the Net](https://freedomhouse.org/explore-the-map?type=fiw&year=2023) tracks both censorship and other limitations on net freedom.|
 
 
 #### What the host can do
@@ -133,7 +133,7 @@ Pluggable Transports continued to work despite this escalation.
 
 ----------
 
-If you want to dive deeper into this subject, you should also take a look at [this IETF draft paper](https://github.com/josephlhall/rfc-censorship-tech/blob/master/as-submitted/draft-hall-censorship-tech-02.txt), updated in May 2018.
+If you want to dive deeper into this subject, you should also take a look at [the IETF RFC9505](https://datatracker.ietf.org/doc/rfc9505/), published in November 2023. 
 
 ---
 
