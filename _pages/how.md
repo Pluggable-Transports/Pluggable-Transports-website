@@ -120,7 +120,7 @@ Even if you are using OpenVPN on the https port, and not using a well-known VPN 
 
 #### What the host can do
 
-**At this stage, obfuscation of traffic becomes a requirement** - to evade DPI and thereby protect servers from being immediately [blocked via IP](#ip-blocking). Pluggable Transports were first developed by [The Tor Project](https://www.torproject.org/docs/pluggable-transports.html.en) to provide ways for tool developers to make their apps more resilient against DPI filtering.
+**At this stage, obfuscation of traffic becomes a requirement** - to evade DPI and thereby protect servers from being immediately [blocked via IP](#ip-blocking). Pluggable Transports were first developed by [The Tor Project](https://2019.www.torproject.org/docs/pluggable-transports ) to provide ways for tool developers to make their apps more resilient against DPI filtering.
 
 Pluggable Transports make it harder for DPI to classify the connection and take an action against it. [A Child's Garden of Pluggable Transports](https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports) provides a step-by step walkthrough of how The Tor Project obfuscated tor network traffic, and how early obfuscation approaches were identified and blocked.
 
