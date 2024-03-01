@@ -16,7 +16,7 @@ sidebar:
 
 {% include toc title="" icon="file-text" %}
 
-Pluggable Transports have been created to help developers keep their users connected when censorship occurs. In this article, we talk briefly about the ways in which transports can help. At this point, you should have already read our piece on [Types of censorship](/how/).
+Pluggable Transports have been created to help developers keep their users connected when censorship occurs. In this article, we talk briefly about the ways in which transports can help. At this point, you should have already read our piece on [Types of censorship](/how/). Additionally, we recommend reading the RFC 9505 for further background on current censorship techniques [worldwide](https://datatracker.ietf.org/doc/rfc9505).
 
 ----------
 
@@ -51,6 +51,16 @@ Another approach leverages large cloud providers which are socially or economica
 Some adversaries are willing to block entire cloud providers - but often only temporarily. The downside of this powerful technique for tool providers is that it can in some cases be overwhelmingly financially expensive to route traffic through these services.
 
 Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC, an HTML5 interface that provides real-time communication between browsers and devices.
+
+
+### Considerations
+
+Domain Fronting Challenges: Major cloud providers have implemented measures to restrict domain fronting, affecting its viability as a [circumvention tool](https://www.sentinelone.com/blog/privacy-2019-tor-meek-rise-fall-domain-fronting).
+
+Advancements in Pluggable Transports: The development of Pluggable Transports is ongoing, with new versions and types being introduced to address evolving [censorship techniques](https://software.pluggabletransports.info/
+).
+
+
 
 ----------
 
