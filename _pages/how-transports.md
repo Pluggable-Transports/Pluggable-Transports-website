@@ -32,7 +32,7 @@ However, this is easily blocked by the adversary re-identifying the handshake an
 
 ### Making it look like noise
 
-A significant step up from this is to work towards making the traffic look like nothing at all. The goal here is to eliminate any identifying characteristics of the traffic, forcing a censor towards more expensive attacks.  This is the approach in Tor's most famous "obfs" line of transports, and we refer to this as [Scrambling](/transports/#scrambling).
+A significant step up from this is to work towards making the traffic look like nothing at all. The goal here is to eliminate any identifying characteristics of the traffic, forcing a censor towards more expensive attacks.  This is the approach in Tor's most famous "obfs" line of transports such as [obfs4](https://software.pluggabletransports.info/obfs4) which incorporates adaptive obfuscation patterns based on censorship levels, and we refer to this as [Scrambling](/transports/#scrambling).
 
 To defeat scrambling, censors must either select only recognized and "approved" traffic out (whitelisting), scan the destination of each unrecognized stream of traffic and determine if it is legitimate or a circumvention tool, or find ways to interfere with or still identify the traffic.
 
@@ -40,9 +40,10 @@ China is famous for their "active probing" , and Iran for their willingness to t
 
 ### Making it look like something else
 
-For adversaries willing or able to effectively combat scrambling, another approach is transforming the traffic to look like known - and approved - traffic. This faces its own challenges, as it becomes an arms race to ensure that this "[shape-shifting](/transports/#shape-shifting)" is good enough to continuously fool the censor - not just as the traffic, but also at the end-points.  If, for example, you are shape-shifting your traffic into vanilla http, the server will need to respond like a real web server. [The Parrot is Dead](https://www.cs.utexas.edu/~shmat/shmat_oak13parrot.pdf) explains the challenges these protocols face.
+For adversaries willing or able to effectively combat scrambling, another approach is transforming the traffic to look like known - and approved - traffic with [Replicant](https://software.pluggabletransports.info/replicant), which utilizes AI to continuously analyze and adapt to allowed traffic patterns, and [Optimizer](https://software.pluggabletransports.info/optimizer), which employs various strategies to mimic legitimate traffic behaviors, a few relevant examples.”
+. This faces its own challenges, as it becomes an arms race to ensure that this "[shape-shifting](/transports/#shape-shifting)" is good enough to continuously fool the censor - not just as the traffic, but also at the end-points.  If, for example, you are shape-shifting your traffic into vanilla http, the server will need to respond like a real web server. [The Parrot is Dead](https://www.cs.utexas.edu/~shmat/shmat_oak13parrot.pdf) explains the challenges these protocols face.
 
-However, using this approach can force even more resource-intensive follow-up scanning (the censor must now determine if the server is "correct" or not).
+Given the added complexity, using this approach can force even more resource-intensive follow-up scanning (the censor must now determine if the server is "correct" or not).
 
 ### Hiding in the crowd
 
