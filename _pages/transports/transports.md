@@ -17,7 +17,7 @@ There are many different transports which address a wide variety of blocking str
 
 {% include toc icon="file-text" %}
 
-## Diverting
+## Diverting/Fronting
 
 In this case, traffic is moved around the network using different paths to standard web traffic. One way of diverting traffic is known as "domain fronting". This approach leverages cloud platforms which are socially or economically difficult to block - it pushes traffic through a "front", which is commonly an IP address shared by many sites on the cloud provider. To effectively block an app using domain fronting requires blocking the entire cloud provider -- and every other service hosted by it. This approach has been less successful in the past couple of years, due to large cloud providers removing the ability to front using their services.
 
@@ -31,9 +31,23 @@ This approach seeks to disguise the traffic in ways that are not identifiable as
 
 Scrambling relies on having clients being able to know or discover unblocked IP addresses, and an active censor will work to discover and block these addresses. Once a server address is known it is no longer usable.
 
+Given those vulnerabilities, scrambling techniques have evolved to be more sophisticated, employing advanced cryptographic methods to make traffic appear indistinguishable from normal internet noise, which has proven to be particularly effective against Deep Packet Inspection (DPI):
+
+* Adaptive Protocols: Implementing protocols that can adapt their obfuscation patterns based on the detected level of censorship, ensuring that the traffic remains unidentifiable over time.
+
+* Protocol Camouflage: Using the characteristics of commonly allowed protocols (e.g., HTTPS, QUIC) to camouflage the traffic, making it blend in with regular internet traffic and harder for censors to justify blocking without affecting normal internet usage.
+
 ## Shapeshifting
 
 "Shapeshifting" hide the traffic in non-objectional formats, making it look like a VOIP call, web traffic, online games, or statistically sampled "normal" traffic. This approach defeats whitelisted traffic limitations, but is almost impossible to do "perfectly" -- even if the traffic is indistinguishable from "real" traffic, the client and server will generally behave differently from a "real" server - meaning that advanced adversaries can choose to expend resources to do follow-up scans on every suspected connection to verify the server acts "correctly," and block it if not.
+
+Currently, shapeshifting has advanced beyond simple mimicry of non-controversial traffic types, incorporating machine learning and AI to dynamically adapt to the evolving landscape of internet traffic:
+
+* AI-Driven Mimicry: Leveraging artificial intelligence to continuously analyze patterns of allowed traffic and adapt the obfuscated traffic to match, making it increasingly difficult for censors to distinguish between genuine and circumvented traffic.
+
+* Behavioral Mimicry: Focusing not just on the appearance of the traffic but also on mimicking the behavioral patterns of legitimate traffic, such as the timing of requests, the size of data packets, and typical user interactions, to withstand more in-depth analysis by advanced adversaries.
+
+The continuous evolution of these techniques and transports reflect the ongoing arms race between censors and developers of circumvention tools, highlighting the importance of continuous innovation in PT strategies to adapt to the ever-changing tactics employed by censors.”
 
 ## Current Implementations
 
