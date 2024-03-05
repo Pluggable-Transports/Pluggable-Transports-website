@@ -38,3 +38,5 @@ Pluggable Transports is an [Internews](https://internews.org) community-building
 * [#KeepItOn](https://www.accessnow.org/keepiton/) is a public advocacy campaign by Access Now to fight internet shutdowns and censorship.
 
 * [Global Voices AdVox](https://advox.globalvoices.org/) is "a global anti-censorship network of bloggers and activists dedicated to protecting freedom of expression online."
+
+We value respect, inclusivity, and collaboration in our community. To ensure a positive experience for everyone, please take a moment to review our [Code of Conduct](/code-of-conduct/).
