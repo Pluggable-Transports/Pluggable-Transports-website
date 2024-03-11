@@ -16,7 +16,7 @@ sidebar:
 
 {% include toc title="" icon="file-text" %}
 
-Pluggable Transports have been created to help developers keep their users connected when censorship occurs. In this article, we talk briefly about the ways in which transports can help. At this point, you should have already read our piece on [Types of censorship](/how/). Additionally, we recommend reading the RFC 9505 for further background on current censorship techniques [worldwide](https://datatracker.ietf.org/doc/rfc9505).
+Pluggable Transports have been created to help developers keep their users connected when censorship occurs. In this article, we talk briefly about the ways in which transports can help. At this point, you should have already read our piece on [Types of censorship](/how/). Additionally, we recommend reading the [RFC 9505](https://datatracker.ietf.org/doc/rfc9505) for further background on current censorship techniques worldwide.
 
 ----------
 
@@ -32,7 +32,7 @@ However, this is easily blocked by the adversary re-identifying the handshake an
 
 ### Making it look like noise
 
-A significant step up from this is to work towards making the traffic look like nothing at all. The goal here is to eliminate any identifying characteristics of the traffic, forcing a censor towards more expensive attacks.  This is the approach in Tor's most famous "obfs" line of transports such as [obfs4](https://software.pluggabletransports.info/obfs4) which incorporates adaptive obfuscation patterns based on censorship levels, and we refer to this as [Scrambling](/transports/#scrambling).
+A significant step up from this is to work towards making the traffic look like nothing at all. The goal here is to eliminate any identifying characteristics of the traffic, forcing a censor towards more expensive attacks.  This is the approach in Tor's most famous "obfs" line of transports, such as [obfs4](https://software.pluggabletransports.info/obfs4) which incorporates adaptive obfuscation patterns based on censorship levels, and we refer to this as [Scrambling](/transports/#scrambling).
 
 To defeat scrambling, censors must either select only recognized and "approved" traffic out (whitelisting), scan the destination of each unrecognized stream of traffic and determine if it is legitimate or a circumvention tool, or find ways to interfere with or still identify the traffic.
 
@@ -40,7 +40,7 @@ China is famous for their "active probing" , and Iran for their willingness to t
 
 ### Making it look like something else
 
-For adversaries willing or able to effectively combat scrambling, another approach is transforming the traffic to look like known - and approved - traffic with [Replicant](https://software.pluggabletransports.info/replicant), which utilizes AI to continuously analyze and adapt to allowed traffic patterns, and [Optimizer](https://software.pluggabletransports.info/optimizer), which employs various strategies to mimic legitimate traffic behaviors, a few relevant examples.”
+For adversaries willing or able to effectively combat scrambling, another approach is transforming the traffic to look like known - and approved - traffic, with [Replicant](https://software.pluggabletransports.info/replicant), which utilizes AI to continuously analyze and adapt to allowed traffic patterns, and [Optimizer](https://software.pluggabletransports.info/optimizer), which employs various strategies to mimic legitimate traffic behaviors, a few relevant examples.”
 . This faces its own challenges, as it becomes an arms race to ensure that this "[shape-shifting](/transports/#shape-shifting)" is good enough to continuously fool the censor - not just as the traffic, but also at the end-points.  If, for example, you are shape-shifting your traffic into vanilla http, the server will need to respond like a real web server. [The Parrot is Dead](https://www.cs.utexas.edu/~shmat/shmat_oak13parrot.pdf) explains the challenges these protocols face.
 
 Given the added complexity, using this approach can force even more resource-intensive follow-up scanning (the censor must now determine if the server is "correct" or not).
@@ -51,7 +51,7 @@ Another approach leverages large cloud providers which are socially or economica
 
 Some adversaries are willing to block entire cloud providers - but often only temporarily. The downside of this powerful technique for tool providers is that it can in some cases be overwhelmingly financially expensive to route traffic through these services, as showcased in this [article](https://www.sentinelone.com/blog/privacy-2019-tor-meek-rise-fall-domain-fronting/). In response, the circumvention community continues to innovate, exploring decentralized and peer-to-peer technologies to enhance resilience and reduce reliance on any single provider. These advancements reflect a dynamic and adaptive approach to overcoming censorship, ensuring that access to open and unrestricted internet remains available.
 
-Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC, an HTML5 interface that provides real-time communication between browsers and devices. More recent developments include Shadowsocks, which uses a fast tunnel proxy to bypass firewalls, acting as a bridge in restricted networks, and dnstt, which demonstrates ephemeral bridges through its DNS tunneling capability, using DoH and DoT to frequently change and adapt to censorship.
+Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC, an HTML5 interface that provides real-time communication between browsers and devices. More recent developments include [Shadowsocks](https://software.pluggabletransports.info/shadowsocks), which uses a fast tunnel proxy to bypass firewalls, acting as a bridge in restricted networks, and [dnstt](https://software.pluggabletransports.info/dnstt), which demonstrates ephemeral bridges through its DNS tunneling capability, using DoH and DoT to frequently change and adapt to censorship.
 
 
 ### Considerations
