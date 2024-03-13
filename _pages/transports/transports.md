@@ -74,6 +74,8 @@ The continuous evolution of these techniques and transports reflect the ongoing 
 
 - |**[Replicant](https://software.pluggabletransports.info/replicant)**| An "adversary-tunable" transport that can be adapted to provide the obfuscation needed by any specific adversary. | Shapeshifting |
 
+The continuous evolution of these techniques and transports reflects the ongoing arms race between censors and developers of circumvention tools, highlighting the importance of continuous innovation in PT strategies to adapt to the ever-changing tactics employed by censors.
+
 Now that you know what transports are available, let's look at how to [make sure they're working](/measuring).
 
 <p style="text-align:left;"><a href="/how-transports/">&lt; Previous</a>
