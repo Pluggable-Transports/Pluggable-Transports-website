@@ -54,9 +54,6 @@ Some adversaries are willing to block entire cloud providers - but often only te
 Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called flashproxy, which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC, an HTML5 interface that provides real-time communication between browsers and devices. More recent developments include [Shadowsocks](https://software.pluggabletransports.info/shadowsocks), which uses a fast tunnel proxy to bypass firewalls, acting as a bridge in restricted networks, and [dnstt](https://software.pluggabletransports.info/dnstt), which demonstrates ephemeral bridges through its DNS tunneling capability, using DoH and DoT to frequently change and adapt to censorship.
 
 
-### Considerations
-
-Advancements in Pluggable Transports: The development of Pluggable Transports is ongoing, with new versions and types being introduced to address evolving [censorship techniques](https://www.pluggabletransports.info/how/).
 
 
 ----------
