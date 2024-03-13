@@ -49,7 +49,6 @@ Currently, shapeshifting has advanced beyond simple mimicry of non-controversial
 
 - Behavioral Mimicry: Focusing not just on the appearance of the traffic but also on mimicking the behavioral patterns of legitimate traffic, such as the timing of requests, the size of data packets, and typical user interactions, to withstand more in-depth analysis by advanced adversaries.
 
-The continuous evolution of these techniques and transports reflects the ongoing arms race between censors and developers of circumvention tools, highlighting the importance of continuous innovation in PT strategies to adapt to the ever-changing tactics employed by censors.”
 
 ## Current Implementations
 
