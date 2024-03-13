@@ -56,9 +56,7 @@ Another variant of this approach is using many, short-lived ephemeral connection
 
 ### Considerations
 
-Advancements in Pluggable Transports: The development of Pluggable Transports is ongoing, with new versions and types being introduced to address evolving [censorship techniques](https://software.pluggabletransports.info/
-).
-
+Advancements in Pluggable Transports: The development of Pluggable Transports is ongoing, with new versions and types being introduced to address evolving [censorship techniques](https://www.pluggabletransports.info/how/).
 
 
 ----------
