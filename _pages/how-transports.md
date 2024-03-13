@@ -56,8 +56,6 @@ Another variant of this approach is using many, short-lived ephemeral connection
 
 ### Considerations
 
-Domain Fronting Challenges: Major cloud providers have implemented measures to restrict domain fronting, affecting its viability as a [circumvention tool](https://www.sentinelone.com/blog/privacy-2019-tor-meek-rise-fall-domain-fronting).
-
 Advancements in Pluggable Transports: The development of Pluggable Transports is ongoing, with new versions and types being introduced to address evolving [censorship techniques](https://software.pluggabletransports.info/
 ).
 
