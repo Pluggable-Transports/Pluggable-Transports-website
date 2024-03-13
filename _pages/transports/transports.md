@@ -41,7 +41,7 @@ Given those vulnerabilities, scrambling techniques have evolved to be more sophi
 
 ## Shapeshifting
 
-"Shapeshifting" hide the traffic in non-objectional formats, making it look like a VOIP call, web traffic, online games, or statistically sampled "normal" traffic. This approach defeats whitelisted traffic limitations, but is almost impossible to do "perfectly" -- even if the traffic is indistinguishable from "real" traffic, the client and server will generally behave differently from a "real" server - meaning that advanced adversaries can choose to expend resources to do follow-up scans on every suspected connection to verify the server acts "correctly," and block it if not.
+"Shapeshifting" hides the traffic in non-objectional formats, making it look like a VOIP call, web traffic, online games, or statistically sampled "normal" traffic. This approach defeats whitelisted traffic limitations, but is almost impossible to do "perfectly" -- even if the traffic is indistinguishable from "real" traffic, the client and server will generally behave differently from a "real" server - meaning that advanced adversaries can choose to expend resources to do follow-up scans on every suspected connection to verify the server acts "correctly," and block it if not.
 
 Currently, shapeshifting has advanced beyond simple mimicry of non-controversial traffic types, incorporating machine learning and AI to dynamically adapt to the evolving landscape of internet traffic:
 
