@@ -55,23 +55,23 @@ Currently, shapeshifting has advanced beyond simple mimicry of non-controversial
 | **Transport** | **Information** | **Strategy** |
 |----|-------|
 
-- |**[meek](https://software.pluggabletransports.info/meek)**| For a long time, Meek was considered the gold standard as it supported domain fronting through Google App Engine, Amazon Web Services and Microsoft Azure. It is now used much less frequently, and only when allowed by the cloud provider. | Diverting (domain fronting) |
+|**[meek](https://software.pluggabletransports.info/meek)**| For a long time, Meek was considered the gold standard as it supported domain fronting through Google App Engine, Amazon Web Services and Microsoft Azure. It is now used much less frequently, and only when allowed by the cloud provider. | Diverting (domain fronting) |
 
-- |**[SnowFlake](https://software.pluggabletransports.info/snowflake)**| SnowFlake uses WebRTC to turn website visitors into ephemeral proxies. See also [Snowflake's website](https://snowflake.torproject.org/). As Snowflake use increases, more Snowflake bridges will need to be built and discoverability of these bridges will be the key to its success. | Diverting |
+|**[SnowFlake](https://software.pluggabletransports.info/snowflake)**| SnowFlake uses WebRTC to turn website visitors into ephemeral proxies. See also [Snowflake's website](https://snowflake.torproject.org/). As Snowflake use increases, more Snowflake bridges will need to be built and discoverability of these bridges will be the key to its success. | Diverting |
 
-- |**[Refraction Networking](https://refraction.network/)**| This approach involves intercepting traffic at the ISP or network operator level, and redirecting traffic from perceived "safe" addresses to user-requested, blocked content. It increases the cost of censorship, by preventing censors from selectively blocking only those servers used to provide Internet freedom. | Diverting |
+|**[Refraction Networking](https://refraction.network/)**| This approach involves intercepting traffic at the ISP or network operator level, and redirecting traffic from perceived "safe" addresses to user-requested, blocked content. It increases the cost of censorship, by preventing censors from selectively blocking only those servers used to provide Internet freedom. | Diverting |
 
-- |**[obfs4](https://software.pluggabletransports.info/obfs4)**| Obfs4 is the current state of the art deployed "look-like nothing" obfuscation protocol from The Tor Project. It evolved from [obfs2](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs2/obfs2-protocol-spec.txt) and [obfs3](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs3/obfs3-protocol-spec.txt) to include active probing defences, and is in wide use today. Tor have published and unpublished bridges, increasing the effort needed by the adversary to block them. | Scrambling |
+|**[obfs4](https://software.pluggabletransports.info/obfs4)**| Obfs4 is the current state of the art deployed "look-like nothing" obfuscation protocol from The Tor Project. It evolved from [obfs2](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs2/obfs2-protocol-spec.txt) and [obfs3](https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/tree/doc/obfs3/obfs3-protocol-spec.txt) to include active probing defences, and is in wide use today. Tor have published and unpublished bridges, increasing the effort needed by the adversary to block them. | Scrambling |
 
-- |**[Dust](https://software.pluggabletransports.info/dust)**| Dust transforms traffic to statistically match a pattern of "allowed" traffic | Shapeshifting |
+|**[Dust](https://software.pluggabletransports.info/dust)**| Dust transforms traffic to statistically match a pattern of "allowed" traffic | Shapeshifting |
 
-- |**[Stegotorus](https://software.pluggabletransports.info/stegotorus)**| A development framework that provides an API specifically geared towards the needs of steganographic protocols. With this API, developers can help applications hide from DPI, and to resist throttling or connection dropping. | Shapeshifting |
+|**[Stegotorus](https://software.pluggabletransports.info/stegotorus)**| A development framework that provides an API specifically geared towards the needs of steganographic protocols. With this API, developers can help applications hide from DPI, and to resist throttling or connection dropping. | Shapeshifting |
 
-- |**[Lampshade](https://software.pluggabletransports.info/lampshade)**| An obfuscated encrypted network protocol for [Lantern](https://getlantern.org) | Shapeshifting |
+|**[Lampshade](https://software.pluggabletransports.info/lampshade)**| An obfuscated encrypted network protocol for [Lantern](https://getlantern.org) | Shapeshifting |
 
-- |**[Optimizer](https://software.pluggabletransports.info/optimizer)**| A pluggable transport that works with other transports to find the best option by making use of multiple configurable strategies to find the optimal choice among the available transports. | Various |
+|**[Optimizer](https://software.pluggabletransports.info/optimizer)**| A pluggable transport that works with other transports to find the best option by making use of multiple configurable strategies to find the optimal choice among the available transports. | Various |
 
-- |**[Replicant](https://software.pluggabletransports.info/replicant)**| An "adversary-tunable" transport that can be adapted to provide the obfuscation needed by any specific adversary. | Shapeshifting |
+|**[Replicant](https://software.pluggabletransports.info/replicant)**| An "adversary-tunable" transport that can be adapted to provide the obfuscation needed by any specific adversary. | Shapeshifting |
 
 The continuous evolution of these techniques and transports reflects the ongoing arms race between censors and developers of circumvention tools, highlighting the importance of continuous innovation in PT strategies to adapt to the ever-changing tactics employed by censors.
 
