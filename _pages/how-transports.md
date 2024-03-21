@@ -36,7 +36,7 @@ A significant step up from this is to work towards making the traffic look like 
 
 To defeat scrambling, censors must either select only recognized and "approved" traffic out (whitelisting), scan the destination of each unrecognized stream of traffic and determine if it is legitimate or a circumvention tool, or find ways to interfere with or still identify the traffic.
 
-China is famous for their "active probing" , and Iran for their willingness to terminate encrypted traffic after one minute. Kazakhstan was found to be using a system which matches the [timing of the obfs4 handshake and prevents it from successfully completing](https://bugs.torproject.org/20348).
+China is famous for their "active probing" , and Iran for their willingness to terminate encrypted traffic after one minute. Kazakhstan was found to be using a system which matches the [timing of the obfs4 handshake and prevents it from successfully completing](https://bugs.torproject.org/20348). More recently, and as documented by Tor in this issue, both obfs4 and snowflake continue facing blockings by the GFW of China, and although no current alternatives have been found to some specific timeouts, the reports are now a reference for potential future improvements using new tools such as xray.
 
 With the advent of quantum computing, there's a growing emphasis on developing [quantum-resistant cryptographic](https://www.nist.gov/news-events/news/2022/07/nist-announces-first-four-quantum-resistant-cryptographic-algorithms) methods to ensure that traffic scrambling remains secure against future threats, enhancing the long-term viability of these techniques.
 
@@ -50,10 +50,9 @@ For adversaries willing or able to effectively combat scrambling, another approa
 
 Incorporating techniques like [web tunneling](https://blog.torproject.org/introducing-webtunnel-evading-censorship-by-hiding-in-plain-sight/), which disguises traffic as an HTTPS connection, can enhance this approach. Web tunneling wraps the payload in a WebSocket-like HTTPS connection, making it appear as ordinary HTTPS traffic to network observers and giving the impression of standard web browsing. However, using these shape-shifting strategies can force even more resource-intensive follow-up scanning (the censor must now determine if the server is "correct" or not).
 
-[V2Ray](https://www.v2ray.com/en/) is a tool designed for obfuscating internet traffic, featuring multiple built-in protocols aimed at disguising the nature of the traffic. These protocols include WebSocket, HTTP/2, and mTLS, among others, each offering different methods of camouflage to make the traffic appear as regular, non-censored communication. This variety allows users to select the most effective obfuscation technique for their specific censorship environment, enhancing their ability to bypass internet restrictions.
+[V2Ray](https://www.v2ray.com/en/) s a tool designed for obfuscating internet traffic, featuring multiple built-in protocols, including [Shadowsocks](https://www.shadowsocks.org/), it offers different methods of camouflage to make the traffic appear as regular, non-censored communication.
 
- A novel approach called {Geneva (Genetic Evasion)}(https://geneva.cs.umd.edu/) uses genetic algorithms to discover new evasion strategies against internet censorship. While not a pluggable transport itself, Geneva's strategies can inform the development of new pluggable transports by automatically finding ways to manipulate packet streams to evade censorship.
-
+ 
 ### Hiding in the crowd
 
 Another approach leverages large cloud providers which are socially or economically difficult to block.  Using [Fronting](/transports/#fronting), also known as Diverting, you can route traffic through an allowed service.  This would force an adversary to block an entire cloud provider - and every other service hosted in it. Circumvention tool providers have previously been able to use this kind of connection, but it is increasingly being locked down as the cloud providers seek to retain control over their services.
@@ -62,7 +61,10 @@ Some adversaries are willing to block entire cloud providers - but often only te
 
 Another variant of this approach is using many, short-lived ephemeral connections.  An initial foray into this was called [flashproxy](https://crypto.stanford.edu/flashproxy/ ), which leveraged website visitors themselves as proxies for others via javascript.  [Snowflake](https://github.com/keroserene/snowflake) has been more successful, getting around many of the challenges flashproxy faced by using WebRTC, an HTML5 interface that provides real-time communication between browsers and devices. More recent developments include [Shadowsocks](https://software.pluggabletransports.info/shadowsocks), which uses a fast tunnel proxy to bypass firewalls, acting as a bridge in restricted networks, and [dnstt](https://software.pluggabletransports.info/dnstt), which demonstrates ephemeral bridges through its DNS tunneling capability, using DoH and DoT to frequently change and adapt to censorship.
 
+Looking into the future
+=======================
 
+{Geneva (Genetic Evasion)}(https://geneva.cs.umd.edu/)This is a novel approach that uses genetic algorithms to discover new evasion strategies against internet censorship. While not a pluggable transport itself, Geneva's strategies can inform the development of new pluggable transports by automatically finding ways to manipulate packet streams to evade censorship.
 
 
 ----------
