@@ -43,6 +43,17 @@ Below is a collection of resources that may help you find out some of this infor
 
 * **[Freedom on the Net](https://freedomhouse.org/report/freedom-net/)** - If you're looking at how Internet Freedom has been impacted over the past since 2012, you can read through the archive of reports produced by Freedom House. Using networks of trusted reporters, Freedom House have amassed a wealth of information and detailed reports, showing a year-on-year decline of overall freedom on the net. For up-to-date reports since the [latest edition](https://freedomhouse.org/report/freedom-net), you can also follow them on [Twitter](https://twitter.com/freedomonthenet).
 
+* **[Internet Society (ISOC)](https://pulse.internetsociety.org/)** - The Internet Society's Pulse platform provides data and insights on the health and availability of the Internet in various regions. It includes information on Internet shutdowns, disruptions, and threats to the Internet's core infrastructure.
+
+* **[Ranking Digital Rights (RDR)](https://rankingdigitalrights.org/)** - evaluates and ranks the world's most significant digital platforms and telecommunications companies on their policies and practices related to freedom of expression and privacy. Their annual Corporate Accountability Index provides valuable insights into how these companies' practices affect users' rights. 
+
+* **[Electronic Frontier Foundation (EFF)](https://www.eff.org/)** - While already well-known, EFF's continuous efforts in legal cases, policy analysis, grassroots activism, and technology development to defend civil liberties in the digital world make it a crucial resource. 
+
+* **[Accessnow](https://www.accessnow.org/campaign/keepiton/)** - defends and extends the digital rights of people and communities at risk. This takes the form of helplines, holding summits, providing grants, advocating, and operations, including the KeepItOn campaign which documents internet outages and their various impacts on communities. .
+
+* **[Mozilla Network Outages Data Project](https://wiki.mozilla.org/Mozilla_Network_Outages_Data_Project#:~:text=Mozilla%20offers%20public%20access%20to,and%20shutdowns%20around%20the%20world.)** - This initiative focuses on creating an anonymized, privacy-preserving dataset of signals derived from existing Mozilla telemetry, which correlates with network outages in various countries and cities worldwide. To ensure the reliability of these outage signals, the project involves validation by both internal network experts and esteemed external specialists. It is committed to disseminating its findings and making the dataset publicly available, contributing to broader knowledge and understanding of internet health issues.
+
+* **[Cloudflare Radar](https://blog.cloudflare.com/introducing-cloudflare-radar/)** - The goal is to help build a better Internet by exposing insights, threats and trends based on aggregated data tracked by Cloudflare. In order to understand what is happening on the Internet from a security, performance and usage perspective. As well as partnering with [civil society](https://blog.cloudflare.com/partnering-with-civil-society-to-track-shutdowns) to provide tools like Radar and Internet shutdown alerts. Every Internet user should have easy access to answer the questions that they have.
 
 <p style="text-align:left;"><a href="/about/">&lt; Previous</a>
 </p>
