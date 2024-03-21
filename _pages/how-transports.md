@@ -44,7 +44,7 @@ For adversaries willing or able to effectively combat scrambling, another approa
 
 Incorporating techniques like [web tunneling](https://blog.torproject.org/introducing-webtunnel-evading-censorship-by-hiding-in-plain-sight/), which disguises traffic as an HTTPS connection, can enhance this approach. Web tunneling wraps the payload in a WebSocket-like HTTPS connection, making it appear as ordinary HTTPS traffic to network observers and giving the impression of standard web browsing. However, using these shape-shifting strategies can force even more resource-intensive follow-up scanning (the censor must now determine if the server is "correct" or not).
 
-[V2Ray](https://www.v2ray.com/en/) s a tool designed for obfuscating internet traffic, featuring multiple built-in protocols, including [Shadowsocks](https://www.shadowsocks.org/), it offers different methods of camouflage to make the traffic appear as regular, non-censored communication.
+[V2Ray](https://www.v2ray.com/en/) is a tool designed for obfuscating internet traffic, featuring multiple built-in protocols, including [Shadowsocks](https://www.shadowsocks.org/), it offers different methods of camouflage to make the traffic appear as regular, non-censored communication.
 
  
 ### Hiding in the crowd
