@@ -23,7 +23,7 @@ sidebar:
 
 * Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list.
 
-* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/OpenInternet/PT-website/issues).
+* Submit an issue for the website [here](https://github.com/OpenInternet/PT-website/issues).
 
 * Read the [Tor project's guide](https://www.torproject.org/docs/pluggable-transports) to pluggable transports. Also find out how Tor makes [changes to their protocol](https://blog.torproject.org/tor-design-proposals-how-we-make-changes-our-protocol).
 
@@ -31,7 +31,7 @@ sidebar:
 
 * [Operator Foundation](https://operatorfoundation.org)- making useable tools to help people around the world with censorship, security, and privacy. Creators of [Shapeshifter](https://github.com/OperatorFoundation/?q=anticensorship) and [Adversary Lab](https://github.com/OperatorFoundation/AdversaryLab).
 
-* [Redjack](https://www.redjack.com) - tackling critical intelligence challenges, creators of [Marionette](https://github.com/redjack/marionette), the programmable network proxy.
+* [Redjack](https://www.redjack.com) - tackling critical intelligence challenges, creators of [Marionette](https://github.com/marionette-tg/marionette), the programmable network proxy.
 
 * [#KeepItOn](https://www.accessnow.org/keepiton/) is a public advocacy campaign by Access Now to fight internet shutdowns and censorship.
 
