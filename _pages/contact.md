@@ -25,7 +25,7 @@ Pluggable Transports is an [Internews](https://internews.org) community-building
 
 * Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list.
 
-* Connect with us on [Twitter](https://twitter.com/plugtransports).
+* Connect with us on [Twitter](https://twitter.com/plugtransports)[Inactive].
 
 * Read the [Tor project's guide](https://tb-manual.torproject.org/circumvention/) to pluggable transports. Also find out how Tor makes [changes to their protocol](https://blog.torproject.org/tor-design-proposals-how-we-make-changes-our-protocol).
 
