@@ -25,7 +25,7 @@ sidebar:
 
 * Submit an issue for the website [here](https://github.com/OpenInternet/PT-website/issues).
 
-* Read the [Tor project's guide](https://www.torproject.org/docs/pluggable-transports) to pluggable transports. Also find out how Tor makes [changes to their protocol](https://blog.torproject.org/tor-design-proposals-how-we-make-changes-our-protocol).
+* Read the [Tor project's guide](https://blog.torproject.org/tor-heart-bridges-and-pluggable-transports/) to pluggable transports. Also find out how Tor makes [changes to their protocol](https://blog.torproject.org/tor-design-proposals-how-we-make-changes-our-protocol).
 
 * [The Guardian Project](https://guardianproject.info/) - people, apps and codes you can trust.
 
