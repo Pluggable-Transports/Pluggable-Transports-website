@@ -35,4 +35,4 @@ Tor's [expectations for inclusion into the Tor Browser Bundle](https://trac.torp
 
 ## Join the Community!
 
-[Get connected](/community/) with the community of people working on these problems.
+[Get connected](/contact/) with the community of people working on these problems.

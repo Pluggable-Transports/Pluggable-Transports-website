@@ -17,24 +17,26 @@ sidebar:
 
 ## Plug yourself in!
 
-Pluggable Transports is an [Internews](https://internews.org) community-building project. There are lots of ways for you to engage with the community - here are some links that will help you get plugged in.
+Pluggable Transports is an [Internews](https://internews.org) community-building project. Here are some links that will help you get plugged in.
 
-* Join us on [IRC](https://webchat.oftc.net/?channels=pluggable-transports), [Matrix](https://matrix.to/#/#pluggable-transports:matrix.org), [Slack](https://openobservatory.slack.com/messages/pluggable-transports/) or [Mattermost](https://community.internetfreedomfestival.org/community/channels/pluggable-transport) chat.
+* Join us on [IRC](https://webchat.oftc.net/?channels=pluggable-transports)[Inactive], [Matrix](https://matrix.to/#/#pluggable-transports:matrix.org)[Inactive], [Slack](https://openobservatory.slack.com/messages/pluggable-transports/)[Inactive] or [Mattermost](https://community.internetfreedomfestival.org/community/channels/pluggable-transport) chat[Inactive].
 
-* Email us at [contact@pluggabletransports.info](mailto:contact@pluggabletransports.info) or [submit an issue for the website](https://github.com/Pluggable-Transports/Pluggable-Transports-website/issues).
+* Submit an issue for the website [here](https://github.com/Pluggable-Transports/Pluggable-Transports-website/issues).
 
 * Join the [Network Traffic Obfuscation](https://groups.google.com/forum/#!forum/traffic-obf) email list.
 
-* Connect with us on [Twitter](https://twitter.com/plugtransports).
+* Connect with us on [Twitter](https://twitter.com/plugtransports)[Inactive].
 
-* Read the [Tor project's guide](https://www.torproject.org/docs/pluggable-transports) to pluggable transports. Also find out how Tor makes [changes to their protocol](https://blog.torproject.org/tor-design-proposals-how-we-make-changes-our-protocol).
+* Read the [Tor project's guide](https://tb-manual.torproject.org/circumvention/) to pluggable transports. Also find out how Tor makes [changes to their protocol](https://blog.torproject.org/tor-design-proposals-how-we-make-changes-our-protocol).
 
 * [The Guardian Project](https://guardianproject.info/) - people, apps and codes you can trust.
 
 * [Operator Foundation](https://operatorfoundation.org)- making useable tools to help people around the world with censorship, security, and privacy. Creators of [Shapeshifter](https://github.com/OperatorFoundation/?q=anticensorship) and [Adversary Lab](https://github.com/OperatorFoundation/AdversaryLab).
 
-* [Redjack](https://www.redjack.com) - tackling critical intelligence challenges, creators of [Marionette](https://github.com/redjack/marionette), the programmable network proxy.
+* [Redjack](https://www.redjack.com) - tackling critical intelligence challenges, creators of [Marionette](https://github.com/marionette-tg/marionette), the programmable network proxy.
 
 * [#KeepItOn](https://www.accessnow.org/keepiton/) is a public advocacy campaign by Access Now to fight internet shutdowns and censorship.
 
 * [Global Voices AdVox](https://advox.globalvoices.org/) is "a global anti-censorship network of bloggers and activists dedicated to protecting freedom of expression online."
+
+We value respect, inclusivity, and collaboration in our community. To ensure a positive experience for everyone, please take a moment to review our [Code of Conduct](/code-of-conduct/).
