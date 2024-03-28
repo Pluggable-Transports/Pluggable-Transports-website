@@ -16,11 +16,11 @@ sidebar:
     nav: "impnav"
 ---
 
-# Installing a mobile VPN with support for Pluggable Transports #
+# Installing Bitmask mobile VPN with support for Pluggable Transports #
 
-The Pluggable Transports team recently worked with [Calyx](https://calyx.net) to add Pluggable Transports support to their product, which is based on the [Bitmask](https://bitmask.net) VPN. This will eventually be superseded by a full implementation of Pluggable Transport support in the Calyx VPN, but as a starting point the Bitmask VPN can be used with support for PT bridges.
+The Pluggable Transports team worked with [Calyx](https://calyx.net) to add Pluggable Transports support to their product, which is based on the [Bitmask](https://bitmask.net) VPN. As of March 2024, the [Bitmask](https://bitmask.net) VPN is available for android devices through Google Play download, and for desktop clients ([Linux](https://bitmask.net/en/install/linux)/Windows/MacOS) it’s available by installing RiseupVPN.
 
-The video on this page guides you through the steps of installing [F-Droid](https://f-droid.org), downloading and installing the app, and configuring it to use Pluggable Transports.
+For android devices unable to install Bitmask VPN from the Google Play Store, the video on this page guides you through the steps of installing [F-Droid](https://f-droid.org), downloading and installing the app, and configuring it to use Pluggable Transports.
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RxVL3bpCQSg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
