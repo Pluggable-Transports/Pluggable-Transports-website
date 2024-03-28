@@ -17,193 +17,116 @@ sidebar:
 
 {% include toc icon="file-text" %}
 
-This guide assumes you already have a server installed with Go. If you need help, please follow our [Basic Server Setup](/implement/basicserver#installing-go) guide. The instructions below are adapted from [https://github.com/OperatorFoundation/shapeshifter-dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher). They will take you through downloading shapeshifter and proving that it works at its most basic level. For using shapeshifter-dispatcher with OpenVPN, see [our guide here](/implement/openvpn).
+As covered in our [How to Write a Pluggable Transport](/build/how) guide, there are two ways to use transports for all the versions of the specification so far, including version 3.0: the Transports API (which defines a set of language-specific APIs to use transports directly from within an application) and the Dispatcher. This guide covers the Dispatcher, which is a command line tool that runs in a separate process and is controlled through a custom inter-process communication (IPC) protocol whose interface provides a way to integrate with applications written in any language and to wrap existing applications in PTs without needing to modify the source code.
+
+As mentioned in Operator Foundation’s README of April 2023, if you are a tool developer working in the Go programming language, then you will probably want to use the [transports library](https://github.com/OperatorFoundation/shapeshifter-transports) directly in your application.
+
+## Supported modes and transports
+
+As of version 3.0.1 of the shapeshifter-dispatcher, the dispatcher currently supports the following proxy modes:
+
+- SOCKS5 (with optional PT 2.0 authentication protocol)
+- Transparent TCP
+- Transparent UDP
+- STUN UDP
+
+The transports used by shapeshifter-dispatcher follow the Go Transport API in the Pluggable Transports Specification v3.0 and currently the ones currently supported are the following:
+
+- Replicant
+- Optimizer
+- shadow (Shadowsocks)
+Note: obs4 is no longer supported. We recommend using Shadow in its place.
+
+
+This guide assumes you already have a server installed with Go version 1.17 or higher, as well as initialized the Go module for this project. If you need help, please follow our [Basic Server Setup](/implement/basicserver#installing-go) guide. The instructions below are adapted from [https://github.com/OperatorFoundation/shapeshifter-dispatcher](https://github.com/OperatorFoundation/shapeshifter-dispatcher). They will take you through downloading shapeshifter and proving that it works at its most basic level. For using shapeshifter-dispatcher with OpenVPN, see [our guide here](/implement/openvpn).
+
+If you already have Go installed, make sure it is a compatible version:
+~~~~~
+go version
+~~~~~
+
 
 # Downloading and building shapeshifter-dispatcher #
 
-This will install shapeshifter-dispatcher into its own directory one level down from your home directory. You should do this on __both__ your server and client machine.
+Get the git repository for shapeshifter-disptacher:
 
-~~~~~
-cd ~
-git clone https://github.com/OperatorFoundation/shapeshifter-dispatcher
-~~~~~
+~~~~
+git clone https://github.com/OperatorFoundation/shapeshifter-dispatcher.git
+~~~~
 
-Now, navigate to that directory, and build shapeshifter-dispatcher with all of its dependencies.
+Go into that directory and build the command line executable:
 
-~~~~~
-cd ~/shapeshifter-dispatcher
-go build
-~~~~~
-
-To prove that the program itself is working, run this command:
-~~~~~
-./shapeshifter-dispatcher
-~~~~~
-
-That will return basic usage instructions and an error to let you know that you need parameters to successfully run the program.
-
-# Using Netcat #
-We're going to use Netcat, a network tool to communicate between machines. If you already know that Netcat is working, you can skip to the section [Configuring Netcat to use shapeshifter](#configuring-netcat-to-use-shapeshifter). At its simplest, information typed into the client can be displayed on the server, and vice versa.
-
-Let's try it on the server and client you're using, over port 3344. If you followed our [Basic Server Setup](/implement/basicserver#installing-go) guide, you will need to allow traffic to and from port 3344 on your server. To do this, use the following command:
-
-~~~~~
-sudo ufw allow proto tcp from any to any port 3344
-~~~~~
-
-It should return a statement to tell you that the rule has been updated
+~~~~
+cd shapeshifter-dispatcher
+go install
+~~~~
+This will fetch the source code for shapeshifter-dispatcher, and all the dependencies, compile everything, and put the result in /bin/shapeshifter-dispatcher.
 
 
-On the server, run the command:
+# Running using Netcat #
 
-~~~~~
-nc -l 3344
-~~~~~
-
-This will start a server session, listening on port 3344. We're going to use the example address 203.0.113.101 for the server. You will replace that with your server's IP address. On your client, use this command to connect to port 3344 on your server:
-
-~~~~~
-nc 203.0.113.101 3344
-~~~~~
-
-Now type in anything you like, and it will also display on your server. Type something on your server, and it will display on the client. This shows that our server and client are able to talk to each other. Now we're going to get them to talk over shapeshifter.
-
-# Configuring Netcat and ufw to use shapeshifter #
-Now that you know you can use Netcat, you can configure shapeshifter to use it. In this case, traffic is received on your server by shapeshifter, and passed to the port that Netcat is listening to. On the client, Netcat sends its traffic to shapeshifter to obfuscate and send to the server. This means the path for data sent to the server and back is:
+We're going to use Netcat, a network tool to communicate between machines. Traffic is received on your server by shapeshifter, and passed to the port that Netcat is listening to. On the client, Netcat sends its traffic to shapeshifter to obfuscate and send to the server. This means the path for data sent to the server and back is:
 
 Client: Netcat -> Client: shapeshifter ---> Server: shapeshifter -> Server: Netcat -> Server: shapeshifter ---> Client: shapeshifter -> Client: Netcat
 
-We're going to use obfs2 for this first example, which is the simplest configuration for shapeshifter. We'll add other transports in the near future!
+As of version 3.0.1 the argument usage is as follows:
+- `orport` has been replaced with `target`, as noted in this [issue](https://github.com/Pluggable-Transports/Pluggable-Transports-website/issues/187)
+- Use either `-client` or `-server` to place the proxy into client or server mode, respectively
+ - The default proxy mode is SOCKS5 (with optional PT 2.1 authentication protocol), which only supports proxy SOCKS5-aware TCP connections
+ - Use the `-transparent` flag for Transparent TCP proxy mode
+ - Use the `-udp` flag to enable UDP proxying for STUN packet proxying and protocols such as WebRTC, which are based on top of STUN
+ - Using the `-transparent` flag along with the `-udp` flag enables Transparent UDP proxy mode
+ - Only one proxy mode can be used at a time
+- Use `-state` to specify a directory to put transports state information
+- Use `-transports` to specify which transports to launch
+- Use `-optionsFile` to specify the directory where your config file is located
 
-To prepare, you need to know what ports to use, and you may need to enable them on your server as in the [previous section](#using-netcat). First, let's configure the server to use Netcat on port 3344, and shapeshifter on port 2233. You'll need to make sure port 2233 is open. If you are using ufw, you would do this with the following command:
+### Running using Netcat and the Replicant transport
+To use Replicant, a config file is needed. A sample config file, located in ConfigFiles/ReplicantServerConfigV3.json, is provided purely for educational purposes and should not be used in actual production.
+To use Replicant on a production server, you will need a key pair from Operator Foundation, which you can request by mailing [contact@operatorfoundation.org](mailto:contact@operatorfoundation.org).
 
+For this example to work, you need an application server running, in this guide we’ll use netcat to run a simple server on port 3333:
 ~~~~~
-sudo ufw allow proto tcp from any to any port 2233
+nc -l 3333
 ~~~~~
+This will start a server session, listening on port 3333.
 
-# Obfs2 #
-In this first example, we're going to use obfs2, the simplest transport to configure with shapeshifter. In one window, run the shapeshifter command, substituting the IP address 203.0.113.101 with your server's IP address:
+#### Server
+To launch the transport server, telling it where to find the application server, run:
 
-~~~~~
-cd ~/shapeshifter-dispatcher
-./shapeshifter-dispatcher -server -transparent -ptversion 2 -transports obfs2 -state state -bindaddr obfs2-203.0.113.101:2233 -orport 127.0.0.1:3344 -enableLogging -logLevel DEBUG
-~~~~~
+~~~~
+<GOPATH>/bin/shapeshifter-dispatcher -transparent -server -state state -target 127.0.0.1:3333 -transports Replicant -bindaddr Replicant-127.0.0.1:2222 -optionsFile ConfigFiles/ReplicantServerConfigV3.json -logLevel DEBUG -enableLogging
+~~~~
+This runs the server in transparent TCP proxy mode. The directory "state" is used to hold transport state. The destination that the server will proxy to is 127.0.0.1, port 3333. The Replicant transport is enabled and bound to the address 127.0.0.1 and the port 2222. Logging is enabled and set to DEBUG level. To access the Log for debugging purposes, look at state/dispatcher.log.
 
-Note that this binds obfs2 to port 2233, while it will send traffic to port 3344, where Netcat will be listening.
+#### Client
+~~~~
+<GOPATH>/bin/shapeshifter-dispatcher -transparent -client -state state -transports Replicant -proxylistenaddr 127.0.0.1:1443 -optionsFile ConfigFiles/ReplicantClientConfigV3.json -logLevel DEBUG -enableLogging
+~~~~
+This runs the client in transparent TCP proxy mode. The directory "state" is used to hold transport state. The address of the server is specified as 127.0.0.1, port 2222. This is the same address as was specified on the server command line above. For these commands to work, the dispatcher server needs to be running on this host and port. The Replicant transport is enabled and bound to the address 127.0.0.1 and the port 1443.
 
-In a separate server session, run this command to start Netcat listening on port 3344:
+Once the client is running, you can connect to the client address, which in this case is 127.0.0.1, port 1443. For instance, you can telnet to this address:
+~~~~
+telnet 127.0.0.1 1443
+~~~~
+Any bytes sent over this connection will now be forwarded through the transport server to the application server, which in the case of this example is the netcat server.
 
-~~~~~
-nc -l 3344
-~~~~~
+Lastly, and as mentioned above, for using Replicant in this example a sample config file (located in ConfigFiles/ReplicantServerConfigV3.json) is employed but it should not be used in actual production.
 
-Now switch to your client. On this machine, we're going to configure shapeshifter to talk to the server's shapeshifter, and for Netcat to connect via shapeshifter.
+An additional guide using SOCKS5 Mode is available [here](https://github.com/OperatorFoundation/shapeshifter-dispatcher#running-in-socks5-mode)
 
-To do this, you will be setting a proxy port on your client to connect Netcat to. This is the port that shapeshifter will be listening on, and in our example we're going to use port 4455. Don't forget to change the 203.0.113.101 address to the IP address of your server.
+### Config generator
+To generate a new pair of configs for any of the supported transports, run the following command:
+~~~~
+<GOPATH>/bin/shapeshifter-dispatcher -generateConfig -transport <transport name> -serverIP <serverIP:Port>
+~~~~
 
-~~~~~
-cd ~/shapeshifter-dispatcher
-./shapeshifter-dispatcher -transparent -client -state state -target 203.0.113.101:2233 -transports obfs2 -proxylistenaddr 127.0.0.1:4455 -logLevel DEBUG -enableLogging
-~~~~~
+For Replicant, you can also add the flags -toneburst and/or -polish if you would like to enable the Starburst toneburst and the Darkstar polish respectively.
 
-Now you're going to connect Netcat to that proxy, and it will talk to your server using shapeshifter.
+## Credits
+shapeshifter-dispatcher is descended from the Tor project's "obfs4proxy" tool.
 
-~~~~~
-nc 127.0.0.1 4455
-~~~~~
-
-Anything you type into Netcat will be seen on your server, and vice versa.
-
-# Obfs4 #
-The next level for configuring shapeshifter is to use obfs4. This is a slightly more complicated setup, but allows for better obfuscation of your traffic. We're going to use the same ports as we used in the obfs2 example. First, you're going to run shapeshifter in a window on your server, again substituting the IP address 203.0.113.101 with your server's IP address:
-
-~~~~~
-cd ~/shapeshifter-dispatcher
-./shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:3344 -transports obfs4 -bindaddr obfs4-203.0.113.101:2233 -logLevel DEBUG -enableLogging
-~~~~~
-
-This will create a file in your state directory, called obfs4_bridgeline.txt. To view that file, type the command:
-
-~~~~~
-cat ~/shapeshifter-dispatcher/state/obfs4_bridgeline.txt
-~~~~~
-
-It will look something like this:
-
-~~~~~
-# obfs4 torrc client bridge line
-#
-# This file is an automatically generated bridge line based on
-# the current obfs4proxy configuration.  EDITING IT WILL HAVE
-# NO EFFECT.
-#
-# Before distributing this Bridge, edit the placeholder fields
-# to contain the actual values:
-#  <IP ADDRESS>  - The public IP Address of your obfs4 bridge.
-#  <PORT>        - The TCP/IP port of your obfs4 bridge.
-#  <FINGERPRINT> - The bridge's fingerprint.
-
-Bridge obfs4 <IP ADDRESS>:<PORT> <FINGERPRINT> cert=1234567890ABCDEfghijKLMNOpqrstUVWXYz1234567890/+=abcdefghIJKLMnopqrSTU iat-mode=0
-~~~~~
-
-The value you need for your client machine is the long string of characters after cert= and before the following space. In the example, that would be: 1234567890ABCDEfghijKLMNOpqrstUVWXYz1234567890/+=abcdefghIJKLMnopqrSTU
-
-On your client machine, edit the file obfs4.json in the shapeshifter directory:
-
-~~~~~
-cd ~/shapeshifter-dispatcher
-nano obfs4.json
-~~~~~
-
-You will need to replace the sample certificate string with the one from your server. Using our key above, it will look like this:
-
-~~~~~
-{"cert": "1234567890ABCDEfghijKLMNOpqrstUVWXYz1234567890/+=abcdefghIJKLMnopqrSTU", "iat-mode": "0"}
-~~~~~
-
-Now on the client machine, you can run shapeshifter-dispatcher and ask it to use that config file, changing the 203.0.113.101 address to the address of your server:
-
-~~~~~
-./shapeshifter-dispatcher -transparent -client -state state -target 203.0.113.101:2233  -transports obfs4 -proxylistenaddr 127.0.0.1:4455 -optionsFile ./obfs4.json -logLevel DEBUG -enableLogging
-~~~~~
-
-To check this is working, let's use Netcat again. On the server, run the command:
-
-~~~~~
-nc -l 3344
-~~~~~
-
-This will listen on port 3344, which is setup as the -orport value in your shapeshifter command.
-
-On the client machine, you connect Netcat to your local proxy listening addres (-proxylistenaddr):
-
-~~~~~
-nc 127.0.0.1 4455
-~~~~~
-
-Anything you type into Netcat will be seen on your server, and vice versa.
-
-# Replicant #
-To use Replicant on a production server, you will need a key pair from Operator Foundation, which you can get by mailing [contact@operatorfoundation.org](mailto:contact@operatorfoundation.org). For this guide, we're going to use one of the test files included with the latest version of shapeshifter-dispatcher.
-
-Using the same ports as Obfs2 and Obfs4, the command to use on your server is:
-
-~~~~~
-cd ~/shapeshifter-dispatcher
-./shapeshifter-dispatcher -transparent -server -state state -orport 127.0.0.1:3344 -transports Replicant -bindaddr Replicant-203.0.113.101:2233 -logLevel DEBUG -enableLogging -optionsFile ReplicantServerConfigV2.json
-~~~~~
-
-On the client machine, you can use this command:
-
-~~~~~
-./shapeshifter-dispatcher -transparent -client -state state -target 213.0.113.101:2233 -transports Replicant -proxylistenaddr 127.0.0.1:4455 -optionsFile ReplicantClientConfig1.json -logLevel DEBUG -enableLogging
-~~~~~
-
-Once again, connect to Netcat on the local listening address to confirm that it is working:
-
-~~~~~
-nc 127.0.0.1 4455
-~~~~~
-
-
-Congratulations! You've go shapeshifter up and running. What's next? Perhaps you want to take it to the next level and try our [guide to OpenVPN](/implement/openvpn).
+- David Fifield for goptlib
+- Adam Langley for the Go Elligator implementation
+- Philipp Winter for the ScrambleSuit protocol
+- Shadowsocks was developed by the Shadowsocks team
