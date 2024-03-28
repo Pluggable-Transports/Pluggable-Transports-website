@@ -20,25 +20,27 @@ How to Write a Pluggable Transport
 
 {% include toc title="" icon="file-text" %}
 
-This document provides a run-through of creating a Pluggable Transport following instructions developed by the Operator Foundation as part of their extensive work and research on Pluggable Transports.”
+This document provides a run-through of creating a Pluggable Transport following instructions developed by the Operator Foundation as part of their extensive work and research on Pluggable Transports.
 
 Using the Pluggable Transports 2.1 specification
 =================================================
 
-Pluggable Transports can be written in any programming language. A Pluggable Transport interacts with with a host application using a type of inter-process communication (IPC) protocol which is described in the Pluggable Transports specification (see versions here). Currently, there are Pluggable Transport implementations available in Go, Python, C++, and C, with the open source documentation for PT libraries implementing the PT API version 3.0 in Go, Swift, and Java here. Some developers choose to implement their transports from scratch or using a library that implements some parts of the IPC protocol, such as shapeshifter-ipc or goptlib. A faster alternative than developing from scratch is to implement the transport in Go, using the Go API provided in the Pluggable Transports 2.0 specification. This method of implementing a transport is currently limited to transports implemented in the Go programming language. However, there are some advantages to this approach. Applications that are also written in Go can use transports implementing the PT 2.0 Go API directly, bypassing the IPC layer. This decreases the complexity of integration, as well as the performance overhead of running the transports in a separate process. Additionally, the Operator Foundation provides a tool called Shapeshifter Dispatcher, which wraps transports implementing the PT 2.0 Go API to provide the IPC layer. This allows applications written in programming languages other than Go to use these transports with no additional development cost.
+Pluggable Transports can be written in any programming language. A Pluggable Transport interacts with with a host application using a type of inter-process communication (IPC) protocol which is described in the Pluggable Transports specification (see versions [here](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/tree/main/releases)). Currently, there are Pluggable Transport implementations available in Go, Python, C++, and C, with the open source documentation for PT libraries implementing the PT API version 3.0 in Go, Swift, and Java [here](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/tree/main/releases/PTSpecV3.0). Some developers choose to implement their transports from scratch or using a library that implements some parts of the IPC protocol, such as shapeshifter-ipc or goptlib. A faster alternative than developing from scratch is to implement the transport in Go, using the Go API provided in the Pluggable Transports 2.0 specification. This method of implementing a transport is currently limited to transports implemented in the Go programming language. However, there are some advantages to this approach. Applications that are also written in Go can use transports implementing the PT 2.0 Go API directly, bypassing the IPC layer. This decreases the complexity of integration, as well as the performance overhead of running the transports in a separate process. Additionally, the Operator Foundation provides a tool called Shapeshifter Dispatcher, which wraps transports implementing the PT 2.0 Go API to provide the IPC layer. This allows applications written in programming languages other than Go to use these transports with no additional development cost.
 There are two ways to use transports for all the versions of the specification so far, including version 3.0. The Transports API defines a set of language-specific APIs to use transports directly from within an application. Alternatively, transports can be used through the Dispatcher, a command line tool that runs in a separate process and is controlled through a custom inter-process communication (IPC) protocol whose interface provides a way to integrate with applications written in any language and to wrap existing applications in PTs without needing to modify the source code.
 
 Transport Connections vs Network Connections
 --------------------------------------------
 
 An important distinction to remember when implementing a transport is the difference between transport connections and network connections. A transport connection is a communication channel between a transport client and a transport server, which is capable of communication using the chosen transport protocol. A network connection is a communication channel between two computers, which communicates data streams that can be in any protocol. For convenience, the API for making transport connections mimics closely the interface for making network connections. A transport connection essentially looks to the application like a “virtual network connection”. However, the actual mapping between transport connections and network connections depends on the transport. Some transports have exactly one network connection for each transport connection. Other transports may split the transport connection’s data over multiple network connections, or multiplex multiple transport connections over one network connection. A transport could even have 0 network connections, instead conveying data using a connectionless alternative such as UDP.
+
 Particularly for the Swift language, it is important to differentiate between the Network framework, which provides an API for making TCP and UDP network connections and the Network Extension framework, which is for managing VPNs. In the case of Pluggable Transports, both of these frameworks come into play as Swift Pluggable Transports may be running inside of a Network Extension, but use the Network framework to connect to the transport server.
 While the Pluggable Transport API is flexible enough to accommodate a variety of mappings between transport connections and network connections, it also provides support for the common case of one transport connection for each network connection. In particular, the underlying network connection for a transport connection, if there is one, can be retrieved and accessed directly. This is useful for doing lower-level configuration of the network, such as setting network options on the network connection.
+
 
 PT 2.0 Draft 3: How to Write a Pluggable Transport in Go
 ========================================================
 
-Before we get started writing code, let’s look at the required interfaces. For PT 2.0 these interfaces can be found in the  Go API specification on section 3.2.4
+Before we get started writing code, let’s look at the required interfaces. For [PT 2.0](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/tree/main/releases/PTSpecV2.0) these interfaces can be found in the  Go API specification on section 3.2.4
 
 First, let’s look at the Transport interface. This is what a transport needs to provide:
 
@@ -76,8 +78,7 @@ type Listener interface {
 } 
 ~~~~
 
-Last, we’ll look at the Conn interface. which listens for a new transport connection and returns a TransportConn. Inside of TransportAccept(), the usual method of obtaining a transport connection is to listen for a standard network connection using an instance of the net.Listener interface. The NetworkListener() method reduces this net.Listener used by the TransportListener. This can be useful for setting network options. It is up to the TransportListener implementation to handle creating a net.Listener. Finally, the Close() method stops the TransportListener from accepting any more transport connections. Usually, the implementation of this method will also call Close() on the underlying net.Listener, stopping any incoming network connections.
-
+Last, we’ll look at the Conn interface. 
 ~~~~
 // net.Conn implements the Connection abstract interface
 type Conn interface {
@@ -112,8 +113,6 @@ type Conn interface {
 
 ~~~~
 
-Example Transports
-==================
 
 To complete the discussion of the PT 2.0 Go API to implement a transport, a constructor function must be created that returns an instance of the Transport interface. The transport constructor function, being a normal Go function, can take arbitrary configuration parameters. It is up to the application using the API to implement a valid call to the constructor function for the specific transport being used.
 
@@ -125,8 +124,8 @@ The transport will also need to implement instances of the net.Conn interface. T
 
 Overall, all network operations are delegated to the transport. For instance, the transport is responsible for initiating outgoing network connections and listening for incoming network connections. This gives the transport flexibility in how it uses the network.
 
-Please refer to the PT 2.0 specification document for further details and considerations.
-”
+Please refer to the [PT 2.0](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/tree/main/releases/PTSpecV2.0) specification document for further details and considerations.
+
 
 
 PT 3.0: How to Write a Pluggable Transport in Swift
@@ -167,8 +166,12 @@ Here the first init() is a basic initializer for the Meek transport. It takes tr
 
 The second init() allows for the Meek transport to take an existing ConnectionFactory to use to make its connection to the network. This allows for nesting of Meek with other transports. If no factory is provided, Meek will use the standard NWConnection provided by the Network framework to connect to the network.
 
-Additional examples for logging, using interfaces for TCP connections and UDP sessions, and more can be found in the Swift Transport API reference implementation of PT 3.0.
-”
+Additional examples for logging, using interfaces for TCP connections and UDP sessions, and more can be found in the [Swift Transport API](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/blob/main/releases/PTSpecV3.0/Pluggable%20Transport%20Specification%20v3.0%20-%20Swift%20Transport%20API%20v3.0.md) reference implementation of PT 3.0.
+
+
+ 
+Next, take a look at some examples of software already using Pluggable Transports [here](/implement).
+
 
 
 ---
