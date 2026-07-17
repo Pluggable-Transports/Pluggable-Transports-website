@@ -19,6 +19,8 @@ sidebar:
 
 {% include toc icon="file-text" %}
 
+The following is an excerpt from 2018 by Dr. Brandon Wiley, The Operator Foundation
+
 Transports that implement the PT 2.0 Go API (see the [PT2 spec](/spec/)) provide a “virtual network interface” that can be used instead of Go’s net.Conn API for sending and receiving traffic over the network. When using these transports, the application data is transformed so as to be resistant to blocking.
 
 Before we get started writing code, let’s look at the required interfaces. These interfaces can be found in the PT 2.0 Go API specification, as well as in the [*shapeshifter-transports*](https://github.com/OperatorFoundation/shapeshifter-transports) Go library (in the [*base*](https://github.com/OperatorFoundation/shapeshifter-transports/blob/master/transports/base/base.go) package).
@@ -213,5 +215,10 @@ fmt.Println("Received %d bytes", bytesRead)
 This creates a new variable “buffer” and allocates an array of 1024 bytes which is assigned to this new variable. It then executes a loop. The first time through the loop, it creates new variables “bytesRead” and “err”. The “bytesRead” variable is used to track the number of bytes read each time Read() is called. In the example app, this is just used for debugging purposes. The “err” variable is used to record errors encountered while calling Read(). In particular, if the connection is closed then Read() will return an error, otherwise it will return nil. The loop continues as long as “err” is nil. While the loop is executing, it will continue to call Read(). Inside the loop, we print the number of bytes read, simply for debugging purposes.
 
 ---
+
+## PT API 3.0: How to Use Pluggable Transports in Your Go Application
+
+The most recent version of the Pluggable Transports specification, version 3.0 as of 2023, counts with an available sample implementation for the Go language, which can be found [here](https://github.com/Pluggable-Transports/Pluggable-Transports-spec/blob/main/releases/PTSpecV3.0/Pluggable%20Transport%20Specification%20v3.0%20-%20Go%20Transport%20API%20v3.0.md)
+
 
 *CC-BY Dr. Brandon Wiley, The Operator Foundation*

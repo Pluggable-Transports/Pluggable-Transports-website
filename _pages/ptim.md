@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Pluggable Transports Implementers Meetings"
+title: "Pluggable Transports Implementers Meetings[Currently Inactive]"
 permalink: /ptim/
 excerpt: ""
 header:

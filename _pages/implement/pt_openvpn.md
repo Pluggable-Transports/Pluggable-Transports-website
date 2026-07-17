@@ -19,7 +19,7 @@ sidebar:
 
 {% include toc icon="file-text" %}
 
-__Updated June 2020__
+__Updated March 2024__
 
 This guide steps you through setting up your own obfuscated OpenVPN system.
 
@@ -31,11 +31,13 @@ A VPN is an easy to manage service that can help users access content in countri
 
 *VPN circumventing a firewall*
 
-However, VPNs are increasingly targeted for blocking themselves. Deep Packet Inspection (DPI) is able to block any targeted application or protocol by filtering the traffic and preventing it from passing firewalls to the outside world Internet. As DPI firewalls act based on the packet type, not the port number, simple "tricks" like changing the port will not help
+However, VPNs are increasingly targeted for blocking themselves. Deep Packet Inspection (DPI) is able to block any targeted application or protocol by filtering the traffic and preventing it from passing firewalls to the outside world Internet. As DPI firewalls act based on the packet type, not the port number, simple "tricks" like changing the port will not help.
 
  Pluggable transports make it possible to bypass such filtering without modifying the VPN itself but proxying the traffic into obfuscated tunnels which are significantly more difficult to identify and/or are costly to block to enable the traffic to pass through. Read more about [different types of obfuscation](/transports) or the [history of filtering](/how/#dpi-blocking/). 
 
 <img src="/assets/images/DPIOpenVPN.png" alt="Obfusctated VPN circumventing a DPI firewall" />
+
+## OpenVPN with PTs for Ubuntu 16.04
 
 *Obfuscated VPN circumventing a DPI firewall*
 
@@ -47,7 +49,6 @@ This tutorial uses Dispatcher to enable OpenVPN traffic to pass DPI firewalls, b
 
 **If you already have OpenVPN installed and running on a server, you can skip forward to [installing Dispatcher](#server-obfuscation-configuration)**
 
-# Preparation
 
 First, we will be installing the following packages that you will use during the installation
 
@@ -63,7 +64,7 @@ apt-get update
 apt-get install openssl ca-certificates git curl easy-rsa -y
 ~~~~
 
-# Installing OpenVPN
+### Installing OpenVPN
 
 In this step, we will install and configure OpenVPN Server on Ubuntu 16.04.1 LTS and test it in non-DPI environment to be sure that it’s working. Please note that the procedure will probably work on any Debian / Ubuntu distro. You must run the installation and configure the different applications as root or sudoers account.
 
@@ -301,31 +302,30 @@ Save the file, name it CLIENT.ovpn and put it it along with the following files 
 
 If it worked -- continue to the installation of shapeshifter-dispatcher and enable obfuscation for OpenVPN.
 
-# Server Obfuscation Configuration
-   
+### Server Obfuscation Configuration with Shapeshifter-dispatcher
+
 The next step is to install and use the shapeshifter-dispatcher server and client. See our [guide to installing shapeshifter](/implement/shapeshifter) for instructions.
 
-We're going to use obfs-2 again for this, as it is the most simple to get up and running. The information you will need is:
+The information you will need is:
 
 Your server IP address - we're going to use 203.0.113.101 in this guide.
 Your VPN port - we're using 1194, but you may choose to run elsewhere.
 Your shapeshifter port - we're going to use 2233 in our example.
 
-Here's the command to start shapeshifter with obfs2, installed as in [our guide](/implement/shapeshifter). The difference here is that we are setting -orport to our OpenVPN port (1194):
+Here's the command to start shapeshifter with Replicant, installed as in [our guide](/implement/shapeshifter). The difference here is that we are setting -target to our OpenVPN port (1194):
 
-~~~
-cd ~/shapeshifter-dispatcher
-./shapeshifter-dispatcher -server -transparent -ptversion 2 -transports obfs2 -state state -bindaddr obfs2-203.0.113.101:2233 -orport 127.0.0.1:1194
-~~~
+~~~~
+<GOPATH>/bin/shapeshifter-dispatcher -transparent -server -state state -target 127.0.0.1:3333 -transports Replicant -bindaddr Replicant-127.0.0.1:2222 -optionsFile ConfigFiles/ReplicantServerConfigV3.json -logLevel DEBUG -enableLogging
+~~~~
 
-# Client Obfuscation Configuration
+
+### Client Obfuscation Configuration
 On the client, we're going to need to do two things: run shapeshifter, and change our standard OpenVPN configuration to use it. You should have shapeshifter configured as in our [guide to installing shapeshifter](/implement/shapeshifter).
 
-First, let's run shapeshifter with obfs2. Don't forget to change the target address to your server and its shapeshifter port.
+First, let's run shapeshifter with Replicant. Don't forget to change the target address to your server and its shapeshifter port.
 
 ~~~~~
-cd ~/shapeshifter-dispatcher
-./shapeshifter-dispatcher -transparent -client -state state -target 203.0.113.101:2233 -transports obfs2 -proxylistenaddr 127.0.0.1:4455 -logLevel DEBUG -enableLogging
+<GOPATH>/bin/shapeshifter-dispatcher -transparent -client -state state -transports Replicant -proxylistenaddr 127.0.0.1:1443 -optionsFile ConfigFiles/ReplicantClientConfigV3.json -logLevel DEBUG -enableLogging
 ~~~~~
 
 Now, you'll need to change some lines in your CLIENT.ovpn file. This is how the file should now look:
@@ -357,4 +357,9 @@ route 203.0.113.101 255.255.255.255 net_gateway #Bypass the server in the VPN co
 
 Note that you'll need to use the port that shapeshifter is connecting to, because it will be handling the connection to the OpenVPN server. You will also need to bypass the VPN server from the OpenVPN configuration, as shapeshifter itself is handling that connection.
 
-And now, you should have a working OpenVPN configuration, connecting over shapeshifter. Our [guide to installing shapeshifter](/implement/shapeshifter) includes configuration options for obfs4, which can be used here, in the same way, in place of obfs2.
+And now, you should have a working OpenVPN configuration, connecting over shapeshifter. Our [guide to installing shapeshifter](/implement/shapeshifter) includes additional configuration options as well as information on using the SOCKS5 Mode.
+
+## TunnelBear with OpenVPN and Obsf4 PT
+
+As of March 2021, TunnelBear has “an implementation of Obs4 that can be used as a library, as well as a version of OpenVPN that we could integrate directly into TunnelBear which supports a Pluggable Transports API”. Read their [blog post](https://www.tunnelbear.com/blog/tunnelbear-implements-pluggable-transports-with-openvpn3/) for more details.
+
