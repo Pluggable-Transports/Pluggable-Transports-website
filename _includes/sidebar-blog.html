@@ -1,8 +1,18 @@
 <!-- Sidebar -->
 <div class="sidebar">
 <span class="nav__sub-title">Tags</span>
- {% assign tags = site.tags | sort %}
-{% for tag in tags %}
+{% comment %} Source: http://stackoverflow.com/questions/49547414/ddg#49549166 {% endcomment %}
+{% comment %} Creates an empty array {% endcomment %}
+{% assign tags = "" | split:"" %}
+
+{% comment %}Creates an array of tags names{% endcomment %}
+{% for t in site.tags %}
+  {% assign tags = tags | push: t[0] %}
+{% endfor %}
+
+{% assign sorted_tags = tags | sort_natural %}
+
+{% for tag in sorted_tags %}
  <span class="site-tag">
     <a href="/tag/#{{ tag | first | slugify }}"
         style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
